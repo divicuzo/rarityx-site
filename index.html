@@ -1,0 +1,2116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>RarityX - Design is the Rarity</title>
+  <meta name="description" content="RarityX — a fine jewelry design atelier. Each piece begins with the designer. Zero inventory. Every stone sourced to specification. Start with a conversation.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rarityx.com/">
+  <link rel="icon" type="image/webp" href="Jewelry/LOGO_transparent.webp">
+  <link rel="apple-touch-icon" href="Jewelry/LOGO.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rarityx.com/">
+  <meta property="og:title" content="RarityX — Design is the Rarity">
+  <meta property="og:description" content="Fine jewelry design atelier. Each piece begins with the designer — not the stone. Zero inventory. Every commission pre-sold before fabrication begins.">
+  <meta property="og:image" content="https://rarityx.com/Jewelry/Ethereal_Pavé_Crest_Platinum_2K_202606302140.jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="RarityX">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RarityX — Design is the Rarity">
+  <meta name="twitter:description" content="Fine jewelry design atelier. Each piece begins with the designer. Zero inventory. Every commission pre-sold.">
+  <meta name="twitter:image" content="https://rarityx.com/Jewelry/Ethereal_Pavé_Crest_Platinum_2K_202606302140.jpeg">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "JewelryStore",
+    "name": "RarityX",
+    "description": "Fine jewelry design atelier. Design is the rarity. Each piece begins with the designer — nothing else precedes it.",
+    "url": "https://rarityx.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Chicago",
+      "addressRegion": "IL",
+      "addressCountry": "US"
+    },
+    "priceRange": "$$$",
+    "openingHours": "By appointment",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "rarityxcollective@gmail.com"
+    },
+    "sameAs": []
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,300;0,6..96,400;1,6..96,300;1,6..96,400&family=Outfit:wght@300;400;500&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+/* ============================================================
+   FOUNDATION
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#330D1E;
+  --surface:#3f1525;
+  --text:#f5f5f5;
+  --text-muted:#d4b0c0;
+  --accent:#c8c8c8;
+  --divider:#5a1a2e;
+  --grid-bg:#d4d8dc;
+  --grid-line:#b0b8c0;
+  --grid-text:#4a5260;
+  --neon-accent:#e8e8e8;
+  --active-dot:#f5f5f5;
+  --ease-out:cubic-bezier(0.23,1,0.32,1);
+  --ease-in-out:cubic-bezier(0.77,0,0.175,1);
+  --ease-spring:cubic-bezier(0.34,1.56,0.64,1);
+  --font-display:'Barlow Condensed',sans-serif;
+  --font-mono:'Space Mono','JetBrains Mono',monospace;
+  --font-serif:'Bodoni Moda', 'Didot',serif;
+  --font-body:'Outfit',sans-serif;
+  --header-h:68px;
+  --bg-grid:#d4d8dc;
+  --cross:#b0b8c0;
+  --label:#4a5260;
+  --label-muted:#999999;
+  --border-cell:#b0b8c0;
+  --wordmark-color:#4a5260;
+}
+
+html{height:auto;font-size:18px;-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:auto;color-scheme:dark;}
+body{min-height:100vh;background-color:var(--bg);color:var(--text);font-family:var(--font-body);font-weight:400;font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;}
+
+.lenis.lenis-smooth{scroll-behavior:auto;}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain;}
+
+img{display:block;max-width:100%;height:auto;}
+a{color:inherit;text-decoration:none;}
+button{border:none;background:none;cursor:pointer;font:inherit;color:inherit;}
+ul,ol{list-style:none;}
+
+::selection{background-color:var(--accent);color:var(--bg);}
+::-moz-selection{background-color:var(--accent);color:var(--bg);}
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--divider);border-radius:2px;}
+::-webkit-scrollbar-thumb:hover{background:var(--text-muted);}
+*{scrollbar-width:thin;scrollbar-color:var(--divider) var(--bg);}
+
+.mono{font-family:var(--font-mono);font-size:12px;font-weight:400;text-transform:uppercase;letter-spacing:0.18em;line-height:1.4;}
+.condensed{font-family:var(--font-display);font-weight:900;text-transform:uppercase;letter-spacing:-0.01em;line-height:0.92;}
+.serif-italic{font-family:var(--font-serif);font-style:italic;font-weight:300;line-height:1.2;}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s var(--ease-out),transform 0.7s var(--ease-out);}
+.reveal.visible{opacity:1;transform:none;}
+.reveal:nth-child(1){transition-delay:0ms;}
+.reveal:nth-child(2){transition-delay:50ms;}
+.reveal:nth-child(3){transition-delay:100ms;}
+.reveal:nth-child(4){transition-delay:150ms;}
+.reveal:nth-child(5){transition-delay:200ms;}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important;}
+  .reveal{opacity:1;transform:none;transition:none;}
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:100;height:calc(var(--header-h) + env(safe-area-inset-top,0px));padding-top:env(safe-area-inset-top,0px);background:transparent;border-bottom:1px solid transparent;transition:background 0.4s ease,border-color 0.4s ease,backdrop-filter 0.4s ease;will-change:background;}
+.site-header.scrolled{background:rgba(51,13,30,0.90);border-bottom-color:var(--divider);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
+.header-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:100%;padding:0 32px;gap:0;}
+.header-left{display:flex;align-items:center;}
+.city-times{display:flex;flex-direction:column;gap:3px;}
+.city-time{font-family:'Space Mono',monospace;font-size:9px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);line-height:1.3;white-space:nowrap;transition:color 0.3s ease;}
+.city-time:hover{color:var(--accent);}
+.header-center{display:flex;justify-content:center;align-items:center;}
+.wordmark{text-decoration:none;line-height:1;user-select:none;display:flex;align-items:center;}
+.wordmark:hover{opacity:0.8;}
+.header-logo{height:76px;width:auto;display:block;filter:drop-shadow(0 0 2px rgba(200,168,122,0.5)) drop-shadow(0 0 8px rgba(200,168,122,0.18));transition:opacity 0.3s ease;}
+.grid-wordmark-img{height:120px;width:auto;filter:none;opacity:1;}
+.header-right{display:flex;align-items:center;justify-content:flex-end;gap:28px;}
+.nav-links{display:flex;align-items:center;gap:24px;list-style:none;}
+.nav-link{font-family:'Space Mono',monospace;font-size:9px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;position:relative;padding:18px 0 2px;transition:color 0.25s ease;}
+.nav-link::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--accent);transition:width 0.3s ease;}
+.nav-link:hover{color:var(--text);}
+.nav-link:hover::after{width:100%;}
+.cta-btn{font-family:'Outfit',sans-serif;font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:12px 16px;min-height:44px;display:inline-flex;align-items:center;white-space:nowrap;transition:color 0.25s ease,background 0.25s ease,border-color 0.25s ease;position:relative;overflow:hidden;}
+.cta-btn::before{content:'';position:absolute;inset:0;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;z-index:-1;}
+.cta-btn:hover{color:var(--bg);}
+.cta-btn:hover::before{transform:scaleX(1);}
+
+.section-nav{position:fixed;right:max(24px,calc(env(safe-area-inset-right,0px) + 16px));top:50%;transform:translateY(-50%);z-index:99;display:flex;flex-direction:column;gap:8px;align-items:center;}
+.nav-dot{width:6px;height:6px;background:#3a3a3a;cursor:pointer;transition:background 0.3s ease,transform 0.3s ease;flex-shrink:0;}
+.nav-dot.active{background:var(--text);transform:scale(1.2);}
+.nav-dot:hover{background:var(--accent);}
+
+@media(max-width:768px){
+  .header-inner{padding:0 20px;grid-template-columns:auto 1fr auto;}
+  .header-left{display:none;}
+  .header-center{justify-content:flex-start;}
+  .nav-links{display:none;}
+  .cta-btn{font-size:9px;padding:7px 12px;}
+  .section-nav{right:12px;}
+}
+
+/* ============================================================
+   GRID INTRO
+   ============================================================ */
+#section-grid{position:relative;min-height:100dvh;background:var(--bg-grid);overflow:hidden;display:flex;flex-direction:column;}
+.grid-topbar{position:absolute;top:0;left:0;right:0;z-index:20;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;border-bottom:1px solid var(--border-cell);}
+.grid-topbar-left{font-family:'Space Mono',monospace;font-size:10px;color:var(--label-muted);letter-spacing:0.18em;text-transform:uppercase;}
+.grid-tagline{text-align:left;max-width:none;}
+.grid-tagline-primary{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--label);letter-spacing:0.16em;text-transform:uppercase;font-weight:700;line-height:1.4;display:block;}
+.grid-tagline-secondary{display:flex;align-items:baseline;gap:clamp(14px,2.4vw,32px);margin-top:5px;}
+.grid-tagline-secondary span{font-family:'Space Mono',monospace;font-size:11px;color:var(--label-muted);letter-spacing:0.14em;text-transform:uppercase;white-space:nowrap;}
+.grid-nav-dots{position:absolute;right:18px;top:50%;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:7px;padding-top:64px;}
+.gnav-dot{width:5px;height:14px;border-radius:3px;background:var(--label-muted);opacity:0.4;clip-path:inset(4.5px 0 round 50%);transition:opacity 0.3s ease,background 0.3s ease,clip-path 0.3s ease;cursor:pointer;}
+.gnav-dot.active{background:var(--label);opacity:1;clip-path:inset(0 round 3px);}
+.grid-container{display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(3,1fr);flex:1;margin-top:64px;margin-bottom:80px;}
+.grid-cell{position:relative;border:1px solid var(--border-cell);aspect-ratio:1;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--bg-grid);}
+.grid-cell::after{content:'';position:absolute;inset:0;background:rgba(74,82,96,0);transition:background 0.35s ease;pointer-events:none;z-index:2;}
+.grid-cell:hover::after{background:rgba(74,82,96,0.06);}
+.grid-cell:hover .grid-img{filter:grayscale(30%) contrast(1.15) brightness(0.92);transform:scale(1.04);}
+.grid-img{width:100%;height:100%;object-fit:cover;filter:grayscale(60%) contrast(1.1) brightness(0.95);transition:filter 0.4s ease,transform 0.5s cubic-bezier(0.16,1,0.3,1);display:block;}
+.grid-num{display:none;}
+.cross{position:absolute;width:14px;height:14px;z-index:5;pointer-events:none;}
+.cross::before,.cross::after{content:'';position:absolute;background:var(--cross);opacity:0.75;}
+.cross::before{width:1px;height:10px;left:50%;top:50%;transform:translate(-50%,-50%);}
+.cross::after{height:1px;width:10px;left:50%;top:50%;transform:translate(-50%,-50%);}
+.cross-tl{top:-7px;left:-7px;}
+.cross-tr{top:-7px;right:-7px;}
+.cross-bl{bottom:-7px;left:-7px;}
+.cross-br{bottom:-7px;right:-7px;}
+.grid-wordmark-block{position:absolute;bottom:0;left:0;right:0;z-index:10;pointer-events:none;padding:0 18px;border-top:1px solid var(--border-cell);background:var(--bg-grid);display:flex;align-items:flex-end;justify-content:space-between;height:140px;}
+.grid-wordmark{font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;color:var(--wordmark-color);font-size:clamp(52px,10.5vw,148px);letter-spacing:-0.02em;line-height:0.82;padding-bottom:8px;user-select:none;}
+.scroll-cue{font-family:'Space Mono',monospace;font-size:9px;color:var(--label-muted);letter-spacing:0.14em;text-transform:uppercase;padding-bottom:12px;white-space:nowrap;align-self:flex-end;}
+.section-index{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--label-muted);padding-bottom:12px;align-self:flex-end;}
+
+@media(prefers-reduced-motion:no-preference){
+  .grid-cell{opacity:0;transform:scale(0.97);transition:opacity 0.55s cubic-bezier(0.16,1,0.3,1),transform 0.55s cubic-bezier(0.16,1,0.3,1);}
+  .grid-cell.revealed{opacity:1;transform:scale(1);}
+  .grid-wordmark-block{opacity:0;transform:translateY(12px);transition:opacity 0.7s 0.6s cubic-bezier(0.16,1,0.3,1),transform 0.7s 0.6s cubic-bezier(0.16,1,0.3,1);}
+  .grid-wordmark-block.revealed{opacity:1;transform:translateY(0);}
+  .grid-topbar{opacity:0;transition:opacity 0.5s 0.1s ease;}
+  .grid-topbar.revealed{opacity:1;}
+}
+@media(max-width:767px){
+  .grid-container{grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(5,1fr);margin-bottom:64px;}
+  .grid-tagline{display:none;}
+  .grid-topbar-left{font-size:9px;}
+  .grid-wordmark{font-size:clamp(40px,14vw,80px);}
+  .grid-nav-dots{display:none;}
+  .grid-wordmark-block{height:100px;}
+  .scroll-cue{font-size:8px;}
+}
+@media(min-width:768px) and (max-width:1000px){
+  .grid-tagline-secondary{gap:10px;}
+  .grid-tagline-secondary span{font-size:9.5px;}
+}
+@media(max-width:480px){.grid-topbar{padding:0 16px;}}
+
+/* ============================================================
+   SECTION 01
+   ============================================================ */
+#section-01{background:#330D1E;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;padding:0 clamp(24px,8vw,120px);position:relative;overflow:hidden;}
+.section-num{position:absolute;top:88px;left:clamp(24px,8vw,120px);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#d0a0b0;text-transform:uppercase;}
+.s01-content{display:flex;flex-direction:column;max-width:900px;}
+.s01-headline{font-family:'Bodoni Moda', 'Didot',serif;font-style:italic;font-weight:300;font-size:clamp(52px,8vw,110px);line-height:1.05;color:#f5f5f5;padding-bottom:8px;opacity:0;transform:translateY(28px);transition:opacity 0.9s cubic-bezier(0.22,1,0.36,1),transform 0.9s cubic-bezier(0.22,1,0.36,1);}
+.s01-headline.is-visible{opacity:1;transform:translateY(0);}
+.s01-sub{margin-top:32px;display:flex;flex-direction:column;gap:4px;}
+.s01-sub span{font-family:'Space Mono',monospace;font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:#d0a0b0;opacity:0;transform:translateY(10px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1);}
+.s01-headline.is-visible ~ .s01-sub span:nth-child(1){opacity:1;transform:translateY(0);transition-delay:0.25s;}
+.s01-headline.is-visible ~ .s01-sub span:nth-child(2){opacity:1;transform:translateY(0);transition-delay:0.38s;}
+.s01-headline.is-visible ~ .s01-sub span:nth-child(3){opacity:1;transform:translateY(0);transition-delay:0.51s;}
+.s01-bottom{position:absolute;bottom:0;left:0;right:0;padding:20px clamp(24px,8vw,120px);border-top:1px solid #5a1a2e;display:flex;justify-content:space-between;align-items:center;}
+.s01-bottom span{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#c8909e;}
+
+/* ============================================================
+   SECTION 02 - ORIGIN LOG
+   ============================================================ */
+#section-02{position:relative;height:560vh;}
+.horiz-pin{position:sticky;top:0;height:100dvh;overflow:hidden;}
+.s02-section-label{position:absolute;top:clamp(24px,3vw,40px);left:clamp(24px,4vw,56px);z-index:20;display:flex;align-items:center;gap:14px;}
+.s02-label-num{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.20em;color:#c8909e;text-transform:uppercase;}
+.s02-label-div{width:32px;height:1px;background:#2a2a2a;flex-shrink:0;}
+.s02-label-title{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;color:#d0a0b0;text-transform:uppercase;}
+.origin-progress{position:absolute;right:clamp(16px,2.5vw,32px);top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;gap:10px;}
+.origin-progress__dot{width:4px;height:4px;border-radius:50%;background:#2a2a2a;transition:background .3s ease,transform .3s ease;}
+.origin-progress__dot.active{background:#c8c8c8;transform:scale(1.6);}
+.horiz-track{display:flex;height:100%;will-change:transform;}
+.origin-card{flex:0 0 60vw;height:100%;padding:clamp(80px,8vw,120px) clamp(40px,5vw,80px);display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid #5a1a2e;position:relative;overflow:hidden;}
+.origin-card:nth-child(odd){background:#330D1E;}
+.origin-card:nth-child(even){background:#3f1525;}
+.origin-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:#5a1a2e;}
+.card-top{display:flex;flex-direction:column;}
+.origin-fig{display:none;}
+.origin-year{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(80px,10vw,140px);line-height:1;color:#f5f5f5;letter-spacing:-0.02em;}
+.origin-title-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#888;margin-top:10px;}
+.card-body{flex:1;display:flex;align-items:flex-end;padding-bottom:24px;}
+.origin-body{font-family:'Outfit',sans-serif;font-size:18px;color:#aaaaaa;line-height:1.8;max-width:40ch;}
+.card-bottom{display:flex;flex-direction:column;gap:10px;}
+.origin-img{width:100%;height:clamp(240px,26vw,360px);object-fit:cover;filter:grayscale(60%) contrast(1.2) brightness(0.9);display:block;border-radius:0;opacity:0;transform:translateY(24px) scale(0.94);transition:opacity 0.9s cubic-bezier(0.22,1,0.36,1),transform 0.9s cubic-bezier(0.22,1,0.36,1);}
+.origin-card--accent .origin-year{color:#c8c8c8;}
+.origin-card--accent .origin-title-label{color:#c8c8c8;}
+.origin-card--accent .origin-body{color:#888;}
+
+@media(prefers-reduced-motion:reduce){.horiz-track{transform:none!important;}#section-02{height:auto;}.horiz-pin{position:relative;height:auto;overflow:auto;}.horiz-track{flex-direction:column;}.origin-card{flex:none;width:100%;height:auto;min-height:100dvh;}}
+@media(max-width:767px){#section-02{height:auto;}.horiz-pin{position:relative;height:auto;overflow-y:auto;}.horiz-track{flex-direction:column;height:auto;transform:none!important;}.origin-card{flex:none;width:100%;min-height:auto;height:auto;padding:72px 24px 56px;gap:28px;border-right:none;border-bottom:1px solid #5a1a2e;}.origin-img{width:100%;height:220px;opacity:1!important;transform:none!important;}.origin-progress{display:none;}}
+
+/* ============================================================
+   SECTION 03 - SUPPLY CHAIN
+   ============================================================ */
+#section-03{background:#330D1E;padding:clamp(80px,10vw,140px) clamp(24px,8vw,120px) 0;min-height:100dvh;position:relative;overflow:hidden;}
+#section-03::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:#5a1a2e;}
+.s03-header{margin-bottom:clamp(60px,8vw,100px);position:relative;}
+.s03-eyebrow{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#c8909e;margin-bottom:20px;display:block;}
+.s03-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(56px,8vw,110px);text-transform:uppercase;color:#f5f5f5;letter-spacing:-0.02em;line-height:0.9;display:block;}
+.s03-sub{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#c8909e;margin-top:24px;display:block;}
+.s03-header-rule{position:absolute;top:0;right:0;width:1px;height:100%;background:#5a1a2e;display:none;}
+@media(min-width:1024px){.s03-header-rule{display:block;}}
+.phase-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:#5a1a2e;}
+@media(max-width:768px){.phase-grid{grid-template-columns:1fr;}}
+.phase-card{background:#330D1E;padding:clamp(32px,4vw,56px);position:relative;opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.phase-card.revealed{opacity:1;transform:translateY(0);}
+.phase-card:nth-child(1){transition-delay:0ms;}
+.phase-card:nth-child(2){transition-delay:100ms;}
+.phase-card:nth-child(3){transition-delay:200ms;}
+.phase-card:nth-child(4){transition-delay:300ms;}
+.phase-card::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0);transition:background .4s ease;pointer-events:none;}
+.phase-card:hover::after{background:rgba(255,255,255,.018);}
+.phase-num{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#c8909e;margin-bottom:24px;display:block;}
+.phase-name{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(28px,4vw,48px);text-transform:uppercase;color:#f5f5f5;line-height:1;margin-bottom:16px;letter-spacing:-0.01em;}
+.phase-body{font-family:'Outfit',sans-serif;font-size:18px;color:#aaaaaa;line-height:1.8;max-width:38ch;margin-bottom:24px;}
+.phase-fig{display:none;}
+.phase-img{width:100%;height:240px;object-fit:cover;filter:grayscale(70%) contrast(1.2);display:block;transition:filter .5s ease;}
+.phase-card:hover .phase-img{filter:grayscale(40%) contrast(1.15);}
+.s03-footer{margin-top:clamp(48px,6vw,80px);display:flex;align-items:center;justify-content:space-between;border-top:1px solid #5a1a2e;padding-top:24px;gap:24px;flex-wrap:wrap;}
+.s03-footer-copy{font-family:'Bodoni Moda', 'Didot',serif;font-style:italic;font-weight:300;font-size:clamp(15px,1.6vw,19px);color:#d0a0b0;max-width:52ch;line-height:1.5;padding-bottom:2px;}
+.s03-footer-ref{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#b07888;white-space:nowrap;}
+
+/* ============================================================
+   SECTION 04 - EFFECTS
+   ============================================================ */
+#section-04{position:relative;background:#330D1E;font-family:'Outfit',sans-serif;}
+.s04-header{padding:clamp(80px,10vw,140px) clamp(24px,8vw,120px) clamp(60px,7vw,100px);background:#330D1E;border-bottom:1px solid #5a1a2e;overflow:hidden;}
+.s04-header-inner{display:flex;flex-direction:column;gap:20px;}
+.s04-eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#888;display:block;}
+.s04-wordmark{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(72px,13vw,180px);line-height:0.9;text-transform:uppercase;color:#f5f5f5;letter-spacing:-0.02em;white-space:nowrap;}
+.s04-wordmark-of{font-family:'Bodoni Moda', 'Didot',serif;font-weight:300;font-style:italic;font-size:clamp(52px,9vw,128px);color:#c8c8c8;vertical-align:baseline;margin:0 0.04em;letter-spacing:0;}
+.stack-wrapper{position:relative;background:#330D1E;}
+.stack-card{position:sticky;top:0;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;background:#330D1E;border-bottom:1px solid #5a1a2e;transform-origin:top center;will-change:transform,opacity;overflow:hidden;}
+#card-01{background:#0f0f0f;}
+#card-02{background:#3f1525;}
+#card-03{background:#330D1E;}
+#card-04{background:#1a0910;}
+.card-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0;width:100%;min-height:100dvh;position:relative;}
+.card-content{padding:clamp(48px,6vw,96px) clamp(24px,8vw,120px);display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;}
+.card-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(120px,16vw,200px);color:#141414;line-height:1;position:absolute;right:-0.15em;bottom:clamp(32px,5vw,60px);z-index:0;user-select:none;pointer-events:none;letter-spacing:-0.04em;opacity:1;}
+.card-sub{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#d0a0b0;margin-bottom:20px;position:relative;z-index:1;}
+.card-concept{font-family:'Bodoni Moda', 'Didot',serif;font-style:italic;font-weight:300;font-size:clamp(38px,5vw,64px);color:#f5f5f5;line-height:1.1;padding-bottom:8px;margin-bottom:24px;position:relative;z-index:1;letter-spacing:-0.01em;}
+.card-body{font-family:'Outfit',sans-serif;font-size:14px;color:#888;line-height:1.8;max-width:42ch;position:relative;z-index:1;margin-bottom:32px;}
+.card-label{display:flex;align-items:center;gap:14px;position:relative;z-index:1;}
+.card-label-line{display:block;width:32px;height:1px;background:#c8c8c8;flex-shrink:0;}
+.card-label-text{font-family:'Bodoni Moda', 'Didot',serif;font-weight:400;font-style:italic;font-size:15px;color:#c8c8c8;letter-spacing:0.06em;}
+.card-image-wrap{position:relative;height:100dvh;overflow:hidden;}
+.card-img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(55%) contrast(1.1) brightness(0.85);}
+.card-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,#330D1E 0%,transparent 30%);pointer-events:none;}
+#card-01 .card-img-overlay{background:linear-gradient(to right,#0f0f0f 0%,transparent 28%);}
+#card-02 .card-img-overlay{background:linear-gradient(to right,#3f1525 0%,transparent 28%);}
+#card-03 .card-img-overlay{background:linear-gradient(to right,#330D1E 0%,transparent 28%);}
+#card-04 .card-img-overlay{background:linear-gradient(to right,#1a0910 0%,transparent 28%);}
+.card-progress-bar{position:absolute;bottom:0;left:0;right:0;height:1px;background:#5a1a2e;z-index:10;}
+.card-progress-fill{height:100%;width:100%;background:#c8c8c8;transform:scaleX(var(--fill,1));transform-origin:left center;transition:transform 0.4s ease;}
+
+@media(max-width:767px){
+  .s04-wordmark{white-space:normal;font-size:clamp(36px,10.5vw,100px);}
+  .stack-card{position:relative;top:auto;min-height:auto;transform:none!important;opacity:1!important;}
+  .card-inner{grid-template-columns:1fr;grid-template-rows:auto auto;align-items:stretch;min-height:auto;}
+  .card-content{padding:48px 24px 56px;order:2;}
+  .card-image-wrap{height:40dvh;order:1;}
+  .card-img-overlay{background:linear-gradient(to bottom,transparent 60%,#330D1E 100%)!important;}
+  .card-num{font-size:clamp(80px,22vw,120px);right:16px;bottom:16px;}
+  .card-concept{font-size:clamp(30px,7vw,44px);}
+  .s04-header{padding:60px 24px 48px;}
+}
+@media(prefers-reduced-motion:reduce){.stack-card{position:relative!important;will-change:auto;}.card-num,.card-concept,.card-body,.card-image-wrap{opacity:1!important;transform:none!important;}}
+
+/* ============================================================
+   SECTION 05 - OBSESSION
+   ============================================================ */
+#section-05{background:#2a0818;min-height:100dvh;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+.s05-section-label{position:absolute;top:clamp(24px,4vw,48px);left:clamp(24px,8vw,120px);z-index:10;}
+.s05-label-text{font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#888;}
+.s05-progress-dot{position:absolute;right:clamp(16px,3vw,32px);top:50%;transform:translateY(-50%);width:6px;height:6px;border-radius:50%;background:#c8c8c8;z-index:10;}
+.s05-progress-dot::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;border:1px solid rgba(200,200,200,0.2);}
+.s05-inner{display:grid;grid-template-columns:1fr 1fr;flex:1;min-height:100dvh;align-items:center;padding:0 clamp(24px,8vw,120px);gap:clamp(32px,4vw,80px);}
+.s05-main{position:relative;z-index:2;display:flex;flex-direction:column;gap:clamp(20px,3vw,36px);padding-top:clamp(60px,8vw,100px);}
+.s05-obsession{font-family:var(--font-display);font-weight:900;font-size:clamp(100px,16vw,220px);text-transform:uppercase;color:#f5f5f5;letter-spacing:-0.03em;line-height:0.85;padding-bottom:0.05em;}
+.s05-cormorant{font-family:var(--font-serif);font-style:italic;font-weight:300;font-size:clamp(18px,2.2vw,28px);color:#888;line-height:1.5;max-width:38ch;letter-spacing:0.01em;padding-bottom:2px;}
+.s05-scroll-cue{margin-top:clamp(12px,2vw,24px);}
+.s05-scroll-text{font-family:var(--font-mono);font-size:10px;letter-spacing:0.18em;text-transform:lowercase;color:#c8909e;}
+.s05-img-col{position:relative;height:100dvh;display:flex;align-items:stretch;}
+.s05-img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(80%) contrast(1.4) brightness(0.7);aspect-ratio:600/800;}
+.s05-4c-overlay{position:absolute;bottom:10%;left:10%;background:rgba(5,5,5,0.88);padding:clamp(20px,3vw,32px);border:1px solid #5a1a2e;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);max-width:320px;}
+@supports not (backdrop-filter:blur(10px)){.s05-4c-overlay{background:#2a0818;}}
+.s05-4c-title{font-family:var(--font-display);font-weight:900;font-size:clamp(22px,2.5vw,32px);color:#f5f5f5;letter-spacing:0.04em;margin-bottom:clamp(12px,2vw,20px);text-transform:uppercase;}
+.s05-4c-list{display:flex;flex-direction:column;}
+.s05-4c-item{display:flex;flex-direction:column;gap:3px;padding:clamp(8px,1.2vw,12px) 0;border-bottom:1px solid #5a1a2e;}
+.s05-4c-last{border-bottom:none;}
+.s05-4c-key{font-family:var(--font-mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#c8c8c8;}
+.s05-4c-desc{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color:#888;line-height:1.4;}
+.metrics-row{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #5a1a2e;background:#2a0818;flex-shrink:0;}
+.metric-tile{padding:clamp(20px,3vw,36px);border-right:1px solid #5a1a2e;transition:background 0.25s ease;}
+.metric-tile:last-child{border-right:none;}
+.metric-tile:hover{background:#3f1525;}
+.metric-num{font-family:var(--font-display);font-weight:700;font-size:clamp(32px,4vw,52px);color:#f5f5f5;line-height:1;letter-spacing:-0.02em;}
+.metric-label{font-family:var(--font-mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#d0a0b0;margin-top:clamp(6px,1vw,10px);line-height:1.4;}
+
+[data-s05-reveal]{opacity:0;transform:translateY(32px);}
+[data-s05-metric]{opacity:0;transform:translateY(24px);}
+@media(scripting:none){[data-s05-reveal],[data-s05-metric]{opacity:1;transform:none;}}
+@media(prefers-reduced-motion:reduce){[data-s05-reveal],[data-s05-metric]{opacity:1!important;transform:none!important;transition:none!important;}.s05-img,.metric-tile{transition:none!important;}}
+@media(max-width:768px){
+  .s05-inner{grid-template-columns:1fr;padding:clamp(80px,12vw,120px) clamp(20px,5vw,40px) 40px;min-height:unset;gap:40px;align-items:flex-start;}
+  .s05-main{padding-top:0;}
+  .s05-obsession{font-size:clamp(72px,18vw,120px);line-height:0.88;}
+  .s05-img-col{height:60vw;min-height:280px;}
+  .s05-4c-overlay{left:5%;bottom:8%;max-width:85%;}
+  .metrics-row{grid-template-columns:repeat(2,1fr);}
+  .metric-tile:nth-child(2){border-right:none;}
+  .metric-tile:nth-child(2),.metric-tile:nth-child(3){border-bottom:1px solid #5a1a2e;}
+  .metric-tile:nth-child(3){border-right:1px solid #5a1a2e;}
+  .s05-progress-dot{display:none;}
+}
+
+/* ============================================================
+   SECTION 06 - DESIGN ASSEMBLY
+   ============================================================ */
+#section-06{background:#2a0818;min-height:100dvh;position:relative;cursor:none;overflow:hidden;font-family:'Space Mono',monospace;}
+#cursor-dot{position:fixed;width:10px;height:10px;border-radius:50%;background:#f5f5f5;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);top:-999px;left:-999px;opacity:0;transition:opacity 0.2s ease;will-change:transform,top,left;mix-blend-mode:difference;}
+#cursor-dot.visible{opacity:1;}
+.flashlight-layer{position:absolute;inset:0;background:radial-gradient(circle 680px at var(--mx,50%) var(--my,50%),transparent 0%,rgba(5,5,5,0.9) 62%,#050505 100%);z-index:2;pointer-events:none;will-change:background;}
+#section-06:not(.active) .flashlight-layer{background:#2a0818;}
+.s06-header{position:relative;z-index:3;display:flex;align-items:baseline;justify-content:space-between;padding:clamp(24px,3vw,40px) clamp(24px,4vw,56px);border-bottom:1px solid #3f1525;pointer-events:none;}
+.s06-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:#c8c8c8;font-weight:400;}
+.s06-hint{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#c8909e;font-weight:400;}
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);min-height:calc(100dvh - 65px);position:relative;z-index:1;}
+.tool-item{padding:clamp(28px,4vw,52px) clamp(24px,4vw,48px);border-right:1px solid #3f1525;border-bottom:1px solid #3f1525;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;position:relative;min-height:clamp(160px,28vh,260px);}
+.tool-item:nth-child(3n){border-right:none;}
+.tool-item:nth-child(n+7){border-bottom:none;}
+.tool-item--empty{pointer-events:none;}
+.tool-num{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.22em;color:#b07888;font-weight:400;text-transform:uppercase;display:block;margin-bottom:2px;}
+.tool-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(18px,2.5vw,32px);text-transform:uppercase;color:#f5f5f5;line-height:1;margin:0;letter-spacing:0.02em;}
+.tool-desc{font-family:'Space Mono',monospace;font-size:11px;color:#d0a0b0;line-height:1.65;margin:0;max-width:28ch;}
+
+@media(prefers-reduced-motion:reduce){.flashlight-layer{display:none;}.tool-num{color:#d0a0b0;}.tool-name{color:#f5f5f5;}.tool-desc{color:#d8b0c0;}#cursor-dot{display:none;}#section-06{cursor:auto;}}
+@media(max-width:767px){
+  .tools-grid{grid-template-columns:1fr;grid-template-rows:none;}
+  .tool-item{border-right:none;border-bottom:1px solid #3f1525;min-height:auto;padding:28px 24px;}
+  .tool-item--empty{display:none;}
+  .tool-figure{display:none;}
+  .flashlight-layer{display:none;}
+  .tool-num{color:#d0a0b0;}.tool-name{color:#f5f5f5;}.tool-desc{color:#d8b0c0;}
+  #section-06{cursor:auto;}#cursor-dot{display:none;}
+  .s06-header{flex-direction:column;gap:6px;}
+}
+@media(min-width:768px) and (max-width:1023px){
+  .tools-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:none;}
+  .tool-item:nth-child(3n){border-right:1px solid #3f1525;}
+  .tool-item:nth-child(2n){border-right:none;}
+  .tool-item:nth-child(n+7){border-bottom:1px solid #3f1525;}
+  .tool-item:last-child,.tool-item:nth-last-child(2){border-bottom:none;}
+}
+
+/* ============================================================
+   SECTION 07 - SETTING PROCEDURES
+   ============================================================ */
+#section-07{background:#330D1E;padding-top:clamp(80px,10vw,140px);font-family:'Outfit',sans-serif;overflow:visible;}
+.s07-header{padding:0 clamp(24px,8vw,120px) clamp(40px,5vw,64px);border-bottom:1px solid #5a1a2e;display:flex;align-items:baseline;gap:24px;}
+.s07-title{font-family:'Space Mono',monospace;font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:#c8c8c8;}
+.step-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #5a1a2e;min-height:50dvh;opacity:0;transform:translateY(40px);transition:opacity 0.72s cubic-bezier(0.16,1,0.3,1),transform 0.72s cubic-bezier(0.16,1,0.3,1);}
+.step-row.visible{opacity:1;transform:translateY(0);}
+.step-row:nth-child(1){transition-delay:0.05s;}
+.step-row:nth-child(2){transition-delay:0.08s;}
+.step-row:nth-child(3){transition-delay:0.05s;}
+.step-row:nth-child(4){transition-delay:0.08s;}
+.step-row:nth-child(5){transition-delay:0.05s;}
+.step-row:nth-child(6){transition-delay:0.08s;}
+.step-row.reverse{direction:rtl;}
+.step-row.reverse > *{direction:ltr;}
+.step-content{padding:clamp(40px,5vw,72px) clamp(24px,8vw,120px);display:flex;flex-direction:column;justify-content:center;position:relative;}
+.step-num{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#c8909e;margin-bottom:16px;}
+.step-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(28px,4vw,52px);text-transform:uppercase;color:#f5f5f5;line-height:1;margin-bottom:20px;letter-spacing:-0.01em;}
+.step-desc{font-family:'Outfit',sans-serif;font-size:16px;color:#d8b0c0;line-height:1.8;max-width:40ch;}
+.step-img-wrap{overflow:hidden;position:relative;}
+.step-img{width:100%;height:100%;object-fit:cover;filter:grayscale(60%) contrast(1.15);min-height:280px;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1),filter 0.9s ease;}
+.step-row.visible .step-img{transform:scale(1);}
+.step-row:not(.visible) .step-img{transform:scale(1.04);}
+.step-img-wrap:hover .step-img{filter:grayscale(30%) contrast(1.1);}
+.step-content::before{content:'';position:absolute;top:clamp(40px,5vw,72px);left:0;width:1px;height:calc(100% - clamp(80px,10vw,144px));background:linear-gradient(to bottom,transparent,#1e1e1e 20%,#1e1e1e 80%,transparent);opacity:0;transition:opacity 0.6s ease 0.4s;}
+.step-row.visible .step-content::before{opacity:1;}
+.step-row.reverse .step-content::before{left:auto;right:0;}
+
+@media(max-width:767px){
+  .step-row,.step-row.reverse{grid-template-columns:1fr;direction:ltr;min-height:auto;}
+  .step-row.reverse > *{direction:ltr;}
+  .step-img-wrap{order:-1;min-height:220px;}
+  .step-content{padding:32px 24px;}
+  .s07-header{flex-direction:column;gap:6px;padding:0 24px clamp(32px,6vw,48px);}
+}
+@media(prefers-reduced-motion:reduce){.step-row{opacity:1;transform:none;transition:none;}.step-img{transform:none!important;transition:none;}.step-content::before{opacity:1;transition:none;}}
+
+/* ============================================================
+   SECTION 08 - THE VAULT
+   ============================================================ */
+#section-08{background:#2a0818;padding:clamp(80px,10vw,140px) clamp(24px,8vw,120px) clamp(80px,8vw,120px);min-height:100dvh;display:flex;flex-direction:column;position:relative;z-index:5;}
+.s08-eyebrow{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#888888;margin-bottom:24px;}
+.s08-header{margin-bottom:clamp(40px,6vw,80px);}
+.vault-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(80px,12vw,160px);text-transform:uppercase;color:#f5f5f5;letter-spacing:-0.02em;line-height:0.85;}
+.vault-sub{font-family:'Space Mono',monospace;font-size:14px;letter-spacing:0.18em;text-transform:uppercase;color:#888888;margin-top:20px;}
+.vault-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#5a1a2e;margin:0 calc(-1 * clamp(24px,8vw,120px));flex:1;}
+.vault-card{background:#2a0818;overflow:hidden;position:relative;display:flex;flex-direction:column;}
+.vault-card-img-wrap{overflow:hidden;height:320px;position:relative;transform:scale(1.03);transition:transform 500ms cubic-bezier(0.23,1,0.32,1);}
+.vault-card:hover .vault-card-img-wrap{transform:scale(1);}
+.vault-card-img{width:100%;height:100%;object-fit:cover;filter:grayscale(70%) brightness(0.6) blur(3px);opacity:0;transition:filter 500ms cubic-bezier(0.23,1,0.32,1);display:block;}
+.vault-card:hover .vault-card-img{filter:grayscale(40%) brightness(0.85) blur(0px);}
+.vault-card-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(5,5,5,0.6) 100%);pointer-events:none;transition:opacity 500ms ease;}
+.vault-card:hover .vault-card-img-wrap::after{opacity:0.5;}
+.vault-card-info{padding:24px 28px 32px;display:flex;flex-direction:column;flex:1;}
+.vault-status{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:#c8909e;margin-bottom:16px;}
+.vault-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:22px;text-transform:uppercase;color:#f5f5f5;letter-spacing:0.01em;margin-bottom:8px;}
+.vault-detail{font-family:'Space Mono',monospace;font-size:15px;color:#999999;line-height:1.8;margin-bottom:20px;flex:1;}
+.vault-cta{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#888;border:1px solid #2a2a2a;padding:10px 20px;display:inline-block;text-decoration:none;transition:border-color 200ms ease,color 200ms ease;cursor:pointer;align-self:flex-start;}
+.vault-cta:hover{border-color:#888;color:#f5f5f5;}
+.vault-restricted{border-top:1px solid #5a1a2e;padding:20px clamp(24px,8vw,120px);font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:#666666;margin:0 calc(-1 * clamp(24px,8vw,120px));}
+@media(prefers-reduced-motion:reduce){.vault-card-img{opacity:1!important;transform:none!important;}}
+
+@media(max-width:900px){.vault-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.vault-grid{grid-template-columns:1fr;}.vault-card-img-wrap{height:260px;}.vault-title{line-height:0.88;}}
+#section-08 .vault-card[data-rx-scale]:nth-child(2){transition-delay:140ms;}
+#section-08 .vault-card[data-rx-scale]:nth-child(3){transition-delay:280ms;}
+.tool-figure{position:absolute;top:clamp(18px,2.2vw,28px);right:clamp(18px,2.2vw,28px);width:44px;height:64px;opacity:0.32;color:#f5f5f5;pointer-events:none;flex-shrink:0;}
+
+/* ============================================================
+   SECTION 09 - THE ATELIER
+   ============================================================ */
+#section-09{background:var(--surface);color:var(--text);position:relative;}
+.s09-atelier-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-muted);padding:clamp(24px,3vw,40px) clamp(24px,8vw,120px) 0;}
+.s09-main{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);padding:clamp(80px,10vw,140px) clamp(24px,8vw,120px);}
+.s09-left-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:36px;text-transform:uppercase;color:var(--text);margin-bottom:20px;letter-spacing:.04em;}
+.s09-left-body{font-family:'Outfit',sans-serif;font-size:17px;color:var(--text-muted);line-height:1.8;max-width:50ch;}
+.s09-right-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;}
+.s09-right-quote{font-family:'Bodoni Moda', 'Didot',serif;font-style:italic;font-weight:300;font-size:clamp(24px,3vw,42px);color:var(--text);line-height:1.2;padding-bottom:6px;margin:0 0 20px 0;border:none;}
+.s09-right-author{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);display:block;}
+.s09-right-role{margin-top:4px;font-size:10px;letter-spacing:.16em;color:var(--text-muted);}
+.s09-contact{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);padding:clamp(40px,6vw,80px) clamp(24px,8vw,120px);border-top:1px solid var(--divider);}
+.s09-cta-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(28px,4vw,48px);text-transform:uppercase;color:var(--text);letter-spacing:.03em;margin-bottom:20px;}
+.s09-email{font-family:'Space Mono',monospace;font-size:14px;color:var(--text-muted);letter-spacing:.08em;margin-bottom:16px;display:block;text-decoration:none;}
+.s09-email:hover{color:var(--text);}
+.s09-btn{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text);border:1.5px solid var(--accent);padding:12px 24px;display:inline-block;transition:background 200ms ease,color 200ms ease;text-decoration:none;}
+.s09-btn:hover{background:var(--accent);color:var(--bg);}
+.s09-syndicates-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--text-muted);text-transform:uppercase;margin-bottom:12px;}
+.s09-links{display:flex;flex-direction:column;gap:8px;}
+.s09-link{font-family:'Space Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:.1em;text-decoration:none;transition:color 150ms ease;}
+.s09-link:hover{color:var(--text);}
+.s09-footer{border-top:1px solid var(--divider);padding:20px clamp(24px,8vw,120px) calc(20px + env(safe-area-inset-bottom,0px));display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.s09-footer-brand{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;text-transform:uppercase;color:var(--text);letter-spacing:.05em;}
+.s09-footer-copy{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);text-align:center;flex:1;padding:0 16px;}
+.s09-footer-tagline{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);}
+
+@media(max-width:768px){
+  .s09-main,.s09-contact{grid-template-columns:1fr;}
+  .s09-footer{flex-direction:column;align-items:flex-start;gap:12px;}
+  .s09-footer-copy{padding:0;text-align:left;}
+}
+  
+/* ── 3D DIAMOND CANVAS ── */
+#diamond-3d-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  object-fit: cover;
+  mix-blend-mode: screen;
+}
+#chicago-3d-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* ── CHICAGO BOOKING SECTION ── */
+#section-chicago {
+  position: relative;
+  min-height: 100vh;
+  background: #330D1E;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 80px 80px;
+  overflow: hidden;
+  border-top: 1px solid #1e1e1e;
+}
+.chicago-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+}
+.chicago-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: clamp(10px, 1vw, 11px);
+  letter-spacing: 0.3em;
+  color: #888;
+  text-transform: uppercase;
+  margin-bottom: 48px;
+}
+.chicago-title {
+  font-family: 'Bodoni Moda', 'Didot', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(72px, 10vw, 140px);
+  line-height: 0.9;
+  color: #f5f5f5;
+  margin: 0 0 48px;
+  letter-spacing: -0.02em;
+}
+.chicago-sub {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(15px, 1.4vw, 18px);
+  color: #888;
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 72px;
+}
+.chicago-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  border-top: 1px solid #1e1e1e;
+  padding-top: 48px;
+  margin-bottom: 64px;
+}
+.chicago-meta-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.chicago-meta-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: #c8c8c8;
+  text-transform: uppercase;
+}
+.chicago-meta-val {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  color: #888;
+  line-height: 1.6;
+}
+.chicago-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+.chicago-cta {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #330D1E;
+  background: #f5f5f5;
+  padding: 18px 48px;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.chicago-cta:hover {
+  background: #c8c8c8;
+  color: #330D1E;
+}
+.chicago-avail {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  color: #444;
+  font-style: italic;
+}
+.chicago-time-strip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 16px 80px;
+  border-top: 1px solid #1e1e1e;
+  background: rgba(10,10,10,0.9);
+}
+.chicago-city-clock {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: #444;
+  text-transform: uppercase;
+}
+.chicago-divider {
+  color: #1e1e1e;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  #section-chicago { padding: 80px 32px 120px; }
+  .chicago-meta-grid { grid-template-columns: 1fr; gap: 32px; }
+  .chicago-cta-row { flex-direction: column; align-items: flex-start; }
+}
+
+/* ── SCROLL REVEAL STATES ── */
+[data-rx-reveal]{opacity:0;transform:translateY(32px);transition:opacity 0.75s cubic-bezier(0.23,1,0.32,1),transform 0.75s cubic-bezier(0.23,1,0.32,1);}
+[data-rx-reveal].rx-visible{opacity:1;transform:none;}
+[data-rx-fade]{opacity:0;transition:opacity 0.9s cubic-bezier(0.23,1,0.32,1);}
+[data-rx-fade].rx-visible{opacity:1;}
+[data-rx-slide-left]{opacity:0;transform:translateX(-28px);transition:opacity 0.7s cubic-bezier(0.23,1,0.32,1),transform 0.7s cubic-bezier(0.23,1,0.32,1);}
+[data-rx-slide-left].rx-visible{opacity:1;transform:none;}
+[data-rx-scale]{opacity:0;transform:scale(0.96);transition:opacity 0.8s cubic-bezier(0.23,1,0.32,1),transform 0.8s cubic-bezier(0.23,1,0.32,1);}
+[data-rx-scale].rx-visible{opacity:1;transform:scale(1);}
+
+/* ── AMBIENT PHOTO STRIPS ── */
+.ambient-strip{display:flex;gap:1px;padding:40px 0;overflow:hidden;pointer-events:none;}
+.ambient-strip img{width:160px;height:200px;object-fit:cover;filter:grayscale(80%) brightness(0.5);opacity:0;transform:translateY(16px);transition:opacity 1s ease, transform 1s ease;}
+.ambient-strip img.rx-visible{opacity:1;transform:translateY(0);}
+
+.float-photo{position:absolute;opacity:0;pointer-events:none;transition:opacity 1.2s ease,transform 1.2s ease;transform:scale(0.96);}
+.float-photo.rx-visible{opacity:1;transform:scale(1);}
+
+/* ── DECORATIVE 3D CANVAS INSERTS ── */
+.deco-canvas-wrap{position:relative;overflow:hidden;}
+.deco-3d-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.18;}
+
+/* ── SECTION 03 AMBIENT ── */
+.s03-ambient-row{display:flex;gap:2px;margin:40px calc(-1 * clamp(24px,8vw,120px)) 0;height:200px;overflow:hidden;}
+.s03-ambient-img{flex:1;min-width:0;object-fit:cover;filter:grayscale(90%) brightness(0.35);opacity:0;transform:translateY(20px);transition:opacity 1.1s ease,transform 1.1s ease;}
+.s03-ambient-img.rx-visible{opacity:1;transform:translateY(0);}
+
+/* ── SECTION 09 AMBIENT ── */
+.s09-ambient-band{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;margin:clamp(40px,6vw,80px) 0 0;height:140px;overflow:hidden;opacity:0.7;}
+.s09-ambient-img{width:100%;height:100%;object-fit:cover;filter:grayscale(90%) brightness(0.4);opacity:0;transition:opacity 1.3s ease 0.1s;}
+.s09-ambient-img.rx-visible{opacity:1;}
+
+/* ── GRID MOUSE PROXIMITY ── */
+.grid-img{transition:filter 0.35s cubic-bezier(0.23,1,0.32,1),opacity 0.35s ease,transform 0.6s ease;will-change:filter;}
+.grid-cell{transition:border-color 0.3s ease;}
+.grid-cell.proximity-near{border-color:rgba(200,200,200,0.25);}
+/* ── IMAGE SEQUENCE (shared: hero + ring) ── */
+.imgseq-section{position:relative;height:600vh;background:#0a0a0a;}
+.imgseq-sticky{position:sticky;top:0;width:100%;height:100dvh;overflow:hidden;background:#0a0a0a;}
+.imgseq-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;}
+.imgseq-bar-wrap{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);width:80px;height:1px;background:rgba(245,245,245,0.12);z-index:4;pointer-events:none;}
+.imgseq-bar-fill{height:100%;width:0%;background:rgba(245,245,245,0.55);}
+.imgseq-loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#0a0a0a;z-index:5;transition:opacity 0.8s ease;}
+.imgseq-loader.loaded{opacity:0;pointer-events:none;}
+.imgseq-loader-ring{width:28px;height:28px;border:1px solid rgba(245,245,245,0.12);border-top-color:rgba(245,245,245,0.5);border-radius:50%;animation:imgseq-spin 0.8s linear infinite;}
+@keyframes imgseq-spin{to{transform:rotate(360deg);}}
+.imgseq-scrim{position:absolute;inset:0;z-index:3;pointer-events:none;background:radial-gradient(ellipse 70% 70% at 0% 100%,rgba(5,5,5,0.82) 0%,rgba(5,5,5,0.38) 32%,rgba(5,5,5,0) 62%);}
+.imgseq-caption{position:absolute;left:clamp(24px,4vw,56px);bottom:clamp(28px,4vw,56px);z-index:4;pointer-events:none;max-width:46ch;opacity:0;transform:translateY(16px);transition:opacity 0.9s cubic-bezier(0.22,1,0.36,1),transform 0.9s cubic-bezier(0.22,1,0.36,1);}
+.imgseq-caption.in{opacity:1;transform:translateY(0);}
+.imgseq-caption-eyebrow{display:none;}
+.imgseq-caption-title{font-family:'Bodoni Moda','Didot',serif;font-style:italic;font-weight:300;font-size:clamp(24px,3vw,38px);color:#f5f5f5;line-height:1.15;text-shadow:0 2px 16px rgba(0,0,0,0.7),0 1px 3px rgba(0,0,0,0.85);}
+.imgseq-section--hero .imgseq-caption-eyebrow{color:#d0a0b0;}
+@media(max-width:768px){.imgseq-section{height:400vh;}.imgseq-caption{max-width:80vw;}}
+@media(prefers-reduced-motion:reduce){.imgseq-section{height:auto;}.imgseq-sticky{position:relative;height:auto;}.imgseq-bar-wrap,.imgseq-loader{display:none;}.imgseq-canvas{position:static;width:100%;aspect-ratio:16/9;height:auto;}.imgseq-caption{position:static;opacity:1;transform:none;margin:24px;max-width:none;}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header" class="site-header">
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="city-times">
+        <div id="time-chicago" class="city-time">CHICAGO, USA 00:00 CST</div>
+        <div id="time-india" class="city-time">JAIPUR, IND 00:00 IST</div>
+      </div>
+    </div>
+    <div class="header-center">
+      <a href="#" class="wordmark"><img src="Jewelry/LOGO_transparent.webp" alt="RarityX" class="header-logo"></a>
+    </div>
+    <nav class="header-right">
+      <ul class="nav-links">
+        <li><a href="#section-02" class="nav-link">ORIGIN</a></li>
+        <li><a href="#section-07" class="nav-link">PROCESS</a></li>
+        <li><a href="#section-08" class="nav-link">VAULT</a></li>
+      </ul>
+      <a href="mailto:rarityxcollective@gmail.com?subject=RarityX Consultation Request" class="cta-btn">Start a Conversation</a>
+    </nav>
+  </div>
+</header>
+
+<!-- RIGHT-SIDE SECTION DOTS -->
+<div class="section-nav" aria-label="Section navigation">
+  <div class="nav-dot active" data-section="grid" aria-label="Grid Intro"></div>
+  <div class="nav-dot" data-section="01" aria-label="Section 01"></div>
+  <div class="nav-dot" data-section="02" aria-label="Section 02"></div>
+  <div class="nav-dot" data-section="03" aria-label="Section 03"></div>
+  <div class="nav-dot" data-section="04" aria-label="Section 04"></div>
+  <div class="nav-dot" data-section="05" aria-label="Section 05"></div>
+  <div class="nav-dot" data-section="06" aria-label="Section 06"></div>
+  <div class="nav-dot" data-section="07" aria-label="Section 07"></div>
+  <div class="nav-dot" data-section="08" aria-label="Section 08"></div>
+  <div class="nav-dot" data-section="09" aria-label="Section 09"></div>
+  <div class="nav-dot" data-section="chicago" aria-label="Chicago"></div>
+</div>
+
+<!-- IMAGE SEQUENCE - HERO (landing hero, pendant assembling from parts) -->
+<section id="section-vseq-hero" class="imgseq-section imgseq-section--hero" aria-label="The Medallion — coming together">
+  <div class="imgseq-sticky">
+    <canvas id="vseq-hero-canvas" class="imgseq-canvas" aria-hidden="true"></canvas>
+    <div class="imgseq-scrim" aria-hidden="true"></div>
+    <div class="imgseq-caption" id="vseq-hero-caption">
+      <span class="imgseq-caption-eyebrow">Fig.00 — The Medallion</span>
+      <p class="imgseq-caption-title">Watch it come together, layer by layer.</p>
+    </div>
+    <div class="imgseq-bar-wrap" aria-hidden="true"><div class="imgseq-bar-fill" id="vseq-hero-bar"></div></div>
+    <div class="imgseq-loader" id="vseq-hero-loader" aria-hidden="true"><span class="imgseq-loader-ring"></span></div>
+  </div>
+</section>
+
+<!-- GRID INTRO -->
+<section id="section-grid">
+  <div class="grid-topbar" id="js-topbar">
+    <div class="grid-tagline">
+      <span class="grid-tagline-primary">Design is the rarity.</span>
+      <span class="grid-tagline-secondary"><span>Zero Inventory.</span><span>Every Stone Sourced</span><span>To Specification.</span></span>
+    </div>
+  </div>
+  <nav class="grid-nav-dots" aria-label="Section navigation">
+    <span class="gnav-dot active" title="Intro"></span>
+    <span class="gnav-dot" title="Origin Log"></span>
+    <span class="gnav-dot" title="Supply Chain"></span>
+    <span class="gnav-dot" title="Effects"></span>
+    <span class="gnav-dot" title="Obsession"></span>
+    <span class="gnav-dot" title="Design Assembly"></span>
+    <span class="gnav-dot" title="Setting Procedures"></span>
+    <span class="gnav-dot" title="The Vault"></span>
+    <span class="gnav-dot" title="The Atelier"></span>
+  </nav>
+  <div class="grid-container" id="js-grid">
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(01)</span><img class="grid-img" src="Jewelry/Gemini_Generated_Image_n0g1rpn0g1rpn0g1.png" alt="Diamond jewelry detail" loading="eager" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(02)</span><img class="grid-img" src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg" alt="Ring worn" loading="eager" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(03)</span><img class="grid-img" src="Jewelry/Mixed_Metal_Trace_Flow_2K_202606302140.jpeg" alt="Mixed metal detail" loading="eager" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(04)</span><img class="grid-img" src="Jewelry/Whisk_2e91a5d43e.jpg" alt="Crystal detail" loading="eager" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(05)</span><img class="grid-img" src="Jewelry/v1.jpeg" alt="Diamond editorial" loading="eager" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(06)</span><img class="grid-img" src="Jewelry/Whisk_363a924410.jpg" alt="Mineral detail" loading="lazy" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(07)</span><img class="grid-img" src="Jewelry/Whisk_92fd25b4a5.jpg" alt="Model wearing stacked diamond rings and bracelets" loading="lazy" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(08)</span><img class="grid-img" src="Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg" alt="Diamond ring" loading="lazy" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(09)</span><img class="grid-img" src="Jewelry/Whisk_47a743863d.jpg" alt="Faceted detail" loading="lazy" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(10)</span><img class="grid-img" src="Jewelry/image.png_202606302138.jpeg" alt="Diamond texture" loading="lazy" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(11)</span><img class="grid-img" src="Jewelry/Whisk_5d42587dcb.jpg" alt="Mineral pattern" loading="lazy" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(12)</span><img class="grid-img" src="Jewelry/Whisk_5f0fd0e4b2.jpg" alt="Crystal formation" loading="lazy" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(13)</span><img class="grid-img" src="Jewelry/Gemini_Generated_Image_n2x6vdn2x6vdn2x6.png" alt="Diamond render" loading="lazy" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(14)</span><img class="grid-img" src="Jewelry/Whisk_ca4da0a7b3.jpg" alt="Diamond ring detail" loading="lazy" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(15)</span><img class="grid-img" src="Jewelry/Gemini_Generated_Image_9tb6ci9tb6ci9tb6.png" alt="Ring render" loading="lazy" width="280" height="280"></div>
+  </div>
+  <div class="grid-wordmark-block" id="js-wordmark">
+    <img src="Jewelry/LOGO_transparent.webp" alt="RarityX" class="grid-wordmark-img">
+  </div>
+</section>
+
+<!-- IMAGE SEQUENCE - RING (existing) -->
+<section id="section-vseq" class="imgseq-section">
+  <div class="imgseq-sticky">
+    <canvas id="vseq-canvas" class="imgseq-canvas" aria-hidden="true"></canvas>
+    <div class="imgseq-bar-wrap" aria-hidden="true"><div class="imgseq-bar-fill" id="vseq-bar"></div></div>
+    <div class="imgseq-loader" id="vseq-loader" aria-hidden="true"><span class="imgseq-loader-ring"></span></div>
+  </div>
+</section>
+
+<!-- SECTION 01 -->
+<section id="section-01">
+  <video id="diamond-3d-bg" autoplay muted loop playsinline aria-hidden="true"><source src="Jewelry/Diamond_ring_rotating_in_light_202606302137.mp4" type="video/mp4"></video>
+  <div class="s01-content">
+    <h1 class="s01-headline reveal">Each piece begins<br>with the designer.</h1>
+    <div class="s01-sub">
+      <span>Nothing else precedes it.</span>
+      <span>Zero inventory. Every piece</span>
+      <span>commissioned before it exists.</span>
+    </div>
+  </div>
+
+    <!-- S01 floating accent photos -->
+    <div style="position:absolute;right:clamp(40px,6vw,100px);bottom:80px;display:flex;flex-direction:column;gap:8px;z-index:2;pointer-events:none;" aria-hidden="true">
+      <img data-rx-fade src="Jewelry/Whisk_107149851a - Copy.jpg" alt="" loading="lazy" style="width:120px;height:160px;object-fit:cover;filter:grayscale(70%) brightness(0.55);transition:opacity 1.4s ease 0.6s;transform:none;">
+      <img data-rx-fade src="Jewelry/Whisk_5d42587dcb.jpg" alt="" loading="lazy" style="width:80px;height:100px;object-fit:cover;filter:grayscale(70%) brightness(0.4);transition:opacity 1.4s ease 0.9s;transform:none;align-self:flex-end;">
+    </div>  <div class="s01-bottom">
+    <span>Chicago, IL / Jaipur, IND</span>
+    <span id="s01-time">00:00:00 GMT-5</span>
+  </div>
+</section>
+
+<!-- SECTION 02 - ORIGIN LOG -->
+<section id="section-02">
+  <div class="horiz-pin">
+    <nav class="origin-progress" aria-label="Timeline progress">
+      <div class="origin-progress__dot active" data-dot="0"></div>
+      <div class="origin-progress__dot" data-dot="1"></div>
+      <div class="origin-progress__dot" data-dot="2"></div>
+      <div class="origin-progress__dot" data-dot="3"></div>
+      <div class="origin-progress__dot" data-dot="4"></div>
+      <div class="origin-progress__dot" data-dot="5"></div>
+      <div class="origin-progress__dot" data-dot="6"></div>
+    </nav>
+    <div class="horiz-track" id="origin-track">
+      <article class="origin-card" data-card="0">
+        <div class="card-top">
+          <span class="origin-fig">FIG.00  The First Gift</span>
+          <h2 class="origin-year">1477</h2>
+          <p class="origin-title-label">The First Ring</p>
+        </div>
+        <div class="card-body"><p class="origin-body">Archduke Maximilian of Austria commissions a diamond ring for Mary of Burgundy — the first recorded diamond engagement ring. A single gesture creates a cultural convention that outlasts the empire that commissioned it.</p></div>
+        <div class="card-bottom"><img src="Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg" alt="First diamond engagement ring" class="origin-img" loading="lazy" style="object-position:center 20%"></div>
+      </article>
+      <article class="origin-card" data-card="1">
+        <div class="card-top">
+          <span class="origin-fig">FIG.01  Rough Diamond</span>
+          <h2 class="origin-year">1867</h2>
+          <p class="origin-title-label">First Contact</p>
+        </div>
+        <div class="card-body"><p class="origin-body">Eureka Diamond discovered in South Africa. The Kimberley Rush begins. Extraction formalized under colonial infrastructure. A global supply chain is born from a single stone in the ground.</p></div>
+        <div class="card-bottom"><img src="Jewelry/Emerald_ring_beside_diamond_2K_202607111709.jpeg" alt="Raw diamond rough" class="origin-img" loading="lazy"></div>
+      </article>
+      <article class="origin-card" data-card="2">
+        <div class="card-top">
+          <span class="origin-fig">FIG.02  Sorting Table</span>
+          <h2 class="origin-year">1888</h2>
+          <p class="origin-title-label">Consolidation</p>
+        </div>
+        <div class="card-body"><p class="origin-body">De Beers Consolidated Mines founded. Supply control established. One entity begins pricing the world's diamonds. Scarcity, for the first time, is manufactured.</p></div>
+        <div class="card-bottom"><img src="Jewelry/IMG_4356.jpeg_2K_202606302135.jpeg" alt="Diamond sorting table" class="origin-img" loading="lazy"></div>
+      </article>
+      <article class="origin-card" data-card="3">
+        <div class="card-top">
+          <span class="origin-fig">FIG.03  Forever</span>
+          <h2 class="origin-year">1948</h2>
+          <p class="origin-title-label">The Campaign</p>
+        </div>
+        <div class="card-body"><p class="origin-body">A Diamond Is Forever campaign launches. Emotional value engineered at scale. Diamonds become the symbol of permanent commitment. Desire, not geology, sets the price from here.</p></div>
+        <div class="card-bottom"><img src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg" alt="Diamond engagement era" class="origin-img" loading="lazy" style="object-position:center top"></div>
+      </article>
+      <article class="origin-card" data-card="4">
+        <div class="card-top">
+          <span class="origin-fig">FIG.04  Certificate</span>
+          <h2 class="origin-year">2003</h2>
+          <p class="origin-title-label">Certification</p>
+        </div>
+        <div class="card-body"><p class="origin-body">Kimberley Process established. Conflict-free certification introduced. Traceability becomes a selling point. The chain of custody enters the conversation for the first time.</p></div>
+        <div class="card-bottom"><img src="Jewelry/Gemini_Generated_Image_gubp43gubp43gubp.png" alt="Diamond certification" class="origin-img" loading="lazy"></div>
+      </article>
+      <article class="origin-card" data-card="5">
+        <div class="card-top">
+          <span class="origin-fig">FIG.05  Lab Diamond</span>
+          <h2 class="origin-year">2015</h2>
+          <p class="origin-title-label">The Disruption</p>
+        </div>
+        <div class="card-body"><p class="origin-body">CVD and HPHT lab-grown diamonds reach commercial scale. Physically identical to mined stones, certified by the same labs, indistinguishable without spectrography. The stone story collapses as a differentiator. The market splits: commodity vs. point of view.</p></div>
+        <div class="card-bottom"><img src="Jewelry/Gemini_Generated_Image_n2x6vdn2x6vdn2x6.png" alt="Lab diamond disruption" class="origin-img" loading="lazy"></div>
+      </article>
+      <article class="origin-card origin-card--accent" data-card="6">
+        <div class="card-top">
+          <span class="origin-fig">FIG.06  Design Sketch</span>
+          <h2 class="origin-year">Now</h2>
+          <p class="origin-title-label">The Designer Era</p>
+        </div>
+        <div class="card-body"><p class="origin-body">The supply chain is visible now. D2C ateliers source direct. The 4Cs are understood by the client. The stone story has been commoditized. What remains as the genuine differentiator — the thing that cannot be priced by weight or grade — is the designer's point of view. RarityX was founded on this position.</p></div>
+        <div class="card-bottom"><img src="Jewelry/Ethereal_Pavé_Crest_Platinum_2K_202606302140.jpeg" alt="Platinum designer ring" class="origin-img" loading="lazy" style="object-position:center 25%"></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03 - SUPPLY CHAIN -->
+<section id="section-03" aria-label="Diamond Supply Chain">
+  <canvas id="s03-deco-canvas" aria-hidden="true" style="position:absolute;right:0;top:0;width:300px;height:300px;pointer-events:none;z-index:0;opacity:0.12;"></canvas>  <div class="s03-header-rule" aria-hidden="true"></div>
+  <header class="s03-header">
+    <span class="s03-title">Diamond Supply Chain.</span>
+    <span class="s03-sub">Phase 01 through Phase 04</span>
+  </header>
+  <div class="phase-grid" role="list">
+    <article class="phase-card" role="listitem">
+      <span class="phase-num">Phase 01</span>
+      <h3 class="phase-name">Extraction</h3>
+      <p class="phase-body" data-rx-reveal>Kimberlite ore extracted from depths exceeding 1km. Ore sorted, crushed, and processed through dense medium separation.</p>
+      <span class="phase-fig">Fig.0501  "Kimberlite Pipe"</span>
+      <video class="phase-img" aria-hidden="true" data-rx-scale autoplay muted loop playsinline style="filter:grayscale(65%) contrast(1.2);object-fit:cover;"><source src="Jewelry/soli_v2.mp4" type="video/mp4"></video>
+    </article>
+    <article class="phase-card" role="listitem">
+      <span class="phase-num">Phase 02</span>
+      <h3 class="phase-name">Cutting and Polishing</h3>
+      <p class="phase-body" data-rx-reveal>Rough diamonds mapped with laser technology. Optimal facet plan computed. Sawing, bruting, and polishing create the finished stone.</p>
+      <span class="phase-fig">Fig.0502  "Diamond Wheel"</span>
+      <video class="phase-img" aria-hidden="true" data-rx-scale autoplay muted loop playsinline style="filter:grayscale(65%) contrast(1.2);object-fit:cover;"><source src="Jewelry/{__Subject____White_shining_Diamond_202607111708.mp4" type="video/mp4"></video>
+    </article>
+    <article class="phase-card" role="listitem">
+      <span class="phase-num">Phase 03</span>
+      <h3 class="phase-name">Grading</h3>
+      <p class="phase-body" data-rx-reveal>GIA or equivalent laboratory certifies each stone. Cut, Color, Clarity, Carat recorded. The certificate becomes as valuable as the stone.</p>
+      <span class="phase-fig">Fig.0503  "Grading Loupe"</span>
+      <video class="phase-img" aria-hidden="true" data-rx-scale autoplay muted loop playsinline style="filter:grayscale(65%) contrast(1.15);object-fit:cover;"><source src="Jewelry/soli_v1.mp4" type="video/mp4"></video>
+    </article>
+    <article class="phase-card" role="listitem">
+      <span class="phase-num">Phase 04</span>
+      <h3 class="phase-name">Design and Setting</h3>
+      <p class="phase-body" data-rx-reveal>The designer intervenes. Metal selected, form drawn, setting fabricated. The diamond finds its final context.</p>
+      <span class="phase-fig">Fig.0504  "Setting Bench"</span>
+      <video class="phase-img" aria-hidden="true" data-rx-scale autoplay muted loop playsinline style="filter:grayscale(65%) contrast(1.15);object-fit:cover;"><source src="Jewelry/{__Subject____Platinum_engagement_ring_202606302143.mp4" type="video/mp4"></video>
+    </article>
+  </div>
+
+  <!-- S03 ambient photo strip -->
+  <div class="s03-ambient-row" aria-hidden="true">
+    <img class="s03-ambient-img" data-rx-fade src="Jewelry/Ethereal_Pavé_Crest_Platinum_2K_202606302140.jpeg" alt="" loading="lazy">
+    <img class="s03-ambient-img" data-rx-fade src="Jewelry/Whisk_30bec667b0.webp" alt="" loading="lazy" style="transition-delay:0.1s">
+    <img class="s03-ambient-img" data-rx-fade src="Jewelry/Whisk_47a743863d.jpg" alt="" loading="lazy" style="transition-delay:0.2s">
+    <img class="s03-ambient-img" data-rx-fade src="Jewelry/Whisk_4297d08ccf.jpg" alt="" loading="lazy" style="transition-delay:0.3s">
+    <img class="s03-ambient-img" data-rx-fade src="Jewelry/Gemini_Generated_Image_n2x6vdn2x6vdn2x6.png" alt="" loading="lazy" style="transition-delay:0.4s">
+    <img class="s03-ambient-img" data-rx-fade src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg" alt="" loading="lazy" style="transition-delay:0.5s">
+  </div>
+  <footer class="s03-footer">
+    <p class="s03-footer-copy">Every stone can be sourced. Every metal can be matched. What cannot be copied is point of view. The designer is the last hand in the chain, and the only one that defines the outcome.</p>
+    <span class="s03-footer-ref">MINED  GRADED  DISTRIBUTED</span>
+  </footer>
+</section>
+
+<!-- SECTION 04 - EFFECTS -->
+<section id="section-04">
+  <div class="s04-header">
+    <div class="s04-header-inner">
+      <h2 class="s04-wordmark">Effects<span class="s04-wordmark-of">of</span>Diamonds.</h2>
+    </div>
+  </div>
+  <div class="stack-wrapper" id="stack-wrapper">
+    <div class="stack-card" id="card-01" data-card="01">
+      <div class="card-inner">
+        <div class="card-content">
+          <div class="card-num" aria-hidden="true">01</div>
+          <p class="card-sub">Value / Durability / Portability</p>
+          <h3 class="card-concept">Portable value.<br>No maintenance required.</h3>
+          <p class="card-body">A D/IF round brilliant in 2024 clears customs in a jacket pocket. A GIA certificate transfers ownership with a signature. No storage fees. No depreciation infrastructure. The asset wears itself.</p>
+          <div class="card-label"><span class="card-label-line"></span><span class="card-label-text">Sustained Value</span></div>
+        </div>
+        <div class="card-image-wrap">
+          <video class="card-img" aria-hidden="true" autoplay muted loop playsinline><source src="Jewelry/Jewelry_reveal_with_logo_202606302138.mp4" type="video/mp4"></video>
+          <div class="card-img-overlay"></div>
+        </div>
+      </div>
+      <div class="card-progress-bar"><div class="card-progress-fill" style="--fill:0.25"></div></div>
+    </div>
+    <div class="stack-card" id="card-02" data-card="02">
+      <div class="card-inner">
+        <div class="card-content">
+          <div class="card-num" aria-hidden="true">02</div>
+          <p class="card-sub">Recognition / Legibility / Signal</p>
+          <h3 class="card-concept">Legible across every<br>cultural boundary.</h3>
+          <p class="card-body">The trained eye reads a piece in three seconds. Weight, setting, metalwork, stone quality. The grammar is universal. Design dictates the message. The designer determines what is communicated.</p>
+          <div class="card-label"><span class="card-label-line"></span><span class="card-label-text">Social Currency</span></div>
+        </div>
+        <div class="card-image-wrap">
+          <img class="card-img" src="Jewelry/{__variation_id____mixed_metal_detail_v1_,__name____Mixed_202606012044.jpeg" alt="Mixed metal detail" width="800" height="1000" loading="lazy" style="object-position:center 30%">
+          <div class="card-img-overlay"></div>
+        </div>
+      </div>
+      <div class="card-progress-bar"><div class="card-progress-fill" style="--fill:0.5"></div></div>
+    </div>
+    <div class="stack-card" id="card-03" data-card="03">
+      <div class="card-inner">
+        <div class="card-content">
+          <div class="card-num" aria-hidden="true">03</div>
+          <p class="card-sub">Consultation / Process / Fabrication</p>
+          <h3 class="card-concept">The piece exists before<br>metal is ever touched.</h3>
+          <p class="card-body">The consultation is the first act of making. The conversation shapes the brief. The brief shapes the design. The design shapes the stone selection. By the time fabrication begins, the piece already exists in three minds.</p>
+          <div class="card-label"><span class="card-label-line"></span><span class="card-label-text">Ritualized Desire</span></div>
+        </div>
+        <div class="card-image-wrap">
+          <video class="card-img" aria-hidden="true" autoplay muted loop playsinline><source src="Jewelry/Hand_with_engagement_ring_202607111710.mp4" type="video/mp4"></video>
+          <div class="card-img-overlay"></div>
+        </div>
+      </div>
+      <div class="card-progress-bar"><div class="card-progress-fill" style="--fill:0.75"></div></div>
+    </div>
+    <div class="stack-card" id="card-04" data-card="04">
+      <div class="card-inner">
+        <div class="card-content">
+          <div class="card-num" aria-hidden="true">04</div>
+          <p class="card-sub">Design / Authorship / Intent</p>
+          <h3 class="card-concept">Drawn first.<br>Worn forever.</h3>
+          <p class="card-body">The designer's hand precedes every element. Form, proportion, setting logic — resolved on paper before metal is cut. The piece that results carries its authorship forward, outlasting both.</p>
+          <div class="card-label"><span class="card-label-line"></span><span class="card-label-text">The Design Object</span></div>
+        </div>
+        <div class="card-image-wrap">
+          <img class="card-img" src="Jewelry/Gemini_Generated_Image_ps4myeps4myeps4m.jpeg" alt="Ring held with jeweler's tweezers" width="800" height="1000" loading="lazy" style="object-position:center 40%">
+          <div class="card-img-overlay"></div>
+        </div>
+      </div>
+      <div class="card-progress-bar"><div class="card-progress-fill" style="width:100%"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 05 - OBSESSION -->
+<section id="section-05">
+  <div class="s05-progress-dot" aria-hidden="true"></div>
+  <div class="s05-inner">
+    <div class="s05-main">
+      <h2 class="s05-obsession" data-s05-reveal>Obsession.</h2>
+      <p class="s05-cormorant" data-s05-reveal>The rarity is not in the stone. It is in the eye that knows where the light should land.</p>
+    </div>
+    <div class="s05-img-col">
+      <img class="s05-img" src="Jewelry/Whisk_34488083f7.jpg" alt="Macro detail of a round brilliant diamond, facets catching light" width="600" height="800" loading="lazy" decoding="async">
+      <div class="s05-4c-overlay" data-s05-reveal>
+        <div class="s05-4c-title">THE 4Cs</div>
+        <div class="s05-4c-list">
+          <div class="s05-4c-item"><span class="s05-4c-key">CUT</span><span class="s05-4c-desc">Where the designer's intent is visible. Light performance is designed, not found.</span></div>
+          <div class="s05-4c-item"><span class="s05-4c-key">COLOR</span><span class="s05-4c-desc">D–F for cold light. G–H for warmth against skin. The choice is contextual, not hierarchical.</span></div>
+          <div class="s05-4c-item"><span class="s05-4c-key">CLARITY</span><span class="s05-4c-desc">The inclusion that nobody sees matters less than the one that catches afternoon light. Eye-clean is a minimum, not a ceiling.</span></div>
+          <div class="s05-4c-item s05-4c-last"><span class="s05-4c-key">CARAT</span><span class="s05-4c-desc">Cut quality returns more visual mass per carat than size ever could. We specify by face-up diameter, not weight.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="metrics-row">
+    <div class="metric-tile" data-s05-metric><div class="metric-num">4C</div><div class="metric-label">The grading system</div></div>
+    <div class="metric-tile" data-s05-metric><div class="metric-num">57+</div><div class="metric-label">Facets in a brilliant cut</div></div>
+    <div class="metric-tile" data-s05-metric><div class="metric-num">~10B</div><div class="metric-label">Carats mined annually</div></div>
+    <div class="metric-tile" data-s05-metric><div class="metric-num">$82B</div><div class="metric-label">Global market value</div></div>
+  </div>
+</section>
+
+<!-- SECTION 06 - DESIGN ASSEMBLY -->
+<section id="section-06" aria-label="Design Assembly">
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div class="flashlight-layer" aria-hidden="true"></div>
+  <header class="s06-header">
+    <span class="s06-label">DESIGN ASSEMBLY</span>
+    <span class="s06-hint">(move cursor to reveal)</span>
+  </header>
+  <div class="tools-grid" role="list">
+    <article class="tool-item" data-rx-reveal role="listitem">
+      <svg viewBox="0 0 40 60" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" class="tool-figure" aria-hidden="true"><circle cx="18" cy="7" r="5"/><line x1="18" y1="12" x2="18" y2="36"/><line x1="18" y1="22" x2="8" y2="32"/><line x1="18" y1="22" x2="28" y2="12"/><circle cx="32" cy="8" r="5"/><line x1="18" y1="36" x2="10" y2="56"/><line x1="18" y1="36" x2="26" y2="56"/></svg>
+      <span class="tool-num">01</span><h3 class="tool-name">Grading Loupe</h3><p class="tool-desc">Inclusions located, typeset, and assessed for optical impact. The loupe is where decisions begin.</p>
+    </article>
+    <article class="tool-item" data-rx-reveal role="listitem">
+      <svg viewBox="0 0 44 60" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="tool-figure" aria-hidden="true"><circle cx="18" cy="7" r="5"/><line x1="18" y1="12" x2="18" y2="36"/><line x1="18" y1="22" x2="8" y2="32"/><line x1="18" y1="22" x2="32" y2="24"/><line x1="30" y1="22" x2="34" y2="38"/><line x1="34" y1="22" x2="34" y2="38"/><polygon points="34,40 31,46 34,52 37,46"/><line x1="18" y1="36" x2="10" y2="56"/><line x1="18" y1="36" x2="26" y2="56"/></svg>
+      <span class="tool-num">02</span><h3 class="tool-name">Diamond Tweezers</h3><p class="tool-desc">Stone handled before and after setting verification. Fingerprint removed before photography.</p>
+    </article>
+    <article class="tool-item" data-rx-reveal role="listitem">
+      <svg viewBox="0 0 40 60" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" class="tool-figure" aria-hidden="true"><circle cx="18" cy="7" r="5"/><line x1="18" y1="12" x2="18" y2="36"/><line x1="18" y1="22" x2="4" y2="28"/><line x1="18" y1="22" x2="32" y2="28"/><line x1="4" y1="28" x2="4" y2="44"/><line x1="32" y1="28" x2="32" y2="44"/><circle cx="18" cy="33" r="5"/><line x1="18" y1="36" x2="10" y2="56"/><line x1="18" y1="36" x2="26" y2="56"/></svg>
+      <span class="tool-num">03</span><h3 class="tool-name">Calipers</h3><p class="tool-desc">Table diameter, girdle thickness, pavilion depth. Every dimension against the CAD file before metal meets stone.</p>
+    </article>
+    <article class="tool-item" data-rx-reveal role="listitem">
+      <svg viewBox="0 0 40 58" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" class="tool-figure" aria-hidden="true"><circle cx="18" cy="7" r="5"/><line x1="18" y1="12" x2="18" y2="36"/><line x1="18" y1="22" x2="6" y2="34"/><line x1="18" y1="22" x2="30" y2="34"/><rect x="4" y="32" width="28" height="18" rx="1"/><line x1="8" y1="38" x2="28" y2="38"/><line x1="8" y1="42" x2="20" y2="42"/><line x1="18" y1="36" x2="10" y2="56"/><line x1="18" y1="36" x2="26" y2="56"/></svg>
+      <span class="tool-num">04</span><h3 class="tool-name">GIA Certificate</h3><p class="tool-desc">The grade the client trusts. The parameters we source to. Cut, Color, Clarity, Carat confirmed before brief closes.</p>
+    </article>
+    <article class="tool-item" data-rx-reveal role="listitem">
+      <svg viewBox="0 0 52 60" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" class="tool-figure" aria-hidden="true"><circle cx="12" cy="7" r="5"/><line x1="12" y1="12" x2="12" y2="36"/><line x1="12" y1="22" x2="4" y2="32"/><line x1="12" y1="22" x2="28" y2="22"/><rect x="28" y="6" width="20" height="28" rx="1"/><line x1="32" y1="13" x2="44" y2="13"/><line x1="32" y1="18" x2="44" y2="18"/><line x1="32" y1="23" x2="40" y2="23"/><line x1="38" y1="34" x2="38" y2="40"/><line x1="34" y1="40" x2="42" y2="40"/><line x1="12" y1="36" x2="4" y2="56"/><line x1="12" y1="36" x2="20" y2="56"/></svg>
+      <span class="tool-num">05</span><h3 class="tool-name">CAD Render</h3><p class="tool-desc">Three views minimum. Prong placement, seat depth, profile edge. The render is reviewed and signed before fabrication.</p>
+    </article>
+    <article class="tool-item" data-rx-reveal role="listitem">
+      <svg viewBox="0 0 40 60" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" class="tool-figure" aria-hidden="true"><circle cx="18" cy="7" r="5"/><line x1="18" y1="12" x2="16" y2="36"/><line x1="18" y1="22" x2="6" y2="32"/><line x1="18" y1="22" x2="28" y2="30"/><line x1="28" y1="30" x2="28" y2="42"/><line x1="4" y1="44" x2="36" y2="44"/><circle cx="22" cy="45" r="3"/><line x1="16" y1="36" x2="8" y2="56"/><line x1="16" y1="36" x2="24" y2="56"/></svg>
+      <span class="tool-num">06</span><h3 class="tool-name">Setting Burr</h3><p class="tool-desc">Cuts each prong seat to the stone's culet, not a generic taper. The stone sits flush before a single prong is closed.</p>
+    </article>
+    <article class="tool-item" data-rx-reveal role="listitem">
+      <svg viewBox="0 0 56 60" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" class="tool-figure" aria-hidden="true"><circle cx="12" cy="7" r="5"/><line x1="12" y1="12" x2="12" y2="36"/><line x1="12" y1="22" x2="4" y2="34"/><line x1="12" y1="22" x2="28" y2="22"/><circle cx="40" cy="28" r="14"/><line x1="40" y1="14" x2="40" y2="42"/><line x1="26" y1="28" x2="54" y2="28"/><line x1="12" y1="36" x2="4" y2="56"/><line x1="12" y1="36" x2="20" y2="56"/></svg>
+      <span class="tool-num">07</span><h3 class="tool-name">Polishing Wheel</h3><p class="tool-desc">Pre-polish, post-setting inspection. Metal surface brought to reflectance standard before delivery.</p>
+    </article>
+    <article class="tool-item" data-rx-reveal role="listitem">
+      <svg viewBox="0 0 56 60" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="tool-figure" aria-hidden="true"><circle cx="10" cy="7" r="5"/><line x1="10" y1="12" x2="10" y2="36"/><line x1="10" y1="22" x2="4" y2="32"/><line x1="10" y1="22" x2="20" y2="26"/><line x1="10" y1="36" x2="4" y2="56"/><line x1="10" y1="36" x2="16" y2="56"/><circle cx="46" cy="7" r="5"/><line x1="46" y1="12" x2="46" y2="36"/><line x1="46" y1="22" x2="52" y2="32"/><line x1="46" y1="22" x2="36" y2="26"/><line x1="46" y1="36" x2="52" y2="56"/><line x1="46" y1="36" x2="40" y2="56"/><polygon points="28,20 24,27 28,36 32,27"/></svg>
+      <span class="tool-num">08</span><h3 class="tool-name">Consultation Brief</h3><p class="tool-desc">Design document that opens every commission. Brief, mood references, stone parameters, and budget, all confirmed before any work begins.</p>
+    </article>
+    <article class="tool-item" data-rx-reveal role="listitem">
+      <svg viewBox="0 0 44 60" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="tool-figure" aria-hidden="true"><circle cx="12" cy="7" r="5"/><line x1="12" y1="12" x2="12" y2="36"/><line x1="12" y1="22" x2="4" y2="32"/><line x1="12" y1="22" x2="26" y2="22"/><line x1="26" y1="22" x2="32" y2="22"/><rect x="30" y="15" width="12" height="12" rx="1"/><line x1="36" y1="15" x2="36" y2="27"/><line x1="30" y1="21" x2="42" y2="21"/><line x1="12" y1="36" x2="4" y2="56"/><line x1="12" y1="36" x2="20" y2="56"/></svg>
+      <span class="tool-num">09</span><h3 class="tool-name">Delivery Certificate</h3><p class="tool-desc">Final piece leaves with GIA report, care documentation, and provenance record. The commission is sealed at handoff.</p>
+    </article>
+  </div>
+</section>
+
+<!-- SECTION 07 - SETTING PROCEDURES -->
+<section id="section-07">
+  <header class="s07-header">
+    <span class="s07-title">Setting Procedures</span>
+  </header>
+  <article class="step-row reveal" data-step="01">
+    <div class="step-content"><p class="step-num">Step 01</p><h2 class="step-name">Design Resolution</h2><p class="step-desc">The brief closes. CAD begins. Every prong placement is argued before material cost is considered. Dimension changes stop here. The render is the last version of the piece in which everything is still possible.</p></div>
+    <div class="step-img-wrap"><img class="step-img" data-rx-scale src="Jewelry/ICZ-HFC-WG20_2-C3648_600x.webp" alt="CAD design" loading="lazy" width="600" height="400" style="object-position:center 30%"></div>
+  </article>
+  <article class="step-row reverse reveal" data-step="02">
+    <div class="step-content"><p class="step-num">Step 02</p><h2 class="step-name">Wax Model and Casting</h2><p class="step-desc">The wax carries every decision made in the brief. Investment casting translates CAD geometry into metal. The shrinkage rate is known. The outcome is not a surprise — it is a confirmation.</p></div>
+    <div class="step-img-wrap"><img class="step-img" data-rx-scale src="Jewelry/Whisk_ab5c9d5cf9.jpg" alt="Wax casting" loading="lazy" width="600" height="400"></div>
+  </article>
+  <article class="step-row reveal" data-step="03">
+    <div class="step-content"><p class="step-num">Step 03</p><h2 class="step-name">Stone Selection</h2><p class="step-desc">Three to five candidates reviewed under differing light conditions. GIA grade verified. Face-up diameter confirmed against setting tolerance to 0.1mm. The stone chosen is not the best stone available. It is the correct stone for this design.</p></div>
+    <div class="step-img-wrap"><img class="step-img" data-rx-scale src="Jewelry/10MM-SSOSMLC2_600x.webp" alt="Stone selection" loading="lazy" width="600" height="400"></div>
+  </article>
+  <article class="step-row reverse reveal" data-step="04">
+    <div class="step-content"><p class="step-num">Step 04</p><h2 class="step-name">Metal Preparation</h2><p class="step-desc">Setting seat cut to the exact girdle profile of the selected stone. Not the CAD profile. The actual stone. Prongs filed, contact points dressed. Preparation takes longer than setting.</p></div>
+    <div class="step-img-wrap"><img class="step-img" data-rx-scale src="Jewelry/14MM-GICC-GR_A_600x.webp" alt="Metal preparation" loading="lazy" width="600" height="400"></div>
+  </article>
+  <article class="step-row reveal" data-step="05">
+    <div class="step-content"><p class="step-num">Step 05</p><h2 class="step-name">Setting</h2><p class="step-desc">Stone seated. Prongs secured in opposing pairs, not in sequence. Tension distributed evenly. The stone does not move. No light leaks beneath the girdle. The setting is only complete when the loupe confirms both of these things simultaneously.</p></div>
+    <div class="step-img-wrap"><img class="step-img" data-rx-scale src="Jewelry/15MM-ICZBIC-WG20_600x.webp" alt="Diamond setting" loading="lazy" width="600" height="400" style="object-position:center 30%"></div>
+  </article>
+  <article class="step-row reverse reveal" data-step="06">
+    <div class="step-content"><p class="step-num">Step 06</p><h2 class="step-name">Final Inspection and Delivery</h2><p class="step-desc">10x loupe, certificate comparison, surface polish, photography. The piece is documented before it leaves. The client receives the piece, the GIA certificate, and a record of the design brief. That is the full delivery.</p></div>
+    <div class="step-img-wrap"><img class="step-img" data-rx-scale src="Jewelry/ICZMPSC-18_106_600x.webp" alt="Final inspection" loading="lazy" width="600" height="400" style="object-position:center 25%"></div>
+  </article>
+</section>
+
+<!-- SECTION 08 - THE VAULT -->
+<section id="section-08">
+  <div class="s08-header">
+    <h2 class="vault-title" data-rx-reveal>The<br>Vault</h2>
+    <p class="vault-sub">Selected work. A sense of what a brief becomes.</p>
+  </div>
+  <div class="vault-grid">
+    <div class="vault-card" data-rx-scale>
+      <div class="vault-card-img-wrap"><img class="vault-card-img" src="Jewelry/Diamond_bracelet_on_sculpture_2K_202607111710.jpeg" alt="Solstice Solitaire" loading="lazy" style="object-position:center 40%"></div>
+      <div class="vault-card-info">
+        <div class="vault-status">By Consultation Only</div>
+        <div class="vault-name">Solstice Solitaire</div>
+        <div class="vault-detail">Platinum prong setting<br>2.1ct — 2.5ct  ·  D–F / IF–VS1<br>Round brilliant cut<br><br>The original solitaire brief. Six prongs where four would have worked. The shadow at 4pm was the deciding argument.</div>
+        <a href="mailto:rarityxcollective@gmail.com?subject=Commission Enquiry: Solstice Solitaire" class="vault-cta">Enquire</a>
+      </div>
+    </div>
+    <div class="vault-card" data-rx-scale>
+      <div class="vault-card-img-wrap"><img class="vault-card-img" src="Jewelry/Hand_wearing_asscher_halo_ring_202607111709.jpeg" alt="Fragment Band" loading="lazy" style="object-position:center 30%"></div>
+      <div class="vault-card-info">
+        <div class="vault-status">Portfolio Piece</div>
+        <div class="vault-name">Fragment Band</div>
+        <div class="vault-detail">18k white gold<br>Channel-set step-cut baguettes<br>Full eternity configuration<br><br>Each baguette selected for matched step-pattern. The tension between cut geometry and continuous band was the design problem. It was solved by the spacing.</div>
+        <a href="mailto:rarityxcollective@gmail.com?subject=Commission Enquiry: Fragment Band — similar brief" class="vault-cta">Enquire</a>
+      </div>
+    </div>
+    <div class="vault-card" data-rx-scale>
+      <div class="vault-card-img-wrap"><img class="vault-card-img" src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg" alt="Meridian Cluster" loading="lazy" style="object-position:center top"></div>
+      <div class="vault-card-info">
+        <div class="vault-status">Portfolio Piece</div>
+        <div class="vault-name">Meridian Cluster</div>
+        <div class="vault-detail">Platinum mount<br>Mixed-shape cluster: round, pear, marquise<br>Custom micro-pavé setting<br><br>The brief asked for asymmetry that felt intentional, not accidental. The cluster reads differently from each angle. That was the specification.</div>
+        <a href="mailto:rarityxcollective@gmail.com?subject=Commission Enquiry: Meridian Cluster — similar brief" class="vault-cta">Enquire</a>
+      </div>
+    </div>
+  </div>
+  <div class="vault-restricted">All commissions are made to specification and non-transferable. A new commission begins with a consultation, not a selection. The pieces shown are portfolio references — not inventory, not active transactions.</div>
+</section>
+
+
+<!-- SECTION CHICAGO - BOOK A VISIT -->
+<section id="section-chicago">
+  <video id="chicago-video-bg" autoplay muted loop playsinline aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.22;z-index:0;pointer-events:none;mix-blend-mode:screen;"><source src="Jewelry/{__Subject____Gold_and_diamond_202607111708.mp4" type="video/mp4"></video>
+  <canvas id="chicago-3d-bg" aria-hidden="true"></canvas>
+  <div class="chicago-inner">
+    <div class="chicago-eyebrow" data-rx-reveal>RX / CHICAGO, IL / 2026</div>
+    <h2 class="chicago-title" data-rx-reveal>Book a<br>Consultation<br>Visit.</h2>
+    <p class="chicago-sub" data-rx-reveal>One commission at a time. Chicago is where the design conversation begins. The consultation is not a sales meeting. It is the first act of making.</p>
+    <div class="chicago-meta-grid">
+      <div class="chicago-meta-block" data-rx-reveal>
+        <span class="chicago-meta-label">Location</span>
+        <span class="chicago-meta-val">Chicago, Illinois</span>
+        <span class="chicago-meta-val">The Jewelers District</span>
+      </div>
+      <div class="chicago-meta-block" data-rx-reveal>
+        <span class="chicago-meta-label">Hours</span>
+        <span class="chicago-meta-val">Mon - Fri, 10:00 - 18:00 CST</span>
+        <span class="chicago-meta-val">Saturday by arrangement</span>
+      </div>
+      <div class="chicago-meta-block" data-rx-reveal>
+        <span class="chicago-meta-label">Visit Policy</span>
+        <span class="chicago-meta-val">In-person only.</span>
+        <span class="chicago-meta-val">One commission per consultation.</span>
+      </div>
+    </div>
+    <div class="chicago-cta-row" data-rx-reveal>
+      <a href="mailto:rarityxcollective@gmail.com?subject=RarityX Chicago Consultation Request" class="chicago-cta">Request a Visit Date</a>
+      <div class="chicago-avail">Today. We have availability.</div>
+    </div>
+  </div>
+  <div class="chicago-time-strip">
+    <span id="chicago-local-time" class="chicago-city-clock">CHICAGO&nbsp;&nbsp;--:--</span>
+    <span class="chicago-divider">|</span>
+    <span id="india-local-time" class="chicago-city-clock">JAIPUR&nbsp;&nbsp;--:--</span>
+  </div>
+</section>
+<!-- SECTION 09 - THE ATELIER -->
+<section id="section-09">
+  <div class="s09-atelier-label">09 THE ATELIER</div>
+  <div class="s09-main">
+    <div class="s09-left">
+      <h2 class="s09-left-title">The Atelier</h2>
+      <p class="s09-left-body">RarityX operates from a single position: design precedes the stone. In an industry that built its story on the commodity value of diamonds, the question of what the designer contributes — and why that is irreplaceable — has never been more relevant.<br><br>Every stone in commerce is available to the same buyer. The D/IF round brilliant that one designer selects is accessible to any other. What cannot be replicated is the point of view that determines where that stone sits, how the prongs are positioned, and what light the piece was made to catch.<br><br>We source to specification. We maintain no inventory. There is no middleman between you and the designer — every quote is free, and every conversation is the opening of a real design process, not a sales call. All pieces are pre-sold before fabrication begins.</p>
+    </div>
+    <div class="s09-right">
+      <div class="s09-right-label">The Designer</div>
+      <blockquote class="s09-right-quote">"Each piece begins with the designer. Nothing else precedes it."<br><br>"The rarity is not in the stone. It is in the eye that knows where the light should land."</blockquote>
+      <div class="s09-right-author">D. Verma</div>
+      <div class="s09-right-author s09-right-role">Founder, RarityX. Chicago / Jaipur.</div>
+      <div class="s09-right-author s09-right-role">Supply chain, stone sourcing, bespoke production.</div>
+      <video autoplay muted loop playsinline data-rx-fade aria-label="Diamond pendant" style="width:100%;max-width:420px;height:clamp(220px,22vw,320px);object-fit:cover;margin-top:36px;filter:grayscale(40%) brightness(0.85);display:block;">
+        <source src="Jewelry/Diamond_earrings_in_darkness_202607111710.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  <div class="s09-contact">
+    <div class="s09-cta-col">
+      <div class="s09-cta-title">Book a Design Consult Today</div>
+      <p style="font-family:Outfit,sans-serif;font-size:15px;color:#888;line-height:1.7;margin-bottom:14px;max-width:320px;">A design consultation is a free 45-minute conversation about your brief — no fee, no obligation. We work with one new commission at a time.</p>
+      <p style="font-family:Outfit,sans-serif;font-size:14px;color:#a8a8a8;line-height:1.7;margin-bottom:20px;max-width:320px;">Send us anything that shows us your direction — a link, a saved image, a magazine cutout. That's often where the best briefs start.</p>
+      <a href="mailto:rarityxcollective@gmail.com" class="s09-email">rarityxcollective@gmail.com</a>
+      <a href="mailto:rarityxcollective@gmail.com?subject=RarityX Design Consult Request" class="s09-btn">Book a Design Consult &rarr;</a>
+    </div>
+    <div class="s09-syndicates-col">
+      <div class="s09-syndicates-label">Portfolio</div>
+      <div class="s09-links">
+        <a href="https://instagram.com/rarityx.atelier" class="s09-link">(Instagram)</a>
+        <a href="mailto:rarityxcollective@gmail.com?subject=Portfolio Request" class="s09-link">(Request Portfolio)</a>
+      </div>
+      <div style="margin-top:28px;">
+        <div class="s09-syndicates-label">Selected Portfolio</div>
+        <div style="font-family:Outfit,sans-serif;font-size:14px;color:#d0a0b0;line-height:2;margin-top:8px;">
+          Solstice Solitaire<br>
+          Fragment Band<br>
+          Meridian Cluster<br>
+          Eclipse Halo<br>
+          Constellation Band
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- S09 ambient band -->
+    <div class="s09-ambient-band" aria-hidden="true">
+      <img class="s09-ambient-img" data-rx-fade src="Jewelry/Whisk_0190205ab0.jpg" alt="" loading="lazy">
+      <img class="s09-ambient-img" data-rx-fade src="Jewelry/Whisk_cbabd445f5.jpg" alt="" loading="lazy" style="transition-delay:0.15s">
+      <img class="s09-ambient-img" data-rx-fade src="Jewelry/Whisk_ca4da0a7b3.jpg" alt="" loading="lazy" style="transition-delay:0.3s">
+      <img class="s09-ambient-img" data-rx-fade src="Jewelry/Gemini_Generated_Image_gubp43gubp43gubp.png" alt="" loading="lazy" style="transition-delay:0.45s">
+      <img class="s09-ambient-img" data-rx-fade src="Jewelry/Whisk_2e91a5d43e.jpg" alt="" loading="lazy" style="transition-delay:0.6s">
+    </div>  <div class="s09-footer">
+    <span class="s09-footer-brand">RarityX.</span>
+    <span class="s09-footer-copy">&copy; 2026 RarityX. All rights reserved. Distributed under strict control. Non-transferable.</span>
+    <span class="s09-footer-tagline">Design is the rarity.</span>
+  </div>
+</section>
+
+<script>
+/* ── THREE.JS 3D RING BOX ── */
+(function() {
+  if (!window.THREE) return;
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  /* ── RING BOX scene for section-01 ── */
+  function initRingBox(canvasId) {
+    var canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0);
+    renderer.shadowMap.enabled = true;
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(42, 1, 0.1, 50);
+    camera.position.set(0, 3.8, 5.5);
+    camera.lookAt(0, 0.2, 0);
+
+    /* Lighting */
+    scene.add(new THREE.AmbientLight(0xffffff, 0.25));
+    var spot = new THREE.SpotLight(0xdde0e8, 2.5);
+    spot.position.set(4, 8, 4); spot.castShadow = true; scene.add(spot);
+    var fill = new THREE.PointLight(0x8898aa, 0.6); fill.position.set(-4, 2, -2); scene.add(fill);
+
+    /* Box base */
+    var boxGrp = new THREE.Group(); scene.add(boxGrp);
+    var baseGeo = new THREE.CylinderGeometry(1.15, 1.15, 0.7, 6);
+    var boxMat = new THREE.MeshStandardMaterial({ color: 0x0c0c0c, roughness: 0.85, metalness: 0.15 });
+    var boxBase = new THREE.Mesh(baseGeo, boxMat); boxBase.position.y = -0.35; boxBase.receiveShadow = true;
+    boxGrp.add(boxBase);
+    var baseEdges = new THREE.LineSegments(new THREE.EdgesGeometry(baseGeo), new THREE.LineBasicMaterial({ color: 0x2a2a2a }));
+    baseEdges.position.y = -0.35; boxGrp.add(baseEdges);
+
+    /* Box lid (pivots at back) */
+    var lidGrp = new THREE.Group(); boxGrp.add(lidGrp);
+    var lidGeo = new THREE.CylinderGeometry(1.18, 1.18, 0.18, 6);
+    var lid = new THREE.Mesh(lidGeo, new THREE.MeshStandardMaterial({ color: 0x141414, roughness: 0.7, metalness: 0.25 }));
+    lid.position.set(0, 0.09, -1.15); lidGrp.add(lid);
+    lidGrp.add(new THREE.LineSegments(new THREE.EdgesGeometry(lidGeo), new THREE.LineBasicMaterial({ color: 0x2a2a2a })));
+
+    /* Ring band */
+    var ringGrp = new THREE.Group(); ringGrp.position.y = -0.3; scene.add(ringGrp);
+    var band = new THREE.Mesh(
+      new THREE.TorusGeometry(0.44, 0.045, 10, 56),
+      new THREE.MeshStandardMaterial({ color: 0xe0e0e0, roughness: 0.05, metalness: 0.98, transparent: true, opacity: 0 })
+    );
+    band.rotation.x = Math.PI / 2; ringGrp.add(band);
+
+    /* Diamond stone */
+    var stoneGeo = new THREE.OctahedronGeometry(0.21, 0);
+    var stone = new THREE.Mesh(stoneGeo, new THREE.MeshStandardMaterial({ color: 0xfafafa, roughness: 0, metalness: 0.05, transparent: true, opacity: 0 }));
+    stone.position.y = 0.44; stone.scale.set(1, 1.5, 1); ringGrp.add(stone);
+    var stoneWire = new THREE.Mesh(stoneGeo.clone(), new THREE.MeshBasicMaterial({ color: 0xc8c8c8, wireframe: true, transparent: true, opacity: 0 }));
+    stoneWire.position.y = 0.44; stoneWire.scale.set(1, 1.5, 1); ringGrp.add(stoneWire);
+
+    /* Particles */
+    var PCOUNT = 80;
+    var pPos0 = new Float32Array(PCOUNT * 3);
+    var pVel = [];
+    for (var i = 0; i < PCOUNT; i++) {
+      var a = (i / PCOUNT) * Math.PI * 2;
+      pPos0[i*3]   = Math.cos(a) * 0.15; pPos0[i*3+1] = 0; pPos0[i*3+2] = Math.sin(a) * 0.15;
+      pVel.push({ x: (Math.random()-0.5)*4, y: Math.random()*3+0.5, z: (Math.random()-0.5)*4 });
+    }
+    var pGeo = new THREE.BufferGeometry();
+    var pCur = new Float32Array(pPos0); pGeo.setAttribute('position', new THREE.BufferAttribute(pCur, 3));
+    var pMat = new THREE.PointsMaterial({ color: 0xc8c8c8, size: 0.025, transparent: true, opacity: 0 });
+    scene.add(new THREE.Points(pGeo, pMat));
+
+    /* Scroll state */
+    var prog = { open: 0, rise: 0 };
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.to(prog, { open: 1, ease: 'none', scrollTrigger: { trigger: '#section-01', start: 'top top', end: '60% top', scrub: 1.8 } });
+      gsap.to(prog, { rise: 1, ease: 'none', scrollTrigger: { trigger: '#section-01', start: '50% top', end: 'bottom top', scrub: 1.8 } });
+    }
+
+    function resize() {
+      var r = canvas.getBoundingClientRect();
+      renderer.setSize(r.width, r.height, false);
+      camera.aspect = r.width / r.height; camera.updateProjectionMatrix();
+    }
+    resize(); window.addEventListener('resize', resize);
+
+    var clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      var t = clock.getElapsedTime();
+      /* Lid opens */
+      lidGrp.rotation.x = prog.open * (-Math.PI * 0.9);
+      /* Ring rises & reveals */
+      var riseY = -0.3 + prog.rise * 2.4;
+      ringGrp.position.y = riseY;
+      ringGrp.rotation.y = t * 0.25 + prog.rise * Math.PI * 0.5;
+      var vis = Math.max(0, (prog.open - 0.25) / 0.75);
+      band.material.opacity = vis; stone.material.opacity = vis * 0.88; stoneWire.material.opacity = vis * 0.4;
+      /* Particles scatter */
+      var scatter = Math.max(0, (prog.open - 0.5) / 0.5);
+      pMat.opacity = scatter * 0.55;
+      for (var i = 0; i < PCOUNT; i++) {
+        pCur[i*3]   = pPos0[i*3]   + pVel[i].x * scatter * 1.2;
+        pCur[i*3+1] = pPos0[i*3+1] + pVel[i].y * scatter * 1.2;
+        pCur[i*3+2] = pPos0[i*3+2] + pVel[i].z * scatter * 1.2;
+      }
+      pGeo.attributes.position.needsUpdate = true;
+      /* Gentle ambient rotation */
+      boxGrp.rotation.y = t * 0.04;
+      renderer.render(scene, camera);
+    }
+    animate();
+  }
+
+  /* ── Minimal particle scene for Chicago section ── */
+  function initParticles(canvasId) {
+    var canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0);
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(50, 1, 0.1, 50);
+    camera.position.z = 5;
+    var geo = new THREE.BufferGeometry();
+    var N = 120, pos = new Float32Array(N * 3);
+    for (var i = 0; i < N; i++) {
+      pos[i*3] = (Math.random()-0.5)*8; pos[i*3+1] = (Math.random()-0.5)*8; pos[i*3+2] = (Math.random()-0.5)*4;
+    }
+    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    scene.add(new THREE.Points(geo, new THREE.PointsMaterial({ color: 0xaaaaaa, size: 0.018, transparent: true, opacity: 0.35 })));
+    function resize() {
+      var r = canvas.getBoundingClientRect();
+      renderer.setSize(r.width, r.height, false);
+      camera.aspect = r.width / r.height; camera.updateProjectionMatrix();
+    }
+    resize(); window.addEventListener('resize', resize);
+    var cl = new THREE.Clock();
+    (function loop() {
+      requestAnimationFrame(loop);
+      var t = cl.getElapsedTime();
+      geo.attributes.position.array.forEach(function(v, i) {
+        if (i % 3 === 1) geo.attributes.position.array[i] = ((v + t * 0.0002) % 4) - 2;
+      });
+      geo.attributes.position.needsUpdate = true;
+      renderer.render(scene, camera);
+    })();
+  }
+
+  window.addEventListener('load', function() {
+    initParticles('chicago-3d-bg');
+  });
+})();
+
+
+/* ── AMBIENT DECO CANVASES ── */
+(function() {
+  if (!window.THREE) return;
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  function initWireframe(canvasId, color, speed) {
+    var canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0);
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(50, 1, 0.1, 50);
+    camera.position.z = 3.5;
+
+    var geo = new THREE.IcosahedronGeometry(1.1, 1);
+    var edges = new THREE.LineSegments(
+      new THREE.EdgesGeometry(geo),
+      new THREE.LineBasicMaterial({ color: color || 0xc8c8c8, transparent: true, opacity: 0.6 })
+    );
+    scene.add(edges);
+    var inner = new THREE.LineSegments(
+      new THREE.EdgesGeometry(new THREE.OctahedronGeometry(0.6, 0)),
+      new THREE.LineBasicMaterial({ color: 0xaaaaaa, transparent: true, opacity: 0.3 })
+    );
+    scene.add(inner);
+
+    function resize() {
+      var r = canvas.getBoundingClientRect();
+      if (!r.width) return;
+      renderer.setSize(r.width, r.height, false);
+      camera.aspect = r.width / r.height;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    var t0 = 0;
+    (function loop(t) {
+      requestAnimationFrame(loop);
+      var dt = (t - t0) * 0.001;
+      t0 = t;
+      edges.rotation.y += dt * (speed || 0.18);
+      edges.rotation.x += dt * 0.07;
+      inner.rotation.y -= dt * 0.25;
+      renderer.render(scene, camera);
+    })(0);
+  }
+
+  window.addEventListener('load', function() {
+    initWireframe('s03-deco-canvas', 0xc8c8c8, 0.18);
+  });
+})();
+/* ── CHICAGO SECTION LIVE CLOCKS ── */
+(function() {
+  function padZ(n) { return String(n).padStart(2, '0'); }
+  function fmtTime(tz) {
+    var now = new Date();
+    var opt = { timeZone: tz, hour: '2-digit', minute: '2-digit', hour12: false };
+    return now.toLocaleTimeString('en-US', opt);
+  }
+  function updateChicagoClocks() {
+    var chi = document.getElementById('chicago-local-time');
+    var ind = document.getElementById('india-local-time');
+    if (chi) chi.textContent = 'CHICAGO  ' + fmtTime('America/Chicago');
+    if (ind) ind.textContent = 'JAIPUR  ' + fmtTime('Asia/Kolkata');
+  }
+  setInterval(updateChicagoClocks, 1000);
+  updateChicagoClocks();
+})();
+
+(function () {
+  'use strict';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ── 1. LENIS ─────────────────────────────────────────────
+  var lenis;
+  try {
+    lenis = new Lenis({
+      duration: 1.4,
+      easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+      orientation: 'vertical',
+      touchMultiplier: 2
+    });
+    // Single RAF via GSAP ticker — do NOT also start requestAnimationFrame loop
+    gsap.ticker.add(function(time) { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+    lenis.on('scroll', function() { ScrollTrigger.update(); });
+  } catch(e) { /* Lenis CDN may not be available */ }
+
+  // ── 2. GRID INTRO REVEAL ────────────────────────────────
+  var cells = Array.from(document.querySelectorAll('.grid-cell'));
+  var wordmarkBlock = document.getElementById('js-wordmark');
+  var topbar = document.getElementById('js-topbar');
+
+  if (!prefersReduced) {
+    cells.forEach(function(cell, i) {
+      var col = i % 5;
+      var row = Math.floor(i / 5);
+      setTimeout(function() { cell.classList.add('revealed'); }, col * 60 + row * 40 + 80);
+    });
+    setTimeout(function() { if (topbar) topbar.classList.add('revealed'); }, 60);
+    setTimeout(function() { if (wordmarkBlock) wordmarkBlock.classList.add('revealed'); }, 700);
+  } else {
+    cells.forEach(function(c) { c.classList.add('revealed'); });
+    if (wordmarkBlock) wordmarkBlock.classList.add('revealed');
+    if (topbar) topbar.classList.add('revealed');
+  }
+
+  // ── 3. HORIZONTAL SCROLL - SECTION 02 ───────────────────
+  var track = document.getElementById('origin-track');
+  if (track && !prefersReduced) {
+    var mm02 = gsap.matchMedia();
+    mm02.add('(min-width: 768px)', function() {
+    var dots02 = document.querySelectorAll('.origin-progress__dot');
+    var cards02 = document.querySelectorAll('.origin-card');
+    var getD = function() { return track.scrollWidth - window.innerWidth; };
+
+    var animatedOrigin = {};
+    gsap.to(track, {
+      x: function() { return -getD(); },
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#section-02',
+        start: 'top top',
+        end: function() { return '+=' + getD(); },
+        scrub: 1,
+        invalidateOnRefresh: true,
+        onUpdate: function(self) {
+          var idx = Math.min(cards02.length - 1, Math.floor(self.progress * cards02.length + 0.1));
+          dots02.forEach(function(dot, i) { dot.classList.toggle('active', i === idx); });
+          // Per-card image entrance animation
+          cards02.forEach(function(card, i) {
+            var threshold = i / cards02.length - 0.15;
+            if (self.progress >= threshold && !animatedOrigin[i]) {
+              animatedOrigin[i] = true;
+              var img = card.querySelector('.origin-img');
+              if (img) {
+                gsap.to(img, { opacity: 1, y: 0, scale: 1, duration: 0.95, ease: 'power3.out', delay: 0.05 + i * 0.05 });
+              }
+            }
+          });
+        }
+      }
+    });
+    }); // end mm02 min-width:768
+  }
+
+  // ── 4. STICKY STACK - SECTION 04 ────────────────────────
+  if (!prefersReduced) {
+    var mm04 = gsap.matchMedia();
+    mm04.add('(min-width: 768px)', function() {
+    var stackCards = gsap.utils.toArray('.stack-card');
+    if (stackCards.length > 1) {
+      stackCards.forEach(function(card, i) {
+        if (i < stackCards.length - 1) {
+          // CSS position:sticky handles pinning — no GSAP pin needed (avoids height miscalculation)
+          gsap.to(card, {
+            scale: 0.93,
+            opacity: 0.45,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: stackCards[i + 1],
+              start: 'top bottom',
+              end: 'top top',
+              scrub: true
+            }
+          });
+        }
+      });
+    }
+    }); // end mm04 min-width:768
+  }
+
+  // ── 5. SECTION 05 REVEALS ───────────────────────────────
+  var revEls05 = document.querySelectorAll('[data-s05-reveal]');
+  if (!prefersReduced) {
+    revEls05.forEach(function(el, i) {
+      gsap.fromTo(el, { opacity: 0, y: 32 }, {
+        opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', delay: i * 0.12,
+        scrollTrigger: { trigger: '#section-05', start: 'top 80%', once: true }
+      });
+    });
+    var metObs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        document.querySelectorAll('[data-s05-metric]').forEach(function(tile, idx) {
+          gsap.fromTo(tile, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', delay: idx * 0.08 });
+        });
+        metObs.disconnect();
+      }
+    }, { threshold: 0.3 });
+    var metricsRow = document.querySelector('.metrics-row');
+    if (metricsRow) metObs.observe(metricsRow);
+    var s05img = document.querySelector('.s05-img');
+    if (s05img) {
+      gsap.fromTo(s05img, { scale: 1.06, opacity: 0.6 }, {
+        scale: 1, opacity: 1, duration: 1.4, ease: 'power2.out',
+        scrollTrigger: { trigger: '#section-05', start: 'top 70%', once: true }
+      });
+    }
+  } else {
+    revEls05.forEach(function(el) { el.style.opacity = 1; el.style.transform = 'none'; });
+    document.querySelectorAll('[data-s05-metric]').forEach(function(el) { el.style.opacity = 1; el.style.transform = 'none'; });
+  }
+
+  // ── 6. HEADER SCROLL ────────────────────────────────────
+  var hdr = document.getElementById('site-header');
+  if (hdr) {
+    ScrollTrigger.create({
+      start: 'top -80',
+      onUpdate: function(self) { hdr.classList.toggle('scrolled', self.progress > 0); }
+    });
+  }
+
+  // ── 7. SECTION PROGRESS DOTS ────────────────────────────
+  var navDots = document.querySelectorAll('.section-nav .nav-dot');
+  var allSections = document.querySelectorAll('section[id]');
+  if (navDots.length && allSections.length) {
+    var secObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var key = entry.target.id.replace('section-', '');
+          navDots.forEach(function(dot) { dot.classList.toggle('active', dot.dataset.section === key); });
+        }
+      });
+    }, { threshold: 0.5 });
+    allSections.forEach(function(s) { secObs.observe(s); });
+  }
+  // ── NAV DOT CLICK → scroll to section ───────────────────
+  navDots.forEach(function(dot) {
+    dot.style.cursor = 'pointer';
+    dot.addEventListener('click', function() {
+      var key = dot.dataset.section;
+      var target = document.getElementById('section-' + key);
+      if (!target) target = document.getElementById('section-chicago');
+      if (!target) return;
+      if (typeof lenis !== 'undefined' && lenis && lenis.scrollTo) {
+        lenis.scrollTo(target, { offset: 0, duration: 1.4, easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10*t)); } });
+      } else {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+
+  // ── 8. REVEAL CLASS OBSERVER ─────────────────────────────
+  var revObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); revObs.unobserve(entry.target); }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach(function(el) { revObs.observe(el); });
+
+  // ── 9. SECTION 01 HEADLINE ──────────────────────────────
+  var hl = document.querySelector('.s01-headline');
+  if (hl) {
+    var hlObs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) { hl.classList.add('is-visible'); hlObs.disconnect(); }
+    }, { threshold: 0.15 });
+    hlObs.observe(hl);
+  }
+
+  // ── 10. PHASE CARDS (section 03) ────────────────────────
+  var phaseObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('revealed'); phaseObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.phase-card').forEach(function(c) { phaseObs.observe(c); });
+
+  // ── 11. STEP ROWS (section 07) ──────────────────────────
+  var stepObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); stepObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('#section-07 .reveal').forEach(function(r) { stepObs.observe(r); });
+
+  // ── 12. TIME TICKERS ────────────────────────────────────
+  var cityDefs = [
+    { id: '#time-chicago', tz: 'America/Chicago', label: 'CHICAGO, USA' },
+    { id: '#time-india', tz: 'Asia/Kolkata', label: 'JAIPUR, IND' }
+  ];
+  function updateCities() {
+    cityDefs.forEach(function(city) {
+      var el = document.querySelector(city.id);
+      if (!el) return;
+      var d = new Date();
+      var t = d.toLocaleTimeString('en-GB', { timeZone: city.tz, hour: '2-digit', minute: '2-digit' });
+      var parts = new Intl.DateTimeFormat('en', { timeZone: city.tz, timeZoneName: 'shortOffset' }).formatToParts(d);
+      var offset = '';
+      for (var i = 0; i < parts.length; i++) { if (parts[i].type === 'timeZoneName') { offset = parts[i].value; break; } }
+      el.textContent = city.label + ' ' + t + ' ' + offset;
+    });
+  }
+  updateCities();
+  setInterval(updateCities, 30000);
+
+  var s01t = document.getElementById('s01-time');
+  function tickS01() {
+    if (!s01t) return;
+    var d = new Date();
+    var ny = new Date(d.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+    s01t.textContent = String(ny.getHours()).padStart(2,'0') + ':' + String(ny.getMinutes()).padStart(2,'0') + ':' + String(ny.getSeconds()).padStart(2,'0') + ' GMT-5';
+  }
+  tickS01();
+  setInterval(tickS01, 1000);
+
+  // ── 13. FLASHLIGHT - SECTION 06 ─────────────────────────
+  var flashSec = document.getElementById('section-06');
+  var curDot = document.getElementById('cursor-dot');
+  if (flashSec && curDot && !prefersReduced) {
+    var isTouchDev = window.matchMedia('(hover: none)').matches;
+    if (!isTouchDev) {
+      var fRafId = null;
+      var fX = 0, fY = 0, fCX = 0, fCY = 0;
+      function flushFlash() {
+        fRafId = null;
+        flashSec.style.setProperty('--mx', fX + 'px');
+        flashSec.style.setProperty('--my', fY + 'px');
+        curDot.style.left = fCX + 'px';
+        curDot.style.top = fCY + 'px';
+      }
+      flashSec.addEventListener('mousemove', function(e) {
+        var r = flashSec.getBoundingClientRect();
+        fX = e.clientX - r.left; fY = e.clientY - r.top;
+        fCX = e.clientX; fCY = e.clientY;
+        if (!fRafId) fRafId = requestAnimationFrame(flushFlash);
+      }, { passive: true });
+      flashSec.addEventListener('mouseenter', function() {
+        flashSec.classList.add('active');
+        curDot.classList.add('visible');
+      }, { passive: true });
+      flashSec.addEventListener('mouseleave', function() {
+        flashSec.classList.remove('active');
+        curDot.classList.remove('visible');
+        flashSec.style.setProperty('--mx', '50%');
+        flashSec.style.setProperty('--my', '50%');
+        if (fRafId) { cancelAnimationFrame(fRafId); fRafId = null; }
+      }, { passive: true });
+      var flashObs = new IntersectionObserver(function(entries) {
+        if (!entries[0].isIntersecting) curDot.classList.remove('visible');
+      }, { threshold: 0.01 });
+      flashObs.observe(flashSec);
+    }
+  }
+
+
+  // ── UNIVERSAL SCROLL REVEAL ──────────────────────────────
+  (function() {
+    var ATTRS = ['data-rx-reveal', 'data-rx-fade', 'data-rx-slide-left', 'data-rx-scale'];
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          var delay = parseFloat(el.dataset.rxDelay || 0);
+          if (delay) {
+            setTimeout(function() { el.classList.add('rx-visible'); }, delay * 1000);
+          } else {
+            el.classList.add('rx-visible');
+          }
+          obs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    ATTRS.forEach(function(attr) {
+      document.querySelectorAll('[' + attr + ']').forEach(function(el, i) {
+        el.dataset.rxDelay = Math.min(i % 4, 3) * 0.08;
+        obs.observe(el);
+      });
+    });
+
+    // Stagger siblings with same parent
+    document.querySelectorAll('.vault-card[data-rx-scale], .phase-card[data-rx-reveal], .chicago-meta-block[data-rx-reveal]').forEach(function(el, i) {
+      el.dataset.rxDelay = (i % 3) * 0.12;
+    });
+    document.querySelectorAll('.tool-item[data-rx-reveal]').forEach(function(el, i) {
+      el.dataset.rxDelay = i * 0.07;
+    });
+
+    // Image parallax via GSAP on section images
+    if (!prefersReduced && window.gsap && window.ScrollTrigger) {
+      document.querySelectorAll('.vault-card-img, .s05-img, .phase-img').forEach(function(img) {
+        gsap.fromTo(img, 
+          { yPercent: -6 },
+          { yPercent: 6, ease: 'none',
+            scrollTrigger: { trigger: img.closest('section') || img, start: 'top bottom', end: 'bottom top', scrub: true }
+          }
+        );
+      });
+
+      // Supply chain phase cards stagger
+      var phaseCards = gsap.utils.toArray('.phase-card');
+      phaseCards.forEach(function(card, i) {
+        gsap.fromTo(card, 
+          { opacity: 0, y: 40, scale: 0.97 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: 'power3.out', delay: i * 0.1,
+            scrollTrigger: { trigger: card, start: 'top 85%', once: true }
+          }
+        );
+      });
+
+      // Chicago section big title split reveal
+      var chiTitle = document.querySelector('.chicago-title');
+      if (chiTitle) {
+        gsap.fromTo(chiTitle,
+          { opacity: 0, y: 56, rotateX: 8 },
+          { opacity: 1, y: 0, rotateX: 0, duration: 1.1, ease: 'expo.out',
+            scrollTrigger: { trigger: '#section-chicago', start: 'top 75%', once: true }
+          }
+        );
+      }
+
+      // Vault cards stagger
+      gsap.utils.toArray('.vault-card').forEach(function(card, i) {
+        gsap.fromTo(card,
+          { opacity: 0, y: 32 },
+          { opacity: 1, y: 0, duration: 0.85, ease: 'power3.out', delay: i * 0.15,
+            scrollTrigger: { trigger: '#section-08', start: 'top 75%', once: true }
+          }
+        );
+      });
+
+      // Vault card images cascade in from above — mirrors the origin
+      // timeline's from-below image reveal, opposite direction
+      gsap.utils.toArray('.vault-card-img').forEach(function(img, i) {
+        gsap.fromTo(img,
+          { opacity: 0, y: -28, scale: 1.06 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.95, ease: 'power3.out', delay: 0.15 + i * 0.15,
+            scrollTrigger: { trigger: '#section-08', start: 'top 75%', once: true }
+          }
+        );
+      });
+
+
+      // Section eyebrows and section numbers
+      document.querySelectorAll('.section-num, .chicago-eyebrow').forEach(function(el) {
+        gsap.fromTo(el,
+          { opacity: 0, x: -16 },
+          { opacity: 1, x: 0, duration: 0.7, ease: 'power2.out',
+            scrollTrigger: { trigger: el, start: 'top 90%', once: true }
+          }
+        );
+      });
+    }
+  })();
+
+
+  // ── GRID MOUSE PROXIMITY FADE ────────────────────────────
+  (function() {
+    var grid = document.getElementById('js-grid');
+    if (!grid || prefersReduced) return;
+    var cells = Array.from(grid.querySelectorAll('.grid-cell'));
+    var RADIUS = 580;
+    var mx = -9999, my = -9999, rafId = null;
+    var active = false;
+
+    grid.addEventListener('mousemove', function(e) {
+      mx = e.clientX; my = e.clientY;
+      active = true;
+      if (!rafId) rafId = requestAnimationFrame(update);
+    });
+
+    grid.addEventListener('mouseleave', function() {
+      active = false;
+      mx = -9999; my = -9999;
+      cells.forEach(function(cell) {
+        var img = cell.querySelector('.grid-img');
+        if (img) { img.style.filter = ''; img.style.opacity = ''; }
+        cell.classList.remove('proximity-near');
+      });
+      rafId = null;
+    });
+
+    function update() {
+      rafId = null;
+      if (!active) return;
+      cells.forEach(function(cell) {
+        var r = cell.getBoundingClientRect();
+        var cx = r.left + r.width * 0.5;
+        var cy = r.top + r.height * 0.5;
+        var d = Math.sqrt((mx - cx) * (mx - cx) + (my - cy) * (my - cy));
+        var t = Math.max(0, 1 - d / RADIUS);
+        var eased = t * t * (3 - 2 * t); // smoothstep
+        var gray = Math.round(45 - eased * 45);
+        var bright = (0.65 + eased * 0.5).toFixed(2);
+        var scale = (1 + eased * 0.04).toFixed(3);
+        var img = cell.querySelector('.grid-img');
+        if (img) {
+          img.style.filter = 'grayscale(' + gray + '%) brightness(' + bright + ')';
+          img.style.transform = 'scale(' + scale + ')';
+        }
+        cell.classList.toggle('proximity-near', eased > 0.3);
+      });
+      rafId = requestAnimationFrame(update);
+    }
+  })();
+  // ── IMAGE SEQUENCE FACTORY (hero pendant + ring) ──
+  function initImgSeq(cfg) {
+    var canvas = document.getElementById(cfg.canvasId);
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var section = document.getElementById(cfg.sectionId);
+    var bar = cfg.barId && document.getElementById(cfg.barId);
+    var loader = cfg.loaderId && document.getElementById(cfg.loaderId);
+    var caption = cfg.captionId && document.getElementById(cfg.captionId);
+    var TOTAL = cfg.total;
+    var frameW = cfg.frameW || 1280, frameH = cfg.frameH || 720;
+    var shrinkD = (cfg.shrink && cfg.shrink.desktop) || 1;
+    var shrinkM = (cfg.shrink && cfg.shrink.mobile) || shrinkD;
+    var imgs = new Array(TOTAL);
+    var ready = 0;
+    var showFirst = cfg.reverse ? TOTAL - 1 : 0;
+    var curIdx = showFirst;
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      if (imgs[curIdx] && imgs[curIdx].complete) draw(curIdx);
+    }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+
+    function draw(idx) {
+      var img = imgs[idx];
+      if (!img || !img.complete) return;
+      var cw = canvas.width, ch = canvas.height;
+      var shrink = cw <= 768 ? shrinkM : shrinkD;
+      var scale = Math.max(cw / frameW, ch / frameH) * shrink;
+      var w = frameW * scale, h = frameH * scale;
+      ctx.clearRect(0, 0, cw, ch);
+      ctx.drawImage(img, (cw - w) * 0.5, (ch - h) * 0.5, w, h);
+    }
+
+    function onLoad(idx, img) {
+      imgs[idx] = img;
+      ready++;
+      if (idx === showFirst) draw(showFirst);
+      if (ready === 30 && loader) loader.classList.add('loaded');
+    }
+
+    function batch(start, end) {
+      for (var i = start; i < end && i < TOTAL; i++) {
+        (function(n) {
+          var img = new Image();
+          img.onload = function() { onLoad(n, img); };
+          img.src = cfg.folder + '/frame_' + String(n + 1).padStart(4, '0') + '.jpg';
+        })(i);
+      }
+    }
+
+    var restLoaded = false;
+    function loadRest() {
+      if (restLoaded) return;
+      restLoaded = true;
+      if (cfg.reverse) batch(0, TOTAL - 30);
+      else batch(30, TOTAL);
+    }
+
+    if (cfg.reverse) batch(TOTAL - 30, TOTAL); // load end frames first (finished product)
+    else batch(0, 30); // load start frames first (assembled)
+
+    var io;
+    function armObserver() {
+      if (!('IntersectionObserver' in window)) { setTimeout(loadRest, 1000); return; }
+      io = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) { loadRest(); io.disconnect(); }
+      }, { rootMargin: '150% 0px' });
+      io.observe(section);
+    }
+    armObserver();
+
+    // Release decoded frames once fully scrolled past — keeps memory bounded
+    // for a page with several full-res image sequences; reloads on scroll-back.
+    function releaseFrames() {
+      if (!restLoaded) return;
+      imgs = new Array(TOTAL);
+      ready = 0;
+      restLoaded = false;
+      if (io) io.disconnect();
+      if (cfg.reverse) batch(TOTAL - 30, TOTAL);
+      else batch(0, 30);
+      armObserver();
+    }
+
+    if (prefersReduced || !window.ScrollTrigger) return;
+
+    ScrollTrigger.create({
+      trigger: section,
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: 0,
+      onUpdate: function(self) {
+        var idx = cfg.reverse
+          ? (TOTAL - 1) - Math.min(Math.floor(self.progress * TOTAL), TOTAL - 1)
+          : Math.min(Math.floor(self.progress * TOTAL), TOTAL - 1);
+        if (idx !== curIdx) { curIdx = idx; draw(curIdx); }
+        if (bar) bar.style.width = (self.progress * 100) + '%';
+        if (caption) caption.classList.toggle('in', self.progress > 0.08 && self.progress < 0.92);
+      },
+      onLeave: releaseFrames,
+      onLeaveBack: releaseFrames
+    });
+  }
+
+  initImgSeq({ sectionId: 'section-vseq-hero', canvasId: 'vseq-hero-canvas', barId: 'vseq-hero-bar', loaderId: 'vseq-hero-loader', captionId: 'vseq-hero-caption', total: 240, folder: 'frames_v3', frameW: 960, frameH: 540, reverse: true });
+
+  initImgSeq({ sectionId: 'section-vseq', canvasId: 'vseq-canvas', barId: 'vseq-bar', loaderId: 'vseq-loader', captionId: null, total: 240, folder: 'frames', reverse: true });
+
+  // ── REFRESH SCROLL TRIGGERS ──────────────────────────────────
+  window.addEventListener('load', function() {
+    // Aggressive resize chain — images/videos affect layout height
+    [200, 600, 1400, 2500].forEach(function(ms) {
+      setTimeout(function() {
+        document.documentElement.style.height = 'auto';
+        document.body.style.minHeight = '100vh';
+        if (lenis) { lenis.resize(); }
+        if (window.ScrollTrigger) { ScrollTrigger.refresh(); }
+      }, ms);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
