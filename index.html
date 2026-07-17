@@ -717,6 +717,16 @@ ul,ol{list-style:none;}
 .float-photo{position:absolute;opacity:0;pointer-events:none;transition:opacity 1.2s ease,transform 1.2s ease;transform:scale(0.96);}
 .float-photo.rx-visible{opacity:1;transform:scale(1);}
 
+/* ── REEL: THE WORK, IN MOTION ── */
+#section-reel{background:var(--bg);padding:clamp(96px,12vw,160px) clamp(24px,6vw,80px);border-top:1px solid var(--divider);}
+.reel-head{max-width:1400px;margin:0 auto clamp(40px,5vw,64px);}
+.reel-title{font-family:'Bodoni Moda',serif;font-weight:300;font-style:normal;font-size:clamp(40px,6vw,84px);line-height:1.05;color:var(--text);letter-spacing:-0.01em;}
+.reel-title em{font-style:italic;color:var(--accent);}
+.reel-frame{max-width:1400px;margin:0 auto;position:relative;overflow:hidden;border:1px solid var(--divider);background:#0a0a0a;}
+.reel-frame video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;}
+.reel-caption{max-width:1400px;margin:20px auto 0;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);}
+@media(max-width:767px){#section-reel{padding:72px 20px 88px;}.reel-head{margin-bottom:32px;}}
+
 /* ── DECORATIVE 3D CANVAS INSERTS ── */
 .deco-canvas-wrap{position:relative;overflow:hidden;}
 .deco-3d-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.18;}
@@ -1234,6 +1244,20 @@ ul,ol{list-style:none;}
     </div>
   </div>
   <div class="vault-restricted">All commissions are made to specification and non-transferable. A new commission begins with a consultation, not a selection. The pieces shown are portfolio references — not inventory, not active transactions.</div>
+</section>
+
+
+<!-- SECTION REEL - THE WORK, IN MOTION -->
+<section id="section-reel" aria-label="The work, in motion">
+  <div class="reel-head">
+    <h2 class="reel-title" data-rx-reveal>The work,<br><em>in motion.</em></h2>
+  </div>
+  <div class="reel-frame" data-rx-scale>
+    <video id="reel-video" autoplay muted loop playsinline preload="metadata" poster="Jewelry/Diamond_bracelet_on_sculpture_2K_202607111710.jpeg">
+      <source src="Jewelry/RarityXSlideshow_web.mp4" type="video/mp4">
+    </video>
+  </div>
+  <p class="reel-caption">Selected commissions and studies. Continuous reel.</p>
 </section>
 
 
@@ -2100,7 +2124,19 @@ ul,ol{list-style:none;}
 
   initImgSeq({ sectionId: 'section-vseq-hero', canvasId: 'vseq-hero-canvas', barId: 'vseq-hero-bar', loaderId: 'vseq-hero-loader', captionId: 'vseq-hero-caption', total: 240, folder: 'frames_v3', frameW: 960, frameH: 540, reverse: true });
 
-  initImgSeq({ sectionId: 'section-vseq', canvasId: 'vseq-canvas', barId: 'vseq-bar', loaderId: 'vseq-loader', captionId: null, total: 240, folder: 'frames', reverse: true });
+  initImgSeq({ sectionId: 'section-vseq', canvasId: 'vseq-canvas', barId: 'vseq-bar', loaderId: 'vseq-loader', captionId: null, total: 300, folder: 'frames_lp', frameW: 1280, frameH: 720, reverse: false });
+
+  // ── SLIDESHOW REEL: play only while visible ──
+  (function() {
+    var reel = document.getElementById('reel-video');
+    if (!reel || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { reel.play().catch(function(){}); }
+        else { reel.pause(); }
+      });
+    }, { rootMargin: '100px 0px' }).observe(reel);
+  })();
 
   // ── REFRESH SCROLL TRIGGERS ──────────────────────────────────
   window.addEventListener('load', function() {
