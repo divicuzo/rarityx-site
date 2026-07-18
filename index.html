@@ -749,6 +749,16 @@ ul,ol{list-style:none;}
 .s09-ambient-img.rx-visible{opacity:1;}
 @media(max-width:768px){.s09-ambient-band{grid-template-columns:repeat(3,1fr);}}
 
+/* ── IMAGE MARQUEE STRIP ── */
+.img-marquee-section{overflow:hidden;background:#0a0a0a;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;cursor:default;}
+.img-marquee-track{display:flex;gap:10px;width:max-content;animation:imgMarquee 42s linear infinite;padding:10px 0;}
+.img-marquee-section:hover .img-marquee-track{animation-play-state:paused;}
+@keyframes imgMarquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@media(prefers-reduced-motion:reduce){.img-marquee-track{animation:none;}}
+.img-marquee-item{height:clamp(180px,20vw,300px);flex-shrink:0;overflow:hidden;}
+.img-marquee-item img{height:100%;width:auto;object-fit:cover;display:block;filter:grayscale(15%) brightness(0.88);transition:filter 0.5s cubic-bezier(0.23,1,0.32,1);}
+.img-marquee-section:hover .img-marquee-item img{filter:grayscale(0%) brightness(1);}
+
 /* ── GRID MOUSE PROXIMITY ── */
 .grid-img{transition:filter 0.35s cubic-bezier(0.23,1,0.32,1),opacity 0.35s ease,transform 0.6s ease;will-change:filter;}
 .grid-cell{transition:border-color 0.3s ease;}
@@ -1260,6 +1270,26 @@ ul,ol{list-style:none;}
   </article>
 </section>
 
+<!-- IMAGE MARQUEE — MID PAGE -->
+<div class="img-marquee-section" aria-hidden="true">
+  <div class="img-marquee-track">
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(1).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(2).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(3).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(4).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(5).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(6).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(1).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(2).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(3).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(4).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(5).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(6).png" alt="" loading="lazy"></div>
+  </div>
+</div>
+
 <!-- SECTION 08 - THE VAULT -->
 <section id="section-08">
   <div class="s08-header">
@@ -1349,6 +1379,26 @@ ul,ol{list-style:none;}
     <span id="india-local-time" class="chicago-city-clock">JAIPUR&nbsp;&nbsp;--:--</span>
   </div>
 </section>
+<!-- IMAGE MARQUEE — FOOTER -->
+<div class="img-marquee-section" aria-hidden="true">
+  <div class="img-marquee-track" style="animation-direction:reverse;">
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(1).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(2).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(3).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(4).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(5).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(6).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(1).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(2).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(3).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(4).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(5).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(6).png" alt="" loading="lazy"></div>
+  </div>
+</div>
+
 <!-- SECTION 09 - THE ATELIER -->
 <section id="section-09">
   <div class="s09-main">
