@@ -768,8 +768,8 @@ ul,ol{list-style:none;}
 @media(max-width:768px){.imgseq-section{height:400vh;}.imgseq-caption{max-width:80vw;}}
 @media(prefers-reduced-motion:reduce){.imgseq-section{height:auto;}.imgseq-sticky{position:relative;height:auto;}.imgseq-bar-wrap,.imgseq-loader{display:none;}.imgseq-canvas{position:static;width:100%;aspect-ratio:16/9;height:auto;}.imgseq-caption{position:static;opacity:1;transform:none;margin:24px;max-width:none;}}
 /* ── VSEQ-V6 float fragments ── */
-.v6-frag{position:absolute;z-index:4;pointer-events:none;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(208,160,192,0.72);opacity:0;white-space:nowrap;will-change:transform,opacity;}
-.v6-frag em{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;font-size:17px;letter-spacing:.02em;text-transform:none;color:rgba(245,245,245,0.92);}
+.v6-frag{position:absolute;z-index:4;pointer-events:none;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,220,230,0.94);opacity:0;white-space:nowrap;will-change:transform,opacity;text-shadow:0 2px 20px rgba(0,0,0,0.8);}
+.v6-frag em{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;font-size:26px;letter-spacing:.03em;text-transform:none;color:#f5f5f5;text-shadow:0 2px 24px rgba(0,0,0,0.9);}
 .v6-f1{left:7vw;top:16%}.v6-f2{right:9vw;top:30%}.v6-f3{left:11vw;top:56%}.v6-f4{right:11vw;top:70%}.v6-f5{left:44vw;top:84%}.v6-f6{right:10vw;top:12%}
 .v6-label{position:absolute;top:clamp(24px,3vw,40px);left:clamp(24px,4vw,56px);z-index:5;display:flex;align-items:center;gap:14px;pointer-events:none;}
 .v6-label-num{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.20em;color:#c8909e;text-transform:uppercase;}
@@ -995,12 +995,12 @@ ul,ol{list-style:none;}
       <span class="v6-label-div"></span>
       <span class="v6-label-title">Design Authorship</span>
     </div>
-    <div class="v6-frag v6-f1" data-v6win="0.06,0.34" data-v6depth="110"><em>Drawn first.</em></div>
-    <div class="v6-frag v6-f2" data-v6win="0.14,0.46" data-v6depth="200">18k white gold</div>
-    <div class="v6-frag v6-f3" data-v6win="0.28,0.58" data-v6depth="155">pav&eacute; &middot; 0.72 ct tw</div>
-    <div class="v6-frag v6-f4" data-v6win="0.46,0.74" data-v6depth="230">hand-set &middot; shared prong</div>
-    <div class="v6-frag v6-f5" data-v6win="0.62,0.86" data-v6depth="130">sourced to specification</div>
-    <div class="v6-frag v6-f6" data-v6win="0.72,0.96" data-v6depth="165"><em>Nothing else precedes it.</em></div>
+    <div class="v6-frag v6-f1" data-v6win="0.06,0.34" data-v6depth="110"><em>The stone waits for the design.</em></div>
+    <div class="v6-frag v6-f2" data-v6win="0.14,0.46" data-v6depth="200">No catalogue. No compromise.</div>
+    <div class="v6-frag v6-f3" data-v6win="0.28,0.58" data-v6depth="155"><em>Made for one person.</em></div>
+    <div class="v6-frag v6-f4" data-v6win="0.46,0.74" data-v6depth="230">Sourced after the sketch. Never before.</div>
+    <div class="v6-frag v6-f5" data-v6win="0.62,0.86" data-v6depth="130"><em>Design is the rarity.</em></div>
+    <div class="v6-frag v6-f6" data-v6win="0.72,0.96" data-v6depth="165">Zero inventory. Maximum intention.</div>
     <div class="imgseq-bar-wrap" aria-hidden="true"><div class="imgseq-bar-fill" id="vseq-v6-bar"></div></div>
   </div>
 </section>
@@ -2081,6 +2081,14 @@ ul,ol{list-style:none;}
       var scale = Math.max(cw / frameW, ch / frameH) * shrink;
       var w = frameW * scale, h = frameH * scale;
       ctx.clearRect(0, 0, cw, ch);
+      if (shrink < 0.99) {
+        var bgS = Math.max(cw / frameW, ch / frameH) * 1.12;
+        ctx.save();
+        ctx.filter = 'blur(30px) brightness(0.30) saturate(1.4)';
+        ctx.drawImage(img, (cw - frameW * bgS) * 0.5, (ch - frameH * bgS) * 0.5, frameW * bgS, frameH * bgS);
+        ctx.filter = 'none';
+        ctx.restore();
+      }
       ctx.drawImage(img, (cw - w) * 0.5, (ch - h) * 0.5, w, h);
     }
 
@@ -2155,11 +2163,11 @@ ul,ol{list-style:none;}
     });
   }
 
-  initImgSeq({ sectionId: 'section-vseq-hero', canvasId: 'vseq-hero-canvas', barId: 'vseq-hero-bar', loaderId: 'vseq-hero-loader', captionId: 'vseq-hero-caption', total: 240, folder: 'frames_v3', frameW: 960, frameH: 540, reverse: true });
+  initImgSeq({ sectionId: 'section-vseq-hero', canvasId: 'vseq-hero-canvas', barId: 'vseq-hero-bar', loaderId: 'vseq-hero-loader', captionId: 'vseq-hero-caption', total: 240, folder: 'frames_v3', frameW: 960, frameH: 540, reverse: true, shrink: { desktop: 0.75, mobile: 0.82 } });
 
-  initImgSeq({ sectionId: 'section-vseq', canvasId: 'vseq-canvas', barId: 'vseq-bar', loaderId: 'vseq-loader', captionId: null, total: 189, folder: 'frames_lp', frameW: 1280, frameH: 720, reverse: true });
+  initImgSeq({ sectionId: 'section-vseq', canvasId: 'vseq-canvas', barId: 'vseq-bar', loaderId: 'vseq-loader', captionId: null, total: 189, folder: 'frames_lp', frameW: 1280, frameH: 720, reverse: true, shrink: { desktop: 0.75, mobile: 0.82 } });
 
-  initImgSeq({ sectionId: 'section-vseq-v6', canvasId: 'vseq-v6-canvas', barId: 'vseq-v6-bar', loaderId: 'vseq-v6-loader', captionId: null, total: 240, folder: 'frames_lp6', frameW: 1280, frameH: 720, reverse: true });
+  initImgSeq({ sectionId: 'section-vseq-v6', canvasId: 'vseq-v6-canvas', barId: 'vseq-v6-bar', loaderId: 'vseq-v6-loader', captionId: null, total: 240, folder: 'frames_lp6', frameW: 1280, frameH: 720, reverse: true, shrink: { desktop: 0.75, mobile: 0.82 } });
 
   // ── VSEQ-V6: floating spec fragments scrubbed with scroll progress ──
   (function() {
