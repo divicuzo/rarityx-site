@@ -2075,6 +2075,10 @@ ul,ol{list-style:none;}
     var frameW = cfg.frameW || 1280, frameH = cfg.frameH || 720;
     var shrinkD = (cfg.shrink && cfg.shrink.desktop) || 1;
     var shrinkM = (cfg.shrink && cfg.shrink.mobile) || shrinkD;
+    var bgfHex = (cfg.bgFill || '#d8d8d8').replace('#', '');
+    var bgfR = parseInt(bgfHex.slice(0, 2), 16), bgfG = parseInt(bgfHex.slice(2, 4), 16), bgfB = parseInt(bgfHex.slice(4, 6), 16);
+    var bgfSolid = 'rgb(' + bgfR + ',' + bgfG + ',' + bgfB + ')';
+    var bgfClear = 'rgba(' + bgfR + ',' + bgfG + ',' + bgfB + ',0)';
     var imgs = new Array(TOTAL);
     var ready = 0;
     var showFirst = cfg.reverse ? TOTAL - 1 : 0;
@@ -2105,6 +2109,23 @@ ul,ol{list-style:none;}
         ctx.drawImage(img, (cw - frameW * bgS) * 0.5, (ch - frameH * bgS) * 0.5, frameW * bgS, frameH * bgS);
         ctx.filter = 'none';
         ctx.restore();
+        var gapX = (cw - w) * 0.5, gapY = (ch - h) * 0.5;
+        if (gapX > 1) {
+          var gl = ctx.createLinearGradient(0, 0, gapX, 0);
+          gl.addColorStop(0, bgfSolid); gl.addColorStop(1, bgfClear);
+          ctx.fillStyle = gl; ctx.fillRect(0, 0, gapX, ch);
+          var gr = ctx.createLinearGradient(cw - gapX, 0, cw, 0);
+          gr.addColorStop(0, bgfClear); gr.addColorStop(1, bgfSolid);
+          ctx.fillStyle = gr; ctx.fillRect(cw - gapX, 0, gapX, ch);
+        }
+        if (gapY > 1) {
+          var gt = ctx.createLinearGradient(0, 0, 0, gapY);
+          gt.addColorStop(0, bgfSolid); gt.addColorStop(1, bgfClear);
+          ctx.fillStyle = gt; ctx.fillRect(0, 0, cw, gapY);
+          var gb = ctx.createLinearGradient(0, ch - gapY, 0, ch);
+          gb.addColorStop(0, bgfClear); gb.addColorStop(1, bgfSolid);
+          ctx.fillStyle = gb; ctx.fillRect(0, ch - gapY, cw, gapY);
+        }
       }
       ctx.drawImage(img, (cw - w) * 0.5, (ch - h) * 0.5, w, h);
     }
@@ -2180,11 +2201,11 @@ ul,ol{list-style:none;}
     });
   }
 
-  initImgSeq({ sectionId: 'section-vseq-hero', canvasId: 'vseq-hero-canvas', barId: 'vseq-hero-bar', loaderId: 'vseq-hero-loader', captionId: 'vseq-hero-caption', total: 240, folder: 'frames_v3', frameW: 960, frameH: 540, reverse: true, bgFill: '#ebebeb', shrink: { desktop: 0.75, mobile: 0.82 } });
+  initImgSeq({ sectionId: 'section-vseq-hero', canvasId: 'vseq-hero-canvas', barId: 'vseq-hero-bar', loaderId: 'vseq-hero-loader', captionId: 'vseq-hero-caption', total: 189, folder: 'frames_lp', frameW: 1280, frameH: 720, reverse: true, bgFill: '#bebebe', shrink: { desktop: 0.75, mobile: 0.82 } });
 
-  initImgSeq({ sectionId: 'section-vseq', canvasId: 'vseq-canvas', barId: 'vseq-bar', loaderId: 'vseq-loader', captionId: null, total: 189, folder: 'frames_lp', frameW: 1280, frameH: 720, reverse: true, bgFill: '#bebebe', shrink: { desktop: 0.75, mobile: 0.82 } });
+  initImgSeq({ sectionId: 'section-vseq', canvasId: 'vseq-canvas', barId: 'vseq-bar', loaderId: 'vseq-loader', captionId: null, total: 240, folder: 'frames_v3', frameW: 960, frameH: 540, reverse: true, bgFill: '#ebebeb', shrink: { desktop: 0.75, mobile: 0.82 } });
 
-  initImgSeq({ sectionId: 'section-vseq-v6', canvasId: 'vseq-v6-canvas', barId: 'vseq-v6-bar', loaderId: 'vseq-v6-loader', captionId: null, total: 240, folder: 'frames_lp6', frameW: 1280, frameH: 720, reverse: true, bgFill: '#e5e5e5', shrink: { desktop: 0.75, mobile: 0.82 } });
+  initImgSeq({ sectionId: 'section-vseq-v6', canvasId: 'vseq-v6-canvas', barId: 'vseq-v6-bar', loaderId: 'vseq-v6-loader', captionId: null, total: 240, folder: 'frames_lp6', frameW: 1280, frameH: 720, reverse: false, bgFill: '#e5e5e5', shrink: { desktop: 0.75, mobile: 0.82 } });
 
   // ── SHARED: floating spec fragments for all three image sequences ──
   function initFrags(sectionId, selector, winAttr, depthAttr) {
