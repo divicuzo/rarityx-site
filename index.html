@@ -174,12 +174,12 @@ ul,ol{list-style:none;}
    GRID INTRO
    ============================================================ */
 #section-grid{position:relative;min-height:100dvh;background:var(--bg-grid);overflow:hidden;display:flex;flex-direction:column;}
-.grid-topbar{position:absolute;top:0;left:0;right:0;z-index:20;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;border-bottom:1px solid var(--border-cell);}
+.grid-topbar{position:absolute;top:0;left:0;right:0;z-index:20;height:64px;display:flex;align-items:center;justify-content:center;padding:0 28px;border-bottom:1px solid var(--border-cell);}
 .grid-topbar-left{font-family:'Space Mono',monospace;font-size:10px;color:var(--label-muted);letter-spacing:0.18em;text-transform:uppercase;}
-.grid-tagline{text-align:left;max-width:none;}
-.grid-tagline-primary{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--label);letter-spacing:0.16em;text-transform:uppercase;font-weight:700;line-height:1.4;display:block;}
-.grid-tagline-secondary{display:flex;align-items:baseline;gap:clamp(14px,2.4vw,32px);margin-top:5px;}
-.grid-tagline-secondary span{font-family:'Space Mono',monospace;font-size:11px;color:var(--label-muted);letter-spacing:0.14em;text-transform:uppercase;white-space:nowrap;}
+.grid-tagline{text-align:center;max-width:none;width:100%;}
+.grid-tagline-primary{font-family:'Bodoni Moda',serif;font-style:italic;font-size:13px;font-weight:300;color:var(--label);letter-spacing:0.04em;text-transform:none;line-height:1.2;display:block;}
+.grid-tagline-secondary{display:flex;align-items:baseline;justify-content:center;gap:clamp(14px,2.4vw,32px);margin-top:6px;}
+.grid-tagline-secondary span{font-family:'Space Mono',monospace;font-size:9px;color:var(--label-muted);letter-spacing:0.18em;text-transform:uppercase;white-space:nowrap;}
 .grid-nav-dots{position:absolute;right:18px;top:50%;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:7px;padding-top:64px;}
 .gnav-dot{width:5px;height:14px;border-radius:3px;background:var(--label-muted);opacity:0.4;clip-path:inset(4.5px 0 round 50%);transition:opacity 0.3s ease,background 0.3s ease,clip-path 0.3s ease;cursor:pointer;}
 .gnav-dot.active{background:var(--label);opacity:1;clip-path:inset(0 round 3px);}
@@ -768,6 +768,11 @@ ul,ol{list-style:none;}
 .img-marquee-section--atelier .img-marquee-item{height:clamp(110px,11vw,165px);}
 .img-marquee-section--atelier .img-marquee-item img{filter:grayscale(25%) brightness(0.6) sepia(0.2) contrast(1.05);}
 .img-marquee-section--atelier:hover .img-marquee-item img{filter:grayscale(0%) brightness(0.88) sepia(0) contrast(1);}
+.img-marquee-section--rings{background:#08020e;border-top-color:#150120;border-bottom-color:#150120;}
+.img-marquee-section--rings .img-marquee-track{gap:3px;padding:0;animation-duration:58s;animation-direction:reverse;}
+.img-marquee-section--rings .img-marquee-item{height:clamp(150px,16vw,240px);}
+.img-marquee-section--rings .img-marquee-item img{filter:grayscale(40%) brightness(0.65) contrast(1.12);}
+.img-marquee-section--rings:hover .img-marquee-item img{filter:grayscale(5%) brightness(0.92) contrast(1.04);}
 
 /* ── GRID MOUSE PROXIMITY ── */
 .grid-img{transition:filter 0.35s cubic-bezier(0.23,1,0.32,1),opacity 0.35s ease,transform 0.6s ease;will-change:filter;}
@@ -872,8 +877,8 @@ ul,ol{list-style:none;}
 <section id="section-grid">
   <div class="grid-topbar" id="js-topbar">
     <div class="grid-tagline">
-      <span class="grid-tagline-primary">Design is the rarity.</span>
-      <span class="grid-tagline-secondary"><span>Zero Inventory.</span><span>Every Stone Sourced</span><span>To Specification.</span></span>
+      <span class="grid-tagline-primary">The designer's archive — nothing precedes the sketch.</span>
+      <span class="grid-tagline-secondary"><span>Zero inventory</span><span>&middot;</span><span>Every stone sourced to specification</span><span>&middot;</span><span>Each piece pre-sold before it exists</span></span>
     </div>
   </div>
   <nav class="grid-nav-dots" aria-label="Section navigation">
@@ -888,21 +893,21 @@ ul,ol{list-style:none;}
     <span class="gnav-dot" title="The Atelier"></span>
   </nav>
   <div class="grid-container" id="js-grid">
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(01)</span><img class="grid-img" src="Jewelry/Gemini_Generated_Image_n0g1rpn0g1rpn0g1.png" alt="Diamond jewelry detail" loading="eager" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(02)</span><img class="grid-img" src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg" alt="Ring worn" loading="eager" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(03)</span><img class="grid-img" src="Jewelry/Mixed_Metal_Trace_Flow_2K_202606302140.jpeg" alt="Mixed metal detail" loading="eager" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(04)</span><img class="grid-img" src="Jewelry/Whisk_2e91a5d43e.jpg" alt="Crystal detail" loading="eager" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(05)</span><img class="grid-img" src="Jewelry/v1.jpeg" alt="Diamond editorial" loading="eager" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(06)</span><img class="grid-img" src="Jewelry/Whisk_363a924410.jpg" alt="Mineral detail" loading="lazy" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(07)</span><img class="grid-img" src="Jewelry/Whisk_92fd25b4a5.jpg" alt="Model wearing stacked diamond rings and bracelets" loading="lazy" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(08)</span><img class="grid-img" src="Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg" alt="Diamond ring" loading="lazy" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(09)</span><img class="grid-img" src="Jewelry/Whisk_47a743863d.jpg" alt="Faceted detail" loading="lazy" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(10)</span><img class="grid-img" src="Jewelry/image.png_202606302138.jpeg" alt="Diamond texture" loading="lazy" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(11)</span><img class="grid-img" src="Jewelry/Whisk_5d42587dcb.jpg" alt="Mineral pattern" loading="lazy" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(12)</span><img class="grid-img" src="Jewelry/Whisk_5f0fd0e4b2.jpg" alt="Crystal formation" loading="lazy" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(13)</span><img class="grid-img" src="Jewelry/Gemini_Generated_Image_n2x6vdn2x6vdn2x6.png" alt="Diamond render" loading="lazy" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(14)</span><img class="grid-img" src="Jewelry/Whisk_ca4da0a7b3.jpg" alt="Diamond ring detail" loading="lazy" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(15)</span><img class="grid-img" src="Jewelry/Gemini_Generated_Image_9tb6ci9tb6ci9tb6.png" alt="Ring render" loading="lazy" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(01)</span><img class="grid-img" src="Jewelry/Ethereal_Pavé_Crest_Platinum_2K_202606302140.jpeg" alt="Pavé crest platinum" loading="eager" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(02)</span><img class="grid-img" src="Jewelry/Emerald_ring_beside_diamond_2K_202607111709.jpeg" alt="Emerald ring editorial" loading="eager" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(03)</span><img class="grid-img" src="Jewelry/Diamond_bracelet_on_sculpture_2K_202607111710.jpeg" alt="Diamond bracelet sculptural" loading="eager" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(04)</span><img class="grid-img" src="Jewelry/Hand_wearing_asscher_halo_ring_202607111709.jpeg" alt="Asscher halo ring worn" loading="eager" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(05)</span><img class="grid-img" src="Jewelry/Gemini_Generated_Image_n0g1rpn0g1rpn0g1.png" alt="Ring design render" loading="eager" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(06)</span><img class="grid-img" src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg" alt="Wireframe ring worn" loading="lazy" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(07)</span><img class="grid-img" src="Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg" alt="Pavé engagement ring" loading="lazy" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(08)</span><img class="grid-img" src="Jewelry/Gemini_Generated_Image_n2x6vdn2x6vdn2x6.png" alt="Diamond cluster render" loading="lazy" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(09)</span><img class="grid-img" src="Jewelry/Mixed_Metal_Trace_Flow_2K_202606302140.jpeg" alt="Mixed metal detail" loading="lazy" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(10)</span><img class="grid-img" src="Jewelry/v6.jpg" alt="Ring editorial" loading="lazy" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(11)</span><img class="grid-img" src="Jewelry/Gemini_Generated_Image_9tb6ci9tb6ci9tb6.png" alt="Solitaire render" loading="lazy" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(12)</span><img class="grid-img" src="Jewelry/Gemini_Generated_Image_ps4myeps4myeps4m.jpeg" alt="Diamond design render" loading="lazy" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(13)</span><img class="grid-img" src="Jewelry/v7.jpg" alt="Stone detail" loading="lazy" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(14)</span><img class="grid-img" src="Jewelry/Gemini_Generated_Image_gubp43gubp43gubp.png" alt="Gemstone render" loading="lazy" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(15)</span><img class="grid-img" src="Jewelry/Mixed_metal_detail_202606012044.jpeg" alt="Mixed metal close-up" loading="lazy" width="280" height="280"></div>
   </div>
   <div class="grid-wordmark-block" id="js-wordmark">
     <img src="Jewelry/LOGO_transparent.webp" alt="RarityX" class="grid-wordmark-img">
@@ -922,6 +927,39 @@ ul,ol{list-style:none;}
     <div class="imgseq-loader" id="vseq-loader" aria-hidden="true"><span class="imgseq-loader-ring"></span></div>
   </div>
 </section>
+
+<!-- IMAGE MARQUEE — RINGS BELT -->
+<div class="img-marquee-section img-marquee-section--rings" aria-hidden="true">
+  <div class="img-marquee-track">
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_0190205ab0.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_2e91a5d43e.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_30bec667b0.webp" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_34488083f7.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_363a924410.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_4297d08ccf.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_47a743863d.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_5d42587dcb.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_5f0fd0e4b2.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_92fd25b4a5.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_ab5c9d5cf9.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_ca4da0a7b3.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_cbabd445f5.jpg" alt="" loading="lazy"></div>
+    <!-- duplicated for seamless loop -->
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_0190205ab0.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_2e91a5d43e.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_30bec667b0.webp" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_34488083f7.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_363a924410.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_4297d08ccf.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_47a743863d.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_5d42587dcb.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_5f0fd0e4b2.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_92fd25b4a5.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_ab5c9d5cf9.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_ca4da0a7b3.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_cbabd445f5.jpg" alt="" loading="lazy"></div>
+  </div>
+</div>
 
 <!-- SECTION 01 -->
 <section id="section-01">
@@ -1321,20 +1359,20 @@ ul,ol{list-style:none;}
       </div>
     </div>
     <div class="vault-card" data-rx-scale>
-      <div class="vault-card-img-wrap"><img class="vault-card-img" src="Jewelry/Hand_wearing_asscher_halo_ring_202607111709.jpeg" alt="Fragment Band" loading="lazy" style="object-position:center 30%"></div>
-      <div class="vault-card-info">
-        <div class="vault-status">Portfolio Piece</div>
-        <div class="vault-name">Fragment Band</div>
-        <div class="vault-detail">18k white gold<br>Channel-set step-cut baguettes<br>Full eternity configuration<br><br>Each baguette selected for matched step-pattern. The tension between cut geometry and continuous band was the design problem. It was solved by the spacing.</div>
-        <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="vault-cta">Enquire</a>
-      </div>
-    </div>
-    <div class="vault-card" data-rx-scale>
       <div class="vault-card-img-wrap"><img class="vault-card-img" src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg" alt="Meridian Cluster" loading="lazy" style="object-position:center top"></div>
       <div class="vault-card-info">
         <div class="vault-status">Portfolio Piece</div>
         <div class="vault-name">Meridian Cluster</div>
         <div class="vault-detail">Platinum mount<br>Mixed-shape cluster: round, pear, marquise<br>Custom micro-pavé setting<br><br>The brief asked for asymmetry that felt intentional, not accidental. The cluster reads differently from each angle. That was the specification.</div>
+        <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="vault-cta">Enquire</a>
+      </div>
+    </div>
+    <div class="vault-card" data-rx-scale>
+      <div class="vault-card-img-wrap"><img class="vault-card-img" src="Jewelry/Hand_wearing_asscher_halo_ring_202607111709.jpeg" alt="Fragment Band" loading="lazy" style="object-position:center 30%"></div>
+      <div class="vault-card-info">
+        <div class="vault-status">Portfolio Piece</div>
+        <div class="vault-name">Fragment Band</div>
+        <div class="vault-detail">18k white gold<br>Channel-set step-cut baguettes<br>Full eternity configuration<br><br>Each baguette selected for matched step-pattern. The tension between cut geometry and continuous band was the design problem. It was solved by the spacing.</div>
         <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="vault-cta">Enquire</a>
       </div>
     </div>
