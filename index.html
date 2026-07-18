@@ -539,7 +539,7 @@ ul,ol{list-style:none;}
 .s09-link{font-family:'Space Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:.1em;text-decoration:none;transition:color 150ms ease;}
 .s09-link:hover{color:var(--text);}
 .s09-footer{border-top:1px solid var(--divider);padding:20px clamp(24px,8vw,120px) calc(20px + env(safe-area-inset-bottom,0px));display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
-.s09-footer-brand{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;text-transform:uppercase;color:var(--text);letter-spacing:.05em;}
+.s09-footer-brand{display:flex;align-items:center;}.s09-footer-brand img{height:clamp(48px,6vw,80px);width:auto;opacity:0.88;filter:drop-shadow(0 0 6px rgba(200,168,122,0.18));transition:opacity 0.3s ease;}.s09-footer-brand img:hover{opacity:1;}
 .s09-footer-copy{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);text-align:center;flex:1;padding:0 16px;}
 .s09-footer-tagline{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);}
 
@@ -1525,7 +1525,7 @@ ul,ol{list-style:none;}
       </div>
     </div>
   <div class="s09-footer">
-    <span class="s09-footer-brand">RarityX.</span>
+    <div class="s09-footer-brand"><img src="Jewelry/LOGO_transparent.webp" alt="RarityX"></div>
     <span class="s09-footer-copy">&copy; 2026 RarityX. All rights reserved. Distributed under strict control. Non-transferable.</span>
     <span class="s09-footer-tagline">Design is the rarity.</span>
   </div>
