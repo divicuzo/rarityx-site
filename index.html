@@ -751,13 +751,18 @@ ul,ol{list-style:none;}
 
 /* ── IMAGE MARQUEE STRIP ── */
 .img-marquee-section{overflow:hidden;background:#0a0a0a;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;cursor:default;}
-.img-marquee-track{display:flex;gap:10px;width:max-content;animation:imgMarquee 42s linear infinite;padding:10px 0;}
+.img-marquee-track{display:flex;gap:10px;width:max-content;animation:imgMarquee 50s linear infinite;padding:8px 0;}
 .img-marquee-section:hover .img-marquee-track{animation-play-state:paused;}
 @keyframes imgMarquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 @media(prefers-reduced-motion:reduce){.img-marquee-track{animation:none;}}
-.img-marquee-item{height:clamp(180px,20vw,300px);flex-shrink:0;overflow:hidden;}
-.img-marquee-item img{height:100%;width:auto;object-fit:cover;display:block;filter:grayscale(15%) brightness(0.88);transition:filter 0.5s cubic-bezier(0.23,1,0.32,1);}
+.img-marquee-item{height:clamp(130px,13vw,200px);flex-shrink:0;overflow:hidden;}
+.img-marquee-item img{height:100%;width:auto;object-fit:cover;display:block;filter:grayscale(20%) brightness(0.82);transition:filter 0.5s cubic-bezier(0.23,1,0.32,1);}
 .img-marquee-section:hover .img-marquee-item img{filter:grayscale(0%) brightness(1);}
+.img-marquee-section--alt{background:#060608;border-top-color:#0f0f14;border-bottom-color:#0f0f14;}
+.img-marquee-section--alt .img-marquee-track{gap:18px;padding:6px 0;animation-duration:65s;}
+.img-marquee-section--alt .img-marquee-item{height:clamp(105px,10vw,155px);}
+.img-marquee-section--alt .img-marquee-item img{filter:grayscale(0%) brightness(0.72) contrast(1.08) saturate(0.9);}
+.img-marquee-section--alt:hover .img-marquee-item img{filter:grayscale(0%) brightness(1) contrast(1) saturate(1);}
 
 /* ── GRID MOUSE PROXIMITY ── */
 .grid-img{transition:filter 0.35s cubic-bezier(0.23,1,0.32,1),opacity 0.35s ease,transform 0.6s ease;will-change:filter;}
@@ -1272,20 +1277,34 @@ ul,ol{list-style:none;}
 <!-- IMAGE MARQUEE — MID PAGE -->
 <div class="img-marquee-section" aria-hidden="true">
   <div class="img-marquee-track">
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(1).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(2).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(3).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(4).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(5).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(6).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(1).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(2).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(3).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(4).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(5).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(6).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f1.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f2.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f3.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f4.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f5.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f6.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f7.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f8.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f9.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f10.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f11.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f12.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f13.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f14.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f1.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f2.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f3.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f4.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f5.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f6.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f7.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f8.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f9.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f10.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f11.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f12.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f13.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f14.jpg" alt="" loading="lazy"></div>
   </div>
 </div>
 
@@ -1379,22 +1398,38 @@ ul,ol{list-style:none;}
   </div>
 </section>
 <!-- IMAGE MARQUEE — FOOTER -->
-<div class="img-marquee-section" aria-hidden="true">
+<div class="img-marquee-section img-marquee-section--alt" aria-hidden="true">
   <div class="img-marquee-track" style="animation-direction:reverse;">
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(1).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(2).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(3).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(4).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(5).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(6).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(1).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(2).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(3).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(4).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(5).png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/mixboard-image%20(6).png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f15.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f16.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f17.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f18.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f19.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f20.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f21.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f22.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f23.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f24.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f25.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f26.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f27.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f28.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f29.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f15.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f16.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f17.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f18.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f19.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f20.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f21.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f22.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f23.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f24.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f25.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f26.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f27.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f28.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><img src="Jewelry/f29.png" alt="" loading="lazy"></div>
   </div>
 </div>
 
