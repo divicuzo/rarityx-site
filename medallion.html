@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Bodoni+Moda:ital,opsz,wght@1,6..96,300;1,6..96,400&family=Outfit:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="atelier.css">
 <style>
 :root{
   --light:#f2f2f0;
@@ -142,8 +143,8 @@ footer a{color:var(--text);text-decoration:none}
 <body>
 
 <nav class="nav">
-  <a class="wordmark" href="index.html">RARITYX</a>
-  <a class="mono" href="index.html#section-09">Start with a conversation</a>
+  <a class="wordmark" href="index.html" data-rx-nav>RARITYX</a>
+  <a class="mono" href="index.html#section-09" data-rx-nav>Start with a conversation</a>
 </nav>
 
 <!-- ═══ PINNED SCRUB: rotate → explode → reassemble ═══ -->
@@ -225,11 +226,18 @@ footer a{color:var(--text);text-decoration:none}
   </div>
 </section>
 
-<footer>
-  <a href="index.html">&larr; RarityX</a>
+<a class="next-piece" href="sigil.html" data-rx-nav>
+  <span class="np-label">Next piece &middot; RX&#8211;02</span>
+  <span class="np-name">The<br>Sigil</span>
+  <span class="np-arrow">&#8594;</span>
+</a>
+
+<footer class="rx-foot">
+  <a href="index.html" data-rx-nav>&larr; RarityX</a>
   <span>RX&#8211;01 Crest &middot; MMXXVI</span>
 </footer>
 
+<script src="atelier.js"></script>
 <script>
 (function(){
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -410,16 +418,7 @@ footer a{color:var(--text);text-decoration:none}
     }).observe(pc);
   }
 
-  // ── REVEALS ──
-  var ro = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); }
-    });
-  }, { threshold: 0.25 });
-  document.querySelectorAll('.reveal').forEach(function(el, i){
-    el.style.transitionDelay = (i % 6) * 0.07 + 's';
-    ro.observe(el);
-  });
+  // reveals handled by atelier.js
 })();
 </script>
 </body>

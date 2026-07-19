@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RX-07 CONSTELLATION BAND | RarityX</title>
+<meta name="description" content="Constellation Band — pavé scattered like a night sky, mapped, not random. By RarityX.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Bodoni+Moda:ital,opsz,wght@1,6..96,300;1,6..96,400&family=Outfit:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="atelier.css">
+<style>
+/* signature motion: star canvas — pavé as night sky; stars connect into
+   the band's setting-map as you scroll */
+#stars{position:fixed;inset:0;z-index:1;pointer-events:none}
+
+#hero{position:relative;height:100vh;height:100dvh;overflow:hidden;background:var(--dark)}
+#hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85}
+#hero .scrim{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,5,5,.35) 0%,transparent 45%,rgba(5,5,5,.65) 100%)}
+.hero-type{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:0 4vw 8vh}
+.hero-type .idx{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#d9d9d5;margin-bottom:14px}
+.hero-type h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(54px,10.5vw,160px);line-height:.88;color:var(--text)}
+.hero-type h1 em{display:block;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;text-transform:none;font-size:.42em;line-height:1.15;color:#e8e6df;padding-bottom:.12em}
+.hero-type .scroll-hint{position:absolute;bottom:28px;right:4vw;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#b9b9b4}
+
+#story{position:relative;z-index:2;background:transparent;padding:20vh 6vw;overflow:hidden}
+.story-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.story-copy h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(40px,5.5vw,84px);line-height:.92;color:var(--text)}
+.story-copy .rule{width:44px;height:1px;background:var(--chrome);margin:34px 0 18px}
+.story-copy .lbl{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.story-copy p{font-size:15px;line-height:1.65;color:var(--muted);max-width:38ch}
+.story-copy .dim{margin-top:26px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--muted)}
+.story-visual img{width:100%;max-width:560px;aspect-ratio:4/3;object-fit:cover;filter:saturate(.92) brightness(.94)}
+.big-num{position:absolute;right:4vw;bottom:4vh;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(90px,14vw,210px);line-height:1;color:#dfe2ea;letter-spacing:-.02em;z-index:2}
+.big-num sup{font-size:.35em;vertical-align:super;color:var(--muted)}
+
+#finale{position:relative;z-index:2;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.finale-stack{position:relative;z-index:2;padding:16vh 4vw}
+.finale-stack h2{font-size:clamp(50px,11vw,170px)}
+.finale-stack h2 span{display:block}
+.finale-stack h2 .off-l{transform:translateX(-4vw)}
+.finale-stack h2 .off-r{transform:translateX(4vw)}
+.finale-cta{margin-top:8vh}
+.finale-cta a{display:inline-block;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--text);text-decoration:none;border:1px solid #3a3a3a;padding:18px 42px;transition:background .25s ease,color .25s ease,transform .15s ease}
+.finale-cta a:hover{background:var(--chrome);color:var(--dark)}
+.finale-cta a:active{transform:scale(.98)}
+
+.next-piece,.rx-foot{position:relative;z-index:2}
+
+@media (max-width:768px){
+  .story-grid{grid-template-columns:1fr;gap:48px}
+  .big-num{bottom:2vh}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="wordmark" href="index.html" data-rx-nav>RARITYX</a>
+  <a class="mono" href="index.html#section-09" data-rx-nav>Start with a conversation</a>
+</nav>
+
+<canvas id="stars" aria-hidden="true"></canvas>
+
+<section id="hero" aria-label="Constellation Band">
+  <video autoplay muted loop playsinline poster="Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg">
+    <source src="Jewelry/White_shining_Diamond_202607111708.mp4" type="video/mp4">
+  </video>
+  <div class="scrim"></div>
+  <div class="hero-type">
+    <div class="idx reveal">RX&#8211;07 &middot; Selected Portfolio</div>
+    <h1 class="reveal">Constellation<br>Band<em>a night sky, mapped in pav&eacute;</em></h1>
+  </div>
+  <div class="hero-type" style="pointer-events:none"><span class="scroll-hint">Scroll &#8595;</span></div>
+</section>
+
+<section id="story" aria-label="Scattered on purpose">
+  <div class="story-grid">
+    <div class="story-copy">
+      <h2 class="reveal">Scattered<br>On Purpose</h2>
+      <div class="rule reveal"></div>
+      <div class="lbl reveal">Pav&eacute; Setting</div>
+      <p class="reveal">Random-looking is the hardest thing to draw. Every stone in the band sits where a star would &mdash; charted first on paper, then set by hand until the scatter reads as sky.</p>
+      <p class="dim reveal">Micro-pav&eacute; &middot; 18k white gold &middot; full eternity</p>
+    </div>
+    <div class="story-visual reveal">
+      <img src="Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg" alt="Constellation Band — pavé diamonds scattered across the band" loading="lazy">
+    </div>
+  </div>
+  <div class="big-num reveal">57<sup>st</sup></div>
+</section>
+
+<section id="finale" aria-label="Drawn from the night sky">
+  <div class="finale-stack">
+    <h2 class="chrome-type reveal">
+      <span class="off-l">A Sky</span>
+      <span class="off-r">You Can</span>
+      <span>Wear</span>
+    </h2>
+    <div class="finale-cta reveal">
+      <a href="index.html#section-09" data-rx-nav>Start with a conversation</a>
+    </div>
+  </div>
+</section>
+
+<a class="next-piece" href="medallion.html" data-rx-nav>
+  <span class="np-label">Back to the beginning &middot; RX&#8211;01</span>
+  <span class="np-name">The<br>Medallion</span>
+  <span class="np-arrow">&#8594;</span>
+</a>
+
+<footer class="rx-foot">
+  <a href="eclipse-halo.html" data-rx-nav>&larr; RX&#8211;06 Eclipse Halo</a>
+  <span>RX&#8211;07 Constellation Band &middot; MMXXVI</span>
+</footer>
+
+<script src="atelier.js"></script>
+<script>
+(function(){
+  if (window.RX.prefersReduced) return;
+  // star field: fixed canvas behind content; stars twinkle, and lines connect
+  // nearest neighbours more as you scroll deeper — the sky resolves into a map.
+  var c = document.getElementById('stars'), ctx = c.getContext('2d');
+  var stars = [], progress = 0, rafId = null, running = true;
+  function resize(){ c.width = window.innerWidth; c.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize, { passive:true });
+  for (var i = 0; i < 90; i++) stars.push({
+    x: Math.random(), y: Math.random(),
+    r: 0.5 + Math.random() * 1.3,
+    tw: Math.random() * Math.PI * 2
+  });
+  function tick(t){
+    ctx.clearRect(0, 0, c.width, c.height);
+    var link = progress * 90; // px linking distance grows with scroll
+    for (var i = 0; i < stars.length; i++){
+      var s = stars[i], x = s.x * c.width, y = s.y * c.height;
+      var a = 0.25 + Math.abs(Math.sin(t * 0.001 + s.tw)) * 0.55;
+      ctx.globalAlpha = a;
+      ctx.fillStyle = '#dfe2ea';
+      ctx.beginPath(); ctx.arc(x, y, s.r, 0, 7); ctx.fill();
+      if (link > 8) for (var j = i + 1; j < stars.length; j++){
+        var o = stars[j], dx = (o.x - s.x) * c.width, dy = (o.y - s.y) * c.height;
+        var d = Math.sqrt(dx*dx + dy*dy);
+        if (d < link){
+          ctx.globalAlpha = (1 - d / link) * 0.16;
+          ctx.strokeStyle = '#aab0c0';
+          ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + dx, y + dy); ctx.stroke();
+        }
+      }
+    }
+    ctx.globalAlpha = 1;
+    if (running) rafId = requestAnimationFrame(tick);
+  }
+  rafId = requestAnimationFrame(tick);
+  document.addEventListener('visibilitychange', function(){
+    running = !document.hidden;
+    if (running) rafId = requestAnimationFrame(tick); else cancelAnimationFrame(rafId);
+  });
+  if (window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.create({
+      trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: 0.5,
+      onUpdate: function(self){ progress = self.progress; }
+    });
+  }
+})();
+</script>
+</body>
+</html>

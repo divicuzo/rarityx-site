@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RX-03 SOLSTICE SOLITAIRE | RarityX</title>
+<meta name="description" content="Solstice Solitaire — a round brilliant on four prongs, set at the highest point of light. By RarityX.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Bodoni+Moda:ital,opsz,wght@1,6..96,300;1,6..96,400&family=Outfit:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="atelier.css">
+<style>
+/* ── HERO: marble room, sun-arc ── */
+#hero{position:relative;height:100vh;height:100dvh;overflow:hidden;background:#0a0a0a}
+#hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#hero .scrim{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,5,5,.25) 0%,transparent 40%,rgba(5,5,5,.55) 100%)}
+.hero-type{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:0 4vw 8vh}
+.hero-type .idx{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#d9d9d5;margin-bottom:14px}
+.hero-type h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(58px,11vw,168px);line-height:.88;color:var(--text);letter-spacing:.005em}
+.hero-type h1 em{display:block;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;text-transform:none;font-size:.42em;line-height:1.15;letter-spacing:0;color:#e8e6df;padding-bottom:.12em}
+.hero-type .scroll-hint{position:absolute;bottom:28px;right:4vw;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#b9b9b4}
+
+/* signature motion: the sun line — an arc that travels with scroll */
+#sunline{position:fixed;top:0;left:0;width:100%;height:100vh;z-index:5;pointer-events:none}
+#sunline .disc{position:absolute;width:10px;height:10px;border-radius:50%;background:#f5f2e8;box-shadow:0 0 26px 8px rgba(245,240,225,.45);opacity:0}
+#sunline .path{position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(245,242,232,.35),transparent);opacity:0}
+
+/* ── STORY ── */
+#story{position:relative;background:var(--dark);padding:20vh 6vw;overflow:hidden}
+.story-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.story-copy h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(40px,5.5vw,84px);line-height:.92;color:var(--text)}
+.story-copy .rule{width:44px;height:1px;background:var(--chrome);margin:34px 0 18px}
+.story-copy .lbl{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.story-copy p{font-size:15px;line-height:1.65;color:var(--muted);max-width:38ch}
+.story-copy .dim{margin-top:26px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--muted)}
+.story-visual img{width:100%;max-width:560px;aspect-ratio:4/3;object-fit:cover;filter:saturate(.94)}
+.big-num{position:absolute;right:4vw;bottom:4vh;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(90px,14vw,210px);line-height:1;color:#dfe2ea;letter-spacing:-.02em}
+.big-num sup{font-size:.35em;vertical-align:super;color:var(--muted)}
+
+/* ── CHROME FINALE ── */
+#finale{position:relative;min-height:100vh;background:var(--dark);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.finale-stack{position:relative;z-index:2;padding:16vh 4vw}
+.finale-stack h2{font-size:clamp(56px,12vw,180px)}
+.finale-stack h2 span{display:block}
+.finale-stack h2 .off-l{transform:translateX(-4vw)}
+.finale-stack h2 .off-r{transform:translateX(4vw)}
+.finale-cta{margin-top:8vh}
+.finale-cta a{display:inline-block;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--text);text-decoration:none;border:1px solid #3a3a3a;padding:18px 42px;transition:background .25s ease,color .25s ease,transform .15s ease}
+.finale-cta a:hover{background:var(--chrome);color:var(--dark)}
+.finale-cta a:active{transform:scale(.98)}
+
+@media (max-width:768px){
+  .story-grid{grid-template-columns:1fr;gap:48px}
+  .big-num{bottom:2vh}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="wordmark" href="index.html" data-rx-nav>RARITYX</a>
+  <a class="mono" href="index.html#section-09" data-rx-nav>Start with a conversation</a>
+</nav>
+
+<div id="sunline" aria-hidden="true">
+  <div class="path" id="sun-path"></div>
+  <div class="disc" id="sun-disc"></div>
+</div>
+
+<section id="hero" aria-label="Solstice Solitaire on marble">
+  <video autoplay muted loop playsinline poster="Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg">
+    <source src="Jewelry/soli_v1.mp4" type="video/mp4">
+  </video>
+  <div class="scrim"></div>
+  <div class="hero-type">
+    <div class="idx reveal">RX&#8211;03 &middot; Selected Portfolio</div>
+    <h1 class="reveal">Solstice<br>Solitaire<em>set at the highest point of light</em></h1>
+  </div>
+  <div class="hero-type" style="pointer-events:none"><span class="scroll-hint">Scroll &#8595;</span></div>
+</section>
+
+<section id="story" aria-label="One stone, four prongs">
+  <div class="story-grid">
+    <div class="story-copy">
+      <h2 class="reveal">The Longest<br>Day</h2>
+      <div class="rule reveal"></div>
+      <div class="lbl reveal">Round Brilliant</div>
+      <p class="reveal">One stone, lifted on four prongs the way the sun sits at solstice &mdash; held at its highest point, nothing between it and the light.</p>
+      <p class="dim reveal">Round brilliant &middot; 950 platinum &middot; four-prong</p>
+    </div>
+    <div class="story-visual reveal">
+      <img src="Jewelry/soli_v2.jpg" onerror="this.src='Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg'" alt="Solstice Solitaire, round brilliant close-up" loading="lazy">
+    </div>
+  </div>
+  <div class="big-num reveal">4<sup>p</sup></div>
+</section>
+
+<section id="finale" aria-label="Held at the highest point">
+  <div class="finale-stack">
+    <h2 class="chrome-type reveal">
+      <span class="off-l">Held At</span>
+      <span class="off-r">The Highest</span>
+      <span>Point</span>
+    </h2>
+    <div class="finale-cta reveal">
+      <a href="index.html#section-09" data-rx-nav>Start with a conversation</a>
+    </div>
+  </div>
+</section>
+
+<a class="next-piece" href="fragment-band.html" data-rx-nav>
+  <span class="np-label">Next piece &middot; RX&#8211;04</span>
+  <span class="np-name">Fragment<br>Band</span>
+  <span class="np-arrow">&#8594;</span>
+</a>
+
+<footer class="rx-foot">
+  <a href="sigil.html" data-rx-nav>&larr; RX&#8211;02 Sigil</a>
+  <span>RX&#8211;03 Solstice Solitaire &middot; MMXXVI</span>
+</footer>
+
+<script src="atelier.js"></script>
+<script>
+(function(){
+  if (window.RX.prefersReduced || !window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+  // sun-arc: a point of light rises across the viewport as the page scrolls —
+  // solstice as a scroll position.
+  var disc = document.getElementById('sun-disc'), path = document.getElementById('sun-path');
+  ScrollTrigger.create({
+    trigger: document.body,
+    start: 'top top',
+    end: 'bottom bottom',
+    scrub: 0.6,
+    onUpdate: function(self){
+      var p = self.progress;
+      var vw = window.innerWidth, vh = window.innerHeight;
+      // arc: rises to apex at p=0.5, sets after
+      var x = p * vw;
+      var y = vh * (0.82 - Math.sin(p * Math.PI) * 0.62);
+      disc.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+      disc.style.opacity = p > 0.03 && p < 0.97 ? 0.9 : 0;
+      path.style.top = y + 'px';
+      path.style.opacity = p > 0.03 && p < 0.97 ? 0.5 : 0;
+    }
+  });
+})();
+</script>
+</body>
+</html>

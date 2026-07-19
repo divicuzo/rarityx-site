@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RX-06 ECLIPSE HALO | RarityX</title>
+<meta name="description" content="Eclipse Halo — a bezel-set stone that covers its light, then lets it out. By RarityX.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Bodoni+Moda:ital,opsz,wght@1,6..96,300;1,6..96,400&family=Outfit:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="atelier.css">
+<style>
+/* signature motion: the eclipse — a 250vh pinned section where a dark disc
+   slides across the ring video and totality flips the type to stroke-only */
+#eclipse{position:relative;height:250vh;background:var(--dark)}
+.ec-sticky{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden}
+.ec-media{position:absolute;inset:0}
+.ec-media video{width:100%;height:100%;object-fit:cover}
+.ec-disc{position:absolute;top:50%;left:50%;width:120vmax;height:120vmax;border-radius:50%;background:var(--dark);transform:translate(-50%,-50%) translateX(120vmax);z-index:2;box-shadow:0 0 120px 40px rgba(5,5,5,.85)}
+.ec-type{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:flex-end;padding:0 4vw 8vh;pointer-events:none}
+.ec-type .idx{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#d9d9d5;margin-bottom:14px}
+.ec-type h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(58px,11vw,168px);line-height:.88;color:var(--text);transition:color .4s ease,-webkit-text-stroke-color .4s ease;-webkit-text-stroke:1.5px transparent}
+.ec-type h1.totality{color:transparent;-webkit-text-stroke-color:#5a5a56}
+.ec-type h1 em{display:block;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;text-transform:none;font-size:.42em;line-height:1.15;color:#e8e6df;-webkit-text-stroke:0;padding-bottom:.12em}
+.ec-phase{position:absolute;top:50%;right:4vw;transform:translateY(-50%);z-index:3;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#b9b9b4;text-align:right;line-height:2.2}
+.ec-phase b{color:var(--text);font-weight:400}
+
+/* ── STORY ── */
+#story{position:relative;background:var(--dark);padding:20vh 6vw;overflow:hidden}
+.story-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+.story-copy h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(40px,5.5vw,84px);line-height:.92;color:var(--text)}
+.story-copy .rule{width:44px;height:1px;background:var(--chrome);margin:34px 0 18px}
+.story-copy .lbl{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.story-copy p{font-size:15px;line-height:1.65;color:var(--muted);max-width:38ch}
+.story-copy .dim{margin-top:26px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--muted)}
+.story-visual{position:relative;display:flex;justify-content:center}
+.story-visual img{width:min(420px,74vw);aspect-ratio:1;object-fit:cover;border-radius:50%;filter:saturate(.92)}
+.story-visual::after{content:"";position:absolute;top:6%;right:14%;width:34%;height:34%;border-radius:50%;background:radial-gradient(circle,rgba(5,5,5,.92) 58%,transparent 72%)}
+.big-num{position:absolute;right:4vw;bottom:4vh;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(90px,14vw,210px);line-height:1;color:#dfe2ea;letter-spacing:-.02em}
+.big-num sup{font-size:.35em;vertical-align:super;color:var(--muted)}
+
+#finale{position:relative;min-height:100vh;background:var(--dark);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.finale-stack{position:relative;z-index:2;padding:16vh 4vw}
+.finale-stack h2{font-size:clamp(56px,12vw,180px)}
+.finale-stack h2 span{display:block}
+.finale-stack h2 .off-l{transform:translateX(-4vw)}
+.finale-stack h2 .off-r{transform:translateX(4vw)}
+.finale-cta{margin-top:8vh}
+.finale-cta a{display:inline-block;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--text);text-decoration:none;border:1px solid #3a3a3a;padding:18px 42px;transition:background .25s ease,color .25s ease,transform .15s ease}
+.finale-cta a:hover{background:var(--chrome);color:var(--dark)}
+.finale-cta a:active{transform:scale(.98)}
+
+@media (max-width:768px){
+  .story-grid{grid-template-columns:1fr;gap:48px}
+  .ec-phase{display:none}
+  .big-num{bottom:2vh}
+}
+@media (prefers-reduced-motion: reduce){
+  #eclipse{height:auto}
+  .ec-sticky{position:relative}
+  .ec-disc{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="wordmark" href="index.html" data-rx-nav>RARITYX</a>
+  <a class="mono" href="index.html#section-09" data-rx-nav>Start with a conversation</a>
+</nav>
+
+<!-- ═══ PINNED ECLIPSE ═══ -->
+<section id="eclipse" aria-label="Eclipse Halo — totality on scroll">
+  <div class="ec-sticky">
+    <div class="ec-media">
+      <video autoplay muted loop playsinline poster="Jewelry/Hand_wearing_asscher_halo_ring_202607111709.jpeg">
+        <source src="Jewelry/turntable_v1.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="ec-disc" id="ec-disc"></div>
+    <div class="ec-type">
+      <div class="idx reveal">RX&#8211;06 &middot; Selected Portfolio</div>
+      <h1 id="ec-title" class="reveal">Eclipse<br>Halo<em>the bezel that covers its light</em></h1>
+    </div>
+    <div class="ec-phase" id="ec-phase">
+      <span>Phase</span><br><b id="ec-phase-val">First contact</b>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STORY ═══ -->
+<section id="story" aria-label="Why a bezel">
+  <div class="story-grid">
+    <div class="story-copy">
+      <h2 class="reveal">Totality,<br>Set in Gold</h2>
+      <div class="rule reveal"></div>
+      <div class="lbl reveal">Bezel Setting</div>
+      <p class="reveal">A bezel hides the stone's girdle the way the moon hides the sun &mdash; fully, deliberately, and only from certain angles. Tilt the hand and the corona comes back.</p>
+      <p class="dim reveal">Bezel-set &middot; 18k yellow gold &middot; asscher cut</p>
+    </div>
+    <div class="story-visual reveal">
+      <img src="Jewelry/Hand_wearing_asscher_halo_ring_202607111709.jpeg" alt="Eclipse Halo worn — asscher stone in gold bezel" loading="lazy">
+    </div>
+  </div>
+  <div class="big-num reveal">100<sup>%</sup></div>
+</section>
+
+<section id="finale" aria-label="Light, withheld">
+  <div class="finale-stack">
+    <h2 class="chrome-type reveal">
+      <span class="off-l">Light</span>
+      <span class="off-r">Withheld</span>
+      <span>On Purpose</span>
+    </h2>
+    <div class="finale-cta reveal">
+      <a href="index.html#section-09" data-rx-nav>Start with a conversation</a>
+    </div>
+  </div>
+</section>
+
+<a class="next-piece" href="constellation-band.html" data-rx-nav>
+  <span class="np-label">Next piece &middot; RX&#8211;07</span>
+  <span class="np-name">Constellation<br>Band</span>
+  <span class="np-arrow">&#8594;</span>
+</a>
+
+<footer class="rx-foot">
+  <a href="meridian-cluster.html" data-rx-nav>&larr; RX&#8211;05 Meridian Cluster</a>
+  <span>RX&#8211;06 Eclipse Halo &middot; MMXXVI</span>
+</footer>
+
+<script src="atelier.js"></script>
+<script>
+(function(){
+  if (window.RX.prefersReduced || !window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+  var disc = document.getElementById('ec-disc'),
+      title = document.getElementById('ec-title'),
+      phase = document.getElementById('ec-phase-val');
+  var PHASES = ['First contact','Crescent','Totality','Third contact','Full light'];
+  ScrollTrigger.create({
+    trigger: '#eclipse',
+    start: 'top top',
+    end: 'bottom bottom',
+    scrub: 0.4,
+    onUpdate: function(self){
+      var p = self.progress;
+      // disc crosses from off-right to off-left; centered (totality) at p=0.5
+      var x = (1 - p * 2) * 120; // vmax units: 120 → -120
+      disc.style.transform = 'translate(-50%,-50%) translateX(' + x + 'vmax)';
+      var totality = p > 0.38 && p < 0.62;
+      title.classList.toggle('totality', totality);
+      phase.textContent = PHASES[Math.min(Math.floor(p * PHASES.length), PHASES.length - 1)];
+    }
+  });
+})();
+</script>
+</body>
+</html>

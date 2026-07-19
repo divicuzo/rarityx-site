@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RX-05 MERIDIAN CLUSTER | RarityX</title>
+<meta name="description" content="Meridian Cluster — twelve stones plotted like coordinates on a wireframe. By RarityX.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Bodoni+Moda:ital,opsz,wght@1,6..96,300;1,6..96,400&family=Outfit:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="atelier.css">
+<style>
+/* signature motion: meridian grid — thin longitude lines over the whole page,
+   drifting at different rates with scroll. The ring as cartography. */
+#grid-overlay{position:fixed;inset:0;z-index:4;pointer-events:none;display:flex;justify-content:space-evenly}
+#grid-overlay i{display:block;width:1px;background:linear-gradient(to bottom,transparent,rgba(200,200,200,.14) 20%,rgba(200,200,200,.14) 80%,transparent)}
+
+#hero{position:relative;height:100vh;height:100dvh;overflow:hidden;background:#0a0a0a}
+#hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.9)}
+#hero .scrim{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,5,5,.3) 0%,transparent 45%,rgba(5,5,5,.6) 100%)}
+.hero-type{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:0 4vw 8vh}
+.hero-type .idx{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#d9d9d5;margin-bottom:14px}
+.hero-type h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(58px,11vw,168px);line-height:.88;color:var(--text)}
+.hero-type h1 em{display:block;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;text-transform:none;font-size:.42em;line-height:1.15;color:#e8e6df;padding-bottom:.12em}
+.hero-type .scroll-hint{position:absolute;bottom:28px;right:4vw;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#b9b9b4}
+
+/* coordinates section — stones as plotted points */
+#plot{position:relative;background:var(--dark);padding:20vh 6vw;overflow:hidden}
+.plot-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.plot-visual{position:relative}
+.plot-visual img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 20%;filter:saturate(.9) contrast(1.04)}
+.coord{position:absolute;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;color:#dfe2ea;background:rgba(5,5,5,.55);padding:6px 10px;backdrop-filter:blur(4px)}
+.coord::before{content:"";position:absolute;left:-26px;top:50%;width:22px;height:1px;background:rgba(223,226,234,.6)}
+.c1{top:22%;right:-8px}
+.c2{top:47%;right:14%}
+.c3{top:66%;right:-8px}
+.plot-copy h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(40px,5.5vw,84px);line-height:.92;color:var(--text)}
+.plot-copy .rule{width:44px;height:1px;background:var(--chrome);margin:34px 0 18px}
+.plot-copy .lbl{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.plot-copy p{font-size:15px;line-height:1.65;color:var(--muted);max-width:38ch}
+.plot-copy .dim{margin-top:26px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--muted)}
+.big-num{position:absolute;right:4vw;bottom:4vh;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(90px,14vw,210px);line-height:1;color:#dfe2ea;letter-spacing:-.02em}
+.big-num sup{font-size:.35em;vertical-align:super;color:var(--muted)}
+
+#finale{position:relative;min-height:100vh;background:var(--dark);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.finale-stack{position:relative;z-index:2;padding:16vh 4vw}
+.finale-stack h2{font-size:clamp(56px,12vw,180px)}
+.finale-stack h2 span{display:block}
+.finale-stack h2 .off-l{transform:translateX(-4vw)}
+.finale-stack h2 .off-r{transform:translateX(4vw)}
+.finale-cta{margin-top:8vh}
+.finale-cta a{display:inline-block;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--text);text-decoration:none;border:1px solid #3a3a3a;padding:18px 42px;transition:background .25s ease,color .25s ease,transform .15s ease}
+.finale-cta a:hover{background:var(--chrome);color:var(--dark)}
+.finale-cta a:active{transform:scale(.98)}
+
+@media (max-width:768px){
+  .plot-grid{grid-template-columns:1fr;gap:48px}
+  #grid-overlay i:nth-child(n+5){display:none}
+  .big-num{bottom:2vh}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="wordmark" href="index.html" data-rx-nav>RARITYX</a>
+  <a class="mono" href="index.html#section-09" data-rx-nav>Start with a conversation</a>
+</nav>
+
+<div id="grid-overlay" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+<section id="hero" aria-label="Meridian Cluster">
+  <video autoplay muted loop playsinline poster="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg">
+    <source src="Jewelry/Diamond_ring_rotating_in_light_202606302137.mp4" type="video/mp4">
+  </video>
+  <div class="scrim"></div>
+  <div class="hero-type">
+    <div class="idx reveal">RX&#8211;05 &middot; Selected Portfolio</div>
+    <h1 class="reveal">Meridian<br>Cluster<em>stones plotted like coordinates</em></h1>
+  </div>
+  <div class="hero-type" style="pointer-events:none"><span class="scroll-hint">Scroll &#8595;</span></div>
+</section>
+
+<section id="plot" aria-label="Twelve stones, mapped">
+  <div class="plot-grid">
+    <div class="plot-visual reveal">
+      <img src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg" alt="Meridian Cluster worn — wireframe structure visible" loading="lazy">
+      <span class="coord c1 reveal">41.88&deg; N</span>
+      <span class="coord c2 reveal">87.63&deg; W</span>
+      <span class="coord c3 reveal">CHICAGO DATUM</span>
+    </div>
+    <div class="plot-copy">
+      <h2 class="reveal">Drawn On<br>A Map</h2>
+      <div class="rule reveal"></div>
+      <div class="lbl reveal">Cluster Setting</div>
+      <p class="reveal">Twelve stones plotted like cities on a meridian &mdash; no two the same size, every position argued over at the drawing stage. The wireframe is the design; the stones are where it intersects.</p>
+      <p class="dim reveal">Twelve stones &middot; open wireframe &middot; 18k white gold</p>
+    </div>
+  </div>
+  <div class="big-num reveal">12<sup>st</sup></div>
+</section>
+
+<section id="finale" aria-label="Every stone a coordinate">
+  <div class="finale-stack">
+    <h2 class="chrome-type reveal">
+      <span class="off-l">Every Stone</span>
+      <span class="off-r">A</span>
+      <span>Coordinate</span>
+    </h2>
+    <div class="finale-cta reveal">
+      <a href="index.html#section-09" data-rx-nav>Start with a conversation</a>
+    </div>
+  </div>
+</section>
+
+<a class="next-piece" href="eclipse-halo.html" data-rx-nav>
+  <span class="np-label">Next piece &middot; RX&#8211;06</span>
+  <span class="np-name">Eclipse<br>Halo</span>
+  <span class="np-arrow">&#8594;</span>
+</a>
+
+<footer class="rx-foot">
+  <a href="fragment-band.html" data-rx-nav>&larr; RX&#8211;04 Fragment Band</a>
+  <span>RX&#8211;05 Meridian Cluster &middot; MMXXVI</span>
+</footer>
+
+<script src="atelier.js"></script>
+<script>
+(function(){
+  if (window.RX.prefersReduced || !window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+  // meridian drift: each longitude line slides at its own rate with scroll
+  gsap.utils.toArray('#grid-overlay i').forEach(function(line, i){
+    gsap.fromTo(line, { y: 0 }, {
+      y: (i % 2 ? -1 : 1) * (30 + i * 14),
+      ease: 'none',
+      scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: 1.2 }
+    });
+  });
+})();
+</script>
+</body>
+</html>
