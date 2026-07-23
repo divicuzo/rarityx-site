@@ -91,7 +91,7 @@
 <body>
 
 <nav class="nav">
-  <a class="wordmark" href="index.html" data-rx-nav>RARITYX</a>
+  <a class="wordmark" href="index.html" data-rx-nav><img src="Jewelry/LOGO_transparent.webp" alt="RarityX" loading="eager"></a>
   <a class="mono" href="index.html#section-09" data-rx-nav>Start with a conversation</a>
 </nav>
 
@@ -107,7 +107,6 @@
     <canvas id="seq-canvas"></canvas>
 
     <div class="stage-a" id="stage-a">
-      <div class="model">RX&#8211;02</div>
       <div class="tag">
         <em>The monogram is the stone.</em>
         A platinum signet crowned in pav&eacute;. No center gem &mdash; the letter itself carries the weight.
@@ -134,7 +133,7 @@
 <section id="letter" aria-label="The letter as architecture">
   <div class="letter-inner">
     <div class="letter-visual reveal" style="position:relative">
-      <img src="frames_lp5/frame_0001.jpg" alt="RX-02 Sigil signet ring, assembled" loading="lazy" width="400" height="400">
+      <img src="frames_lp/frame_0001.jpg" alt="RX-02 Sigil signet ring, assembled" loading="lazy" width="400" height="400">
       <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s cubic-bezier(.23,1,.32,1)" onmouseenter="this.style.opacity='.88'" onmouseleave="this.style.opacity='0'" aria-hidden="true">
         <source src="Jewelry/Portfolio_pieces_vids/openbox_ring.mp4" type="video/mp4">
       </video>
@@ -173,6 +172,28 @@
   <span class="np-arrow">&#8594;</span>
 </a>
 
+<div class="rx-marquee" aria-hidden="true">
+  <div class="rx-marquee-track">
+    <div class="rx-marquee-item"><img src="Jewelry/f1.jpg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f2.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f3.jpg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f4.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f5.jpg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f6.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f7.jpg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f8.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f9.jpg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f10.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f11.jpg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f12.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f1.jpg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f2.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f3.jpg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f4.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f5.jpg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f6.png" alt="" loading="lazy"></div>
+  </div>
+</div>
 <footer class="rx-foot">
   <a href="medallion.html" data-rx-nav>&larr; RX&#8211;01 Crest</a>
   <span>RX&#8211;02 Sigil &middot; MMXXVI</span>
@@ -184,7 +205,7 @@
   var prefersReduced = window.RX.prefersReduced;
   if (window.gsap && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 
-  var TOTAL = 240, FW = 960, FH = 540;
+  var TOTAL = 189, FW = 1280, FH = 720;
   var canvas = document.getElementById('seq-canvas');
   var ctx = canvas.getContext('2d');
   var imgs = new Array(TOTAL), curIdx = 0, restLoaded = false;
@@ -213,7 +234,7 @@
     for (var i = start; i < end && i < TOTAL; i++) (function(n){
       var img = new Image();
       img.onload = function(){ imgs[n] = img; if (n === 0) draw(0); };
-      img.src = 'frames_lp5/frame_' + String(n + 1).padStart(4, '0') + '.jpg';
+      img.src = 'frames_lp/frame_' + String(n + 1).padStart(4, '0') + '.jpg';
     })(i);
   }
   batch(0, 30);

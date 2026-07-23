@@ -810,23 +810,26 @@ ul,ol{list-style:none;}
 .v6-label-div{width:32px;height:1px;background:#5a1a2e;flex-shrink:0;}
 .v6-label-title{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;color:#d0a0b0;text-transform:uppercase;}
 @media(max-width:768px){.sh-f3,.sr-f3,.v6-f3,.v6-f6{display:none;}.seq-frag,.v6-frag{font-size:11px;}}
-/* ══ PORTFOLIO WORKS STRIP ══ */
-#section-works{background:#050505;padding:18vh 0 22vh}
-.works-head{max-width:1400px;margin:0 auto;padding:0 6vw 6vh;display:flex;justify-content:space-between;align-items:baseline;gap:20px}
+/* ══ PORTFOLIO WORKS — CONVEYOR BELT ══ */
+#section-works{background:#050505;padding:16vh 0 0}
+.works-head{max-width:1400px;margin:0 auto;padding:0 6vw 5vh;display:flex;justify-content:space-between;align-items:baseline;gap:20px}
 .works-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(38px,6vw,96px);line-height:.88;letter-spacing:.01em;color:#f5f5f5}
 .works-meta{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:#9a9a96}
-.works-strip{display:flex;gap:18px;overflow-x:auto;padding:0 6vw;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.works-strip::-webkit-scrollbar{display:none}
-.work-card{flex:0 0 clamp(240px,30vw,400px);scroll-snap-align:start;position:relative;aspect-ratio:3/4;overflow:hidden;text-decoration:none;display:block}
-.work-card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.23,1,.32,1);filter:brightness(.82)}
-.work-card:hover video{transform:scale(1.04)}
-.work-card-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,5,.88) 0%,transparent 55%)}
-.work-card-info{position:absolute;bottom:0;left:0;right:0;padding:22px 20px 18px}
-.work-rx{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#9a9a96;display:block;margin-bottom:6px}
-.work-name{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(22px,3vw,36px);line-height:.9;color:#f5f5f5;display:block}
-.work-link-hint{display:block;margin-top:10px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#c8c8c8;opacity:0;transform:translateY(6px);transition:opacity .3s ease,transform .3s ease}
+.works-strip{overflow:hidden;padding-bottom:3vh}
+.works-track{display:flex;gap:18px;width:max-content;animation:worksMarquee 65s linear infinite}
+.works-strip:hover .works-track{animation-play-state:paused}
+@keyframes worksMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.work-card{flex:0 0 clamp(220px,26vw,360px);position:relative;aspect-ratio:3/4;overflow:hidden;text-decoration:none;display:block}
+.work-card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.23,1,.32,1);filter:brightness(.78)}
+.work-card:hover video{transform:scale(1.06)}
+.work-card-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,5,.9) 0%,transparent 52%)}
+.work-card-info{position:absolute;bottom:0;left:0;right:0;padding:20px 18px 16px}
+.work-rx{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#9a9a96;display:block;margin-bottom:5px}
+.work-name{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(20px,2.6vw,32px);line-height:.9;color:#f5f5f5;display:block}
+.work-link-hint{display:block;margin-top:8px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#c8c8c8;opacity:0;transform:translateY(6px);transition:opacity .3s ease,transform .3s ease}
 .work-card:hover .work-link-hint{opacity:1;transform:translateY(0)}
-@media(max-width:768px){.works-strip{gap:12px;padding:0 4vw}.work-card{flex:0 0 72vw}.works-head{flex-direction:column;gap:8px}}
+@media(prefers-reduced-motion:reduce){.works-track{animation:none;flex-wrap:wrap}}
+@media(max-width:768px){.works-head{flex-direction:column;gap:8px}.works-track{animation-duration:40s}}
 </style>
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 </head>
@@ -1256,6 +1259,99 @@ ul,ol{list-style:none;}
   </div>
 </section>
 
+<!-- PORTFOLIO WORKS — CONVEYOR BELT -->
+<section id="section-works">
+  <div class="works-head">
+    <h2 class="works-title" data-rx-reveal>Selected<br>Portfolio</h2>
+    <span class="works-meta" data-rx-reveal>Eight pieces &middot; MMXXVI</span>
+  </div>
+  <div class="works-strip">
+    <div class="works-track">
+      <a class="work-card" href="medallion.html" data-rx-nav>
+        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/rarityx_pendant.mp4" type="video/mp4"></video>
+        <div class="work-card-grad"></div>
+        <div class="work-card-info"><span class="work-rx">RX&ndash;01</span><span class="work-name">Crest<br>Medallion</span><span class="work-link-hint">View piece &rarr;</span></div>
+      </a>
+      <a class="work-card" href="sigil.html" data-rx-nav>
+        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/openbox_ring.mp4" type="video/mp4"></video>
+        <div class="work-card-grad"></div>
+        <div class="work-card-info"><span class="work-rx">RX&ndash;02</span><span class="work-name">Sigil<br>Signet</span><span class="work-link-hint">View piece &rarr;</span></div>
+      </a>
+      <a class="work-card" href="solstice-solitaire.html" data-rx-nav>
+        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/soli_round_ring.mp4" type="video/mp4"></video>
+        <div class="work-card-grad"></div>
+        <div class="work-card-info"><span class="work-rx">RX&ndash;03</span><span class="work-name">Solstice<br>Solitaire</span><span class="work-link-hint">View piece &rarr;</span></div>
+      </a>
+      <a class="work-card" href="fragment-band.html" data-rx-nav>
+        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/vertical_stack_ring.mp4" type="video/mp4"></video>
+        <div class="work-card-grad"></div>
+        <div class="work-card-info"><span class="work-rx">RX&ndash;04</span><span class="work-name">Fragment<br>Band</span><span class="work-link-hint">View piece &rarr;</span></div>
+      </a>
+      <a class="work-card" href="meridian-cluster.html" data-rx-nav>
+        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_mq_ring.mp4" type="video/mp4"></video>
+        <div class="work-card-grad"></div>
+        <div class="work-card-info"><span class="work-rx">RX&ndash;05</span><span class="work-name">Meridian<br>Cluster</span><span class="work-link-hint">View piece &rarr;</span></div>
+      </a>
+      <a class="work-card" href="eclipse-halo.html" data-rx-nav>
+        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/halo_2shankpave_ring.mp4" type="video/mp4"></video>
+        <div class="work-card-grad"></div>
+        <div class="work-card-info"><span class="work-rx">RX&ndash;06</span><span class="work-name">Eclipse<br>Halo</span><span class="work-link-hint">View piece &rarr;</span></div>
+      </a>
+      <a class="work-card" href="constellation-band.html" data-rx-nav>
+        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_eternity_rotate_ring.mp4" type="video/mp4"></video>
+        <div class="work-card-grad"></div>
+        <div class="work-card-info"><span class="work-rx">RX&ndash;07</span><span class="work-name">Constellation<br>Band</span><span class="work-link-hint">View piece &rarr;</span></div>
+      </a>
+      <a class="work-card" href="lp-v6.html" data-rx-nav>
+        <video autoplay muted loop playsinline><source src="Jewelry/lp_v6.mp4" type="video/mp4"></video>
+        <div class="work-card-grad"></div>
+        <div class="work-card-info"><span class="work-rx">RX&ndash;08</span><span class="work-name">Orbit<br>Stack</span><span class="work-link-hint">View piece &rarr;</span></div>
+      </a>
+      <!-- duplicate for seamless loop -->
+      <a class="work-card" href="medallion.html" data-rx-nav aria-hidden="true">
+        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/rarityx_pendant.mp4" type="video/mp4"></video>
+        <div class="work-card-grad"></div>
+        <div class="work-card-info"><span class="work-rx">RX&ndash;01</span><span class="work-name">Crest<br>Medallion</span></div>
+      </a>
+      <a class="work-card" href="sigil.html" data-rx-nav aria-hidden="true">
+        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/openbox_ring.mp4" type="video/mp4"></video>
+        <div class="work-card-grad"></div>
+        <div class="work-card-info"><span class="work-rx">RX&ndash;02</span><span class="work-name">Sigil<br>Signet</span></div>
+      </a>
+      <a class="work-card" href="solstice-solitaire.html" data-rx-nav aria-hidden="true">
+        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/soli_round_ring.mp4" type="video/mp4"></video>
+        <div class="work-card-grad"></div>
+        <div class="work-card-info"><span class="work-rx">RX&ndash;03</span><span class="work-name">Solstice<br>Solitaire</span></div>
+      </a>
+      <a class="work-card" href="fragment-band.html" data-rx-nav aria-hidden="true">
+        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/vertical_stack_ring.mp4" type="video/mp4"></video>
+        <div class="work-card-grad"></div>
+        <div class="work-card-info"><span class="work-rx">RX&ndash;04</span><span class="work-name">Fragment<br>Band</span></div>
+      </a>
+      <a class="work-card" href="meridian-cluster.html" data-rx-nav aria-hidden="true">
+        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_mq_ring.mp4" type="video/mp4"></video>
+        <div class="work-card-grad"></div>
+        <div class="work-card-info"><span class="work-rx">RX&ndash;05</span><span class="work-name">Meridian<br>Cluster</span></div>
+      </a>
+      <a class="work-card" href="eclipse-halo.html" data-rx-nav aria-hidden="true">
+        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/halo_2shankpave_ring.mp4" type="video/mp4"></video>
+        <div class="work-card-grad"></div>
+        <div class="work-card-info"><span class="work-rx">RX&ndash;06</span><span class="work-name">Eclipse<br>Halo</span></div>
+      </a>
+      <a class="work-card" href="constellation-band.html" data-rx-nav aria-hidden="true">
+        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_eternity_rotate_ring.mp4" type="video/mp4"></video>
+        <div class="work-card-grad"></div>
+        <div class="work-card-info"><span class="work-rx">RX&ndash;07</span><span class="work-name">Constellation<br>Band</span></div>
+      </a>
+      <a class="work-card" href="lp-v6.html" data-rx-nav aria-hidden="true">
+        <video autoplay muted loop playsinline><source src="Jewelry/lp_v6.mp4" type="video/mp4"></video>
+        <div class="work-card-grad"></div>
+        <div class="work-card-info"><span class="work-rx">RX&ndash;08</span><span class="work-name">Orbit<br>Stack</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- SECTION 06 - DESIGN ASSEMBLY -->
 <section id="section-06" aria-label="Design Assembly">
   <div id="cursor-dot" aria-hidden="true"></div>
@@ -1367,29 +1463,29 @@ ul,ol{list-style:none;}
   </div>
   <div class="vault-grid">
     <div class="vault-card" data-rx-scale>
-      <div class="vault-card-img-wrap"><img class="vault-card-img" src="Jewelry/Diamond_bracelet_on_sculpture_2K_202607111710.jpeg" alt="Solstice Solitaire" loading="lazy" style="object-position:center 40%"></div>
+      <div class="vault-card-img-wrap"><img class="vault-card-img" src="Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg" alt="Solstice Solitaire — round brilliant diamond engagement ring, platinum four-prong" loading="lazy" style="object-position:center 35%"></div>
       <div class="vault-card-info">
         <div class="vault-status">By Consultation Only</div>
         <a href="solstice-solitaire.html" style="text-decoration:none"><div class="vault-name">Solstice Solitaire</div></a>
-        <div class="vault-detail">Platinum prong setting<br>2.1ct — 2.5ct  ·  D–F / IF–VS1<br>Round brilliant cut<br><br>The original solitaire brief. Six prongs where four would have worked. The shadow at 4pm was the deciding argument.</div>
+        <div class="vault-detail">950 platinum · four-prong solitaire<br>2.0ct–2.5ct round brilliant<br>D–F color · IF–VS1 clarity<br><br>Solitaire engagement ring designed around peak light performance. The prong geometry was drawn first — the stone sourced to fill it.</div>
         <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="vault-cta">Enquire</a>
       </div>
     </div>
     <div class="vault-card" data-rx-scale>
-      <div class="vault-card-img-wrap"><img class="vault-card-img" src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg" alt="Meridian Cluster" loading="lazy" style="object-position:center top"></div>
+      <div class="vault-card-img-wrap"><img class="vault-card-img" src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg" alt="Meridian Cluster — multi-stone diamond cluster ring, open wireframe setting" loading="lazy" style="object-position:center top"></div>
       <div class="vault-card-info">
         <div class="vault-status">Portfolio Piece</div>
         <a href="meridian-cluster.html" style="text-decoration:none"><div class="vault-name">Meridian Cluster</div></a>
-        <div class="vault-detail">Platinum mount<br>Mixed-shape cluster: round, pear, marquise<br>Custom micro-pavé setting<br><br>The brief asked for asymmetry that felt intentional, not accidental. The cluster reads differently from each angle. That was the specification.</div>
+        <div class="vault-detail">18k white gold · open wireframe mount<br>Multi-shape cluster: round, pear, marquise<br>Twelve stones · micro-pavé bridge<br><br>Custom cluster ring where the structural wireframe is the visible design element. Each stone position was plotted before any metal was drawn.</div>
         <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="vault-cta">Enquire</a>
       </div>
     </div>
     <div class="vault-card" data-rx-scale>
-      <div class="vault-card-img-wrap"><img class="vault-card-img" src="Jewelry/Hand_wearing_asscher_halo_ring_202607111709.jpeg" alt="Fragment Band" loading="lazy" style="object-position:center 30%"></div>
+      <div class="vault-card-img-wrap"><img class="vault-card-img" src="Jewelry/Mixed_Metal_Trace_Flow_2K_202606302140.jpeg" alt="Fragment Band — mixed metal stacking ring set, seven bands" loading="lazy" style="object-position:center 40%"></div>
       <div class="vault-card-info">
         <div class="vault-status">Portfolio Piece</div>
         <a href="fragment-band.html" style="text-decoration:none"><div class="vault-name">Fragment Band</div></a>
-        <div class="vault-detail">18k white gold<br>Channel-set step-cut baguettes<br>Full eternity configuration<br><br>Each baguette selected for matched step-pattern. The tension between cut geometry and continuous band was the design problem. It was solved by the spacing.</div>
+        <div class="vault-detail">Mixed metals — yellow gold, rose gold, platinum, black rhodium<br>Seven-band stacking set · seven diamond cuts<br>Round · princess · bezel · emerald · marquise · pavé · pavé noir<br><br>Stacking ring set designed to work individually or as a system. The logic holds in every combination.</div>
         <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="vault-cta">Enquire</a>
       </div>
     </div>
@@ -1473,88 +1569,6 @@ ul,ol{list-style:none;}
     <div class="img-marquee-item"><img src="Jewelry/f19.png" alt="" loading="lazy"></div>
   </div>
 </div>
-
-<!-- PORTFOLIO WORKS STRIP -->
-<section id="section-works">
-  <div class="works-head">
-    <h2 class="works-title" data-rx-reveal>Selected<br>Portfolio</h2>
-    <span class="works-meta" data-rx-reveal>Eight pieces &middot; MMXXVI</span>
-  </div>
-  <div class="works-strip" id="works-strip">
-    <a class="work-card" href="medallion.html" data-rx-nav>
-      <video preload="none" muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/rarityx_pendant.mp4" type="video/mp4"></video>
-      <div class="work-card-grad"></div>
-      <div class="work-card-info">
-        <span class="work-rx">RX&ndash;01</span>
-        <span class="work-name">Crest<br>Medallion</span>
-        <span class="work-link-hint">View piece &rarr;</span>
-      </div>
-    </a>
-    <a class="work-card" href="sigil.html" data-rx-nav>
-      <video preload="none" muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/openbox_ring.mp4" type="video/mp4"></video>
-      <div class="work-card-grad"></div>
-      <div class="work-card-info">
-        <span class="work-rx">RX&ndash;02</span>
-        <span class="work-name">Sigil<br>Signet</span>
-        <span class="work-link-hint">View piece &rarr;</span>
-      </div>
-    </a>
-    <a class="work-card" href="solstice-solitaire.html" data-rx-nav>
-      <video preload="none" muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/soli_round_ring.mp4" type="video/mp4"></video>
-      <div class="work-card-grad"></div>
-      <div class="work-card-info">
-        <span class="work-rx">RX&ndash;03</span>
-        <span class="work-name">Solstice<br>Solitaire</span>
-        <span class="work-link-hint">View piece &rarr;</span>
-      </div>
-    </a>
-    <a class="work-card" href="fragment-band.html" data-rx-nav>
-      <video preload="none" muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/vertical_stack_ring.mp4" type="video/mp4"></video>
-      <div class="work-card-grad"></div>
-      <div class="work-card-info">
-        <span class="work-rx">RX&ndash;04</span>
-        <span class="work-name">Fragment<br>Band</span>
-        <span class="work-link-hint">View piece &rarr;</span>
-      </div>
-    </a>
-    <a class="work-card" href="meridian-cluster.html" data-rx-nav>
-      <video preload="none" muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_mq_ring.mp4" type="video/mp4"></video>
-      <div class="work-card-grad"></div>
-      <div class="work-card-info">
-        <span class="work-rx">RX&ndash;05</span>
-        <span class="work-name">Meridian<br>Cluster</span>
-        <span class="work-link-hint">View piece &rarr;</span>
-      </div>
-    </a>
-    <a class="work-card" href="eclipse-halo.html" data-rx-nav>
-      <video preload="none" muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/halo_2shankpave_ring.mp4" type="video/mp4"></video>
-      <div class="work-card-grad"></div>
-      <div class="work-card-info">
-        <span class="work-rx">RX&ndash;06</span>
-        <span class="work-name">Eclipse<br>Halo</span>
-        <span class="work-link-hint">View piece &rarr;</span>
-      </div>
-    </a>
-    <a class="work-card" href="constellation-band.html" data-rx-nav>
-      <video preload="none" muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_eternity_rotate_ring.mp4" type="video/mp4"></video>
-      <div class="work-card-grad"></div>
-      <div class="work-card-info">
-        <span class="work-rx">RX&ndash;07</span>
-        <span class="work-name">Constellation<br>Band</span>
-        <span class="work-link-hint">View piece &rarr;</span>
-      </div>
-    </a>
-    <a class="work-card" href="lp-v6.html" data-rx-nav>
-      <video preload="none" muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/lp_v6.mp4" type="video/mp4"></video>
-      <div class="work-card-grad"></div>
-      <div class="work-card-info">
-        <span class="work-rx">RX&ndash;08</span>
-        <span class="work-name">Orbit<br>Stack</span>
-        <span class="work-link-hint">View piece &rarr;</span>
-      </div>
-    </a>
-  </div>
-</section>
 
 <!-- SECTION 09 - THE ATELIER -->
 <section id="section-09">
@@ -2490,26 +2504,6 @@ ul,ol{list-style:none;}
     });
   });
 
-  // work-card videos: play when card enters viewport, pause when it leaves
-  (function(){
-    var cards = document.querySelectorAll('.work-card');
-    if (!cards.length) return;
-    var vObs = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        var v = e.target.querySelector('video');
-        if (!v) return;
-        if (e.isIntersecting){ v.play(); } else { v.pause(); }
-      });
-    }, { threshold: 0.3 });
-    cards.forEach(function(c){ vObs.observe(c); });
-    if (window.gsap && window.ScrollTrigger){
-      gsap.from('.work-card', {
-        opacity:0, y:44,
-        duration:.72, ease:'power2.out', stagger:.08,
-        scrollTrigger:{ trigger:'#works-strip', start:'top 82%', once:true }
-      });
-    }
-  })();
 })();
 </script>
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
