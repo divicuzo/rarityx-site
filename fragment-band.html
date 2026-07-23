@@ -26,8 +26,9 @@
    slivers that shear apart as you scroll out of the hero */
 #shards{position:relative;background:var(--dark);padding:22vh 0;overflow:hidden}
 .shard-row{display:flex;gap:2px;height:52vh;min-height:320px}
-.shard{flex:1;overflow:hidden;position:relative}
-.shard img{position:absolute;top:0;left:50%;height:100%;width:auto;min-width:100%;object-fit:cover;transform:translateX(-50%)}
+.shard{flex:1;overflow:hidden;position:relative;cursor:pointer}
+.shard img{position:absolute;top:0;left:50%;height:100%;width:auto;min-width:100%;object-fit:cover;transform:translateX(-50%);transition:transform .7s cubic-bezier(.23,1,.32,1),filter .5s cubic-bezier(.23,1,.32,1)}
+.shard:hover img{transform:translateX(-50%) scale(1.07);filter:brightness(.8) contrast(1.1)}
 .shard-caption{max-width:1400px;margin:9vh auto 0;padding:0 6vw;display:flex;justify-content:space-between;align-items:baseline;gap:30px;flex-wrap:wrap}
 .shard-caption p{font-size:15px;line-height:1.65;color:var(--muted);max-width:44ch}
 .shard-caption .lbl{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
@@ -59,10 +60,10 @@
 .scrub-v7-sticky{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden}
 #seq-canvas-v7{position:absolute;inset:0;width:100%;height:100%}
 .v7-overlay{position:absolute;inset:0;z-index:2;pointer-events:none}
-.v7-stage-a{position:absolute;bottom:10vh;left:6vw;opacity:1;transition:opacity .4s}
+.v7-stage-a{position:absolute;bottom:10vh;left:6vw;opacity:1;transition:opacity 120ms cubic-bezier(.23,1,.32,1)}
 .v7-stage-a .v7-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#d9d9d5;margin-bottom:10px}
 .v7-stage-a h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(44px,7.5vw,110px);line-height:.9;color:var(--text)}
-.v7-stage-b{position:absolute;top:50%;right:6vw;transform:translateY(-50%);opacity:0;transition:opacity .4s;text-align:right}
+.v7-stage-b{position:absolute;top:50%;right:6vw;transform:translateY(-50%);opacity:0;transition:opacity 120ms cubic-bezier(.23,1,.32,1);text-align:right}
 .v7-stage-b p{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;font-size:clamp(18px,2.2vw,28px);color:#d4d4d0;line-height:1.6;max-width:28ch}
 .v7-bar{position:absolute;left:0;bottom:0;height:2px;background:#c8c8c8;width:0;z-index:3}
 @media(prefers-reduced-motion:reduce){#scrub-v7{height:auto}.scrub-v7-sticky{position:relative;height:auto}}

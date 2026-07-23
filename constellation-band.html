@@ -32,7 +32,8 @@
 .story-copy .lbl{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
 .story-copy p{font-size:15px;line-height:1.65;color:var(--muted);max-width:38ch}
 .story-copy .dim{margin-top:26px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--muted)}
-.story-visual img{width:100%;max-width:560px;aspect-ratio:4/3;object-fit:cover;filter:saturate(.92) brightness(.94)}
+.story-visual img{width:100%;max-width:560px;aspect-ratio:4/3;object-fit:cover;filter:saturate(.92) brightness(.94);clip-path:inset(0);transform-origin:center;transition:transform .7s cubic-bezier(.23,1,.32,1),filter .5s cubic-bezier(.23,1,.32,1)}
+.story-visual:hover img{transform:scale(1.04);filter:saturate(1.05) brightness(.9)}
 .big-num{position:absolute;right:4vw;bottom:4vh;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(90px,14vw,210px);line-height:1;color:#dfe2ea;letter-spacing:-.02em;z-index:2}
 .big-num sup{font-size:.35em;vertical-align:super;color:var(--muted)}
 
