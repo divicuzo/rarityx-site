@@ -28,7 +28,7 @@
 .ec-phase b{color:var(--text);font-weight:400}
 
 /* ── STORY ── */
-#story{position:relative;background:var(--dark);padding:20vh 6vw;overflow:hidden}
+#story{position:relative;background:#330D1E;padding:20vh 6vw;overflow:hidden}
 .story-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
 .story-copy h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(40px,5.5vw,84px);line-height:.92;color:var(--text)}
 .story-copy .rule{width:44px;height:1px;background:var(--chrome);margin:34px 0 18px}
@@ -37,11 +37,10 @@
 .story-copy .dim{margin-top:26px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--muted)}
 .story-visual{position:relative;display:flex;justify-content:center}
 .story-visual img{width:min(420px,74vw);aspect-ratio:1;object-fit:cover;border-radius:50%;filter:saturate(.92)}
-.story-visual::after{content:"";position:absolute;top:6%;right:14%;width:34%;height:34%;border-radius:50%;background:radial-gradient(circle,rgba(5,5,5,.92) 58%,transparent 72%)}
 .big-num{position:absolute;right:4vw;bottom:4vh;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(90px,14vw,210px);line-height:1;color:#dfe2ea;letter-spacing:-.02em}
 .big-num sup{font-size:.35em;vertical-align:super;color:var(--muted)}
 
-#finale{position:relative;min-height:100vh;background:var(--dark);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+#finale{position:relative;min-height:100vh;background:#330D1E;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
 .finale-stack{position:relative;z-index:2;padding:16vh 4vw}
 .finale-stack h2{font-size:clamp(56px,12vw,180px)}
 .finale-stack h2 span{display:block}
@@ -106,7 +105,6 @@
       </video>
     </div>
   </div>
-  <div class="big-num reveal">100<sup>%</sup></div>
 </section>
 
 <section id="finale" aria-label="Light, withheld">

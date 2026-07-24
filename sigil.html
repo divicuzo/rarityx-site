@@ -47,7 +47,7 @@
 .seq-bar{position:absolute;left:0;bottom:0;height:2px;background:var(--ink);width:0;z-index:4}
 
 /* ── DARK: LETTERFORM ── */
-#letter{position:relative;min-height:100vh;min-height:100dvh;background:var(--dark);overflow:hidden;display:flex;align-items:center}
+#letter{position:relative;min-height:100vh;min-height:100dvh;background:#330D1E;overflow:hidden;display:flex;align-items:center}
 .letter-inner{position:relative;z-index:2;width:100%;max-width:1400px;margin:0 auto;padding:16vh 6vw;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 .letter-visual{position:relative;display:flex;justify-content:center;order:-1}
 .letter-visual img{width:min(400px,72vw);aspect-ratio:1;object-fit:cover;object-position:50% 42%;border-radius:50%;filter:saturate(.9) contrast(1.05)}
@@ -60,7 +60,7 @@
 .big-num sup{font-size:.35em;vertical-align:super;color:var(--muted)}
 
 /* ── CHROME FINALE ── */
-#finale{position:relative;min-height:110vh;background:var(--dark);overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
+#finale{position:relative;min-height:110vh;background:#330D1E;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
 .finale-ghost{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;pointer-events:none}
 .finale-ghost img{width:min(560px,82vw);opacity:.15;filter:grayscale(.4) brightness(1.6);mix-blend-mode:screen;mask-image:radial-gradient(circle at 50% 48%, #000 32%, transparent 60%);-webkit-mask-image:radial-gradient(circle at 50% 48%, #000 32%, transparent 60%)}
 .finale-stack{position:relative;z-index:2;padding:18vh 4vw}
@@ -99,11 +99,6 @@
 <section id="scrub" aria-label="RX-02 Sigil — the signet, lifted apart">
   <div class="scrub-sticky">
     <div class="monogram" aria-hidden="true" id="monogram"><span>Rx</span></div>
-    <div class="ghost-rail" aria-hidden="true">
-      <span>Seal</span>
-      <span>Of</span>
-      <span>Origin</span>
-    </div>
     <canvas id="seq-canvas"></canvas>
 
     <div class="stage-a" id="stage-a">
@@ -146,7 +141,6 @@
       <p class="dim reveal">Seal &oslash; 14mm &middot; 950 platinum</p>
     </div>
   </div>
-  <div class="big-num reveal">1<sup>/1</sup></div>
 </section>
 
 <!-- ═══ CHROME FINALE ═══ -->
@@ -224,9 +218,10 @@
     var mobile = cw <= 768;
     var scale = mobile
       ? Math.min(cw / FW, ch / FH) * 1.5
-      : Math.max(cw / FW, ch / FH) * 0.94;
+      : Math.max(cw / FW, ch / FH);
     var w = FW * scale, h = FH * scale;
-    ctx.clearRect(0, 0, cw, ch);
+    ctx.fillStyle = '#d9dadb';
+    ctx.fillRect(0, 0, cw, ch);
     ctx.drawImage(img, (cw - w) * 0.5, (ch - h) * 0.5, w, h);
   }
 

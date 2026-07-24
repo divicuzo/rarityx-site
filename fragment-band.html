@@ -24,7 +24,7 @@
 
 /* signature motion: fragment strips — the hero image sliced into 7 vertical
    slivers that shear apart as you scroll out of the hero */
-#shards{position:relative;background:var(--dark);padding:22vh 0;overflow:hidden}
+#shards{position:relative;background:#330D1E;padding:22vh 0;overflow:hidden}
 .shard-row{display:flex;gap:2px;height:52vh;min-height:320px}
 .shard{flex:1;overflow:hidden;position:relative;cursor:pointer}
 .shard img{position:absolute;top:0;left:50%;height:100%;width:auto;min-width:100%;object-fit:cover;transform:translateX(-50%);transition:transform .7s cubic-bezier(.23,1,.32,1),filter .5s cubic-bezier(.23,1,.32,1)}
@@ -34,7 +34,7 @@
 .shard-caption .lbl{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
 
 /* ── STORY ── */
-#story{position:relative;background:var(--dark);padding:16vh 6vw 20vh;overflow:hidden}
+#story{position:relative;background:#330D1E;padding:16vh 6vw 20vh;overflow:hidden}
 .story-inner{max-width:1400px;margin:0 auto}
 .story-inner h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(40px,5.5vw,84px);line-height:.92;color:var(--text);max-width:12ch}
 .story-inner .rule{width:44px;height:1px;background:var(--chrome);margin:34px 0 18px}
@@ -44,7 +44,7 @@
 .big-num sup{font-size:.35em;vertical-align:super;color:var(--muted)}
 
 /* ── CHROME FINALE ── */
-#finale{position:relative;min-height:100vh;background:var(--dark);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+#finale{position:relative;min-height:100vh;background:#330D1E;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
 .finale-stack{position:relative;z-index:2;padding:16vh 4vw}
 .finale-stack h2{font-size:clamp(56px,12vw,180px)}
 .finale-stack h2 span{display:block}
@@ -92,22 +92,6 @@
   <div class="hero-type" style="pointer-events:none"><span class="scroll-hint">Scroll &#8595;</span></div>
 </section>
 
-<section id="shards" aria-label="The band, in fragments">
-  <div class="shard-row" id="shard-row">
-    <div class="shard"><img src="Jewelry/Mixed_Metal_Trace_Flow_2K_202606302140.jpeg" alt="" loading="lazy"></div>
-    <div class="shard"><img src="Jewelry/Mixed_metal_detail_202606012044.jpeg" alt="" loading="lazy"></div>
-    <div class="shard"><img src="Jewelry/Emerald_ring_beside_diamond_2K_202607111709.jpeg" alt="" loading="lazy"></div>
-    <div class="shard"><img src="Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg" alt="" loading="lazy"></div>
-    <div class="shard"><img src="Jewelry/Diamond_bracelet_on_sculpture_2K_202607111710.jpeg" alt="" loading="lazy"></div>
-    <div class="shard"><img src="Jewelry/Hand_wearing_asscher_halo_ring_202607111709.jpeg" alt="" loading="lazy"></div>
-    <div class="shard"><img src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg" alt="" loading="lazy"></div>
-  </div>
-  <div class="shard-caption">
-    <span class="lbl reveal">Mixed metals</span>
-    <p class="reveal">Round, princess, bezel, emerald, marquise, pav&eacute;, pav&eacute; noir &mdash; each band a fragment of a different idea, worn as one.</p>
-  </div>
-</section>
-
 <!-- ═══ LP-V7 SCROLL SCRUB ═══ -->
 <section id="scrub-v7" aria-label="Fragment Band — the geometry, in motion">
   <div class="scrub-v7-sticky">
@@ -125,6 +109,22 @@
   </div>
 </section>
 
+<section id="shards" aria-label="The band, in fragments">
+  <div class="shard-row" id="shard-row">
+    <div class="shard"><img src="Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg" alt="" loading="lazy"></div>
+    <div class="shard"><img src="Jewelry/Ethereal_Pavé_Crest_Platinum_2K_202606302140.jpeg" alt="" loading="lazy"></div>
+    <div class="shard"><img src="Jewelry/Emerald_ring_beside_diamond_2K_202607111709.jpeg" alt="" loading="lazy"></div>
+    <div class="shard"><img src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg" alt="" loading="lazy"></div>
+    <div class="shard"><img src="Jewelry/Hand_wearing_asscher_halo_ring_202607111709.jpeg" alt="" loading="lazy"></div>
+    <div class="shard"><img src="Jewelry/Diamond_bracelet_on_sculpture_2K_202607111710.jpeg" alt="" loading="lazy"></div>
+    <div class="shard"><img src="Jewelry/Gemini_Generated_Image_ps4myeps4myeps4m.jpeg" alt="" loading="lazy"></div>
+  </div>
+  <div class="shard-caption">
+    <span class="lbl reveal">Mixed metals</span>
+    <p class="reveal">Round, princess, bezel, emerald, marquise, pav&eacute;, pav&eacute; noir &mdash; each band a fragment of a different idea, worn as one.</p>
+  </div>
+</section>
+
 <section id="story" aria-label="Built to be broken apart">
   <div class="story-inner">
     <h2 class="reveal">Built to Be<br>Broken Apart</h2>
@@ -135,7 +135,6 @@
       <source src="Jewelry/Portfolio_pieces_vids/vertical_stack_ring.mp4" type="video/mp4">
     </video>
   </div>
-  <div class="big-num reveal">7<sup>b</sup></div>
 </section>
 
 <section id="finale" aria-label="One idea, in fragments">

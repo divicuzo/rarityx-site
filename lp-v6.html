@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RX-08 ORBIT STACK | RarityX</title>
-<meta name="description" content="Orbit Stack — four bands in alignment, drawn toward each other. By RarityX.">
+<title>RX-08 PAVÉ ARC | RarityX</title>
+<meta name="description" content="Pavé Arc — a necklace set in continuous diamond pavé. Each stone placed. None of them incidental. By RarityX.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Bodoni+Moda:ital,opsz,wght@1,6..96,300;1,6..96,400&family=Outfit:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -12,74 +12,53 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <link rel="stylesheet" href="atelier.css">
 <style>
-/* ── SCRUB: video scroll-scrub, platinum room ── */
-#scrub{position:relative;height:500vh;background:var(--plat)}
-.scrub-sticky{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden;background:var(--plat)}
-#orbit-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:var(--plat);z-index:1}
+#hero{position:relative;height:100vh;height:100dvh;overflow:hidden;background:#050505}
+#hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#hero .scrim{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,5,5,.15) 0%,transparent 35%,rgba(5,5,5,.7) 100%)}
+.hero-type{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:0 4vw 8vh}
+.hero-type h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(58px,11vw,168px);line-height:.88;color:var(--text)}
+.hero-type h1 em{display:block;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;text-transform:none;font-size:.42em;line-height:1.15;color:#e8e6df;padding-bottom:.12em}
+.hero-type .scroll-hint{position:absolute;bottom:28px;right:4vw;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#b9b9b4}
 
-/* orbital ring decoration */
-.orbit-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:0}
-.orbit-ring{position:absolute;border-radius:50%;border:1px solid rgba(60,60,60,.09)}
-.or1{width:32vmin;height:32vmin;animation:orbDrift 18s linear infinite}
-.or2{width:54vmin;height:54vmin;animation:orbDrift 27s linear infinite reverse}
-.or3{width:76vmin;height:76vmin;animation:orbDrift 40s linear infinite}
-@keyframes orbDrift{to{transform:rotate(360deg)}}
-@media(prefers-reduced-motion:reduce){.orbit-ring{animation:none}}
+/* detail strip — close-up moment between hero and story */
+#detail{position:relative;background:#050505;overflow:hidden;height:60vh;display:flex;align-items:stretch}
+#detail video{width:100%;height:100%;object-fit:cover;filter:brightness(.78) saturate(.88)}
+#detail .detail-label{position:absolute;bottom:10vh;left:6vw;z-index:2;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:rgba(245,245,245,.55)}
 
-/* stage-a: intro */
-.stage-a{position:absolute;inset:0;z-index:3;pointer-events:none}
-.stage-a .model{position:absolute;left:4vw;top:50%;transform:translateY(-50%);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(64px,10.5vw,158px);line-height:.9;color:var(--ink);letter-spacing:-.01em}
-.stage-a .tag{position:absolute;left:4.4vw;top:calc(50% + clamp(64px,10.5vw,158px) * .54 + 8px);max-width:260px;color:var(--ink)}
-.stage-a .tag em{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;display:block;font-size:clamp(15px,1.8vw,21px);line-height:1.45;margin-bottom:10px;padding-bottom:3px}
-.stage-a .tag span{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:#6f706e}
-.ghost-idx{position:absolute;right:3vw;top:50%;transform:translateY(-50%);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(100px,16vw,240px);line-height:1;color:transparent;-webkit-text-stroke:1.2px #c2c3c1;letter-spacing:-.02em;pointer-events:none;z-index:0}
+/* story — the necklace as drawn object */
+#story{position:relative;background:#330D1E;padding:20vh 6vw;overflow:hidden}
+.story-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.story-copy h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(40px,5.5vw,84px);line-height:.92;color:var(--text)}
+.story-copy .rule{width:44px;height:1px;background:var(--chrome);margin:34px 0 18px}
+.story-copy .lbl{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.story-copy p{font-size:15px;line-height:1.65;color:var(--muted);max-width:38ch}
+.story-copy .dim{margin-top:26px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--muted)}
+.story-visual{position:relative;display:flex;justify-content:center}
+.story-visual video{width:100%;max-width:480px;aspect-ratio:9/16;object-fit:cover;filter:brightness(.84) saturate(.9)}
 
-/* stage-b: callouts at mid-scroll */
-.stage-b{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0}
-.callout{position:absolute;right:6vw;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);max-width:200px;line-height:1.75;text-align:right}
-.callout::after{content:"";display:block;width:34px;height:1px;background:var(--ink);margin-top:10px;margin-left:auto}
-.callout b{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22px;letter-spacing:.04em;margin-bottom:3px}
-.co-1{top:18%}
-.co-2{top:44%}
-.co-3{top:68%}
-.co-edition{position:absolute;left:5vw;bottom:16%;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(40px,5.5vw,80px);line-height:1;color:var(--ink)}
-.co-edition small{display:block;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;font-weight:400;color:#6f706e;margin-top:6px;text-transform:uppercase}
+/* spec row */
+#specs{background:#3f1525;padding:14vh 6vw;border-top:1px solid #5a1a2e;border-bottom:1px solid #5a1a2e}
+.specs-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#5a1a2e}
+.spec-item{background:#3f1525;padding:6vh 4vw}
+.spec-item .s-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:14px}
+.spec-item .s-val{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(28px,3.5vw,52px);text-transform:uppercase;color:var(--text);line-height:.95}
+.spec-item .s-sub{font-family:'Outfit',sans-serif;font-size:13px;color:var(--muted);margin-top:10px;line-height:1.5}
 
-/* stage-c: closing text */
-.stage-c{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:9vh}
-.stage-c p{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;font-size:clamp(17px,2.2vw,28px);color:var(--ink);text-align:center;max-width:32ch;line-height:1.55;padding-bottom:4px}
-
-/* progress bar */
-.seq-bar{position:absolute;left:0;bottom:0;height:2px;background:var(--ink);width:0;z-index:4}
-
-/* ── DARK LETTER SECTION ── */
-#letter{position:relative;min-height:100vh;background:var(--dark);overflow:hidden;display:flex;align-items:center;padding:18vh 6vw}
-.letter-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
-.letter-copy h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(40px,5.5vw,84px);line-height:.92;color:var(--text)}
-.letter-copy .rule{width:44px;height:1px;background:var(--chrome);margin:34px 0 18px}
-.letter-copy .lbl{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-.letter-copy p{font-size:15px;line-height:1.65;color:var(--muted);max-width:38ch}
-.letter-copy .dim{margin-top:26px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--muted)}
-.letter-visual video{width:100%;aspect-ratio:9/16;max-height:74vh;object-fit:cover;filter:brightness(.82) saturate(.9);display:block}
-.big-num{position:absolute;right:4vw;bottom:4vh;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(90px,14vw,210px);line-height:1;color:#dfe2ea;letter-spacing:-.02em}
-.big-num sup{font-size:.35em;vertical-align:super;color:var(--muted)}
-
-/* ── CHROME FINALE ── */
-#finale{position:relative;min-height:100vh;background:var(--dark);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+/* finale */
+#finale{position:relative;min-height:100vh;background:#330D1E;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
 .finale-stack{position:relative;z-index:2;padding:16vh 4vw}
 .finale-stack h2{font-size:clamp(56px,12vw,180px)}
 .finale-stack h2 span{display:block}
 .finale-stack h2 .off-l{transform:translateX(-4vw)}
 .finale-stack h2 .off-r{transform:translateX(4vw)}
 .finale-cta{margin-top:8vh}
-.finale-cta a{display:inline-block;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--text);text-decoration:none;border:1px solid #3a3a3a;padding:18px 42px;transition:background .25s ease,color .25s ease,transform .15s ease}
-.finale-cta a:hover{background:var(--chrome);color:var(--dark)}
+.finale-cta a{display:inline-block;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--text);text-decoration:none;border:1px solid #5a1a2e;padding:18px 42px;transition:background .25s ease,color .25s ease,transform .15s ease}
+.finale-cta a:hover{background:var(--chrome);color:#330D1E}
 .finale-cta a:active{transform:scale(.98)}
 
 @media(max-width:768px){
-  .letter-grid{grid-template-columns:1fr;gap:48px}
-  .letter-visual{display:none}
-  .big-num{bottom:2vh}
+  .story-grid{grid-template-columns:1fr;gap:48px}
+  .specs-inner{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -90,70 +69,73 @@
   <a class="mono" href="index.html#section-09" data-rx-nav>Start with a conversation</a>
 </nav>
 
-<!-- ═══ VIDEO SCRUB SCROLL ═══ -->
-<section id="scrub" aria-label="Orbit Stack — scroll to reveal">
-  <div class="scrub-sticky">
-    <div class="orbit-bg" aria-hidden="true">
-      <span class="orbit-ring or1"></span>
-      <span class="orbit-ring or2"></span>
-      <span class="orbit-ring or3"></span>
-    </div>
-    <video id="orbit-video" muted playsinline preload="auto" aria-label="Orbit Stack band sequence">
-      <source src="Jewelry/lp_v6.mp4" type="video/mp4">
-    </video>
-    <div class="ghost-idx" aria-hidden="true">08</div>
-
-    <!-- Stage A: title, 0–22% -->
-    <div class="stage-a">
-      <div class="model reveal">Orbit<br>Stack</div>
-      <div class="tag reveal">
-        <em>Four bands in alignment,<br>drawn toward each other.</em>
-      </div>
-    </div>
-
-    <!-- Stage B: band callouts, 28–76% -->
-    <div class="stage-b" aria-hidden="true">
-      <div class="callout co-1"><b>Band I</b>Round wire<br>18k yellow gold</div>
-      <div class="callout co-2"><b>Band II</b>Knife edge<br>Platinum</div>
-      <div class="callout co-3"><b>Band III</b>Pave rail<br>18k rose gold</div>
-      <div class="co-edition">4<small>Bands in orbit</small></div>
-    </div>
-
-    <!-- Stage C: closing, 78–100% -->
-    <div class="stage-c" aria-hidden="true">
-      <p>The stack is a decision. Not about quantity, but about proximity.</p>
-    </div>
-
-    <div class="seq-bar" aria-hidden="true"></div>
+<!-- ═══ HERO ═══ -->
+<section id="hero" aria-label="Pavé Arc necklace">
+  <video autoplay muted loop playsinline>
+    <source src="Jewelry/Portfolio_pieces_vids/fancy_pave_necklace.mp4" type="video/mp4">
+  </video>
+  <div class="scrim"></div>
+  <div class="hero-type">
+    <h1 class="reveal">Pav&eacute;<br>Arc<em>each stone placed. none incidental.</em></h1>
   </div>
+  <div class="hero-type" style="pointer-events:none"><span class="scroll-hint">Scroll &#8595;</span></div>
 </section>
 
-<!-- ═══ DARK LETTER ═══ -->
-<section id="letter" aria-label="The pull of proximity">
-  <div class="letter-grid">
-    <div class="letter-copy">
-      <h2 class="reveal">The Pull<br>of Proximity</h2>
+<!-- ═══ DETAIL ═══ -->
+<section id="detail" aria-label="Pavé Arc detail">
+  <video autoplay muted loop playsinline>
+    <source src="Jewelry/Portfolio_pieces_vids/fancy_pave_necklace.mp4" type="video/mp4">
+  </video>
+  <div class="detail-label">Continuous pav&eacute; &middot; 18k white gold</div>
+</section>
+
+<!-- ═══ STORY ═══ -->
+<section id="story" aria-label="The necklace as drawn object">
+  <div class="story-grid">
+    <div class="story-copy">
+      <h2 class="reveal">Surface<br>as Design</h2>
       <div class="rule reveal"></div>
-      <div class="lbl reveal">Band Stack</div>
-      <p class="reveal">Four bands designed against each other, not independently. The profile of Band I determined the knife edge of Band II. The gap between II and III was set at the drawing stage before any stone was chosen. Worn together, they orbit a shared centre of gravity.</p>
-      <p class="dim reveal">Four bands &middot; 18k yellow, rose, platinum &middot; hand-finished</p>
+      <div class="lbl reveal">Pavé Setting</div>
+      <p class="reveal">A pav&eacute; necklace is not decorated &mdash; it is surfaced. Every millimetre of metal is a decision about stone size, spacing, and the line the eye follows. The arc is drawn first. The stones are mapped to it after.</p>
+      <p class="reveal" style="margin-top:18px">This piece has no negative space by accident. Where the metal shows, it is meant to show.</p>
+      <p class="dim reveal">Continuous pav&eacute; &middot; 18k white gold &middot; graduated brilliant cut</p>
     </div>
-    <div class="letter-visual reveal">
+    <div class="story-visual reveal">
       <video autoplay muted loop playsinline>
-        <source src="Jewelry/Portfolio_pieces_vids/diam_eternity_ring_v1.mp4" type="video/mp4">
+        <source src="Jewelry/Portfolio_pieces_vids/fancy_pave_necklace.mp4" type="video/mp4">
       </video>
     </div>
   </div>
-  <div class="big-num reveal">4<sup>b</sup></div>
+</section>
+
+<!-- ═══ SPEC ROW ═══ -->
+<section id="specs" aria-label="Pavé Arc specifications">
+  <div class="specs-inner">
+    <div class="spec-item reveal">
+      <span class="s-label">Setting</span>
+      <div class="s-val">Continuous<br>Pav&eacute;</div>
+      <p class="s-sub">Stones flush to the surface, shared prong walls, no visible metal between</p>
+    </div>
+    <div class="spec-item reveal">
+      <span class="s-label">Metal</span>
+      <div class="s-val">18k White<br>Gold</div>
+      <p class="s-sub">Polished inner arc, satin outer edge. The two finishes read as one surface in motion</p>
+    </div>
+    <div class="spec-item reveal">
+      <span class="s-label">Cut</span>
+      <div class="s-val">Graduated<br>Brilliant</div>
+      <p class="s-sub">Stones diminish from center to clasp. The graduation is drawn, not sourced &mdash; the brief comes first</p>
+    </div>
+  </div>
 </section>
 
 <!-- ═══ FINALE ═══ -->
-<section id="finale" aria-label="Four bands, one orbit">
+<section id="finale" aria-label="Surface as the statement">
   <div class="finale-stack">
     <h2 class="chrome-type reveal">
-      <span class="off-l">Four Bands</span>
-      <span class="off-r">One</span>
-      <span>Orbit</span>
+      <span class="off-l">Surface</span>
+      <span class="off-r">As</span>
+      <span>Statement</span>
     </h2>
     <div class="finale-cta reveal">
       <a href="index.html#section-09" data-rx-nav>Start with a conversation</a>
@@ -163,7 +145,7 @@
 
 <a class="next-piece" href="medallion.html" data-rx-nav>
   <span class="np-label">Back to the beginning &middot; RX&#8211;01</span>
-  <span class="np-name">The<br>Medallion</span>
+  <span class="np-name">Crest<br>Medallion</span>
   <span class="np-arrow">&#8594;</span>
 </a>
 
@@ -191,65 +173,28 @@
 </div>
 <footer class="rx-foot">
   <a href="constellation-band.html" data-rx-nav>&larr; RX&#8211;07 Constellation Band</a>
-  <span>RX&#8211;08 Orbit Stack &middot; MMXXVI</span>
+  <span>RX&#8211;08 Pav&eacute; Arc &middot; MMXXVI</span>
 </footer>
 
 <script src="atelier.js"></script>
 <script>
 (function(){
-  if (window.RX.prefersReduced) return;
-
-  var video  = document.getElementById('orbit-video');
-  var stageA = document.querySelector('.stage-a');
-  var stageB = document.querySelector('.stage-b');
-  var stageC = document.querySelector('.stage-c');
-  var bar    = document.querySelector('.seq-bar');
-  var dur    = 0;
-
-  /* pause on load — we control playback via currentTime */
-  video.pause();
-  video.currentTime = 0;
-  video.addEventListener('loadedmetadata', function(){ dur = video.duration; });
-
-  if (!window.gsap || !window.ScrollTrigger) return;
+  if (window.RX.prefersReduced || !window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
 
-  ScrollTrigger.create({
-    trigger: '#scrub',
-    start: 'top top',
-    end: 'bottom bottom',
-    scrub: 0,
-    onUpdate: function(self){
-      var p = self.progress;
-
-      /* video currentTime scrub */
-      if (dur > 0 && video.readyState >= 2){
-        var t = p * dur;
-        if (Math.abs(video.currentTime - t) > 0.016){ video.currentTime = t; }
-      }
-
-      bar.style.width = (p * 100) + '%';
-
-      /* stage-a: visible 0-0.22, fade out 0.22-0.30 */
-      stageA.style.opacity = p < 0.22 ? 1 : Math.max(0, 1 - (p - 0.22) / 0.08);
-
-      /* stage-b: in 0.28-0.36, hold 0.36-0.70, out 0.70-0.78 */
-      stageB.style.opacity = p < 0.28 ? 0
-        : p < 0.36 ? (p - 0.28) / 0.08
-        : p < 0.70 ? 1
-        : p < 0.78 ? 1 - (p - 0.70) / 0.08
-        : 0;
-
-      /* stage-c: in 0.78-0.86 */
-      stageC.style.opacity = p < 0.78 ? 0 : Math.min(1, (p - 0.78) / 0.08);
+  /* detail section: subtle scale on scroll */
+  gsap.fromTo('#detail video',
+    { scale: 1.06 },
+    { scale: 1, ease: 'none',
+      scrollTrigger: { trigger: '#detail', start: 'top bottom', end: 'bottom top', scrub: 1 }
     }
-  });
+  );
 
-  /* letter section: parallax on big-num */
-  gsap.fromTo('.big-num',
-    { y: 40 },
-    { y: -40, ease: 'none',
-      scrollTrigger: { trigger: '#letter', start: 'top bottom', end: 'bottom top', scrub: 0.6 }
+  /* story visual: settle in */
+  gsap.fromTo('.story-visual video',
+    { scale: 1.04, filter: 'brightness(0.7) saturate(0.7)' },
+    { scale: 1, filter: 'brightness(0.84) saturate(0.9)', ease: 'none',
+      scrollTrigger: { trigger: '#story', start: 'top 80%', end: 'center center', scrub: true }
     }
   );
 })();
