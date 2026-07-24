@@ -80,7 +80,6 @@
   --active-dot:#f5f5f5;
   --ease-out:cubic-bezier(0.23,1,0.32,1);
   --ease-in-out:cubic-bezier(0.77,0,0.175,1);
-  --ease-spring:cubic-bezier(0.34,1.56,0.64,1);
   --font-display:'Barlow Condensed',sans-serif;
   --font-mono:'Space Mono','JetBrains Mono',monospace;
   --font-serif:'Bodoni Moda', 'Didot',serif;
@@ -107,6 +106,12 @@ ul,ol{list-style:none;}
 
 ::selection{background-color:var(--accent);color:var(--bg);}
 ::-moz-selection{background-color:var(--accent);color:var(--bg);}
+
+.skip-link{position:absolute;top:-100%;left:16px;z-index:9999;padding:10px 20px;background:var(--bg);color:var(--text);font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--divider);transition:top 0.15s ease;}
+.skip-link:focus{top:16px;outline:1px solid var(--accent);}
+:focus-visible{outline:1px solid var(--accent);outline-offset:3px;}
+:focus:not(:focus-visible){outline:none;}
+
 ::-webkit-scrollbar{width:4px;height:4px;}
 ::-webkit-scrollbar-track{background:var(--bg);}
 ::-webkit-scrollbar-thumb{background:var(--divider);border-radius:2px;}
@@ -157,7 +162,8 @@ ul,ol{list-style:none;}
 .cta-btn:hover::before{transform:scaleX(1);}
 
 .section-nav{position:fixed;right:max(24px,calc(env(safe-area-inset-right,0px) + 16px));top:50%;transform:translateY(-50%);z-index:99;display:flex;flex-direction:column;gap:8px;align-items:center;}
-.nav-dot{width:6px;height:6px;background:#3a3a3a;cursor:pointer;transition:background 0.3s ease,transform 0.3s ease;flex-shrink:0;}
+.nav-dot{width:6px;height:6px;background:#3a3a3a;cursor:pointer;transition:background 0.3s ease,transform 0.3s ease;flex-shrink:0;position:relative;}
+.nav-dot::before{content:'';position:absolute;inset:-10px;}
 .nav-dot.active{background:var(--text);transform:scale(1.2);}
 .nav-dot:hover{background:var(--accent);}
 
@@ -579,7 +585,7 @@ ul,ol{list-style:none;}
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 120px 80px 80px;
+  padding: clamp(80px,10vw,140px) clamp(24px,6vw,80px) clamp(56px,7vw,80px);
   overflow: hidden;
   border-top: 1px solid #1e1e1e;
 }
@@ -833,6 +839,7 @@ ul,ol{list-style:none;}
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 </head>
 <body>
+<a href="#section-01" class="skip-link">Skip to content</a>
 
 <!-- HEADER -->
 <header id="site-header" class="site-header">
@@ -858,19 +865,19 @@ ul,ol{list-style:none;}
 </header>
 
 <!-- RIGHT-SIDE SECTION DOTS -->
-<div class="section-nav" aria-label="Section navigation">
-  <div class="nav-dot active" data-section="grid" aria-label="Grid Intro"></div>
-  <div class="nav-dot" data-section="01" aria-label="Section 01"></div>
-  <div class="nav-dot" data-section="02" aria-label="Section 02"></div>
-  <div class="nav-dot" data-section="03" aria-label="Section 03"></div>
-  <div class="nav-dot" data-section="04" aria-label="Section 04"></div>
-  <div class="nav-dot" data-section="05" aria-label="Section 05"></div>
-  <div class="nav-dot" data-section="06" aria-label="Section 06"></div>
-  <div class="nav-dot" data-section="07" aria-label="Section 07"></div>
-  <div class="nav-dot" data-section="08" aria-label="Section 08"></div>
-  <div class="nav-dot" data-section="09" aria-label="Section 09"></div>
-  <div class="nav-dot" data-section="chicago" aria-label="Chicago"></div>
-</div>
+<nav class="section-nav" aria-label="Section navigation">
+  <div class="nav-dot active" data-section="grid" role="button" tabindex="0" aria-label="Go to: Portfolio Overview"></div>
+  <div class="nav-dot" data-section="01" role="button" tabindex="0" aria-label="Go to: Design Philosophy"></div>
+  <div class="nav-dot" data-section="02" role="button" tabindex="0" aria-label="Go to: Origin Log"></div>
+  <div class="nav-dot" data-section="03" role="button" tabindex="0" aria-label="Go to: Diamond Supply Chain"></div>
+  <div class="nav-dot" data-section="04" role="button" tabindex="0" aria-label="Go to: Effects of Diamonds"></div>
+  <div class="nav-dot" data-section="05" role="button" tabindex="0" aria-label="Go to: Obsession"></div>
+  <div class="nav-dot" data-section="06" role="button" tabindex="0" aria-label="Go to: Design Assembly"></div>
+  <div class="nav-dot" data-section="07" role="button" tabindex="0" aria-label="Go to: Setting Procedures"></div>
+  <div class="nav-dot" data-section="08" role="button" tabindex="0" aria-label="Go to: The Vault"></div>
+  <div class="nav-dot" data-section="09" role="button" tabindex="0" aria-label="Go to: The Atelier"></div>
+  <div class="nav-dot" data-section="chicago" role="button" tabindex="0" aria-label="Go to: Book a Consultation"></div>
+</nav>
 
 <!-- IMAGE SEQUENCE - HERO (landing hero, ring — every curve considered) -->
 <section id="section-vseq-hero" class="imgseq-section imgseq-section--hero" aria-label="The Ring — every curve considered">
@@ -1467,7 +1474,7 @@ ul,ol{list-style:none;}
         <div class="vault-status">By Consultation Only</div>
         <a href="solstice-solitaire.html" style="text-decoration:none"><div class="vault-name">Solstice Solitaire</div></a>
         <div class="vault-detail">950 platinum · four-prong solitaire<br>2.0ct–2.5ct round brilliant<br>D–F color · IF–VS1 clarity<br><br>Solitaire engagement ring designed around peak light performance. The prong geometry was drawn first — the stone sourced to fill it.</div>
-        <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="vault-cta">Enquire</a>
+        <button type="button" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="vault-cta">Enquire</button>
       </div>
     </div>
     <div class="vault-card" data-rx-scale>
@@ -1476,7 +1483,7 @@ ul,ol{list-style:none;}
         <div class="vault-status">Portfolio Piece</div>
         <a href="meridian-cluster.html" style="text-decoration:none"><div class="vault-name">Meridian Cluster</div></a>
         <div class="vault-detail">18k white gold · open wireframe mount<br>Multi-shape cluster: round, pear, marquise<br>Twelve stones · micro-pavé bridge<br><br>Custom cluster ring where the structural wireframe is the visible design element. Each stone position was plotted before any metal was drawn.</div>
-        <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="vault-cta">Enquire</a>
+        <button type="button" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="vault-cta">Enquire</button>
       </div>
     </div>
     <div class="vault-card" data-rx-scale>
@@ -1485,7 +1492,7 @@ ul,ol{list-style:none;}
         <div class="vault-status">Portfolio Piece</div>
         <a href="fragment-band.html" style="text-decoration:none"><div class="vault-name">Fragment Band</div></a>
         <div class="vault-detail">Mixed metals — yellow gold, rose gold, platinum, black rhodium<br>Seven-band stacking set · seven diamond cuts<br>Round · princess · bezel · emerald · marquise · pavé · pavé noir<br><br>Stacking ring set designed to work individually or as a system. The logic holds in every combination.</div>
-        <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="vault-cta">Enquire</a>
+        <button type="button" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="vault-cta">Enquire</button>
       </div>
     </div>
   </div>
@@ -1533,7 +1540,7 @@ ul,ol{list-style:none;}
       </div>
     </div>
     <div class="chicago-cta-row" data-rx-reveal>
-      <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="chicago-cta">Request a Visit Date</a>
+      <button type="button" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="chicago-cta">Request a Visit Date</button>
       <div class="chicago-avail">Today. We have availability.</div>
     </div>
   </div>
@@ -1590,7 +1597,7 @@ ul,ol{list-style:none;}
       <p style="font-family:Outfit,sans-serif;font-size:15px;color:#888;line-height:1.7;margin-bottom:14px;max-width:320px;">A design consultation is a free 45-minute conversation about your brief — no fee, no obligation. We work with one new commission at a time.</p>
       <p style="font-family:Outfit,sans-serif;font-size:14px;color:#a8a8a8;line-height:1.7;margin-bottom:20px;max-width:320px;">Send us anything that shows us your direction — a link, a saved image, a magazine cutout. That's often where the best briefs start.</p>
       <a href="mailto:rarityxcollective@gmail.com" class="s09-email">rarityxcollective@gmail.com</a>
-      <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="s09-btn">Book a Design Consult &rarr;</a>
+      <button type="button" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="s09-btn">Book a Design Consult &rarr;</button>
     </div>
     <div class="s09-syndicates-col">
       <div class="s09-syndicates-label">Portfolio</div>
@@ -2033,7 +2040,7 @@ ul,ol{list-style:none;}
   // ── NAV DOT CLICK → scroll to section ───────────────────
   navDots.forEach(function(dot) {
     dot.style.cursor = 'pointer';
-    dot.addEventListener('click', function() {
+    function activateDot() {
       var key = dot.dataset.section;
       var target = document.getElementById('section-' + key);
       if (!target) target = document.getElementById('section-chicago');
@@ -2043,6 +2050,10 @@ ul,ol{list-style:none;}
       } else {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+    }
+    dot.addEventListener('click', activateDot);
+    dot.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activateDot(); }
     });
   });
 
@@ -2478,16 +2489,19 @@ ul,ol{list-style:none;}
   initFrags('section-vseq',      '.seq-frag', 'data-win', 'data-depth');
   initFrags('section-vseq-v6',   '.v6-frag',  'data-v6win', 'data-v6depth');
 
-  // ── SLIDESHOW REEL: play only while visible ──
+  // ── ALL AUTOPLAY VIDEOS: pause when off-screen ──────────────
   (function() {
-    var reel = document.getElementById('reel-video');
-    if (!reel || !('IntersectionObserver' in window)) return;
-    new IntersectionObserver(function(entries) {
+    if (!('IntersectionObserver' in window)) return;
+    var videoObs = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
-        if (e.isIntersecting) { reel.play().catch(function(){}); }
-        else { reel.pause(); }
+        var v = e.target;
+        if (e.isIntersecting) { v.play().catch(function(){}); }
+        else { v.pause(); }
       });
-    }, { rootMargin: '100px 0px' }).observe(reel);
+    }, { rootMargin: '200px 0px', threshold: 0 });
+    document.querySelectorAll('video[autoplay]').forEach(function(v) {
+      videoObs.observe(v);
+    });
   })();
 
   // ── REFRESH SCROLL TRIGGERS ──────────────────────────────────
