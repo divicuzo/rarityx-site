@@ -228,14 +228,14 @@
   function batch(start, end){
     for (var i = start; i < end && i < TOTAL; i++) (function(n){
       var img = new Image();
-      img.onload = function(){ imgs[n] = img; if (n === 0) draw(0); };
+      img.onload = function(){ imgs[n] = img; if (n === TOTAL - 1) draw(TOTAL - 1); };
       img.src = 'frames_lp/frame_' + String(n + 1).padStart(4, '0') + '.jpg';
     })(i);
   }
-  batch(0, 30);
+  batch(TOTAL - 30, TOTAL);
   resize();
 
-  function loadRest(){ if (restLoaded) return; restLoaded = true; batch(30, TOTAL); }
+  function loadRest(){ if (restLoaded) return; restLoaded = true; batch(0, TOTAL - 30); }
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function(e){
       if (e[0].isIntersecting){ loadRest(); io.disconnect(); }
@@ -265,7 +265,7 @@
       end: 'bottom bottom',
       scrub: 0,
       onUpdate: function(self){
-        var idx = Math.min(Math.floor(self.progress * TOTAL), TOTAL - 1);
+        var idx = (TOTAL - 1) - Math.min(Math.floor(self.progress * TOTAL), TOTAL - 1);
         if (idx !== curIdx){ curIdx = idx; draw(curIdx); }
         bar.style.width = (self.progress * 100) + '%';
         stages(self.progress);
