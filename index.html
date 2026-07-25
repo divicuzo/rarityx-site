@@ -15,7 +15,7 @@
   <meta property="og:url" content="https://rarityx.co/">
   <meta property="og:title" content="RarityX — Design is the Rarity">
   <meta property="og:description" content="Fine jewelry design atelier. Each piece begins with the designer — not the stone. Zero inventory. Every commission pre-sold before fabrication begins.">
-  <meta property="og:image" content="https://rarityx.co/Jewelry/Ethereal_Pavé_Crest_Platinum_2K_202606302140.jpeg">
+  <meta property="og:image" content="https://rarityx.co/Jewelry/Ethereal_Pav%C3%A9_Crest_Platinum_2K_202606302140.jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="RarityX">
@@ -25,7 +25,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="RarityX — Design is the Rarity">
   <meta name="twitter:description" content="Fine jewelry design atelier. Each piece begins with the designer. Zero inventory. Every commission pre-sold.">
-  <meta name="twitter:image" content="https://rarityx.co/Jewelry/Ethereal_Pavé_Crest_Platinum_2K_202606302140.jpeg">
+  <meta name="twitter:image" content="https://rarityx.co/Jewelry/Ethereal_Pav%C3%A9_Crest_Platinum_2K_202606302140.jpeg">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -160,6 +160,16 @@ ul,ol{list-style:none;}
 .cta-btn::before{content:'';position:absolute;inset:0;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;z-index:-1;}
 .cta-btn:hover{color:var(--bg);}
 .cta-btn:hover::before{transform:scaleX(1);}
+.nav-has-drop{position:relative;}
+.nav-drop{position:absolute;top:calc(100% + 8px);right:-20px;min-width:230px;background:rgba(51,13,30,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid #5a1a2e;padding:6px 0;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .22s cubic-bezier(0.16,1,0.3,1),transform .22s cubic-bezier(0.16,1,0.3,1);z-index:200;}
+.nav-has-drop:hover .nav-drop,.nav-has-drop:focus-within .nav-drop{opacity:1;pointer-events:auto;transform:translateY(0);}
+.nav-drop::before{content:'';position:absolute;top:-1px;left:0;right:0;height:1px;background:#c8909e;opacity:.4;}
+.nav-drop-item{display:block;font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:#c8909e;text-decoration:none;padding:10px 20px;transition:color .15s,background .15s;white-space:nowrap;}
+.nav-drop-item:hover{color:#f5f5f5;background:rgba(90,26,46,0.5);}
+.s09-piece-list{display:flex;flex-direction:column;gap:0;margin-top:10px;}
+.s09-piece-item{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#c8909e;text-decoration:none;padding:7px 0;border-bottom:1px solid rgba(90,26,46,.3);transition:color .2s,padding-left .2s;display:block;}
+.s09-piece-item:last-child{border-bottom:none;}
+.s09-piece-item:hover{color:#f5f5f5;padding-left:8px;}
 
 .section-nav{position:fixed;right:max(24px,calc(env(safe-area-inset-right,0px) + 16px));top:50%;transform:translateY(-50%);z-index:99;display:flex;flex-direction:column;gap:8px;align-items:center;}
 .nav-dot{width:6px;height:6px;background:#3a3a3a;cursor:pointer;transition:background 0.3s ease,transform 0.3s ease;flex-shrink:0;position:relative;}
@@ -857,7 +867,19 @@ ul,ol{list-style:none;}
       <ul class="nav-links">
         <li><a href="#section-02" class="nav-link">ORIGIN</a></li>
         <li><a href="#section-07" class="nav-link">PROCESS</a></li>
-        <li><a href="#section-08" class="nav-link">VAULT</a></li>
+        <li class="nav-has-drop">
+            <a href="#section-08" class="nav-link">VAULT</a>
+            <div class="nav-drop" role="menu" aria-label="Portfolio pieces">
+              <a href="medallion.html" class="nav-drop-item" role="menuitem">RX&#8211;01&ensp;Crest Medallion</a>
+              <a href="sigil.html" class="nav-drop-item" role="menuitem">RX&#8211;02&ensp;Sigil Signet</a>
+              <a href="solstice-solitaire.html" class="nav-drop-item" role="menuitem">RX&#8211;03&ensp;Solstice Solitaire</a>
+              <a href="fragment-band.html" class="nav-drop-item" role="menuitem">RX&#8211;04&ensp;Fragment Band</a>
+              <a href="meridian-cluster.html" class="nav-drop-item" role="menuitem">RX&#8211;05&ensp;Meridian Cluster</a>
+              <a href="eclipse-halo.html" class="nav-drop-item" role="menuitem">RX&#8211;06&ensp;Eclipse Halo</a>
+              <a href="constellation-band.html" class="nav-drop-item" role="menuitem">RX&#8211;07&ensp;Constellation Band</a>
+              <a href="lp-v6.html" class="nav-drop-item" role="menuitem">RX&#8211;08&ensp;Pav&eacute; Arc</a>
+            </div>
+          </li>
       </ul>
       <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="cta-btn">Start a Conversation</a>
     </nav>
@@ -1607,13 +1629,16 @@ ul,ol{list-style:none;}
       </div>
       <div style="margin-top:28px;">
         <div class="s09-syndicates-label">Selected Portfolio</div>
-        <div style="font-family:Outfit,sans-serif;font-size:14px;color:#d0a0b0;line-height:2;margin-top:8px;">
-          <a href="solstice-solitaire.html" style="color:inherit;text-decoration:none">Solstice Solitaire</a><br>
-          <a href="fragment-band.html" style="color:inherit;text-decoration:none">Fragment Band</a><br>
-          <a href="meridian-cluster.html" style="color:inherit;text-decoration:none">Meridian Cluster</a><br>
-          <a href="eclipse-halo.html" style="color:inherit;text-decoration:none">Eclipse Halo</a><br>
-          <a href="constellation-band.html" style="color:inherit;text-decoration:none">Constellation Band</a>
-        </div>
+        <nav class="s09-piece-list" aria-label="Portfolio pieces">
+          <a href="medallion.html" class="s09-piece-item">RX&#8211;01 &middot; Crest Medallion</a>
+          <a href="sigil.html" class="s09-piece-item">RX&#8211;02 &middot; Sigil Signet</a>
+          <a href="solstice-solitaire.html" class="s09-piece-item">RX&#8211;03 &middot; Solstice Solitaire</a>
+          <a href="fragment-band.html" class="s09-piece-item">RX&#8211;04 &middot; Fragment Band</a>
+          <a href="meridian-cluster.html" class="s09-piece-item">RX&#8211;05 &middot; Meridian Cluster</a>
+          <a href="eclipse-halo.html" class="s09-piece-item">RX&#8211;06 &middot; Eclipse Halo</a>
+          <a href="constellation-band.html" class="s09-piece-item">RX&#8211;07 &middot; Constellation Band</a>
+          <a href="lp-v6.html" class="s09-piece-item">RX&#8211;08 &middot; Pav&eacute; Arc</a>
+        </nav>
       </div>
     </div>
   </div>
