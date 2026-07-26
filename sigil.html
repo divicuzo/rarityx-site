@@ -69,8 +69,6 @@
 .letter-copy .lbl{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
 .letter-copy p{font-size:15px;line-height:1.65;color:var(--muted);max-width:38ch}
 .letter-copy .dim{margin-top:26px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--muted)}
-.big-num{position:absolute;left:4vw;bottom:6vh;z-index:2;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(90px,14vw,210px);line-height:1;color:#dfe2ea;letter-spacing:-.02em}
-.big-num sup{font-size:.35em;vertical-align:super;color:var(--muted)}
 
 /* ── CHROME FINALE ── */
 #finale{position:relative;min-height:110vh;background:#330D1E;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
@@ -92,7 +90,6 @@
   .ghost-rail{display:none}
   .callout{max-width:170px;font-size:10px}
   .co-edition{bottom:8%}
-  .big-num{bottom:3vh}
 }
 @media (prefers-reduced-motion: reduce){
   #scrub{height:auto}
@@ -115,6 +112,7 @@
     <canvas id="seq-canvas"></canvas>
 
     <div class="stage-a" id="stage-a">
+      <div class="model">RX&#8211;02<br>SIGIL</div>
       <div class="tag">
         <em>The monogram is the stone.</em>
         A platinum signet crowned in pav&eacute;. No center gem &mdash; the letter itself carries the weight.
@@ -141,7 +139,7 @@
 <section id="letter" aria-label="The letter as architecture">
   <div class="letter-inner">
     <div class="letter-visual reveal" style="position:relative">
-      <img src="frames_lp/frame_0001.jpg" alt="RX-02 Sigil signet ring, assembled" loading="lazy" width="400" height="400">
+      <img src="Jewelry/Ethereal_Pav%C3%A9_Crest_Platinum_2K_202606302140.jpeg" alt="RX-02 Sigil signet ring, assembled" loading="lazy" width="400" height="400">
       <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s cubic-bezier(.23,1,.32,1)" onmouseenter="this.style.opacity='.88'" onmouseleave="this.style.opacity='0'" aria-hidden="true">
         <source src="Jewelry/Portfolio_pieces_vids/openbox_ring.mp4" type="video/mp4">
       </video>
@@ -159,7 +157,7 @@
 <!-- ═══ CHROME FINALE ═══ -->
 <section id="finale" aria-label="Signed in platinum">
   <div class="finale-ghost" aria-hidden="true">
-    <img src="frames_lp5/frame_0120.jpg" alt="" loading="lazy">
+    <img src="frames_lp/frame_0120.jpg" alt="" loading="lazy">
   </div>
   <div class="finale-stack">
     <h2 class="chrome-type reveal">

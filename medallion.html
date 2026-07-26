@@ -32,11 +32,11 @@
   --dark:#050505;
   --chrome:#c8c8c8;
   --text:#f5f5f5;
-  --muted:#9a9a96;
+  --muted:#d4b0c0;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:auto}
-body{background:var(--dark);color:var(--text);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden}
+body{background:#330D1E;color:var(--text);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden}
 ::selection{background:#c8c8c8;color:#050505}
 
 /* ── SCRUB SECTION ── */
@@ -163,6 +163,7 @@ body{background:var(--dark);color:var(--text);font-family:'Outfit',sans-serif;fo
     <canvas id="seq-canvas"></canvas>
 
     <div class="stage-a" id="stage-a">
+      <div class="model">RX&#8211;01<br>Crest</div>
       <div class="tag">
         <em>Design is the rarity.</em>
         An emerald-cut diamond, set at the heart of a fluted gold crest. Drawn first. Cut second.
@@ -203,7 +204,7 @@ body{background:var(--dark);color:var(--text);font-family:'Outfit',sans-serif;fo
       <p class="dim reveal">Pendant &oslash; 22mm &middot; 18k gold</p>
     </div>
     <div class="heart-visual reveal">
-      <img src="frames_v3/frame_0240.jpg" alt="RX-01 Crest medallion, assembled" loading="lazy" width="400" height="400">
+      <img src="Jewelry/Ethereal_Pav%C3%A9_Crest_Platinum_2K_202606302140.jpeg" alt="RX-01 Crest medallion, assembled" loading="lazy" width="400" height="400">
       <span class="orbit-lbl ol-1" data-speed="-38">Radial guilloch&eacute;</span>
       <span class="orbit-lbl ol-2" data-speed="52">Eight-point mount</span>
       <span class="orbit-lbl ol-3" data-speed="-26">Hand-set bezel</span>
@@ -214,7 +215,7 @@ body{background:var(--dark);color:var(--text);font-family:'Outfit',sans-serif;fo
 <!-- ═══ CHROME TYPE FINALE ═══ -->
 <section id="finale" aria-label="The precisely cut eternal stone">
   <div class="finale-ghost" aria-hidden="true">
-    <img src="frames_v3/frame_0001.jpg" alt="" loading="lazy">
+    <img src="Jewelry/Ethereal_Pav%C3%A9_Crest_Platinum_2K_202606302140.jpeg" alt="" loading="lazy">
   </div>
   <div class="finale-stack">
     <h2 class="reveal">
@@ -279,7 +280,8 @@ body{background:var(--dark);color:var(--text);font-family:'Outfit',sans-serif;fo
     canvas.height = window.innerHeight;
     if (imgs[curIdx] && imgs[curIdx].complete) draw(curIdx);
   }
-  window.addEventListener('resize', resize, { passive:true });
+  var roCanvas = new ResizeObserver(function(){ resize(); });
+  roCanvas.observe(canvas.parentElement);
 
   function draw(idx){
     var img = imgs[idx];
@@ -413,7 +415,8 @@ body{background:var(--dark);color:var(--text);font-family:'Outfit',sans-serif;fo
       pc.width = pc.offsetWidth; pc.height = pc.offsetHeight;
     }
     presize();
-    window.addEventListener('resize', presize, { passive:true });
+    var roParticles = new ResizeObserver(function(){ presize(); });
+    roParticles.observe(pc);
     for (var i = 0; i < 160; i++) pts.push({
       a: Math.random() * Math.PI * 2,
       r: 0.18 + Math.random() * 0.42,     // orbit radius, fraction of min-dim
