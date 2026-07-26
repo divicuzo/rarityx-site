@@ -57,82 +57,28 @@
   );
 }
 
-/* ─── HERO ─── */
-#hero {
-  position: relative;
-  height: 100vh;
-  height: 100dvh;
-  overflow: hidden;
-  background: #0a0a0a;
-}
-#hero video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(.85);
-}
-#hero .scrim {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(5,5,5,.25) 0%,
-    transparent 40%,
-    rgba(5,5,5,.72) 100%
-  );
-}
-.hero-type {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 0 4vw 9vh;
-}
-.hero-type .idx {
-  font-family: 'Space Mono', monospace;
-  font-size: 11px;
-  letter-spacing: .26em;
-  text-transform: uppercase;
-  color: rgba(200,200,200,.8);
-  margin-bottom: 16px;
-}
-.hero-type h1 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900;
-  text-transform: uppercase;
-  font-size: clamp(72px,13vw,200px);
-  line-height: .86;
-  color: var(--text);
-  margin: 0;
-}
-.hero-type h1 em {
-  display: block;
-  font-family: 'Bodoni Moda', serif;
-  font-style: italic;
-  font-weight: 300;
-  text-transform: none;
-  font-size: .38em;
-  line-height: 1.2;
-  color: rgba(245,245,245,.72);
-  padding-top: .18em;
-  padding-bottom: .08em;
-}
-.hero-scroll-hint {
-  position: absolute;
-  bottom: 32px;
-  right: 4vw;
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  letter-spacing: .3em;
-  text-transform: uppercase;
-  color: rgba(200,200,200,.55);
-  pointer-events: none;
-  z-index: 3;
-}
+/* ─── CANVAS SCRUB HERO ─── */
+#scrub { position: relative; height: 600vh; background: #080808; }
+.scrub-sticky { position: sticky; top: 0; height: 100vh; height: 100dvh; overflow: hidden; }
+#seq-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.stage-a { position: absolute; inset: 0; z-index: 3; pointer-events: none; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 4vw 9vh; }
+.stage-a .idx { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: rgba(200,200,200,.7); margin-bottom: 14px; }
+.stage-a .model { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(72px,13vw,200px); line-height: .86; color: var(--text); text-transform: uppercase; }
+.stage-a .tag { font-family: 'Outfit', sans-serif; font-size: 15px; color: rgba(245,245,245,.65); max-width: 38ch; margin-top: 18px; line-height: 1.5; }
+.stage-a .tag em { font-family: 'Bodoni Moda', serif; font-style: italic; font-weight: 300; font-size: 18px; display: block; margin-bottom: 4px; color: rgba(245,245,245,.72); }
+.stage-a .scroll-hint { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: rgba(200,200,200,.45); margin-top: 32px; }
+.stage-b { position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0; }
+.callout { position: absolute; left: 6vw; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: rgba(240,240,238,.85); max-width: 220px; line-height: 1.7; }
+.callout::before { content: ""; display: block; width: 34px; height: 1px; background: rgba(240,240,238,.7); margin-bottom: 10px; }
+.callout b { display: block; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: .06em; margin-bottom: 2px; }
+.co-1 { top: 20%; }
+.co-2 { top: 46%; }
+.co-3 { top: 72%; }
+.co-edition { position: absolute; right: 6vw; bottom: 16%; text-align: right; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(44px,6vw,84px); line-height: 1; color: rgba(245,245,245,.9); }
+.co-edition small { display: block; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: .22em; font-weight: 400; color: rgba(200,200,200,.55); margin-top: 6px; text-transform: uppercase; }
+.stage-c { position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 9vh; }
+.stage-c p { font-family: 'Bodoni Moda', serif; font-style: italic; font-weight: 300; font-size: clamp(20px,2.6vw,32px); color: rgba(245,245,245,.88); }
+.seq-bar { position: absolute; left: 0; bottom: 0; height: 2px; background: rgba(200,200,200,.45); width: 0; z-index: 4; }
 
 /* ─── REVEAL SECTION ─── */
 #reveal {
@@ -606,18 +552,38 @@
 <!-- Longitude lines: fixed, drifting at different scroll rates via GSAP -->
 <div id="grid-overlay" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
 
-<!-- ─── SECTION 1: HERO ─── -->
-<section id="hero" aria-label="Meridian Cluster">
-  <video autoplay muted loop playsinline poster="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg">
-    <source src="Jewelry/Portfolio_pieces_vids/halo_2shankpave_ring.mp4" type="video/mp4">
-    <source src="Jewelry/Portfolio_pieces_vids/diam_pave_ring.mp4" type="video/mp4">
-  </video>
-  <div class="scrim"></div>
-  <div class="hero-type">
-    <span class="idx">RX-05</span>
-    <h1>MERIDIAN<br>CLUSTER<em>stones plotted like coordinates</em></h1>
+<!-- ─── SECTION 1: CANVAS SCRUB HERO ─── -->
+<section id="scrub" aria-label="Meridian Cluster — tiara sequence">
+  <div class="scrub-sticky">
+    <canvas id="seq-canvas" aria-hidden="true"></canvas>
+
+    <!-- Stage A: visible at scroll 0–25% -->
+    <div class="stage-a" aria-hidden="true">
+      <span class="idx">RX-05</span>
+      <div class="model">MERIDIAN<br>CLUSTER</div>
+      <div class="tag">
+        <em>the crown reads like a coordinate map</em>
+        twelve stones. one arc. every position argued.
+      </div>
+      <span class="scroll-hint">Scroll ↓</span>
+    </div>
+
+    <!-- Stage B: callouts at scroll 38–72% -->
+    <div class="stage-b" aria-hidden="true">
+      <div class="callout co-1"><b>TWELVE STONES</b>across a single meridian</div>
+      <div class="callout co-2"><b>CLUSTER SET</b>each holds its assigned position</div>
+      <div class="callout co-3"><b>18K WHITE GOLD</b>the arc is the logic</div>
+      <div class="co-edition">SURVEY<br>MAP<small>OPEN WIREFRAME</small></div>
+    </div>
+
+    <!-- Stage C: closing line at scroll 80–100% -->
+    <div class="stage-c" aria-hidden="true">
+      <p>The arrangement is the crown.</p>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="seq-bar" id="seq-bar" aria-hidden="true"></div>
   </div>
-  <span class="hero-scroll-hint">Scroll ↓</span>
 </section>
 
 <!-- ─── SECTION 2: REVEAL (Projection Map) ─── -->
@@ -781,6 +747,87 @@
 <script src="atelier.js"></script>
 <script>
 (function(){
+  /* ── CANVAS FRAME SCRUB — REVERSED (frame 240→1 on scroll) ── */
+  (function(){
+    var TOTAL = 240, FW = 1280, FH = 720;
+    var canvas = document.getElementById('seq-canvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var imgs = new Array(TOTAL), curIdx = TOTAL - 1, restLoaded = false;
+    var bar = document.getElementById('seq-bar');
+
+    function pad(n){ return ('0000'+(n+1)).slice(-4); }
+
+    function draw(idx){
+      var img = imgs[idx];
+      if (!img || !img.complete || !img.naturalWidth) return;
+      var cw = canvas.width, ch = canvas.height;
+      var r = Math.min(cw/FW, ch/FH);
+      var w = FW*r, h = FH*r;
+      ctx.clearRect(0, 0, cw, ch);
+      ctx.drawImage(img, (cw-w)*0.5, (ch-h)*0.5, w, h);
+    }
+
+    function resizeCanvas(){
+      canvas.width  = canvas.clientWidth  || window.innerWidth;
+      canvas.height = canvas.clientHeight || window.innerHeight;
+      if (imgs[curIdx] && imgs[curIdx].complete) draw(curIdx);
+    }
+
+    var ro = new ResizeObserver(resizeCanvas);
+    ro.observe(canvas);
+    resizeCanvas();
+
+    function batch(start, end){
+      for (var i = start; i < end && i < TOTAL; i++)(function(n){
+        var img = new Image();
+        img.src = 'frames_tiara/frame_' + pad(n) + '.jpg';
+        img.onload = function(){
+          imgs[n] = img;
+          /* First load: draw the LAST frame (reverse start) */
+          if (n === TOTAL - 1) draw(TOTAL - 1);
+        };
+      })(i);
+    }
+
+    /* Preload last 30 frames first — those are shown at scroll=0 (reversed) */
+    batch(TOTAL - 30, TOTAL);
+
+    function loadRest(){ if (restLoaded) return; restLoaded = true; batch(0, TOTAL - 30); }
+
+    var io = new IntersectionObserver(function(e){
+      if (e[0].isIntersecting){ loadRest(); io.disconnect(); }
+    }, { rootMargin: '200px' });
+    var scrub = document.getElementById('scrub');
+    if (scrub) io.observe(scrub); else setTimeout(loadRest, 800);
+
+    function stages(p){
+      var stA = document.querySelector('.stage-a');
+      var stB = document.querySelector('.stage-b');
+      var stC = document.querySelector('.stage-c');
+      if (stA) stA.style.opacity = p < 0.25 ? 1 : p < 0.35 ? ((0.35-p)/0.10) : 0;
+      if (stB) stB.style.opacity = p < 0.38 ? 0 : p < 0.48 ? ((p-0.38)/0.10) : p < 0.72 ? 1 : p < 0.82 ? ((0.82-p)/0.10) : 0;
+      if (stC) stC.style.opacity = p < 0.80 ? 0 : p < 0.90 ? ((p-0.80)/0.10) : 1;
+    }
+
+    if (window.gsap && window.ScrollTrigger && !(window.RX && window.RX.prefersReduced)){
+      gsap.registerPlugin(ScrollTrigger);
+      ScrollTrigger.create({
+        trigger: '#scrub',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0.9,
+        onUpdate: function(self){
+          /* REVERSE: progress 0 = frame TOTAL-1, progress 1 = frame 0 */
+          var idx = (TOTAL - 1) - Math.min(Math.floor(self.progress * TOTAL), TOTAL - 1);
+          if (idx !== curIdx){ curIdx = idx; draw(curIdx); }
+          if (bar) bar.style.width = (self.progress * 100) + '%';
+          stages(self.progress);
+        }
+      });
+    }
+  })();
+
   /* ── GSAP: longitude grid drift ── */
   if (!window.RX || !window.RX.prefersReduced && window.gsap && window.ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
