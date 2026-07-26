@@ -25,48 +25,381 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <link rel="stylesheet" href="atelier.css">
 <style>
-/* ── HERO: marble room, sun-arc ── */
-#hero{position:relative;height:100vh;height:100dvh;overflow:hidden;background:#0a0a0a}
-#hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-#hero .scrim{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,5,5,.25) 0%,transparent 40%,rgba(5,5,5,.55) 100%)}
-.hero-type{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:0 4vw 8vh}
-.hero-type .idx{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#d9d9d5;margin-bottom:14px}
-.hero-type h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(58px,11vw,168px);line-height:.88;color:var(--text);letter-spacing:.005em}
-.hero-type h1 em{display:block;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;text-transform:none;font-size:.42em;line-height:1.15;letter-spacing:0;color:#e8e6df;padding-bottom:.12em}
-.hero-type .scroll-hint{position:absolute;bottom:28px;right:4vw;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#b9b9b4}
 
-/* signature motion: the sun line — an arc that travels with scroll */
-#sunline{position:fixed;top:0;left:0;width:100%;height:100vh;z-index:5;pointer-events:none}
-#sunline .disc{position:absolute;width:10px;height:10px;border-radius:50%;background:#f5f2e8;box-shadow:0 0 26px 8px rgba(245,240,225,.45);opacity:0}
-#sunline .path{position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(245,242,232,.35),transparent);opacity:0}
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+#hero {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+#hero video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#hero .scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(5,5,5,.2) 0%, transparent 35%, rgba(5,5,5,.7) 100%);
+}
+.hero-type {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 4vw 8vh;
+}
+.hero-type .idx {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: rgba(200,200,200,.72);
+  margin-bottom: 16px;
+}
+.hero-type h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(72px, 13vw, 200px);
+  line-height: .86;
+  color: var(--text);
+  letter-spacing: .005em;
+}
+.hero-type h1 em {
+  display: block;
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  font-weight: 300;
+  text-transform: none;
+  font-size: .38em;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: rgba(245,245,245,.72);
+  padding-top: .18em;
+}
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  right: 4vw;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: rgba(200,200,200,.5);
+  z-index: 2;
+  pointer-events: none;
+}
 
-/* ── STORY ── */
-#story{position:relative;background:#330D1E;padding:20vh 6vw;overflow:hidden}
-.story-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.story-copy h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(40px,5.5vw,84px);line-height:.92;color:var(--text)}
-.story-copy .rule{width:44px;height:1px;background:var(--chrome);margin:34px 0 18px}
-.story-copy .lbl{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-.story-copy p{font-size:15px;line-height:1.65;color:var(--muted);max-width:38ch}
-.story-copy .dim{margin-top:26px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--muted)}
-.story-visual img{width:100%;max-width:560px;aspect-ratio:4/3;object-fit:cover;filter:saturate(.94)}
-.big-num{position:absolute;right:4vw;bottom:4vh;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(90px,14vw,210px);line-height:1;color:#dfe2ea;letter-spacing:-.02em}
-.big-num sup{font-size:.35em;vertical-align:super;color:var(--muted)}
+/* ─────────────────────────────────────────
+   ARC MOMENT — sun meridian canvas section
+───────────────────────────────────────── */
+#arc-moment {
+  position: relative;
+  height: 200vh;
+  background: #0a0a0a;
+}
+#arc-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+#arc-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: block;
+}
+#arc-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(280px, 28vw, 440px);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  clip-path: circle(0% at 50% 50%);
+  opacity: 0;
+  will-change: clip-path, opacity;
+}
+#arc-coord {
+  position: absolute;
+  bottom: 14vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .2em;
+  color: #c8c8c8;
+  opacity: 0;
+  transition: opacity .4s ease;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.arc-section-label {
+  position: absolute;
+  top: 32px;
+  left: 4vw;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: rgba(200,200,200,.38);
+  z-index: 2;
+  pointer-events: none;
+}
 
-/* ── CHROME FINALE ── */
-#finale{position:relative;min-height:100vh;background:#330D1E;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
-.finale-stack{position:relative;z-index:2;padding:16vh 4vw}
-.finale-stack h2{font-size:clamp(56px,12vw,180px)}
-.finale-stack h2 span{display:block}
-.finale-stack h2 .off-l{transform:translateX(-4vw)}
-.finale-stack h2 .off-r{transform:translateX(4vw)}
-.finale-cta{margin-top:8vh}
-.finale-cta a{display:inline-block;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--text);text-decoration:none;border:1px solid #5a1a2e;padding:18px 42px;transition:background .25s ease,color .25s ease,transform .15s ease}
-.finale-cta a:hover{background:var(--chrome);color:var(--dark)}
-.finale-cta a:active{transform:scale(.98)}
+/* ─────────────────────────────────────────
+   STONE — story section
+───────────────────────────────────────── */
+#stone {
+  position: relative;
+  background: #330D1E;
+  padding: 22vh 6vw;
+  overflow: hidden;
+}
+.stone-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.stone-visual {
+  position: relative;
+}
+.stone-visual .frame {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  position: relative;
+}
+.stone-visual .frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(.92);
+  display: block;
+}
+.stone-visual .frame video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity .7s cubic-bezier(.23,1,.32,1);
+  pointer-events: none;
+}
+.stone-caption {
+  margin-top: 14px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: .65;
+}
+.stone-copy {
+  /* intentionally no extra wrapper styles — children carry their own spacing */
+}
+.stone-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: .7;
+  margin-bottom: 22px;
+}
+.stone-copy h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(44px, 6vw, 96px);
+  line-height: .9;
+  color: var(--text);
+}
+.stone-rule {
+  width: 48px;
+  height: 1px;
+  background: #c8c8c8;
+  margin: 32px 0 20px;
+}
+.stone-copy p {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 40ch;
+}
+.stone-dim {
+  margin-top: 28px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: .7;
+}
 
-@media (max-width:768px){
-  .story-grid{grid-template-columns:1fr;gap:48px}
-  .big-num{bottom:2vh}
+/* ─────────────────────────────────────────
+   SPECS
+───────────────────────────────────────── */
+#specs {
+  background: #3f1525;
+  padding: 16vh 6vw;
+}
+.specs-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.specs-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: .6;
+  margin-bottom: 52px;
+}
+.specs-row {
+  display: flex;
+  align-items: stretch;
+}
+.spec-item {
+  flex: 1;
+  padding: 0 40px;
+}
+.spec-item:first-child {
+  padding-left: 0;
+}
+.spec-item:last-child {
+  padding-right: 0;
+}
+.spec-divider {
+  width: 1px;
+  background: #5a1a2e;
+  align-self: stretch;
+  flex-shrink: 0;
+}
+.spec-lbl {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: .65;
+  margin-bottom: 12px;
+}
+.spec-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(28px, 3.5vw, 52px);
+  color: var(--text);
+  line-height: .92;
+  margin-bottom: 10px;
+}
+.spec-detail {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: var(--text-muted);
+  opacity: .75;
+}
+
+/* ─────────────────────────────────────────
+   FINALE
+───────────────────────────────────────── */
+#finale {
+  position: relative;
+  min-height: 100vh;
+  background: #330D1E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.finale-stack {
+  position: relative;
+  z-index: 2;
+  padding: 16vh 4vw;
+}
+.finale-stack h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(56px, 13vw, 200px);
+  text-transform: uppercase;
+  line-height: .86;
+  color: var(--text);
+}
+.finale-stack h2 span {
+  display: block;
+}
+.finale-stack h2 .off-l {
+  transform: translateX(-5vw);
+}
+.finale-stack h2 .off-r {
+  transform: translateX(5vw);
+}
+.finale-cta {
+  margin-top: 10vh;
+}
+.finale-cta a {
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid #5a1a2e;
+  padding: 18px 48px;
+  transition: background .25s ease, color .25s ease;
+}
+.finale-cta a:hover {
+  background: #c8c8c8;
+  color: #330D1E;
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width: 900px) {
+  .stone-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .stone-visual .frame {
+    aspect-ratio: 4/3;
+  }
+  .specs-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  .spec-item {
+    padding: 32px 0;
+  }
+  .spec-divider {
+    width: 100%;
+    height: 1px;
+    align-self: auto;
+  }
 }
 </style>
 </head>
@@ -77,42 +410,91 @@
   <a class="mono" href="index.html#section-09" data-rx-nav>Start with a conversation</a>
 </nav>
 
-<div id="sunline" aria-hidden="true">
-  <div class="path" id="sun-path"></div>
-  <div class="disc" id="sun-disc"></div>
-</div>
-
-<section id="hero" aria-label="Solstice Solitaire on marble">
-  <video autoplay muted loop playsinline poster="Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg">
+<!-- ─── SECTION 1: HERO ─────────────────────────────────── -->
+<section id="hero" aria-label="Solstice Solitaire — video hero">
+  <video autoplay muted loop playsinline poster="Jewelry/soli_v2.jpg">
     <source src="Jewelry/Portfolio_pieces_vids/soli_round_ring.mp4" type="video/mp4">
     <source src="Jewelry/Portfolio_pieces_vids/diam_soli_ring.mp4" type="video/mp4">
   </video>
-  <div class="scrim"></div>
+  <div class="scrim" aria-hidden="true"></div>
   <div class="hero-type">
     <span class="idx">RX-03</span>
-    <h1 class="reveal">Solstice<br>Solitaire<em>set at the highest point of light</em></h1>
+    <h1>SOLSTICE<br>SOLITAIRE<em>set at the highest point of light</em></h1>
   </div>
-  <div class="hero-type" style="pointer-events:none"><span class="scroll-hint">Scroll &#8595;</span></div>
+  <span class="hero-scroll-hint" aria-hidden="true">Scroll ↓</span>
 </section>
 
-<section id="story" aria-label="One stone, four prongs">
-  <div class="story-grid">
-    <div class="story-copy">
-      <h2 class="reveal">The Longest<br>Day</h2>
-      <div class="rule reveal"></div>
-      <div class="lbl reveal">Round Brilliant</div>
-      <p class="reveal">One stone, lifted on four prongs the way the sun sits at solstice &mdash; held at its highest point, nothing between it and the light.</p>
-      <p class="dim reveal">Round brilliant &middot; 950 platinum &middot; four-prong</p>
-    </div>
-    <div class="story-visual reveal" style="position:relative">
-      <img src="Jewelry/soli_v2.jpg" onerror="this.src='Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg'" alt="Solstice Solitaire, round brilliant close-up" loading="lazy">
-      <video id="story-vid" autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s cubic-bezier(.23,1,.32,1)" aria-hidden="true">
-        <source src="Jewelry/Portfolio_pieces_vids/ring_closeup.mp4" type="video/mp4">
-      </video>
-    </div>
+<!-- ─── SECTION 2: ARC MOMENT ───────────────────────────── -->
+<section id="arc-moment" aria-label="Sun meridian arc">
+  <div id="arc-sticky">
+    <canvas id="arc-canvas" aria-hidden="true"></canvas>
+    <img id="arc-ring" src="Jewelry/soli_v2.jpg" alt="Solstice Solitaire ring revealed at apex" aria-hidden="true">
+    <p id="arc-coord" aria-hidden="true">23°26&#8242; N · SOLSTICE MERIDIAN</p>
+    <span class="arc-section-label" aria-hidden="true">ARC OF TRANSIT</span>
   </div>
 </section>
 
+<!-- ─── SECTION 3: STONE ─────────────────────────────────── -->
+<section id="stone" aria-label="The stone — story">
+  <div class="stone-grid">
+
+    <div class="stone-visual" data-rx-reveal>
+      <div class="frame" id="stone-frame">
+        <img src="Jewelry/soli_v2.jpg"
+             onerror="this.src='Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg'"
+             alt="Solstice Solitaire, round brilliant close-up"
+             loading="lazy">
+        <video id="stone-vid" autoplay muted loop playsinline aria-hidden="true">
+          <source src="Jewelry/Portfolio_pieces_vids/ring_closeup.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="stone-caption">ROUND BRILLIANT · STUDIO CAPTURE</p>
+    </div>
+
+    <div class="stone-copy">
+      <p class="stone-eyebrow" data-rx-reveal>THE STONE</p>
+      <h2 data-rx-reveal>The Longest<br>Day</h2>
+      <div class="stone-rule" data-rx-reveal></div>
+      <p data-rx-reveal>One stone, lifted on four prongs the way the sun sits at solstice — held at its highest point, nothing between it and the light.</p>
+      <p class="stone-dim" data-rx-reveal>Round brilliant · 950 platinum · four-prong</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── SECTION 4: SPECS ─────────────────────────────────── -->
+<section id="specs" aria-label="Technical specifications">
+  <div class="specs-inner">
+    <p class="specs-label" data-rx-reveal>TECHNICAL SPEC</p>
+    <div class="specs-row">
+
+      <div class="spec-item" data-rx-reveal>
+        <div class="spec-lbl">SETTING</div>
+        <div class="spec-val">FOUR-PRONG</div>
+        <div class="spec-detail">High-lift basket</div>
+      </div>
+
+      <div class="spec-divider" aria-hidden="true"></div>
+
+      <div class="spec-item" data-rx-reveal>
+        <div class="spec-lbl">MATERIAL</div>
+        <div class="spec-val">950 PLATINUM</div>
+        <div class="spec-detail">Hypoallergenic</div>
+      </div>
+
+      <div class="spec-divider" aria-hidden="true"></div>
+
+      <div class="spec-item" data-rx-reveal>
+        <div class="spec-lbl">STONE</div>
+        <div class="spec-val">ROUND BRILLIANT</div>
+        <div class="spec-detail">GIA certified</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── SECTION 5: FINALE ────────────────────────────────── -->
 <section id="finale" aria-label="Held at the highest point">
   <div class="finale-stack">
     <h2 class="chrome-type reveal">
@@ -126,12 +508,14 @@
   </div>
 </section>
 
+<!-- ─── NEXT PIECE ───────────────────────────────────────── -->
 <a class="next-piece" href="fragment-band.html" data-rx-nav>
   <span class="np-label">Next piece &middot; RX&#8211;04</span>
   <span class="np-name">Fragment<br>Band</span>
   <span class="np-arrow">&#8594;</span>
 </a>
 
+<!-- ─── MARQUEE ──────────────────────────────────────────── -->
 <div class="rx-marquee" aria-hidden="true">
   <div class="rx-marquee-track">
     <div class="rx-marquee-item"><img src="Jewelry/f1.jpg" alt="" loading="lazy"></div>
@@ -154,46 +538,116 @@
     <div class="rx-marquee-item"><img src="Jewelry/f6.png" alt="" loading="lazy"></div>
   </div>
 </div>
+
+<!-- ─── FOOTER ───────────────────────────────────────────── -->
 <footer class="rx-foot">
   <a href="sigil.html" data-rx-nav>&larr; RX&#8211;02 Sigil</a>
   <span>RX&#8211;03 Solstice Solitaire &middot; MMXXVI</span>
 </footer>
 
 <script src="atelier.js"></script>
+
+<!-- Story video hover (addEventListener, no inline handlers) -->
 <script>
-(function(){
-  var sv = document.getElementById('story-vid');
-  if(sv){
-    sv.parentElement.addEventListener('mouseenter',function(){sv.style.opacity='.9'});
-    sv.parentElement.addEventListener('mouseleave',function(){sv.style.opacity='0'});
-  }
+(function () {
+  var frame = document.getElementById('stone-frame');
+  var vid = document.getElementById('stone-vid');
+  if (!frame || !vid) return;
+  frame.addEventListener('mouseenter', function () { vid.style.opacity = '.88'; });
+  frame.addEventListener('mouseleave', function () { vid.style.opacity = '0'; });
 })();
 </script>
+
+<!-- Arc canvas — GSAP ScrollTrigger scrubbed -->
 <script>
-(function(){
-  if (window.RX.prefersReduced || !window.gsap || !window.ScrollTrigger) return;
+(function () {
+  if (!window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
-  // sun-arc: a point of light rises across the viewport as the page scrolls —
-  // solstice as a scroll position.
-  var disc = document.getElementById('sun-disc'), path = document.getElementById('sun-path');
+
+  var canvas = document.getElementById('arc-canvas');
+  var ctx = canvas.getContext('2d');
+  var ringEl = document.getElementById('arc-ring');
+  var coordEl = document.getElementById('arc-coord');
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  var ro = new ResizeObserver(resize);
+  ro.observe(canvas.parentElement);
+  resize();
+
+  function drawArc(t) {
+    var w = canvas.width, h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+    if (t <= 0) return;
+
+    // Quadratic bezier: start(0,h) → control(w/2, -h*0.18) → end(w,h)
+    var totalSteps = 300;
+    var steps = Math.floor(t * totalSteps);
+    if (steps < 2) return;
+
+    var pts = [];
+    for (var i = 0; i <= totalSteps; i++) {
+      var u = i / totalSteps;
+      var px = (1-u)*(1-u)*0 + 2*(1-u)*u*(w*0.5) + u*u*w;
+      var py = (1-u)*(1-u)*h + 2*(1-u)*u*(-h*0.18) + u*u*h;
+      pts.push({ x: px, y: py });
+    }
+
+    // Fading trail — older part more transparent
+    ctx.save();
+    ctx.lineWidth = 1.2;
+    for (var i = 1; i <= steps; i++) {
+      var frac = i / steps;
+      var alpha = 0.18 + frac * 0.62;
+      ctx.beginPath();
+      ctx.moveTo(pts[i-1].x, pts[i-1].y);
+      ctx.lineTo(pts[i].x, pts[i].y);
+      ctx.strokeStyle = 'rgba(245,242,232,' + alpha + ')';
+      ctx.stroke();
+    }
+    ctx.restore();
+
+    // Lead orb at current position
+    var lead = pts[steps];
+
+    // Glow
+    var grd = ctx.createRadialGradient(lead.x, lead.y, 0, lead.x, lead.y, 38);
+    grd.addColorStop(0, 'rgba(245,242,232,0.28)');
+    grd.addColorStop(1, 'rgba(245,242,232,0)');
+    ctx.beginPath();
+    ctx.arc(lead.x, lead.y, 38, 0, Math.PI * 2);
+    ctx.fillStyle = grd;
+    ctx.fill();
+
+    // Core orb
+    ctx.beginPath();
+    ctx.arc(lead.x, lead.y, 5, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(245,242,232,0.96)';
+    ctx.fill();
+
+    // Ring reveal: apex around t=0.5
+    // Reveal from t=0.36 to t=0.62
+    var apexProgress = Math.max(0, Math.min(1, (t - 0.36) / 0.26));
+    var clipR = apexProgress * 44;
+    ringEl.style.clipPath = 'circle(' + clipR + '% at 50% 50%)';
+    ringEl.style.opacity = apexProgress;
+
+    // Coordinate label: show when apex passed
+    var coordAlpha = Math.max(0, Math.min(1, (t - 0.48) / 0.2));
+    coordEl.style.opacity = coordAlpha;
+  }
+
   ScrollTrigger.create({
-    trigger: document.body,
+    trigger: '#arc-moment',
     start: 'top top',
     end: 'bottom bottom',
-    scrub: 0.6,
-    onUpdate: function(self){
-      var p = self.progress;
-      var vw = window.innerWidth, vh = window.innerHeight;
-      // arc: rises to apex at p=0.5, sets after
-      var x = p * vw;
-      var y = vh * (0.82 - Math.sin(p * Math.PI) * 0.62);
-      disc.style.transform = 'translate(' + x + 'px,' + y + 'px)';
-      disc.style.opacity = p > 0.03 && p < 0.97 ? 0.9 : 0;
-      path.style.top = y + 'px';
-      path.style.opacity = p > 0.03 && p < 0.97 ? 0.5 : 0;
-    }
+    scrub: 0.9,
+    onUpdate: function (self) { drawArc(self.progress); }
   });
 })();
 </script>
+
 </body>
 </html>

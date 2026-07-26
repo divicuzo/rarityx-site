@@ -25,54 +25,613 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <link rel="stylesheet" href="atelier.css">
 <style>
-/* signature motion: meridian grid — thin longitude lines over the whole page,
-   drifting at different rates with scroll. The ring as cartography. */
-#grid-overlay{position:fixed;inset:0;z-index:4;pointer-events:none;display:flex;justify-content:space-evenly}
-#grid-overlay i{display:block;width:1px;background:linear-gradient(to bottom,transparent,rgba(200,200,200,.14) 20%,rgba(200,200,200,.14) 80%,transparent)}
+/* ─── CSS CUSTOM PROPERTIES ─── */
+:root {
+  --bg:         #330D1E;
+  --surface:    #3f1525;
+  --text:       #f5f5f5;
+  --text-muted: #d4b0c0;
+  --accent:     #c8c8c8;
+  --divider:    #5a1a2e;
+  --dark:       #0a0a0a;
+}
 
-#hero{position:relative;height:100vh;height:100dvh;overflow:hidden;background:#0a0a0a}
-#hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.9)}
-#hero .scrim{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,5,5,.3) 0%,transparent 45%,rgba(5,5,5,.6) 100%)}
-.hero-type{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:0 4vw 8vh}
-.hero-type .idx{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#d9d9d5;margin-bottom:14px}
-.hero-type h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(58px,11vw,168px);line-height:.88;color:var(--text)}
-.hero-type h1 em{display:block;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;text-transform:none;font-size:.42em;line-height:1.15;color:#e8e6df;padding-bottom:.12em}
-.hero-type .scroll-hint{position:absolute;bottom:28px;right:4vw;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#b9b9b4}
+/* ─── LONGITUDE GRID OVERLAY ─── */
+#grid-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+#grid-overlay i {
+  display: block;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(200,200,200,.10) 20%,
+    rgba(200,200,200,.10) 80%,
+    transparent
+  );
+}
 
-/* coordinates section — stones as plotted points */
-#plot{position:relative;background:#330D1E;padding:20vh 6vw;overflow:hidden}
-.plot-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
-.plot-visual{position:relative}
-.plot-visual img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 20%;filter:saturate(.9) contrast(1.04);clip-path:inset(0);transform-origin:center;transition:transform .7s cubic-bezier(.23,1,.32,1),filter .5s cubic-bezier(.23,1,.32,1)}
-.plot-visual:hover img{transform:scale(1.04);filter:saturate(.96) contrast(1.1) brightness(.88)}
-.coord{position:absolute;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;color:#dfe2ea;background:rgba(5,5,5,.55);padding:6px 10px;backdrop-filter:blur(4px)}
-.coord::before{content:"";position:absolute;left:-26px;top:50%;width:22px;height:1px;background:rgba(223,226,234,.6)}
-.c1{top:22%;right:-8px}
-.c2{top:47%;right:14%}
-.c3{top:66%;right:-8px}
-.plot-copy h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(40px,5.5vw,84px);line-height:.92;color:var(--text)}
-.plot-copy .rule{width:44px;height:1px;background:var(--chrome);margin:34px 0 18px}
-.plot-copy .lbl{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-.plot-copy p{font-size:15px;line-height:1.65;color:var(--muted);max-width:38ch}
-.plot-copy .dim{margin-top:26px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--muted)}
-.big-num{position:absolute;right:4vw;bottom:4vh;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(90px,14vw,210px);line-height:1;color:#dfe2ea;letter-spacing:-.02em}
-.big-num sup{font-size:.35em;vertical-align:super;color:var(--muted)}
+/* ─── HERO ─── */
+#hero {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+#hero video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.85);
+}
+#hero .scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(5,5,5,.25) 0%,
+    transparent 40%,
+    rgba(5,5,5,.72) 100%
+  );
+}
+.hero-type {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 4vw 9vh;
+}
+.hero-type .idx {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: rgba(200,200,200,.8);
+  margin-bottom: 16px;
+}
+.hero-type h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(72px,13vw,200px);
+  line-height: .86;
+  color: var(--text);
+  margin: 0;
+}
+.hero-type h1 em {
+  display: block;
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  font-weight: 300;
+  text-transform: none;
+  font-size: .38em;
+  line-height: 1.2;
+  color: rgba(245,245,245,.72);
+  padding-top: .18em;
+  padding-bottom: .08em;
+}
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  right: 4vw;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: rgba(200,200,200,.55);
+  pointer-events: none;
+  z-index: 3;
+}
 
-#finale{position:relative;min-height:100vh;background:#330D1E;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
-.finale-stack{position:relative;z-index:2;padding:16vh 4vw}
-.finale-stack h2{font-size:clamp(56px,12vw,180px)}
-.finale-stack h2 span{display:block}
-.finale-stack h2 .off-l{transform:translateX(-4vw)}
-.finale-stack h2 .off-r{transform:translateX(4vw)}
-.finale-cta{margin-top:8vh}
-.finale-cta a{display:inline-block;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--text);text-decoration:none;border:1px solid #3a3a3a;padding:18px 42px;transition:background .25s ease,color .25s ease,transform .15s ease}
-.finale-cta a:hover{background:var(--chrome);color:var(--dark)}
-.finale-cta a:active{transform:scale(.98)}
+/* ─── MAPPING SECTION ─── */
+#mapping {
+  position: relative;
+  min-height: 100vh;
+  background: #080814;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14vh 4vw 12vh;
+  overflow: hidden;
+}
+.mapping-label-top {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: rgba(200,200,200,.32);
+  margin-bottom: 36px;
+  align-self: flex-start;
+  padding-left: 2vw;
+}
+#coord-svg-wrap {
+  width: 100%;
+  max-width: 900px;
+}
+#coord-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
-@media (max-width:768px){
-  .plot-grid{grid-template-columns:1fr;gap:48px}
-  #grid-overlay i:nth-child(n+5){display:none}
-  .big-num{bottom:2vh}
+/* SVG initial states */
+#coord-svg .grid-h,
+#coord-svg .grid-v {
+  stroke-dashoffset: 900;
+  stroke-dasharray: 900;
+  transition: none;
+}
+#coord-svg .meridian-v {
+  stroke-dashoffset: 520;
+  stroke-dasharray: 520;
+  transition: none;
+}
+#coord-svg .meridian-h {
+  stroke-dashoffset: 900;
+  stroke-dasharray: 900;
+  transition: none;
+}
+#coord-svg .stone {
+  opacity: 0;
+  transform: scale(0);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+#coord-svg .stone-connector {
+  opacity: 0;
+}
+#coord-svg .stone-label {
+  opacity: 0;
+}
+#coord-svg .ring-outer {
+  stroke-dashoffset: 327;
+  stroke-dasharray: 327;
+  transition: none;
+}
+#coord-svg .ring-inner {
+  stroke-dashoffset: 176;
+  stroke-dasharray: 176;
+  transition: none;
+}
+#coord-svg .crosshair {
+  opacity: 0;
+}
+#coord-svg .svg-label {
+  opacity: 0;
+}
+
+/* Active animation states — triggered by .mapping-active */
+.mapping-active #coord-svg .grid-h,
+.mapping-active #coord-svg .grid-v {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mapping-active #coord-svg .grid-h:nth-child(1) { transition-delay: 0.00s }
+.mapping-active #coord-svg .grid-h:nth-child(2) { transition-delay: 0.08s }
+.mapping-active #coord-svg .grid-h:nth-child(3) { transition-delay: 0.16s }
+.mapping-active #coord-svg .grid-h:nth-child(4) { transition-delay: 0.24s }
+.mapping-active #coord-svg .grid-h:nth-child(5) { transition-delay: 0.32s }
+.mapping-active #coord-svg .grid-v:nth-child(1) { transition-delay: 0.04s }
+.mapping-active #coord-svg .grid-v:nth-child(2) { transition-delay: 0.10s }
+.mapping-active #coord-svg .grid-v:nth-child(3) { transition-delay: 0.18s }
+.mapping-active #coord-svg .grid-v:nth-child(4) { transition-delay: 0.22s }
+.mapping-active #coord-svg .grid-v:nth-child(5) { transition-delay: 0.28s }
+.mapping-active #coord-svg .grid-v:nth-child(6) { transition-delay: 0.34s }
+.mapping-active #coord-svg .grid-v:nth-child(7) { transition-delay: 0.40s }
+
+.mapping-active #coord-svg .meridian-v {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.6s ease;
+  transition-delay: 1.3s;
+}
+.mapping-active #coord-svg .meridian-h {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.6s ease;
+  transition-delay: 1.45s;
+}
+
+/* Stones: each circle with increasing delay */
+.mapping-active #coord-svg .stone {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.mapping-active #coord-svg .stone:nth-child(1)  { transition-delay: 2.00s }
+.mapping-active #coord-svg .stone:nth-child(2)  { transition-delay: 2.12s }
+.mapping-active #coord-svg .stone:nth-child(3)  { transition-delay: 2.24s }
+.mapping-active #coord-svg .stone:nth-child(4)  { transition-delay: 2.36s }
+.mapping-active #coord-svg .stone:nth-child(5)  { transition-delay: 2.48s }
+.mapping-active #coord-svg .stone:nth-child(6)  { transition-delay: 2.60s }
+.mapping-active #coord-svg .stone:nth-child(7)  { transition-delay: 2.72s }
+.mapping-active #coord-svg .stone:nth-child(8)  { transition-delay: 2.84s }
+.mapping-active #coord-svg .stone:nth-child(9)  { transition-delay: 2.96s }
+.mapping-active #coord-svg .stone:nth-child(10) { transition-delay: 3.08s }
+.mapping-active #coord-svg .stone:nth-child(11) { transition-delay: 3.20s }
+.mapping-active #coord-svg .stone:nth-child(12) { transition-delay: 3.32s }
+
+/* Connectors */
+.mapping-active #coord-svg .stone-connector {
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+.mapping-active #coord-svg .stone-connector:nth-child(1)  { transition-delay: 2.22s }
+.mapping-active #coord-svg .stone-connector:nth-child(2)  { transition-delay: 2.34s }
+.mapping-active #coord-svg .stone-connector:nth-child(3)  { transition-delay: 2.46s }
+.mapping-active #coord-svg .stone-connector:nth-child(4)  { transition-delay: 2.58s }
+.mapping-active #coord-svg .stone-connector:nth-child(5)  { transition-delay: 2.70s }
+.mapping-active #coord-svg .stone-connector:nth-child(6)  { transition-delay: 2.82s }
+.mapping-active #coord-svg .stone-connector:nth-child(7)  { transition-delay: 2.94s }
+.mapping-active #coord-svg .stone-connector:nth-child(8)  { transition-delay: 3.06s }
+.mapping-active #coord-svg .stone-connector:nth-child(9)  { transition-delay: 3.18s }
+.mapping-active #coord-svg .stone-connector:nth-child(10) { transition-delay: 3.30s }
+.mapping-active #coord-svg .stone-connector:nth-child(11) { transition-delay: 3.42s }
+.mapping-active #coord-svg .stone-connector:nth-child(12) { transition-delay: 3.54s }
+
+/* Labels */
+.mapping-active #coord-svg .stone-label {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.mapping-active #coord-svg .stone-label:nth-child(1)  { transition-delay: 2.30s }
+.mapping-active #coord-svg .stone-label:nth-child(2)  { transition-delay: 2.42s }
+.mapping-active #coord-svg .stone-label:nth-child(3)  { transition-delay: 2.54s }
+.mapping-active #coord-svg .stone-label:nth-child(4)  { transition-delay: 2.66s }
+.mapping-active #coord-svg .stone-label:nth-child(5)  { transition-delay: 2.78s }
+.mapping-active #coord-svg .stone-label:nth-child(6)  { transition-delay: 2.90s }
+.mapping-active #coord-svg .stone-label:nth-child(7)  { transition-delay: 3.02s }
+.mapping-active #coord-svg .stone-label:nth-child(8)  { transition-delay: 3.14s }
+.mapping-active #coord-svg .stone-label:nth-child(9)  { transition-delay: 3.26s }
+.mapping-active #coord-svg .stone-label:nth-child(10) { transition-delay: 3.38s }
+.mapping-active #coord-svg .stone-label:nth-child(11) { transition-delay: 3.50s }
+.mapping-active #coord-svg .stone-label:nth-child(12) { transition-delay: 3.62s }
+
+/* Ring */
+.mapping-active #coord-svg .ring-outer {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.8s ease;
+  transition-delay: 3.80s;
+}
+.mapping-active #coord-svg .ring-inner {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.7s ease;
+  transition-delay: 4.00s;
+}
+.mapping-active #coord-svg .crosshair {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  transition-delay: 4.20s;
+}
+.mapping-active #coord-svg .svg-label {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  transition-delay: 4.00s;
+}
+
+/* Mapping caption — below SVG */
+.mapping-caption {
+  text-align: center;
+  margin-top: 52px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  transition-delay: 0s;
+}
+.mapping-active .mapping-caption {
+  opacity: 1;
+  transition-delay: 4.5s;
+}
+.mapping-caption h3 {
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 28px;
+  color: var(--text);
+  margin: 0 0 12px;
+}
+.mapping-caption .cap-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(200,200,200,.5);
+}
+.mapping-label-bottom {
+  align-self: flex-end;
+  padding-right: 2vw;
+  margin-top: 28px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(200,200,200,.28);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: 0s;
+}
+.mapping-active .mapping-label-bottom {
+  opacity: 1;
+  transition-delay: 4.2s;
+}
+
+/* ─── PLOT SECTION ─── */
+#plot {
+  position: relative;
+  background: var(--bg);
+  padding: 22vh 6vw;
+  overflow: hidden;
+}
+.plot-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 72px;
+  align-items: start;
+}
+
+/* Images left column */
+.plot-visual {
+  position: relative;
+}
+.plot-img-primary {
+  position: relative;
+}
+.plot-img-primary img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  transition: transform .7s ease, filter .7s ease;
+}
+.plot-img-primary:hover img {
+  transform: scale(1.03);
+  filter: brightness(.9);
+}
+.plot-img-secondary {
+  position: relative;
+  margin-top: -80px;
+  margin-left: 40px;
+  width: 72%;
+}
+.plot-img-secondary img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+}
+
+/* Coordinate badges */
+.coord {
+  position: absolute;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .16em;
+  color: rgba(200,200,200,.85);
+  background: rgba(5,5,5,.5);
+  padding: 6px 10px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.coord::before {
+  content: "";
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  width: 20px;
+  height: 1px;
+  background: rgba(200,200,200,.55);
+}
+.c1 { top: 22%; right: -8px; }
+.c2 { top: 47%; right: 14%; }
+.c3 { top: 66%; right: -8px; }
+
+/* Copy right column */
+.plot-copy {
+  padding-top: 4px;
+}
+.plot-copy .eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+  display: block;
+}
+.plot-copy h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(44px,6vw,96px);
+  line-height: .9;
+  color: var(--text);
+  margin: 0 0 0;
+}
+.plot-rule {
+  width: 48px;
+  height: 1px;
+  background: var(--accent);
+  margin: 32px 0 20px;
+}
+.plot-copy .setting-lbl {
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  display: block;
+}
+.plot-copy p {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 40ch;
+  margin: 0;
+}
+.plot-copy .dim {
+  margin-top: 28px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .18em;
+  color: var(--text-muted);
+  display: block;
+}
+
+/* ─── SPECS SECTION ─── */
+#specs {
+  background: var(--surface);
+  padding: 16vh 6vw;
+}
+.specs-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.specs-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 48px;
+  display: block;
+}
+.specs-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.spec-item {
+  flex: 1;
+}
+.spec-item:not(:last-child) {
+  padding-right: 48px;
+}
+.spec-item:not(:first-child) {
+  padding-left: 48px;
+}
+.spec-divider {
+  width: 1px;
+  height: 64px;
+  background: var(--divider);
+  flex-shrink: 0;
+}
+.spec-lbl {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 10px;
+}
+.spec-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: clamp(28px,3.5vw,52px);
+  text-transform: uppercase;
+  color: var(--text);
+  line-height: 1;
+  display: block;
+  margin-bottom: 6px;
+}
+.spec-detail {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ─── FINALE SECTION ─── */
+#finale {
+  position: relative;
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.finale-stack {
+  position: relative;
+  z-index: 2;
+  padding: 16vh 4vw;
+}
+.finale-stack h2 {
+  font-size: clamp(56px,13vw,200px);
+  line-height: .86;
+}
+.finale-stack h2 span {
+  display: block;
+}
+.finale-stack h2 .off-l {
+  transform: translateX(-5vw);
+}
+.finale-stack h2 .off-r {
+  transform: translateX(5vw);
+}
+.finale-cta {
+  margin-top: 8vh;
+}
+.finale-cta a {
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--divider);
+  padding: 18px 42px;
+  transition: background .25s ease, color .25s ease, transform .15s ease;
+}
+.finale-cta a:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+.finale-cta a:active {
+  transform: scale(.98);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .plot-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .plot-img-secondary {
+    margin-top: -48px;
+    margin-left: 28px;
+    width: 68%;
+  }
+  #grid-overlay i:nth-child(n+5) { display: none; }
+  .specs-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+  .spec-divider { display: none; }
+  .spec-item:not(:last-child),
+  .spec-item:not(:first-child) {
+    padding: 0;
+  }
+  .mapping-caption h3 { font-size: 22px; }
+  #coord-svg { height: auto; }
 }
 </style>
 </head>
@@ -83,8 +642,10 @@
   <a class="mono" href="index.html#section-09" data-rx-nav>Start with a conversation</a>
 </nav>
 
+<!-- Longitude lines: fixed, drifting at different scroll rates via GSAP -->
 <div id="grid-overlay" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
 
+<!-- ─── SECTION 1: HERO ─── -->
 <section id="hero" aria-label="Meridian Cluster">
   <video autoplay muted loop playsinline poster="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg">
     <source src="Jewelry/Portfolio_pieces_vids/halo_2shankpave_ring.mp4" type="video/mp4">
@@ -93,40 +654,191 @@
   <div class="scrim"></div>
   <div class="hero-type">
     <span class="idx">RX-05</span>
-    <h1 class="reveal">Meridian<br>Cluster<em>stones plotted like coordinates</em></h1>
+    <h1>MERIDIAN<br>CLUSTER<em>stones plotted like coordinates</em></h1>
   </div>
-  <div class="hero-type" style="pointer-events:none"><span class="scroll-hint">Scroll &#8595;</span></div>
+  <span class="hero-scroll-hint">Scroll ↓</span>
 </section>
 
+<!-- ─── SECTION 2: MAPPING (SVG coordinate plotter) ─── -->
+<section id="mapping" aria-label="Stone coordinate survey">
+  <span class="mapping-label-top">MERIDIAN SURVEY · 12 STONES PLOTTED</span>
+
+  <div id="coord-svg-wrap">
+    <svg id="coord-svg" viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+
+      <!-- Background horizontal grid lines (5) -->
+      <g class="grid-lines-h">
+        <line class="grid-h" x1="0" y1="104" x2="900" y2="104" stroke="rgba(200,200,200,.08)" stroke-width="1"/>
+        <line class="grid-h" x1="0" y1="208" x2="900" y2="208" stroke="rgba(200,200,200,.08)" stroke-width="1"/>
+        <line class="grid-h" x1="0" y1="260" x2="900" y2="260" stroke="rgba(200,200,200,.08)" stroke-width="1"/>
+        <line class="grid-h" x1="0" y1="312" x2="900" y2="312" stroke="rgba(200,200,200,.08)" stroke-width="1"/>
+        <line class="grid-h" x1="0" y1="416" x2="900" y2="416" stroke="rgba(200,200,200,.08)" stroke-width="1"/>
+      </g>
+
+      <!-- Background vertical grid lines / meridians (7) -->
+      <g class="grid-lines-v">
+        <line class="grid-v" x1="112" y1="0" x2="112" y2="520" stroke="rgba(200,200,200,.12)" stroke-width="1"/>
+        <line class="grid-v" x1="225" y1="0" x2="225" y2="520" stroke="rgba(200,200,200,.12)" stroke-width="1"/>
+        <line class="grid-v" x1="337" y1="0" x2="337" y2="520" stroke="rgba(200,200,200,.12)" stroke-width="1"/>
+        <line class="grid-v" x1="450" y1="0" x2="450" y2="520" stroke="rgba(200,200,200,.12)" stroke-width="1"/>
+        <line class="grid-v" x1="562" y1="0" x2="562" y2="520" stroke="rgba(200,200,200,.12)" stroke-width="1"/>
+        <line class="grid-v" x1="675" y1="0" x2="675" y2="520" stroke="rgba(200,200,200,.12)" stroke-width="1"/>
+        <line class="grid-v" x1="787" y1="0" x2="787" y2="520" stroke="rgba(200,200,200,.12)" stroke-width="1"/>
+      </g>
+
+      <!-- Main meridian cross (center) — dashed -->
+      <line class="meridian-v" x1="450" y1="0" x2="450" y2="520"
+        stroke="rgba(200,200,200,.35)" stroke-width="1" stroke-dasharray="6 4"/>
+      <line class="meridian-h" x1="0" y1="260" x2="900" y2="260"
+        stroke="rgba(200,200,200,.35)" stroke-width="1" stroke-dasharray="6 4"/>
+
+      <!-- 12 stone positions — circles -->
+      <g class="stones">
+        <circle class="stone" cx="380" cy="200" r="4" fill="#c8c8c8" stroke="rgba(245,242,232,.6)" stroke-width="1"/>
+        <circle class="stone" cx="420" cy="185" r="4" fill="#c8c8c8" stroke="rgba(245,242,232,.6)" stroke-width="1"/>
+        <circle class="stone" cx="460" cy="195" r="4" fill="#c8c8c8" stroke="rgba(245,242,232,.6)" stroke-width="1"/>
+        <circle class="stone" cx="490" cy="215" r="4" fill="#c8c8c8" stroke="rgba(245,242,232,.6)" stroke-width="1"/>
+        <circle class="stone" cx="510" cy="240" r="4" fill="#c8c8c8" stroke="rgba(245,242,232,.6)" stroke-width="1"/>
+        <circle class="stone" cx="500" cy="268" r="4" fill="#c8c8c8" stroke="rgba(245,242,232,.6)" stroke-width="1"/>
+        <circle class="stone" cx="480" cy="290" r="4" fill="#c8c8c8" stroke="rgba(245,242,232,.6)" stroke-width="1"/>
+        <circle class="stone" cx="450" cy="305" r="4" fill="#c8c8c8" stroke="rgba(245,242,232,.6)" stroke-width="1"/>
+        <circle class="stone" cx="415" cy="298" r="4" fill="#c8c8c8" stroke="rgba(245,242,232,.6)" stroke-width="1"/>
+        <circle class="stone" cx="390" cy="278" r="4" fill="#c8c8c8" stroke="rgba(245,242,232,.6)" stroke-width="1"/>
+        <circle class="stone" cx="375" cy="252" r="4" fill="#c8c8c8" stroke="rgba(245,242,232,.6)" stroke-width="1"/>
+        <circle class="stone" cx="378" cy="225" r="4" fill="#c8c8c8" stroke="rgba(245,242,232,.6)" stroke-width="1"/>
+      </g>
+
+      <!-- Stone connector lines to labels -->
+      <g class="connectors">
+        <line class="stone-connector" x1="380" y1="200" x2="340" y2="168" stroke="rgba(200,200,200,.3)" stroke-width=".6"/>
+        <line class="stone-connector" x1="420" y1="185" x2="400" y2="148" stroke="rgba(200,200,200,.3)" stroke-width=".6"/>
+        <line class="stone-connector" x1="460" y1="195" x2="468" y2="154" stroke="rgba(200,200,200,.3)" stroke-width=".6"/>
+        <line class="stone-connector" x1="490" y1="215" x2="538" y2="178" stroke="rgba(200,200,200,.3)" stroke-width=".6"/>
+        <line class="stone-connector" x1="510" y1="240" x2="562" y2="220" stroke="rgba(200,200,200,.3)" stroke-width=".6"/>
+        <line class="stone-connector" x1="500" y1="268" x2="562" y2="274" stroke="rgba(200,200,200,.3)" stroke-width=".6"/>
+        <line class="stone-connector" x1="480" y1="290" x2="538" y2="314" stroke="rgba(200,200,200,.3)" stroke-width=".6"/>
+        <line class="stone-connector" x1="450" y1="305" x2="452" y2="348" stroke="rgba(200,200,200,.3)" stroke-width=".6"/>
+        <line class="stone-connector" x1="415" y1="298" x2="378" y2="340" stroke="rgba(200,200,200,.3)" stroke-width=".6"/>
+        <line class="stone-connector" x1="390" y1="278" x2="322" y2="304" stroke="rgba(200,200,200,.3)" stroke-width=".6"/>
+        <line class="stone-connector" x1="375" y1="252" x2="310" y2="260" stroke="rgba(200,200,200,.3)" stroke-width=".6"/>
+        <line class="stone-connector" x1="378" y1="225" x2="318" y2="200" stroke="rgba(200,200,200,.3)" stroke-width=".6"/>
+      </g>
+
+      <!-- Stone labels (coordinates) -->
+      <g class="labels" font-family="'Space Mono', monospace" font-size="9" fill="rgba(200,200,200,.7)">
+        <text class="stone-label" x="316" y="165">41°52' N</text>
+        <text class="stone-label" x="366" y="145">41°53' N</text>
+        <text class="stone-label" x="450" y="150">87°36' W</text>
+        <text class="stone-label" x="540" y="175">87°35' W</text>
+        <text class="stone-label" x="565" y="218">41°51' N</text>
+        <text class="stone-label" x="565" y="272">87°38' W</text>
+        <text class="stone-label" x="540" y="316">41°50' N</text>
+        <text class="stone-label" x="432" y="362">87°37' W</text>
+        <text class="stone-label" x="330" y="352">41°49' N</text>
+        <text class="stone-label" x="250" y="308">87°39' W</text>
+        <text class="stone-label" x="252" y="263">41°51' N</text>
+        <text class="stone-label" x="260" y="197">87°38' W</text>
+      </g>
+
+      <!-- Center wireframe ring — appears last -->
+      <circle class="ring-outer" cx="450" cy="248" r="52"
+        fill="none" stroke="rgba(200,200,200,.45)" stroke-width="1.2"/>
+      <circle class="ring-inner" cx="450" cy="248" r="28"
+        fill="none" stroke="rgba(200,200,200,.22)" stroke-width=".8"/>
+
+      <!-- Crosshair ticks N/S/E/W -->
+      <g class="crosshair" stroke="rgba(200,200,200,.4)" stroke-width="1">
+        <line x1="450" y1="188" x2="450" y2="196"/><!-- N -->
+        <line x1="450" y1="300" x2="450" y2="308"/><!-- S -->
+        <line x1="390" y1="248" x2="398" y2="248"/><!-- W -->
+        <line x1="502" y1="248" x2="510" y2="248"/><!-- E -->
+      </g>
+
+      <!-- SVG corner labels -->
+      <text class="svg-label" x="18" y="22"
+        font-family="'Space Mono', monospace" font-size="9"
+        fill="rgba(200,200,200,.35)">MERIDIAN SURVEY · 12 STONES PLOTTED</text>
+      <text class="svg-label" x="620" y="508"
+        font-family="'Space Mono', monospace" font-size="9"
+        fill="rgba(200,200,200,.35)">CHICAGO DATUM · 41.88° N  87.63° W</text>
+    </svg>
+  </div>
+
+  <div class="mapping-caption">
+    <h3>Twelve stones. Every position argued over.</h3>
+    <span class="cap-sub">OPEN WIREFRAME · 18K WHITE GOLD</span>
+  </div>
+
+  <span class="mapping-label-bottom">CHICAGO DATUM · 41.88° N &nbsp;87.63° W</span>
+</section>
+
+<!-- ─── SECTION 3: PLOT ─── -->
 <section id="plot" aria-label="Twelve stones, mapped">
   <div class="plot-grid">
-    <div class="plot-visual reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-      <div style="position:relative">
-        <img src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg" alt="Meridian Cluster worn — wireframe structure visible" loading="lazy">
-        <span class="coord c1 reveal">41.88&deg; N</span>
-        <span class="coord c2 reveal">87.63&deg; W</span>
-        <span class="coord c3 reveal">CHICAGO DATUM</span>
+
+    <!-- Left: stacked images with offset -->
+    <div class="plot-visual" data-rx-reveal>
+      <div class="plot-img-primary">
+        <img src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg"
+             alt="Meridian Cluster worn — wireframe structure visible"
+             loading="lazy">
+        <span class="coord c1">41.88&deg;&nbsp;N</span>
+        <span class="coord c2">87.63&deg;&nbsp;W</span>
+        <span class="coord c3">CHICAGO DATUM</span>
       </div>
-      <div style="position:relative">
-        <img src="Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg" alt="Meridian Cluster — pavé diamond detail" loading="lazy">
+      <div class="plot-img-secondary">
+        <img src="Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg"
+             alt="Meridian Cluster — pavé diamond detail"
+             loading="lazy">
       </div>
     </div>
+
+    <!-- Right: copy -->
     <div class="plot-copy">
+      <span class="eyebrow reveal">THE ARRANGEMENT</span>
       <h2 class="reveal">Drawn On<br>A Map</h2>
-      <div class="rule reveal"></div>
-      <div class="lbl reveal">Cluster Setting</div>
+      <div class="plot-rule reveal"></div>
+      <span class="setting-lbl reveal">Cluster Setting</span>
       <p class="reveal">Twelve stones plotted like cities on a meridian &mdash; no two the same size, every position argued over at the drawing stage. The wireframe is the design; the stones are where it intersects.</p>
-      <p class="dim reveal">Twelve stones &middot; open wireframe &middot; 18k white gold</p>
+      <span class="dim reveal">Twelve stones &middot; open wireframe &middot; 18k white gold</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── SECTION 4: SPECS ─── -->
+<section id="specs" aria-label="Technical specification">
+  <div class="specs-inner">
+    <span class="specs-eyebrow reveal">TECHNICAL SPEC</span>
+    <div class="specs-row">
+      <div class="spec-item reveal">
+        <span class="spec-lbl">Setting</span>
+        <span class="spec-val">CLUSTER</span>
+        <span class="spec-detail">Irregular placement</span>
+      </div>
+      <div class="spec-divider" aria-hidden="true"></div>
+      <div class="spec-item reveal">
+        <span class="spec-lbl">Material</span>
+        <span class="spec-val">18K WHITE GOLD</span>
+        <span class="spec-detail">Hypoallergenic</span>
+      </div>
+      <div class="spec-divider" aria-hidden="true"></div>
+      <div class="spec-item reveal">
+        <span class="spec-lbl">Stones</span>
+        <span class="spec-val">TWELVE</span>
+        <span class="spec-detail">No two the same</span>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ─── SECTION 5: FINALE ─── -->
 <section id="finale" aria-label="Every stone a coordinate">
   <div class="finale-stack">
     <h2 class="chrome-type reveal">
       <span class="off-l">Every Stone</span>
-      <span class="off-r">A</span>
-      <span>Coordinate</span>
+      <span>A</span>
+      <span class="off-r">Coordinate</span>
     </h2>
     <div class="finale-cta reveal">
       <a href="index.html#section-09" data-rx-nav>Start with a conversation</a>
@@ -134,12 +846,14 @@
   </div>
 </section>
 
+<!-- Next piece link -->
 <a class="next-piece" href="eclipse-halo.html" data-rx-nav>
   <span class="np-label">Next piece &middot; RX&#8211;06</span>
   <span class="np-name">Eclipse<br>Halo</span>
   <span class="np-arrow">&#8594;</span>
 </a>
 
+<!-- Marquee belt -->
 <div class="rx-marquee" aria-hidden="true">
   <div class="rx-marquee-track">
     <div class="rx-marquee-item"><img src="Jewelry/f1.jpg" alt="" loading="lazy"></div>
@@ -162,6 +876,7 @@
     <div class="rx-marquee-item"><img src="Jewelry/f6.png" alt="" loading="lazy"></div>
   </div>
 </div>
+
 <footer class="rx-foot">
   <a href="fragment-band.html" data-rx-nav>&larr; RX&#8211;04 Fragment Band</a>
   <span>RX&#8211;05 Meridian Cluster &middot; MMXXVI</span>
@@ -170,16 +885,37 @@
 <script src="atelier.js"></script>
 <script>
 (function(){
-  if (window.RX.prefersReduced || !window.gsap || !window.ScrollTrigger) return;
-  gsap.registerPlugin(ScrollTrigger);
-  // meridian drift: each longitude line slides at its own rate with scroll
-  gsap.utils.toArray('#grid-overlay i').forEach(function(line, i){
-    gsap.fromTo(line, { y: 0 }, {
-      y: (i % 2 ? -1 : 1) * (30 + i * 14),
-      ease: 'none',
-      scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: 1.2 }
+  /* ── GSAP: longitude grid drift ── */
+  if (!window.RX || !window.RX.prefersReduced && window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('#grid-overlay i').forEach(function(line, i){
+      gsap.fromTo(line, { y: 0 }, {
+        y: (i % 2 ? -1 : 1) * (28 + i * 13),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: document.body,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 1.2
+        }
+      });
     });
-  });
+  }
+
+  /* ── IntersectionObserver: SVG coordinate plotter ── */
+  (function(){
+    var section = document.getElementById('mapping');
+    if (!section) return;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          section.classList.add('mapping-active');
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    io.observe(section);
+  })();
 })();
 </script>
 </body>
