@@ -10,14 +10,14 @@
 <meta property="og:url" content="https://rarityx.co/solstice-solitaire.html">
 <meta property="og:title" content="RX-03 SOLSTICE SOLITAIRE | RarityX">
 <meta property="og:description" content="Solstice Solitaire — a round brilliant on four prongs, set at the highest point of light. By RarityX.">
-<meta property="og:image" content="https://rarityx.co/Jewelry/soli_v2.jpg">
+<meta property="og:image" content="https://rarityx.co/Jewelry/Portfolio_pieces_vids/bridal_ring.mp4">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="RX-03 SOLSTICE SOLITAIRE | RarityX">
 <meta name="twitter:description" content="Solstice Solitaire — a round brilliant on four prongs, set at the highest point of light. By RarityX.">
-<meta name="twitter:image" content="https://rarityx.co/Jewelry/soli_v2.jpg">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Solstice Solitaire","description":"Solstice Solitaire — a round brilliant on four prongs, set at the highest point of light. By RarityX.","brand":{"@type":"Brand","name":"RarityX"},"url":"https://rarityx.co/solstice-solitaire.html","image":"https://rarityx.co/Jewelry/soli_v2.jpg","offers":{"@type":"Offer","availability":"https://schema.org/PreOrder","priceCurrency":"USD","seller":{"@type":"Organization","name":"RarityX"}}}</script>
+<meta name="twitter:image" content="https://rarityx.co/Jewelry/Portfolio_pieces_vids/bridal_ring.mp4">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Solstice Solitaire","description":"Solstice Solitaire — a round brilliant on four prongs, set at the highest point of light. By RarityX.","brand":{"@type":"Brand","name":"RarityX"},"url":"https://rarityx.co/solstice-solitaire.html","offers":{"@type":"Offer","availability":"https://schema.org/PreOrder","priceCurrency":"USD","seller":{"@type":"Organization","name":"RarityX"}}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Bodoni+Moda:ital,opsz,wght@1,6..96,300;1,6..96,400&family=Outfit:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -27,6 +27,18 @@
 <style>
 
 /* ─────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────── */
+:root {
+  --bg:     #330D1E;
+  --surface:#3f1525;
+  --text:   #f5f5f5;
+  --muted:  #d4b0c0;
+  --accent: #c8c8c8;
+  --divider:#5a1a2e;
+}
+
+/* ─────────────────────────────────────────
    HERO
 ───────────────────────────────────────── */
 #hero {
@@ -34,9 +46,9 @@
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
-  background: #0a0a0a;
+  background: #060608;
 }
-#hero video {
+#hero-vid {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -46,7 +58,13 @@
 #hero .scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(5,5,5,.2) 0%, transparent 35%, rgba(5,5,5,.7) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(4,4,6,.15) 0%,
+    transparent 30%,
+    rgba(4,4,6,.62) 82%,
+    rgba(4,4,6,.88) 100%
+  );
 }
 .hero-type {
   position: absolute;
@@ -55,17 +73,18 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0 4vw 8vh;
+  padding: 0 4vw 9vh;
 }
 .hero-type .idx {
   font-family: 'Space Mono', monospace;
   font-size: 11px;
   letter-spacing: .26em;
   text-transform: uppercase;
-  color: rgba(200,200,200,.72);
-  margin-bottom: 16px;
+  color: rgba(200,200,200,.6);
+  margin-bottom: 18px;
+  opacity: 0;
 }
-.hero-type h1 {
+.hero-h1 {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900;
   text-transform: uppercase;
@@ -73,18 +92,29 @@
   line-height: .86;
   color: var(--text);
   letter-spacing: .005em;
+  margin: 0;
 }
-.hero-type h1 em {
+.hw {
+  overflow: hidden;
+  display: block;
+}
+.hw-inner {
+  display: block;
+  transform: translateY(100%);
+}
+.hero-em {
   display: block;
   font-family: 'Bodoni Moda', serif;
   font-style: italic;
   font-weight: 300;
   text-transform: none;
-  font-size: .38em;
-  line-height: 1.2;
+  font-size: .36em;
+  line-height: 1.3;
   letter-spacing: 0;
-  color: rgba(245,245,245,.72);
-  padding-top: .18em;
+  color: rgba(245,245,245,.6);
+  padding-top: .22em;
+  opacity: 0;
+  transform: translateY(10px);
 }
 .hero-scroll-hint {
   position: absolute;
@@ -94,18 +124,19 @@
   font-size: 10px;
   letter-spacing: .3em;
   text-transform: uppercase;
-  color: rgba(200,200,200,.5);
+  color: rgba(200,200,200,.4);
   z-index: 2;
   pointer-events: none;
+  opacity: 0;
 }
 
 /* ─────────────────────────────────────────
-   ARC MOMENT — sun meridian canvas section
+   ARC MOMENT — sun meridian canvas
 ───────────────────────────────────────── */
 #arc-moment {
   position: relative;
   height: 200vh;
-  background: #0a0a0a;
+  background: #060608;
 }
 #arc-sticky {
   position: sticky;
@@ -121,13 +152,13 @@
   pointer-events: none;
   display: block;
 }
-#arc-ring {
+#arc-ring-vid {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: clamp(280px, 28vw, 440px);
-  aspect-ratio: 1;
+  width: clamp(260px, 26vw, 420px);
+  height: clamp(260px, 26vw, 420px);
   object-fit: cover;
   border-radius: 50%;
   clip-path: circle(0% at 50% 50%);
@@ -142,9 +173,9 @@
   font-family: 'Space Mono', monospace;
   font-size: 11px;
   letter-spacing: .2em;
-  color: #c8c8c8;
+  color: var(--accent);
   opacity: 0;
-  transition: opacity .4s ease;
+  transition: opacity .5s ease;
   white-space: nowrap;
   text-transform: uppercase;
 }
@@ -156,7 +187,7 @@
   font-size: 10px;
   letter-spacing: .24em;
   text-transform: uppercase;
-  color: rgba(200,200,200,.38);
+  color: rgba(200,200,200,.28);
   z-index: 2;
   pointer-events: none;
 }
@@ -166,8 +197,8 @@
 ───────────────────────────────────────── */
 #stone {
   position: relative;
-  background: #330D1E;
-  padding: 22vh 6vw;
+  background: var(--bg);
+  padding: 20vh 6vw;
   overflow: hidden;
 }
 .stone-grid {
@@ -181,48 +212,41 @@
 .stone-visual {
   position: relative;
 }
-.stone-visual .frame {
+.stone-frame {
   aspect-ratio: 3/4;
   overflow: hidden;
   position: relative;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1.2s cubic-bezier(.16,1,.3,1);
 }
-.stone-visual .frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(.92);
-  display: block;
+.stone-frame.in {
+  clip-path: inset(0 0 0% 0);
 }
-.stone-visual .frame video {
+.stone-frame video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
-  transition: opacity .7s cubic-bezier(.23,1,.32,1);
-  pointer-events: none;
+  display: block;
 }
 .stone-caption {
   margin-top: 14px;
   font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  letter-spacing: .2em;
+  font-size: 9px;
+  letter-spacing: .22em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  opacity: .65;
-}
-.stone-copy {
-  /* intentionally no extra wrapper styles — children carry their own spacing */
+  color: var(--muted);
+  opacity: .55;
 }
 .stone-eyebrow {
   font-family: 'Space Mono', monospace;
   font-size: 10px;
   letter-spacing: .3em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  opacity: .7;
-  margin-bottom: 22px;
+  color: var(--muted);
+  opacity: .65;
+  margin-bottom: 20px;
 }
 .stone-copy h2 {
   font-family: 'Barlow Condensed', sans-serif;
@@ -231,37 +255,40 @@
   font-size: clamp(44px, 6vw, 96px);
   line-height: .9;
   color: var(--text);
+  margin: 0 0 28px;
 }
 .stone-rule {
   width: 48px;
   height: 1px;
-  background: #c8c8c8;
-  margin: 32px 0 20px;
+  background: var(--divider);
+  margin: 0 0 24px;
 }
 .stone-copy p {
   font-family: 'Outfit', sans-serif;
   font-weight: 400;
   font-size: 15px;
-  line-height: 1.7;
-  color: var(--text-muted);
+  line-height: 1.72;
+  color: var(--muted);
   max-width: 40ch;
+  margin: 0 0 16px;
 }
 .stone-dim {
-  margin-top: 28px;
+  margin-top: 24px;
   font-family: 'Space Mono', monospace;
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  opacity: .7;
+  color: var(--muted);
+  opacity: .6;
 }
 
 /* ─────────────────────────────────────────
    SPECS
 ───────────────────────────────────────── */
 #specs {
-  background: #3f1525;
+  background: var(--surface);
   padding: 16vh 6vw;
+  border-top: 1px solid var(--divider);
 }
 .specs-inner {
   max-width: 1200px;
@@ -272,9 +299,9 @@
   font-size: 10px;
   letter-spacing: .28em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  opacity: .6;
-  margin-bottom: 52px;
+  color: var(--muted);
+  opacity: .55;
+  margin-bottom: 56px;
 }
 .specs-row {
   display: flex;
@@ -282,28 +309,35 @@
 }
 .spec-item {
   flex: 1;
-  padding: 0 40px;
+  padding: 0 44px;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.16,1,.3,1);
 }
-.spec-item:first-child {
-  padding-left: 0;
-}
-.spec-item:last-child {
-  padding-right: 0;
-}
+.spec-item:first-child { padding-left: 0; }
+.spec-item:last-child  { padding-right: 0; }
+.spec-item.in { opacity: 1; transform: translateX(0); }
+.spec-item:nth-child(3) { transition-delay: .10s, .10s; }
+.spec-item:nth-child(5) { transition-delay: .20s, .20s; }
 .spec-divider {
   width: 1px;
-  background: #5a1a2e;
+  background: var(--divider);
   align-self: stretch;
   flex-shrink: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform .9s cubic-bezier(.16,1,.3,1);
 }
+.spec-divider.in { transform: scaleY(1); }
 .spec-lbl {
   font-family: 'Space Mono', monospace;
   font-size: 9px;
   letter-spacing: .28em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  opacity: .65;
-  margin-bottom: 12px;
+  color: var(--muted);
+  opacity: .6;
+  margin-bottom: 14px;
+  display: block;
 }
 .spec-val {
   font-family: 'Barlow Condensed', sans-serif;
@@ -313,32 +347,113 @@
   color: var(--text);
   line-height: .92;
   margin-bottom: 10px;
+  display: block;
 }
 .spec-detail {
   font-family: 'Outfit', sans-serif;
   font-weight: 300;
   font-size: 13px;
-  color: var(--text-muted);
-  opacity: .75;
+  color: var(--muted);
+  opacity: .68;
+  display: block;
 }
+
+/* ─────────────────────────────────────────
+   STUDY — ring_closeup full bleed
+───────────────────────────────────────── */
+#study {
+  position: relative;
+  height: 75vh;
+  overflow: hidden;
+  background: #030303;
+}
+#study-vid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+.study-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(3,3,3,.72) 0%,
+    rgba(3,3,3,.08) 40%,
+    rgba(3,3,3,.08) 60%,
+    rgba(3,3,3,.72) 100%
+  );
+}
+.study-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 2;
+  gap: 14px;
+}
+.study-kicker {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: rgba(200,190,200,.48);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.16,1,.3,1);
+}
+.study-kicker.in { opacity: 1; transform: translateY(0); }
+.study-headline {
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(26px, 4vw, 62px);
+  color: rgba(245,242,238,.82);
+  margin: 0;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .95s ease .18s, transform .95s cubic-bezier(.16,1,.3,1) .18s;
+}
+.study-headline.in { opacity: 1; transform: translateY(0); }
+.study-rule {
+  width: 28px;
+  height: 1px;
+  background: rgba(200,200,200,.25);
+  opacity: 0;
+  transition: opacity .6s ease .34s;
+}
+.study-rule.in { opacity: 1; }
 
 /* ─────────────────────────────────────────
    FINALE
 ───────────────────────────────────────── */
 #finale {
   position: relative;
-  min-height: 100vh;
-  background: #330D1E;
+  min-height: 88vh;
+  background: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   overflow: hidden;
 }
+/* faint radial light from center — alludes to stone scintillation */
+#finale::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 64% 52% at 50% 50%, rgba(200,180,160,.04) 0%, transparent 70%);
+  pointer-events: none;
+}
 .finale-stack {
   position: relative;
   z-index: 2;
-  padding: 16vh 4vw;
+  padding: 14vh 4vw;
 }
 .finale-stack h2 {
   font-family: 'Barlow Condensed', sans-serif;
@@ -348,17 +463,21 @@
   line-height: .86;
   color: var(--text);
 }
-.finale-stack h2 span {
+.finale-stack h2 span { display: block; }
+.finale-stack h2 .off-l { transform: translateX(-5vw); }
+.finale-stack h2 .off-r { transform: translateX(5vw); }
+.finale-em {
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(16px, 1.8vw, 24px);
+  color: rgba(245,245,245,.4);
   display: block;
-}
-.finale-stack h2 .off-l {
-  transform: translateX(-5vw);
-}
-.finale-stack h2 .off-r {
-  transform: translateX(5vw);
+  margin-top: 24px;
+  letter-spacing: .01em;
 }
 .finale-cta {
-  margin-top: 10vh;
+  margin-top: 9vh;
 }
 .finale-cta a {
   display: inline-block;
@@ -368,133 +487,214 @@
   text-transform: uppercase;
   color: var(--text);
   text-decoration: none;
-  border: 1px solid #5a1a2e;
-  padding: 18px 48px;
-  transition: background .25s ease, color .25s ease;
+  border: 1px solid var(--divider);
+  padding: 18px 52px;
+  transition: background .3s ease, color .3s ease, border-color .3s ease;
 }
 .finale-cta a:hover {
-  background: #c8c8c8;
-  color: #330D1E;
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+/* ─────────────────────────────────────────
+   TEXT MARQUEE (replaces image belt)
+───────────────────────────────────────── */
+.rx-spec-marquee {
+  background: var(--surface);
+  border-top: 1px solid var(--divider);
+  border-bottom: 1px solid var(--divider);
+  overflow: hidden;
+  padding: 15px 0;
+}
+.rx-spec-track {
+  display: flex;
+  white-space: nowrap;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(212,176,192,.38);
+  animation: specScroll 32s linear infinite;
+  width: max-content;
+  gap: 0;
+}
+.rx-spec-track span { padding: 0 24px; }
+.rx-spec-track .sep { color: var(--divider); padding: 0 4px; }
+@keyframes specScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion:reduce) {
+  .rx-spec-track { animation: none; }
 }
 
 /* ─────────────────────────────────────────
    RESPONSIVE
 ───────────────────────────────────────── */
-@media (max-width: 900px) {
+@media (max-width:900px) {
   .stone-grid {
     grid-template-columns: 1fr;
     gap: 48px;
   }
-  .stone-visual .frame {
-    aspect-ratio: 4/3;
-  }
+  .stone-frame { aspect-ratio: 4/3; }
   .specs-row {
     flex-direction: column;
     gap: 0;
   }
-  .spec-item {
-    padding: 32px 0;
-  }
+  .spec-item { padding: 32px 0; }
   .spec-divider {
     width: 100%;
     height: 1px;
-    align-self: auto;
+    transform: scaleX(0);
+    transform-origin: left;
   }
+  .spec-divider.in { transform: scaleX(1); }
+  #study { height: 55vh; }
+}
+@media (max-width:580px) {
+  .stone-frame { aspect-ratio: 1; }
+  .hero-h1 { font-size: clamp(58px, 16vw, 120px); }
+}
+
+/* ─────────────────────────────────────────
+   REDUCED MOTION
+───────────────────────────────────────── */
+@media (prefers-reduced-motion:reduce) {
+  .stone-frame { clip-path: inset(0) !important; }
+  .hero-type .idx,
+  .hw-inner,
+  .hero-em,
+  .hero-scroll-hint,
+  .study-kicker,
+  .study-headline,
+  .study-rule { opacity: 1 !important; transform: none !important; }
 }
 </style>
 </head>
 <body>
 
 <nav class="nav">
-  <a class="wordmark" href="index.html" data-rx-nav><img src="Jewelry/LOGO_transparent.webp" alt="RarityX" loading="eager"></a>
+  <a class="wordmark" href="index.html" data-rx-nav>
+    <img src="Jewelry/LOGO_transparent.webp" alt="RarityX" loading="eager">
+  </a>
   <a class="mono" href="index.html#section-09" data-rx-nav>Start with a conversation</a>
 </nav>
 
-<!-- ─── SECTION 1: HERO ─────────────────────────────────── -->
-<section id="hero" aria-label="Solstice Solitaire — video hero">
-  <video autoplay muted loop playsinline poster="Jewelry/soli_v2.jpg">
-    <source src="Jewelry/Portfolio_pieces_vids/soli_round_ring.mp4" type="video/mp4">
-    <source src="Jewelry/Portfolio_pieces_vids/diam_soli_ring.mp4" type="video/mp4">
+<!-- ──────────────────────────────────────────────
+     S1 — HERO   bridal_ring.mp4
+     ────────────────────────────────────────────── -->
+<section id="hero" aria-label="Solstice Solitaire — bridal ring">
+  <video id="hero-vid" autoplay muted loop playsinline preload="auto">
+    <source src="Jewelry/Portfolio_pieces_vids/bridal_ring.mp4" type="video/mp4">
   </video>
   <div class="scrim" aria-hidden="true"></div>
   <div class="hero-type">
     <span class="idx">RX-03</span>
-    <h1>SOLSTICE<br>SOLITAIRE<em>set at the highest point of light</em></h1>
+    <h1 class="hero-h1">
+      <span class="hw"><span class="hw-inner">SOLSTICE</span></span>
+      <span class="hw"><span class="hw-inner">SOLITAIRE</span></span>
+    </h1>
+    <em class="hero-em">set at the highest point of light</em>
   </div>
-  <span class="hero-scroll-hint" aria-hidden="true">Scroll ↓</span>
+  <span class="hero-scroll-hint" aria-hidden="true">Scroll &darr;</span>
 </section>
 
-<!-- ─── SECTION 2: ARC MOMENT ───────────────────────────── -->
+<!-- ──────────────────────────────────────────────
+     S2 — ARC MOMENT   sun meridian canvas
+          ring reveal = bridal_ring.mp4 clipped circle
+     ────────────────────────────────────────────── -->
 <section id="arc-moment" aria-label="Sun meridian arc">
   <div id="arc-sticky">
     <canvas id="arc-canvas" aria-hidden="true"></canvas>
-    <img id="arc-ring" src="Jewelry/soli_v2.jpg" alt="Solstice Solitaire ring revealed at apex" aria-hidden="true">
-    <p id="arc-coord" aria-hidden="true">23°26&#8242; N · SOLSTICE MERIDIAN</p>
+    <video id="arc-ring-vid" autoplay muted loop playsinline
+           aria-hidden="true">
+      <source src="Jewelry/Portfolio_pieces_vids/bridal_ring.mp4" type="video/mp4">
+    </video>
+    <p id="arc-coord" aria-hidden="true">23&deg;26&prime; N &middot; SOLSTICE MERIDIAN</p>
     <span class="arc-section-label" aria-hidden="true">ARC OF TRANSIT</span>
   </div>
 </section>
 
-<!-- ─── SECTION 3: STONE ─────────────────────────────────── -->
+<!-- ──────────────────────────────────────────────
+     S3 — STONE   diam_hand_unbox_ad.mp4
+     ────────────────────────────────────────────── -->
 <section id="stone" aria-label="The stone — story">
   <div class="stone-grid">
 
-    <div class="stone-visual" data-rx-reveal>
-      <div class="frame" id="stone-frame">
-        <img src="Jewelry/soli_v2.jpg"
-             onerror="this.src='Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg'"
-             alt="Solstice Solitaire, round brilliant close-up"
-             loading="lazy">
-        <video id="stone-vid" autoplay muted loop playsinline aria-hidden="true">
-          <source src="Jewelry/Portfolio_pieces_vids/ring_closeup.mp4" type="video/mp4">
+    <div class="stone-visual">
+      <div class="stone-frame" id="stone-frame">
+        <video id="stone-vid" muted loop playsinline>
+          <source src="Jewelry/Portfolio_pieces_vids/diam_hand_unbox_ad.mp4" type="video/mp4">
         </video>
       </div>
-      <p class="stone-caption">ROUND BRILLIANT · STUDIO CAPTURE</p>
+      <p class="stone-caption">ROUND BRILLIANT &middot; ACQUISITION MOMENT</p>
     </div>
 
     <div class="stone-copy">
-      <p class="stone-eyebrow" data-rx-reveal>THE STONE</p>
-      <h2 data-rx-reveal>The Longest<br>Day</h2>
-      <div class="stone-rule" data-rx-reveal></div>
-      <p data-rx-reveal>One stone, lifted on four prongs the way the sun sits at solstice — held at its highest point, nothing between it and the light.</p>
-      <p class="stone-dim" data-rx-reveal>Round brilliant · 950 platinum · four-prong</p>
+      <p class="stone-eyebrow reveal">THE STONE</p>
+      <h2 class="reveal">The Longest<br>Day</h2>
+      <div class="stone-rule reveal"></div>
+      <p class="reveal">One stone, lifted on four prongs the way the sun sits at solstice — held at its highest point, nothing between it and the light.</p>
+      <p class="reveal">The round brilliant is not a default. It is the shape that returns the most fire. Here it is positioned to catch noon — a design decision from the start.</p>
+      <p class="stone-dim reveal">Round brilliant &middot; 950 platinum &middot; four-prong high basket</p>
     </div>
 
   </div>
 </section>
 
-<!-- ─── SECTION 4: SPECS ─────────────────────────────────── -->
+<!-- ──────────────────────────────────────────────
+     S4 — SPECS
+     ────────────────────────────────────────────── -->
 <section id="specs" aria-label="Technical specifications">
   <div class="specs-inner">
-    <p class="specs-label" data-rx-reveal>TECHNICAL SPEC</p>
+    <p class="specs-label reveal">TECHNICAL SPEC</p>
     <div class="specs-row">
 
-      <div class="spec-item" data-rx-reveal>
-        <div class="spec-lbl">SETTING</div>
-        <div class="spec-val">FOUR-PRONG</div>
-        <div class="spec-detail">High-lift basket</div>
+      <div class="spec-item">
+        <span class="spec-lbl">SETTING</span>
+        <span class="spec-val">FOUR-PRONG</span>
+        <span class="spec-detail">High-lift basket · maximum light entry</span>
       </div>
 
       <div class="spec-divider" aria-hidden="true"></div>
 
-      <div class="spec-item" data-rx-reveal>
-        <div class="spec-lbl">MATERIAL</div>
-        <div class="spec-val">950 PLATINUM</div>
-        <div class="spec-detail">Hypoallergenic</div>
+      <div class="spec-item">
+        <span class="spec-lbl">MATERIAL</span>
+        <span class="spec-val">950 PLATINUM</span>
+        <span class="spec-detail">Hypoallergenic &middot; satin-finished band</span>
       </div>
 
       <div class="spec-divider" aria-hidden="true"></div>
 
-      <div class="spec-item" data-rx-reveal>
-        <div class="spec-lbl">STONE</div>
-        <div class="spec-val">ROUND BRILLIANT</div>
-        <div class="spec-detail">GIA certified</div>
+      <div class="spec-item">
+        <span class="spec-lbl">STONE</span>
+        <span class="spec-val">ROUND BRILLIANT</span>
+        <span class="spec-detail">GIA certified &middot; D&ndash;F colour &middot; VS clarity</span>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ─── SECTION 5: FINALE ────────────────────────────────── -->
+<!-- ──────────────────────────────────────────────
+     S5 — STUDY   ring_closeup_v3.mp4 full bleed
+     ────────────────────────────────────────────── -->
+<section id="study" aria-label="Surface study — ring closeup">
+  <video id="study-vid" muted loop playsinline>
+    <source src="Jewelry/Portfolio_pieces_vids/ring_closeup_v3.mp4" type="video/mp4">
+  </video>
+  <div class="study-scrim" aria-hidden="true"></div>
+  <div class="study-text">
+    <span class="study-kicker">SURFACE STUDY</span>
+    <p class="study-headline">Every facet, intentional.</p>
+    <div class="study-rule"></div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────────
+     S6 — FINALE
+     ────────────────────────────────────────────── -->
 <section id="finale" aria-label="Held at the highest point">
   <div class="finale-stack">
     <h2 class="chrome-type reveal">
@@ -502,6 +702,7 @@
       <span class="off-r">The Highest</span>
       <span>Point</span>
     </h2>
+    <em class="finale-em reveal">A commission begins with a conversation.</em>
     <div class="finale-cta reveal">
       <a href="index.html#section-09" data-rx-nav>Start with a conversation</a>
     </div>
@@ -515,27 +716,27 @@
   <span class="np-arrow">&#8594;</span>
 </a>
 
-<!-- ─── MARQUEE ──────────────────────────────────────────── -->
-<div class="rx-marquee" aria-hidden="true">
-  <div class="rx-marquee-track">
-    <div class="rx-marquee-item"><img src="Jewelry/f1.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f2.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f3.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f4.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f5.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f6.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f7.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f8.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f9.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f10.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f11.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f12.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f1.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f2.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f3.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f4.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f5.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f6.png" alt="" loading="lazy"></div>
+<!-- ─── SPEC TEXT MARQUEE ────────────────────────────────── -->
+<div class="rx-spec-marquee" aria-hidden="true">
+  <div class="rx-spec-track">
+    <span>ROUND BRILLIANT</span><span class="sep">&middot;</span>
+    <span>950 PLATINUM</span><span class="sep">&middot;</span>
+    <span>FOUR-PRONG BASKET</span><span class="sep">&middot;</span>
+    <span>SOLSTICE MERIDIAN</span><span class="sep">&middot;</span>
+    <span>D&ndash;F COLOUR</span><span class="sep">&middot;</span>
+    <span>VS CLARITY</span><span class="sep">&middot;</span>
+    <span>GIA CERTIFIED</span><span class="sep">&middot;</span>
+    <span>BESPOKE ONLY</span><span class="sep">&middot;</span>
+    <span>RX-03</span><span class="sep">&middot;</span>
+    <span>ROUND BRILLIANT</span><span class="sep">&middot;</span>
+    <span>950 PLATINUM</span><span class="sep">&middot;</span>
+    <span>FOUR-PRONG BASKET</span><span class="sep">&middot;</span>
+    <span>SOLSTICE MERIDIAN</span><span class="sep">&middot;</span>
+    <span>D&ndash;F COLOUR</span><span class="sep">&middot;</span>
+    <span>VS CLARITY</span><span class="sep">&middot;</span>
+    <span>GIA CERTIFIED</span><span class="sep">&middot;</span>
+    <span>BESPOKE ONLY</span><span class="sep">&middot;</span>
+    <span>RX-03</span><span class="sep">&middot;</span>
   </div>
 </div>
 
@@ -547,31 +748,40 @@
 
 <script src="atelier.js"></script>
 
-<!-- Story video hover (addEventListener, no inline handlers) -->
+<!-- ── HERO ENTRANCE ── -->
 <script>
 (function () {
-  var frame = document.getElementById('stone-frame');
-  var vid = document.getElementById('stone-vid');
-  if (!frame || !vid) return;
-  frame.addEventListener('mouseenter', function () { vid.style.opacity = '.88'; });
-  frame.addEventListener('mouseleave', function () { vid.style.opacity = '0'; });
+  if (!window.gsap) return;
+  gsap.timeline({ delay: 0.25 })
+    .to('.hero-type .idx', {
+      opacity: 1, duration: 0.65, ease: 'power2.out'
+    })
+    .to('.hw-inner', {
+      y: 0, duration: 0.85, ease: 'power3.out', stagger: 0.10
+    }, '-=0.3')
+    .to('.hero-em', {
+      opacity: 1, y: 0, duration: 0.7, ease: 'power2.out'
+    }, '-=0.3')
+    .to('.hero-scroll-hint', {
+      opacity: 1, duration: 0.5, ease: 'power1.out'
+    }, '-=0.2');
 })();
 </script>
 
-<!-- Arc canvas — GSAP ScrollTrigger scrubbed -->
+<!-- ── ARC CANVAS ── -->
 <script>
 (function () {
   if (!window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
 
-  var canvas = document.getElementById('arc-canvas');
-  var ctx = canvas.getContext('2d');
-  var ringEl = document.getElementById('arc-ring');
-  var coordEl = document.getElementById('arc-coord');
+  var canvas   = document.getElementById('arc-canvas');
+  var ctx      = canvas.getContext('2d');
+  var ringVid  = document.getElementById('arc-ring-vid');
+  var coordEl  = document.getElementById('arc-coord');
 
   function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width  = canvas.parentElement.clientWidth;
+    canvas.height = canvas.parentElement.clientHeight;
   }
   var ro = new ResizeObserver(resize);
   ro.observe(canvas.parentElement);
@@ -582,7 +792,6 @@
     ctx.clearRect(0, 0, w, h);
     if (t <= 0) return;
 
-    // Quadratic bezier: start(0,h) → control(w/2, -h*0.18) → end(w,h)
     var totalSteps = 300;
     var steps = Math.floor(t * totalSteps);
     if (steps < 2) return;
@@ -591,61 +800,119 @@
     for (var i = 0; i <= totalSteps; i++) {
       var u = i / totalSteps;
       var px = (1-u)*(1-u)*0 + 2*(1-u)*u*(w*0.5) + u*u*w;
-      var py = (1-u)*(1-u)*h + 2*(1-u)*u*(-h*0.18) + u*u*h;
+      var py = (1-u)*(1-u)*h + 2*(1-u)*u*(-h*0.15) + u*u*h;
       pts.push({ x: px, y: py });
     }
 
-    // Fading trail — older part more transparent
+    /* fading trail */
     ctx.save();
-    ctx.lineWidth = 1.2;
+    ctx.lineWidth = 1;
     for (var i = 1; i <= steps; i++) {
-      var frac = i / steps;
-      var alpha = 0.18 + frac * 0.62;
+      var frac  = i / steps;
+      var alpha = 0.10 + frac * 0.55;
       ctx.beginPath();
       ctx.moveTo(pts[i-1].x, pts[i-1].y);
       ctx.lineTo(pts[i].x, pts[i].y);
-      ctx.strokeStyle = 'rgba(245,242,232,' + alpha + ')';
+      ctx.strokeStyle = 'rgba(210,218,230,' + alpha + ')';
       ctx.stroke();
     }
     ctx.restore();
 
-    // Lead orb at current position
+    /* lead orb */
     var lead = pts[steps];
-
-    // Glow
-    var grd = ctx.createRadialGradient(lead.x, lead.y, 0, lead.x, lead.y, 38);
-    grd.addColorStop(0, 'rgba(245,242,232,0.28)');
-    grd.addColorStop(1, 'rgba(245,242,232,0)');
+    var grd  = ctx.createRadialGradient(lead.x, lead.y, 0, lead.x, lead.y, 42);
+    grd.addColorStop(0, 'rgba(210,218,230,0.22)');
+    grd.addColorStop(1, 'rgba(210,218,230,0)');
     ctx.beginPath();
-    ctx.arc(lead.x, lead.y, 38, 0, Math.PI * 2);
+    ctx.arc(lead.x, lead.y, 42, 0, Math.PI * 2);
     ctx.fillStyle = grd;
     ctx.fill();
-
-    // Core orb
     ctx.beginPath();
-    ctx.arc(lead.x, lead.y, 5, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(245,242,232,0.96)';
+    ctx.arc(lead.x, lead.y, 4.5, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(225,230,240,0.96)';
     ctx.fill();
 
-    // Ring reveal: apex around t=0.5
-    // Reveal from t=0.36 to t=0.62
-    var apexProgress = Math.max(0, Math.min(1, (t - 0.36) / 0.26));
-    var clipR = apexProgress * 44;
-    ringEl.style.clipPath = 'circle(' + clipR + '% at 50% 50%)';
-    ringEl.style.opacity = apexProgress;
+    /* ring reveal: apex t ≈ 0.5 */
+    var apexT  = Math.max(0, Math.min(1, (t - 0.38) / 0.24));
+    var clipR  = apexT * 46;
+    if (ringVid) {
+      ringVid.style.clipPath = 'circle(' + clipR + '% at 50% 50%)';
+      ringVid.style.opacity  = apexT * 0.92;
+    }
 
-    // Coordinate label: show when apex passed
-    var coordAlpha = Math.max(0, Math.min(1, (t - 0.48) / 0.2));
-    coordEl.style.opacity = coordAlpha;
+    /* coord label */
+    if (coordEl) {
+      coordEl.style.opacity = Math.max(0, Math.min(1, (t - 0.50) / 0.18));
+    }
   }
 
   ScrollTrigger.create({
     trigger: '#arc-moment',
-    start: 'top top',
-    end: 'bottom bottom',
-    scrub: 0.9,
+    start:   'top top',
+    end:     'bottom bottom',
+    scrub:   0.9,
     onUpdate: function (self) { drawArc(self.progress); }
   });
+})();
+</script>
+
+<!-- ── STONE IO — play video on scroll-in ── -->
+<script>
+(function () {
+  var frame    = document.getElementById('stone-frame');
+  var stoneVid = document.getElementById('stone-vid');
+  if (!frame || !stoneVid) return;
+
+  var stoneIO = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        frame.classList.add('in');
+        stoneVid.play();
+      } else {
+        stoneVid.pause();
+      }
+    });
+  }, { threshold: 0.20 });
+  stoneIO.observe(frame);
+})();
+</script>
+
+<!-- ── SPECS IO ── -->
+<script>
+(function () {
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.28 });
+  document.querySelectorAll('.spec-item, .spec-divider').forEach(function (el) {
+    io.observe(el);
+  });
+})();
+</script>
+
+<!-- ── STUDY IO — play video + text reveal ── -->
+<script>
+(function () {
+  var studyVid = document.getElementById('study-vid');
+  var studySec = document.getElementById('study');
+  if (!studySec) return;
+
+  var studyIO = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        if (studyVid) studyVid.play();
+        studySec.querySelectorAll('.study-kicker, .study-headline, .study-rule')
+          .forEach(function (el) { el.classList.add('in'); });
+      } else {
+        if (studyVid) studyVid.pause();
+      }
+    });
+  }, { threshold: 0.28 });
+  studyIO.observe(studySec);
 })();
 </script>
 
