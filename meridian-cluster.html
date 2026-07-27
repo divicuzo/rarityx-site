@@ -313,6 +313,8 @@
 .gallery-cell:nth-child(1) img { aspect-ratio:3/4; }
 .gallery-cell:nth-child(2) img { aspect-ratio:1/1; }
 .gallery-cell:nth-child(3) img { aspect-ratio:4/5; }
+.gallery-cell:nth-child(4) img { aspect-ratio:3/4; }
+.gallery-cell:nth-child(5) img { aspect-ratio:2/3; }
 .gallery-cell:hover img { transform:scale(1.04); }
 .gallery-cap {
   position:absolute; bottom:18px; left:18px;
@@ -888,23 +890,24 @@
           this.unobserve(e.target);
         }
       }.bind(this));
-    }, { threshold: threshold || 0.18 });
+    }, { threshold: threshold || 0.08 });
   }
 
-  var io = makeIO(0.18);
+  var figIO  = makeIO(0.05);
+  var io     = makeIO(0.12);
 
-  document.querySelectorAll('.story-visual figure').forEach(function(f) { io.observe(f); });
+  document.querySelectorAll('.story-visual figure').forEach(function(f) { figIO.observe(f); });
 
   document.querySelectorAll(
     '.story-eyebrow, .story-h2, .story-body, .story-dim'
   ).forEach(function (el) { io.observe(el); });
 
-  var galIO = makeIO(0.10);
+  var galIO = makeIO(0.08);
   document.querySelectorAll('.gallery-cell').forEach(function (c) { galIO.observe(c); });
 
-  document.querySelectorAll('.detail-visual figure').forEach(function(f) { io.observe(f); });
+  document.querySelectorAll('.detail-visual figure').forEach(function(f) { figIO.observe(f); });
 
-  var specIO = makeIO(0.20);
+  var specIO = makeIO(0.15);
   var detEy = document.querySelector('.detail-eyebrow');
   if (detEy) specIO.observe(detEy);
   document.querySelectorAll('.spec-block').forEach(function (b) { specIO.observe(b); });

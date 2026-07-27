@@ -202,6 +202,8 @@
 .gallery-cell:nth-child(1) img { aspect-ratio:2/3; }
 .gallery-cell:nth-child(2) img { aspect-ratio:3/4; }
 .gallery-cell:nth-child(3) img { aspect-ratio:4/5; }
+.gallery-cell:nth-child(4) img { aspect-ratio:3/4; }
+.gallery-cell:nth-child(5) img { aspect-ratio:2/3; }
 .gallery-cell:hover img { transform:scale(1.04); }
 .gallery-cap {
   position:absolute; bottom:18px; left:18px;
@@ -765,6 +767,38 @@
 <script src="atelier.js"></script>
 <script>
 (function () {
+
+  /* ── IO REVEALS — no GSAP dependency ── */
+  function makeIO(threshold) {
+    return new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          this.unobserve(e.target);
+        }
+      }.bind(this));
+    }, { threshold: threshold || 0.08 });
+  }
+
+  var figIO  = makeIO(0.05);
+  var io     = makeIO(0.12);
+  var galIO  = makeIO(0.08);
+  var specIO = makeIO(0.15);
+
+  document.querySelectorAll('.story-visual figure').forEach(function(f) { figIO.observe(f); });
+  document.querySelectorAll(
+    '.story-copy .eyebrow, .story-copy h2, .story-copy p, .story-copy .dim'
+  ).forEach(function (el) { io.observe(el); });
+
+  document.querySelectorAll('.gallery-cell').forEach(function (c) { galIO.observe(c); });
+
+  document.querySelectorAll('.detail-visual figure').forEach(function(f) { figIO.observe(f); });
+
+  var detEy  = document.querySelector('.detail-eyebrow');
+  if (detEy) specIO.observe(detEy);
+  document.querySelectorAll('.spec-block').forEach(function (b) { specIO.observe(b); });
+
+  /* ── GSAP: atlas + statement parallax ── */
   if (!window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
 
@@ -789,7 +823,6 @@
     onUpdate: function (self) {
       var p = self.progress;
 
-      /* draw lines — left 6 (i 0-5) slightly ahead of right 6 (i 6-11) */
       lines.forEach(function (l, i) {
         var base  = i < 6 ? i : i - 6;
         var phase = i < 6 ? 0 : 0.01;
@@ -798,22 +831,19 @@
         l.setAttribute('stroke-dashoffset', LENS[i] * (1 - t));
       });
 
-      /* star labels */
       if (starLbls)
         starLbls.setAttribute('opacity', Math.max(0, Math.min(1, (p - 0.02) / 0.05)));
 
-      /* necklace photo materialises at p≥0.78 */
       var rt = Math.max(0, Math.min(1, (p - 0.78) / 0.14));
       if (revCircle) revCircle.setAttribute('r', rt * 280);
       if (atlasRing) atlasRing.setAttribute('opacity', rt * 0.92);
 
-      /* hero type fades as lines begin */
       if (heroType)
         heroType.style.opacity = p < 0.10 ? 1 : p < 0.20 ? (0.20 - p) / 0.10 : 0;
     }
   });
 
-  /* ── STATEMENT — GSAP parallax + IO text reveal ── */
+  /* ── STATEMENT — parallax + text reveal ── */
   var statImg = document.querySelector('.statement-img');
   if (statImg) {
     ScrollTrigger.create({
@@ -839,38 +869,6 @@
   }, { threshold: 0.3 });
   var stText = document.querySelector('.statement-text');
   if (stText) stIO.observe(stText);
-
-  /* ── SHARED IO ── */
-  function makeIO(threshold) {
-    return new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add('in');
-          this.unobserve(e.target);
-        }
-      }.bind(this));
-    }, { threshold: threshold || 0.18 });
-  }
-
-  var io = makeIO(0.18);
-
-  /* story */
-  document.querySelectorAll('.story-visual figure').forEach(function(f) { io.observe(f); });
-  document.querySelectorAll(
-    '.story-copy .eyebrow, .story-copy h2, .story-copy p, .story-copy .dim'
-  ).forEach(function (el) { io.observe(el); });
-
-  /* gallery */
-  var galIO = makeIO(0.10);
-  document.querySelectorAll('.gallery-cell').forEach(function (c) { galIO.observe(c); });
-
-  /* detail */
-  document.querySelectorAll('.detail-visual figure').forEach(function(f) { io.observe(f); });
-
-  var specIO = makeIO(0.20);
-  var detEy  = document.querySelector('.detail-eyebrow');
-  if (detEy) specIO.observe(detEy);
-  document.querySelectorAll('.spec-block').forEach(function (b) { specIO.observe(b); });
 
 })();
 </script>

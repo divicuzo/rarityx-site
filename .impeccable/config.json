@@ -1,0 +1,24 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "solstice-solitaire.html"
+        ],
+        "createdAt": "2026-07-27T01:52:05.637Z"
+      },
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "medallion.html"
+        ],
+        "createdAt": "2026-07-27T02:08:48.577Z"
+      }
+    ]
+  }
+}
