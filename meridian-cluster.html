@@ -295,6 +295,16 @@
 }
 .gallery-cell:nth-child(2) { transition-delay:.11s; }
 .gallery-cell:nth-child(3) { transition-delay:.22s; }
+.gallery-cell:nth-child(4) { transition-delay:.33s; }
+.gallery-cell:nth-child(5) { transition-delay:.44s; }
+.gallery-cell.wide { grid-column:span 2; }
+.gallery-cell.wide img { aspect-ratio:16/9 !important; }
+/* story second image */
+.story-visual figure.fig-secondary { margin-top:8px; transition-delay:.18s; }
+.story-visual figure.fig-secondary img { aspect-ratio:3/2; }
+/* detail image pair */
+.detail-pair { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.detail-pair figure:nth-child(2) { transition-delay:.15s; }
 .gallery-cell.in { clip-path:inset(0 0 0% 0); }
 .gallery-cell img {
   width:100%; display:block; object-fit:cover;
@@ -426,10 +436,13 @@
 @media (max-width:900px) {
   .story-grid { grid-template-columns:1fr; gap:40px; }
   .story-visual { position:static; }
+  .story-visual figure.fig-secondary img { aspect-ratio:16/9; }
   .detail-grid { grid-template-columns:1fr; gap:40px; }
+  .detail-pair { grid-template-columns:1fr 1fr; }
   .gallery-grid { grid-template-columns:1fr 1fr; }
-  .gallery-cell:nth-child(3) { grid-column:span 2; }
-  .gallery-cell:nth-child(3) img { aspect-ratio:16/9; }
+  .gallery-cell.wide { grid-column:1/-1; }
+  .gallery-cell:nth-child(3) { grid-column:auto; }
+  .gallery-cell:nth-child(3) img { aspect-ratio:4/5; }
   #grid-overlay i:nth-child(n+5) { display:none; }
   #reveal-grid {
     grid-template-columns:repeat(4,1fr);
@@ -559,6 +572,11 @@
              alt="Meridian Cluster — dense botanical branch necklace, pear-cut diamonds"
              loading="lazy">
       </figure>
+      <figure class="fig-secondary">
+        <img src="Jewelry/cb_v7.png"
+             alt="Meridian Cluster — antler branch necklace, sparse diamond at each tip"
+             loading="lazy">
+      </figure>
     </div>
     <div class="story-copy">
       <span class="story-eyebrow">THE AXIS</span>
@@ -579,6 +597,18 @@
     <h2>Other Axes</h2>
   </div>
   <div class="gallery-grid">
+    <div class="gallery-cell wide">
+      <img src="Jewelry/cb_v12.png"
+           alt="Meridian Cluster — lush diamond cascade necklace on mannequin bust"
+           loading="lazy">
+      <span class="gallery-cap">Cascade Statement</span>
+    </div>
+    <div class="gallery-cell">
+      <img src="Jewelry/cb_v7.png"
+           alt="Meridian Cluster — antler branch necklace, diamond at each tip"
+           loading="lazy">
+      <span class="gallery-cap">Antler Branch</span>
+    </div>
     <div class="gallery-cell">
       <img src="Jewelry/cb_v3.png"
            alt="Meridian Cluster — arc bar necklace with seven pear drops"
@@ -605,10 +635,15 @@
      ══════════════════════════════════════════ -->
 <section id="detail" aria-label="Technical detail">
   <div class="detail-grid">
-    <div class="detail-visual">
+    <div class="detail-visual detail-pair">
       <figure>
         <img src="Jewelry/cb_v14.png"
              alt="Meridian Cluster — chandelier pendant, filigree with pear drops"
+             loading="lazy">
+      </figure>
+      <figure>
+        <img src="Jewelry/cb_v3.png"
+             alt="Meridian Cluster — arc bar necklace, seven suspended pear drops"
              loading="lazy">
       </figure>
     </div>
@@ -714,7 +749,7 @@
       var img = imgs[idx];
       if (!img || !img.complete || !img.naturalWidth) return;
       var cw = canvas.width, ch = canvas.height;
-      var r = Math.min(cw / FW, ch / FH);
+      var r = Math.max(cw / FW, ch / FH);
       var w = FW * r, h = FH * r;
       ctx.clearRect(0, 0, cw, ch);
       ctx.drawImage(img, (cw - w) * 0.5, (ch - h) * 0.5, w, h);
@@ -858,8 +893,7 @@
 
   var io = makeIO(0.18);
 
-  var storyFig = document.querySelector('.story-visual figure');
-  if (storyFig) io.observe(storyFig);
+  document.querySelectorAll('.story-visual figure').forEach(function(f) { io.observe(f); });
 
   document.querySelectorAll(
     '.story-eyebrow, .story-h2, .story-body, .story-dim'
@@ -868,8 +902,7 @@
   var galIO = makeIO(0.10);
   document.querySelectorAll('.gallery-cell').forEach(function (c) { galIO.observe(c); });
 
-  var detFig = document.querySelector('.detail-visual figure');
-  if (detFig) io.observe(detFig);
+  document.querySelectorAll('.detail-visual figure').forEach(function(f) { io.observe(f); });
 
   var specIO = makeIO(0.20);
   var detEy = document.querySelector('.detail-eyebrow');

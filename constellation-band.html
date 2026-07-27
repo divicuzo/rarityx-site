@@ -184,6 +184,16 @@
 }
 .gallery-cell:nth-child(2) { transition-delay:.11s; }
 .gallery-cell:nth-child(3) { transition-delay:.22s; }
+.gallery-cell:nth-child(4) { transition-delay:.33s; }
+.gallery-cell:nth-child(5) { transition-delay:.44s; }
+.gallery-cell.wide { grid-column:span 2; }
+.gallery-cell.wide img { aspect-ratio:16/9 !important; }
+/* story second image */
+.story-visual figure.fig-secondary { margin-top:8px; transition-delay:.18s; }
+.story-visual figure.fig-secondary img { aspect-ratio:3/2; }
+/* detail image pair */
+.detail-pair { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.detail-pair figure:nth-child(2) { transition-delay:.15s; }
 .gallery-cell.in { clip-path:inset(0 0 0% 0); }
 .gallery-cell img {
   width:100%; display:block; object-fit:cover;
@@ -319,10 +329,13 @@
 @media (max-width:900px) {
   .story-grid { grid-template-columns:1fr; gap:40px; }
   .story-visual { position:static; }
+  .story-visual figure.fig-secondary img { aspect-ratio:16/9; }
   .detail-grid { grid-template-columns:1fr; gap:40px; }
+  .detail-pair { grid-template-columns:1fr 1fr; }
   .gallery-grid { grid-template-columns:1fr 1fr; }
-  .gallery-cell:nth-child(3) { grid-column:span 2; }
-  .gallery-cell:nth-child(3) img { aspect-ratio:16/9; object-position:center 30%; }
+  .gallery-cell.wide { grid-column:1/-1; }
+  .gallery-cell:nth-child(3) { grid-column:auto; }
+  .gallery-cell:nth-child(3) img { aspect-ratio:4/5; object-position:center 30%; }
 }
 @media (max-width:580px) {
   .gallery-grid { grid-template-columns:1fr; }
@@ -597,6 +610,11 @@
              alt="Constellation Band — botanical vine necklace, leaf and pear diamond branches"
              loading="lazy">
       </figure>
+      <figure class="fig-secondary">
+        <img src="Jewelry/cb_v11.png"
+             alt="Constellation Band — woven branch necklace with crystal clusters, close study"
+             loading="lazy">
+      </figure>
     </div>
     <div class="story-copy">
       <span class="eyebrow">THE FORM</span>
@@ -617,6 +635,18 @@
     <h2>Related Forms</h2>
   </div>
   <div class="gallery-grid">
+    <div class="gallery-cell wide">
+      <img src="Jewelry/cb_v6.jpg"
+           alt="Constellation Band — botanical atlas form, full vine necklace with branch constellation"
+           loading="lazy">
+      <span class="gallery-cap">Botanical Atlas</span>
+    </div>
+    <div class="gallery-cell">
+      <img src="Jewelry/cb_v9.png"
+           alt="Constellation Band — vine necklace, diamond branches cascading on mannequin"
+           loading="lazy">
+      <span class="gallery-cap">Vine Cascade</span>
+    </div>
     <div class="gallery-cell">
       <img src="Jewelry/cb_v11.png"
            alt="Constellation Band — woven branch necklace with crystal clusters"
@@ -643,10 +673,15 @@
      ══════════════════════════════════════════ -->
 <section id="detail" aria-label="Technical detail">
   <div class="detail-grid">
-    <div class="detail-visual">
+    <div class="detail-visual detail-pair">
       <figure>
         <img src="Jewelry/cb_v2.png"
              alt="Constellation Band — close study, vine necklace with pear and leaf detail"
+             loading="lazy">
+      </figure>
+      <figure>
+        <img src="Jewelry/cb_v13.png"
+             alt="Constellation Band — filigree cocktail ring, botanical diamond language applied to ring form"
              loading="lazy">
       </figure>
     </div>
@@ -820,8 +855,7 @@
   var io = makeIO(0.18);
 
   /* story */
-  var storyFig = document.querySelector('.story-visual figure');
-  if (storyFig) io.observe(storyFig);
+  document.querySelectorAll('.story-visual figure').forEach(function(f) { io.observe(f); });
   document.querySelectorAll(
     '.story-copy .eyebrow, .story-copy h2, .story-copy p, .story-copy .dim'
   ).forEach(function (el) { io.observe(el); });
@@ -831,8 +865,7 @@
   document.querySelectorAll('.gallery-cell').forEach(function (c) { galIO.observe(c); });
 
   /* detail */
-  var detFig = document.querySelector('.detail-visual figure');
-  if (detFig) io.observe(detFig);
+  document.querySelectorAll('.detail-visual figure').forEach(function(f) { io.observe(f); });
 
   var specIO = makeIO(0.20);
   var detEy  = document.querySelector('.detail-eyebrow');
