@@ -4,20 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RX-05 MERIDIAN CLUSTER | RarityX</title>
-<meta name="description" content="Meridian Cluster — twelve stones plotted like coordinates on a wireframe. By RarityX.">
+<meta name="description" content="Meridian Cluster — branch necklaces where every diamond finds its axis. Platinum vine setting, pear-cut and marquise, by RarityX.">
 <link rel="canonical" href="https://rarityx.co/meridian-cluster.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://rarityx.co/meridian-cluster.html">
 <meta property="og:title" content="RX-05 MERIDIAN CLUSTER | RarityX">
-<meta property="og:description" content="Meridian Cluster — twelve stones plotted like coordinates on a wireframe. By RarityX.">
-<meta property="og:image" content="https://rarityx.co/Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg">
+<meta property="og:description" content="Meridian Cluster — branch necklaces where every diamond finds its axis. By RarityX.">
+<meta property="og:image" content="https://rarityx.co/Jewelry/cb_v12.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="RX-05 MERIDIAN CLUSTER | RarityX">
-<meta name="twitter:description" content="Meridian Cluster — twelve stones plotted like coordinates on a wireframe. By RarityX.">
-<meta name="twitter:image" content="https://rarityx.co/Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Meridian Cluster","description":"Meridian Cluster — twelve stones plotted like coordinates on a wireframe. By RarityX.","brand":{"@type":"Brand","name":"RarityX"},"url":"https://rarityx.co/meridian-cluster.html","image":"https://rarityx.co/Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg","offers":{"@type":"Offer","availability":"https://schema.org/PreOrder","priceCurrency":"USD","seller":{"@type":"Organization","name":"RarityX"}}}</script>
+<meta name="twitter:description" content="Meridian Cluster — branch necklaces where every diamond finds its axis. By RarityX.">
+<meta name="twitter:image" content="https://rarityx.co/Jewelry/cb_v12.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Meridian Cluster","description":"Branch necklaces where every diamond finds its axis. Platinum vine setting, by RarityX.","brand":{"@type":"Brand","name":"RarityX"},"url":"https://rarityx.co/meridian-cluster.html","image":"https://rarityx.co/Jewelry/cb_v12.png","offers":{"@type":"Offer","availability":"https://schema.org/PreOrder","priceCurrency":"USD","seller":{"@type":"Organization","name":"RarityX"}}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Bodoni+Moda:ital,opsz,wght@1,6..96,300;1,6..96,400&family=Outfit:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -25,717 +25,666 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <link rel="stylesheet" href="atelier.css">
 <style>
-/* ─── CSS CUSTOM PROPERTIES ─── */
 :root {
-  --bg:         #330D1E;
-  --surface:    #3f1525;
-  --text:       #f5f5f5;
-  --text-muted: #d4b0c0;
-  --accent:     #c8c8c8;
-  --divider:    #5a1a2e;
-  --dark:       #0a0a0a;
+  --bg:     #330D1E;
+  --surface:#3f1525;
+  --text:   #f5f5f5;
+  --muted:  #d4b0c0;
+  --accent: #c8c8c8;
+  --divider:#5a1a2e;
+  --dark:   #080808;
 }
 
-/* ─── LONGITUDE GRID OVERLAY ─── */
+/* ── GRID OVERLAY (longitude lines) ── */
 #grid-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 4;
-  pointer-events: none;
-  display: flex;
-  justify-content: space-evenly;
+  position:fixed; inset:0; z-index:4;
+  pointer-events:none; display:flex; justify-content:space-evenly;
 }
 #grid-overlay i {
-  display: block;
-  width: 1px;
-  background: linear-gradient(
+  display:block; width:1px;
+  background:linear-gradient(
     to bottom,
     transparent,
-    rgba(200,200,200,.10) 20%,
-    rgba(200,200,200,.10) 80%,
+    rgba(200,200,200,.08) 20%,
+    rgba(200,200,200,.08) 80%,
     transparent
   );
 }
 
-/* ─── CANVAS SCRUB HERO ─── */
-#scrub { position: relative; height: 600vh; background: #080808; }
-.scrub-sticky { position: sticky; top: 0; height: 100vh; height: 100dvh; overflow: hidden; }
-#seq-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
-.stage-a { position: absolute; inset: 0; z-index: 3; pointer-events: none; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 4vw 9vh; }
-.stage-a .idx { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: rgba(200,200,200,.7); margin-bottom: 14px; }
-.stage-a .model { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(72px,13vw,200px); line-height: .86; color: var(--text); text-transform: uppercase; }
-.stage-a .tag { font-family: 'Outfit', sans-serif; font-size: 15px; color: rgba(245,245,245,.65); max-width: 38ch; margin-top: 18px; line-height: 1.5; }
-.stage-a .tag em { font-family: 'Bodoni Moda', serif; font-style: italic; font-weight: 300; font-size: 18px; display: block; margin-bottom: 4px; color: rgba(245,245,245,.72); }
-.stage-a .scroll-hint { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: rgba(200,200,200,.45); margin-top: 32px; }
-.stage-b { position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0; }
-.callout { position: absolute; left: 6vw; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: rgba(240,240,238,.85); max-width: 220px; line-height: 1.7; }
-.callout::before { content: ""; display: block; width: 34px; height: 1px; background: rgba(240,240,238,.7); margin-bottom: 10px; }
-.callout b { display: block; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: .06em; margin-bottom: 2px; }
-.co-1 { top: 20%; }
-.co-2 { top: 46%; }
-.co-3 { top: 72%; }
-.co-edition { position: absolute; right: 6vw; bottom: 16%; text-align: right; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(44px,6vw,84px); line-height: 1; color: rgba(245,245,245,.9); }
-.co-edition small { display: block; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: .22em; font-weight: 400; color: rgba(200,200,200,.55); margin-top: 6px; text-transform: uppercase; }
-.stage-c { position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 9vh; }
-.stage-c p { font-family: 'Bodoni Moda', serif; font-style: italic; font-weight: 300; font-size: clamp(20px,2.6vw,32px); color: rgba(245,245,245,.88); }
-.seq-bar { position: absolute; left: 0; bottom: 0; height: 2px; background: rgba(200,200,200,.45); width: 0; z-index: 4; }
+/* ── CANVAS SCRUB HERO ── */
+#scrub { position:relative; height:600vh; background:var(--dark); }
+.scrub-sticky { position:sticky; top:0; height:100vh; height:100dvh; overflow:hidden; }
+#seq-canvas { position:absolute; inset:0; width:100%; height:100%; }
 
-/* ─── REVEAL SECTION ─── */
-#reveal {
-  position: relative;
-  height: 280vh;
-  background: #080814;
+.stage-a {
+  position:absolute; inset:0; z-index:3;
+  pointer-events:none;
+  display:flex; flex-direction:column;
+  justify-content:flex-end; padding:0 4vw 9vh;
 }
-#reveal-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
+.stage-a .idx {
+  font-family:'Space Mono',monospace; font-size:11px;
+  letter-spacing:.26em; text-transform:uppercase;
+  color:rgba(200,200,200,.65); margin-bottom:14px; display:block;
+}
+.stage-a .model {
+  font-family:'Barlow Condensed',sans-serif; font-weight:900;
+  font-size:clamp(68px,12vw,196px); line-height:.86;
+  color:var(--text); text-transform:uppercase;
+}
+.stage-a .model em {
+  font-family:'Bodoni Moda',serif; font-style:italic;
+  font-weight:300; font-size:.38em;
+  color:rgba(245,245,245,.56); display:block;
+  text-transform:none; margin-top:.1em;
+}
+.stage-a .tag {
+  font-family:'Bodoni Moda',serif; font-style:italic;
+  font-weight:300; font-size:clamp(17px,2vw,24px);
+  color:rgba(245,245,245,.60); max-width:36ch;
+  margin-top:20px; line-height:1.52;
+}
+.stage-a .scroll-hint {
+  font-family:'Space Mono',monospace; font-size:10px;
+  letter-spacing:.3em; text-transform:uppercase;
+  color:rgba(200,200,200,.38); margin-top:32px; display:block;
 }
 
-/* Ring image — centered, initially covered by grid */
+.stage-b {
+  position:absolute; inset:0; z-index:3;
+  pointer-events:none; opacity:0;
+}
+.callout {
+  position:absolute; left:6vw;
+  font-family:'Space Mono',monospace; font-size:10.5px;
+  letter-spacing:.13em; text-transform:uppercase;
+  color:rgba(240,240,238,.82); max-width:240px; line-height:1.75;
+}
+.callout::before {
+  content:""; display:block; width:34px; height:1px;
+  background:rgba(240,240,238,.65); margin-bottom:10px;
+}
+.callout b {
+  display:block; font-family:'Barlow Condensed',sans-serif;
+  font-weight:800; font-size:21px; letter-spacing:.05em; margin-bottom:2px;
+}
+.co-1 { top:18%; }
+.co-2 { top:44%; }
+.co-3 { top:70%; }
+.co-edition {
+  position:absolute; right:5vw; bottom:14%; text-align:right;
+  font-family:'Barlow Condensed',sans-serif; font-weight:900;
+  font-size:clamp(40px,5.5vw,80px); line-height:1;
+  color:rgba(245,245,245,.88);
+}
+.co-edition small {
+  display:block; font-family:'Space Mono',monospace;
+  font-size:10px; letter-spacing:.22em; font-weight:400;
+  color:rgba(200,200,200,.48); margin-top:6px; text-transform:uppercase;
+}
+
+.stage-c {
+  position:absolute; inset:0; z-index:3; pointer-events:none;
+  opacity:0; display:flex; align-items:flex-end;
+  justify-content:center; padding-bottom:9vh;
+}
+.stage-c p {
+  font-family:'Bodoni Moda',serif; font-style:italic;
+  font-weight:300; font-size:clamp(22px,2.8vw,36px);
+  color:rgba(245,245,245,.90); text-align:center; max-width:22ch;
+}
+
+.seq-bar {
+  position:absolute; left:0; bottom:0; height:2px;
+  background:rgba(200,200,200,.4); width:0; z-index:4;
+}
+
+/* ── REVEAL SECTION ── */
+#reveal { position:relative; height:280vh; background:#080812; }
+#reveal-sticky { position:sticky; top:0; height:100vh; overflow:hidden; }
+
 #reveal-img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: clamp(380px, 44vw, 580px);
-  aspect-ratio: 4/5;
-  object-fit: cover;
-  object-position: center 20%;
-  display: block;
-  z-index: 1;
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%, -50%);
+  width:clamp(320px,42vw,560px);
+  aspect-ratio:3/4; object-fit:cover;
+  object-position:center 15%; display:block; z-index:1;
 }
-
-/* Overlay grid — covers full viewport */
 #reveal-grid {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  pointer-events: none;
-  z-index: 2;
+  position:absolute; inset:0;
+  display:grid;
+  grid-template-columns:repeat(8,1fr);
+  grid-template-rows:repeat(6,1fr);
+  pointer-events:none; z-index:2;
 }
-.rev-cell {
-  background: #080814;
-  /* clip-path driven by JS */
-}
+.rev-cell { background:#080812; }
 
-/* Scan line */
 #scan-line {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: rgba(200,200,200,.4);
-  box-shadow: 0 0 8px 2px rgba(200,200,200,.2);
-  z-index: 3;
-  top: 0;
-  pointer-events: none;
+  position:absolute; left:0; right:0; height:1px;
+  background:rgba(200,200,200,.35);
+  box-shadow:0 0 8px 2px rgba(200,200,200,.15);
+  z-index:3; top:0; pointer-events:none;
 }
-
-/* Coordinate labels over ring */
-#reveal-coords {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.1s linear;
-}
-.rev-coord {
-  position: absolute;
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  letter-spacing: .16em;
-  color: rgba(200,200,200,.85);
-  background: rgba(5,5,5,.5);
-  padding: 6px 10px;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-}
-
-/* Crosshair over ring center */
 #reveal-crosshair {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: clamp(380px, 44vw, 580px);
-  aspect-ratio: 4/5;
-  z-index: 4;
-  pointer-events: none;
-  opacity: 0;
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width:clamp(320px,42vw,560px);
+  aspect-ratio:3/4; z-index:4;
+  pointer-events:none; opacity:0;
 }
 #reveal-crosshair::before,
 #reveal-crosshair::after {
-  content: '';
-  position: absolute;
-  background: rgba(200,200,200,.18);
+  content:''; position:absolute; background:rgba(200,200,200,.15);
 }
 #reveal-crosshair::before {
-  /* vertical */
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  transform: translateX(-50%);
+  left:50%; top:0; bottom:0; width:1px; transform:translateX(-50%);
 }
 #reveal-crosshair::after {
-  /* horizontal */
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 1px;
-  transform: translateY(-50%);
+  top:50%; left:0; right:0; height:1px; transform:translateY(-50%);
 }
-
-/* Section label top-left */
 #reveal-label {
-  position: absolute;
-  top: 32px;
-  left: 4vw;
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  letter-spacing: .24em;
-  text-transform: uppercase;
-  color: rgba(200,200,200,.3);
-  z-index: 5;
-  pointer-events: none;
+  position:absolute; top:32px; left:4vw;
+  font-family:'Space Mono',monospace; font-size:9.5px;
+  letter-spacing:.24em; text-transform:uppercase;
+  color:rgba(200,200,200,.28); z-index:5; pointer-events:none;
 }
-
-/* Scan counter top-right */
 #scan-counter {
-  position: absolute;
-  top: 32px;
-  right: 4vw;
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  letter-spacing: .16em;
-  color: rgba(200,200,200,.3);
-  z-index: 5;
-  pointer-events: none;
+  position:absolute; top:32px; right:4vw;
+  font-family:'Space Mono',monospace; font-size:9.5px;
+  letter-spacing:.16em; color:rgba(200,200,200,.28);
+  z-index:5; pointer-events:none;
 }
-
-/* Caption — bottom center, fades in at end */
+#reveal-coords {
+  position:absolute; inset:0; z-index:4;
+  pointer-events:none; opacity:0;
+  transition:opacity .1s linear;
+}
+.rev-coord {
+  position:absolute;
+  font-family:'Space Mono',monospace; font-size:9.5px;
+  letter-spacing:.16em; color:rgba(200,200,200,.82);
+  background:rgba(5,5,5,.48); padding:5px 9px;
+  backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px);
+}
 #reveal-caption {
-  position: absolute;
-  bottom: 10vh;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  opacity: 0;
-  z-index: 5;
-  pointer-events: none;
-  white-space: nowrap;
+  position:absolute; bottom:10vh; left:50%;
+  transform:translateX(-50%); text-align:center;
+  opacity:0; z-index:5; pointer-events:none; white-space:nowrap;
 }
 #reveal-caption h3 {
-  font-family: 'Bodoni Moda', serif;
-  font-style: italic;
-  font-weight: 300;
-  font-size: 26px;
-  color: var(--text);
-  margin: 0 0 10px;
+  font-family:'Bodoni Moda',serif; font-style:italic;
+  font-weight:300; font-size:clamp(20px,2.4vw,30px);
+  color:var(--text); margin:0 0 10px;
 }
 #reveal-caption span {
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: rgba(200,200,200,.5);
+  font-family:'Space Mono',monospace; font-size:9.5px;
+  letter-spacing:.2em; text-transform:uppercase;
+  color:rgba(200,200,200,.45);
 }
 
-/* ─── PLOT SECTION ─── */
-#plot {
-  position: relative;
-  background: var(--bg);
-  padding: 22vh 6vw;
-  overflow: hidden;
+/* ── STORY SECTION ── */
+#story { background:var(--bg); padding:18vh 6vw; }
+.story-grid {
+  max-width:1400px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:88px; align-items:start;
 }
-.plot-grid {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 72px;
-  align-items: start;
+.story-visual { position:sticky; top:12vh; }
+.story-visual figure {
+  margin:0; overflow:hidden;
+  clip-path:inset(0 0 100% 0);
+  transition:clip-path 1.1s cubic-bezier(.16,1,.3,1);
+}
+.story-visual figure.in { clip-path:inset(0 0 0% 0); }
+.story-visual figure img {
+  width:100%; aspect-ratio:4/5;
+  object-fit:cover; display:block;
+}
+.story-copy { padding-top:6vh; }
+.story-eyebrow {
+  font-family:'Space Mono',monospace; font-size:10px;
+  letter-spacing:.3em; text-transform:uppercase;
+  color:var(--muted); display:block; margin-bottom:20px;
+  opacity:0; transform:translateY(14px);
+  transition:opacity .6s ease, transform .6s cubic-bezier(.16,1,.3,1);
+}
+.story-eyebrow.in { opacity:1; transform:translateY(0); }
+.story-h2 {
+  font-family:'Barlow Condensed',sans-serif; font-weight:800;
+  font-size:clamp(38px,5.2vw,84px); line-height:.90;
+  text-transform:uppercase; color:var(--text); margin:0 0 28px;
+  opacity:0; transform:translateY(18px);
+  transition:opacity .7s ease .08s, transform .7s cubic-bezier(.16,1,.3,1) .08s;
+}
+.story-h2.in { opacity:1; transform:translateY(0); }
+.story-body {
+  font-family:'Outfit',sans-serif; font-weight:400;
+  font-size:15.5px; line-height:1.72; color:var(--muted);
+  max-width:44ch; margin:0 0 20px;
+  opacity:0; transform:translateY(14px);
+  transition:opacity .7s ease .16s, transform .7s cubic-bezier(.16,1,.3,1) .16s;
+}
+.story-body:nth-of-type(2) { transition-delay:.24s,.24s; }
+.story-body.in { opacity:1; transform:translateY(0); }
+.story-dim {
+  font-family:'Space Mono',monospace; font-size:10px;
+  letter-spacing:.18em; color:var(--muted);
+  display:block; margin-top:8px;
+  opacity:0; transition:opacity .6s ease .32s;
+}
+.story-dim.in { opacity:1; }
+
+/* ── GALLERY STRIP ── */
+#gallery { background:var(--surface); padding:13vh 0 0; overflow:hidden; }
+.gallery-header { padding:0 6vw 52px; }
+.gallery-header .eyebrow {
+  font-family:'Space Mono',monospace; font-size:9px;
+  letter-spacing:.28em; text-transform:uppercase;
+  color:var(--muted); display:block; margin-bottom:10px;
+}
+.gallery-header h2 {
+  font-family:'Barlow Condensed',sans-serif; font-weight:800;
+  font-size:clamp(34px,4.5vw,68px); text-transform:uppercase;
+  color:var(--text); margin:0; line-height:1;
+}
+.gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); }
+.gallery-cell {
+  overflow:hidden; position:relative;
+  clip-path:inset(0 0 100% 0);
+  transition:clip-path 1.05s cubic-bezier(.16,1,.3,1);
+}
+.gallery-cell:nth-child(2) { transition-delay:.11s; }
+.gallery-cell:nth-child(3) { transition-delay:.22s; }
+.gallery-cell.in { clip-path:inset(0 0 0% 0); }
+.gallery-cell img {
+  width:100%; display:block; object-fit:cover;
+  transition:transform .85s cubic-bezier(.16,1,.3,1);
+}
+.gallery-cell:nth-child(1) img { aspect-ratio:3/4; }
+.gallery-cell:nth-child(2) img { aspect-ratio:1/1; }
+.gallery-cell:nth-child(3) img { aspect-ratio:4/5; }
+.gallery-cell:hover img { transform:scale(1.04); }
+.gallery-cap {
+  position:absolute; bottom:18px; left:18px;
+  font-family:'Space Mono',monospace; font-size:8px;
+  letter-spacing:.2em; text-transform:uppercase;
+  color:rgba(245,245,245,.58); pointer-events:none;
 }
 
-/* Images left column */
-.plot-visual {
-  position: relative;
+/* ── DETAIL + SPECS ── */
+#detail { background:var(--bg); padding:18vh 6vw; }
+.detail-grid {
+  max-width:1400px; margin:0 auto;
+  display:grid; grid-template-columns:1.1fr 1fr;
+  gap:80px; align-items:center;
 }
-.plot-img-primary {
-  position: relative;
+.detail-visual figure {
+  margin:0; overflow:hidden;
+  clip-path:inset(100% 0 0 0);
+  transition:clip-path 1.1s cubic-bezier(.16,1,.3,1);
 }
-.plot-img-primary img {
-  width: 100%;
-  aspect-ratio: 4/5;
-  object-fit: cover;
-  object-position: center 20%;
-  display: block;
-  transition: transform .7s ease, filter .7s ease;
+.detail-visual figure.in { clip-path:inset(0% 0 0 0); }
+.detail-visual figure img {
+  width:100%; aspect-ratio:2/3;
+  object-fit:cover; object-position:center top; display:block;
 }
-.plot-img-primary:hover img {
-  transform: scale(1.03);
-  filter: brightness(.9);
+.detail-specs { display:flex; flex-direction:column; gap:0; }
+.detail-eyebrow {
+  font-family:'Space Mono',monospace; font-size:9px;
+  letter-spacing:.28em; text-transform:uppercase;
+  color:var(--muted); display:block; margin-bottom:32px;
+  opacity:0; transition:opacity .5s ease;
 }
-.plot-img-secondary {
-  position: relative;
-  margin-top: -80px;
-  margin-left: 40px;
-  width: 72%;
+.detail-eyebrow.in { opacity:1; }
+.spec-block {
+  padding:20px 0; border-top:1px solid var(--divider);
+  opacity:0; transform:translateX(18px);
+  transition:opacity .65s ease, transform .65s cubic-bezier(.16,1,.3,1);
 }
-.plot-img-secondary img {
-  width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  display: block;
-}
-
-/* Coordinate badges */
-.coord {
-  position: absolute;
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  letter-spacing: .16em;
-  color: rgba(200,200,200,.85);
-  background: rgba(5,5,5,.5);
-  padding: 6px 10px;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-}
-.coord::before {
-  content: "";
-  position: absolute;
-  left: -24px;
-  top: 50%;
-  width: 20px;
-  height: 1px;
-  background: rgba(200,200,200,.55);
-}
-.c1 { top: 22%; right: -8px; }
-.c2 { top: 47%; right: 14%; }
-.c3 { top: 66%; right: -8px; }
-
-/* Copy right column */
-.plot-copy {
-  padding-top: 4px;
-}
-.plot-copy .eyebrow {
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  letter-spacing: .3em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 18px;
-  display: block;
-}
-.plot-copy h2 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800;
-  text-transform: uppercase;
-  font-size: clamp(44px,6vw,96px);
-  line-height: .9;
-  color: var(--text);
-  margin: 0 0 0;
-}
-.plot-rule {
-  width: 48px;
-  height: 1px;
-  background: var(--accent);
-  margin: 32px 0 20px;
-}
-.plot-copy .setting-lbl {
-  font-family: 'Space Mono', monospace;
-  font-size: 10.5px;
-  letter-spacing: .24em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 14px;
-  display: block;
-}
-.plot-copy p {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--text-muted);
-  max-width: 40ch;
-  margin: 0;
-}
-.plot-copy .dim {
-  margin-top: 28px;
-  font-family: 'Space Mono', monospace;
-  font-size: 11px;
-  letter-spacing: .18em;
-  color: var(--text-muted);
-  display: block;
-}
-
-/* ─── SPECS SECTION ─── */
-#specs {
-  background: var(--surface);
-  padding: 16vh 6vw;
-}
-.specs-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.specs-eyebrow {
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  letter-spacing: .28em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 48px;
-  display: block;
-}
-.specs-row {
-  display: flex;
-  align-items: center;
-  gap: 0;
-}
-.spec-item {
-  flex: 1;
-}
-.spec-item:not(:last-child) {
-  padding-right: 48px;
-}
-.spec-item:not(:first-child) {
-  padding-left: 48px;
-}
-.spec-divider {
-  width: 1px;
-  height: 64px;
-  background: var(--divider);
-  flex-shrink: 0;
-}
+.spec-block:nth-child(2){ transition-delay:.06s,.06s; }
+.spec-block:nth-child(3){ transition-delay:.13s,.13s; }
+.spec-block:nth-child(4){ transition-delay:.20s,.20s; }
+.spec-block:nth-child(5){ transition-delay:.27s,.27s; }
+.spec-block.in { opacity:1; transform:translateX(0); }
 .spec-lbl {
-  font-family: 'Space Mono', monospace;
-  font-size: 9px;
-  letter-spacing: .28em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  display: block;
-  margin-bottom: 10px;
+  font-family:'Space Mono',monospace; font-size:8.5px;
+  letter-spacing:.22em; text-transform:uppercase;
+  color:var(--muted); display:block; margin-bottom:4px;
 }
 .spec-val {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: clamp(28px,3.5vw,52px);
-  text-transform: uppercase;
-  color: var(--text);
-  line-height: 1;
-  display: block;
-  margin-bottom: 6px;
+  font-family:'Barlow Condensed',sans-serif; font-weight:700;
+  font-size:clamp(22px,2.8vw,42px); text-transform:uppercase;
+  color:var(--text); display:block; line-height:1.0;
 }
-.spec-detail {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 300;
-  font-size: 13px;
-  color: var(--text-muted);
+.spec-sub {
+  font-family:'Outfit',sans-serif; font-weight:300;
+  font-size:12px; color:var(--muted); display:block; margin-top:3px;
 }
 
-/* ─── FINALE SECTION ─── */
+/* ── FINALE ── */
 #finale {
-  position: relative;
-  min-height: 100vh;
-  background: var(--bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
+  position:relative; min-height:90vh; background:var(--bg);
+  display:flex; align-items:center;
+  justify-content:center; text-align:center; overflow:hidden;
 }
-.finale-stack {
-  position: relative;
-  z-index: 2;
-  padding: 16vh 4vw;
+.finale-bg { position:absolute; inset:0; z-index:0; }
+.finale-bg img {
+  width:100%; height:100%; object-fit:cover;
+  object-position:center 25%;
+  opacity:.09; filter:blur(38px) saturate(.4);
 }
+.finale-stack { position:relative; z-index:2; padding:14vh 4vw; }
 .finale-stack h2 {
-  font-size: clamp(56px,13vw,200px);
-  line-height: .86;
+  font-family:'Barlow Condensed',sans-serif; font-weight:900;
+  font-size:clamp(52px,13vw,200px); line-height:.86;
+  text-transform:uppercase; color:var(--text); margin:0;
 }
-.finale-stack h2 span {
-  display: block;
+.finale-stack h2 span { display:block; }
+.finale-stack h2 .off-l { transform:translateX(-4vw); }
+.finale-stack h2 .off-r { transform:translateX(4vw); }
+.finale-sub {
+  font-family:'Bodoni Moda',serif; font-style:italic;
+  font-weight:300; font-size:clamp(16px,2vw,26px);
+  color:rgba(245,245,245,.50); display:block; margin-top:22px;
 }
-.finale-stack h2 .off-l {
-  transform: translateX(-5vw);
-}
-.finale-stack h2 .off-r {
-  transform: translateX(5vw);
-}
-.finale-cta {
-  margin-top: 8vh;
-}
+.finale-cta { margin-top:9vh; }
 .finale-cta a {
-  display: inline-block;
-  font-family: 'Space Mono', monospace;
-  font-size: 12px;
-  letter-spacing: .24em;
-  text-transform: uppercase;
-  color: var(--text);
-  text-decoration: none;
-  border: 1px solid var(--divider);
-  padding: 18px 42px;
-  transition: background .25s ease, color .25s ease, transform .15s ease;
+  display:inline-block;
+  font-family:'Space Mono',monospace; font-size:11px;
+  letter-spacing:.24em; text-transform:uppercase;
+  color:var(--text); text-decoration:none;
+  border:1px solid var(--divider); padding:17px 46px;
+  transition:background .25s ease, color .25s ease;
 }
-.finale-cta a:hover {
-  background: var(--accent);
-  color: var(--bg);
-}
-.finale-cta a:active {
-  transform: scale(.98);
+.finale-cta a:hover { background:var(--accent); color:#330D1E; }
+
+/* ── MARQUEE override ── */
+.rx-marquee { background:#050508; }
+.rx-marquee-item { background:#050508; }
+.rx-marquee-item img { object-fit:contain; background:#050508; }
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion:reduce) {
+  #reveal { height:auto; }
+  #reveal-sticky { position:relative; }
+  .rev-cell { display:none; }
+  #scan-line { display:none; }
+  #scrub { height:auto; }
+  .scrub-sticky { position:relative; }
+  .story-visual figure,
+  .gallery-cell,
+  .detail-visual figure { clip-path:inset(0) !important; }
+  .story-eyebrow,
+  .story-h2,
+  .story-body,
+  .story-dim,
+  .spec-block,
+  .detail-eyebrow { opacity:1 !important; transform:none !important; }
 }
 
-/* ─── REDUCED MOTION ─── */
-@media (prefers-reduced-motion: reduce) {
-  #reveal {
-    height: auto;
-  }
-  #reveal-sticky {
-    position: relative;
-  }
-  .rev-cell {
-    display: none;
-  }
-  #scan-line {
-    display: none;
-  }
-}
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 768px) {
-  #grid-overlay i:nth-child(n+5) { display: none; }
+/* ── RESPONSIVE ── */
+@media (max-width:900px) {
+  .story-grid { grid-template-columns:1fr; gap:40px; }
+  .story-visual { position:static; }
+  .detail-grid { grid-template-columns:1fr; gap:40px; }
+  .gallery-grid { grid-template-columns:1fr 1fr; }
+  .gallery-cell:nth-child(3) { grid-column:span 2; }
+  .gallery-cell:nth-child(3) img { aspect-ratio:16/9; }
+  #grid-overlay i:nth-child(n+5) { display:none; }
   #reveal-grid {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-columns:repeat(4,1fr);
+    grid-template-rows:repeat(8,1fr);
   }
-  .plot-grid {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-  .plot-img-secondary {
-    margin-top: -48px;
-    margin-left: 28px;
-    width: 68%;
-  }
-  .specs-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 32px;
-  }
-  .spec-divider { display: none; }
-  .spec-item:not(:last-child),
-  .spec-item:not(:first-child) {
-    padding: 0;
-  }
-  #reveal-caption {
-    white-space: normal;
-    width: 90vw;
-  }
-  #reveal-caption h3 {
-    font-size: 20px;
-  }
+  #reveal-caption { white-space:normal; width:90vw; }
+}
+@media (max-width:580px) {
+  .gallery-grid { grid-template-columns:1fr; }
+  .gallery-cell:nth-child(3) { grid-column:auto; }
+  .gallery-cell:nth-child(3) img { aspect-ratio:4/5; }
+  #scrub { height:auto; }
+  .scrub-sticky { position:relative; }
 }
 </style>
 </head>
 <body>
 
 <nav class="nav">
-  <a class="wordmark" href="index.html" data-rx-nav><img src="Jewelry/LOGO_transparent.webp" alt="RarityX" loading="eager"></a>
+  <a class="wordmark" href="index.html" data-rx-nav>
+    <img src="Jewelry/LOGO_transparent.webp" alt="RarityX" loading="eager">
+  </a>
   <a class="mono" href="index.html#section-09" data-rx-nav>Start with a conversation</a>
 </nav>
 
-<!-- Longitude lines: fixed, drifting at different scroll rates via GSAP -->
-<div id="grid-overlay" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div id="grid-overlay" aria-hidden="true">
+  <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+</div>
 
-<!-- ─── SECTION 1: CANVAS SCRUB HERO ─── -->
+<!-- ══════════════════════════════════════════
+     SECTION 1 — CANVAS SCRUB HERO
+     237 frames, tiara animation reversed
+     ══════════════════════════════════════════ -->
 <section id="scrub" aria-label="Meridian Cluster — tiara sequence">
   <div class="scrub-sticky">
     <canvas id="seq-canvas" aria-hidden="true"></canvas>
 
-    <!-- Stage A: visible at scroll 0–25% -->
+    <!-- Stage A: scroll 0–25% -->
     <div class="stage-a" aria-hidden="true">
       <span class="idx">RX-05</span>
-      <div class="model">MERIDIAN<br>CLUSTER</div>
-      <div class="tag">
-        <em>the crown reads like a coordinate map</em>
-        twelve stones. one arc. every position argued.
-      </div>
+      <div class="model">MERIDIAN<br>CLUSTER<em>the crown, unwound</em></div>
+      <p class="tag">
+        A tiara logic worn at the collarbone. Branches arranged around an axis —
+        diamonds where the structure splits, light where the metal ends.
+      </p>
       <span class="scroll-hint">Scroll ↓</span>
     </div>
 
-    <!-- Stage B: callouts at scroll 38–72% -->
+    <!-- Stage B: scroll 38–72% -->
     <div class="stage-b" aria-hidden="true">
-      <div class="callout co-1"><b>TWELVE STONES</b>across a single meridian</div>
-      <div class="callout co-2"><b>CLUSTER SET</b>each holds its assigned position</div>
-      <div class="callout co-3"><b>18K WHITE GOLD</b>the arc is the logic</div>
-      <div class="co-edition">SURVEY<br>MAP<small>OPEN WIREFRAME</small></div>
+      <div class="callout co-1">
+        <b>BRANCH SET</b>each tip holds a diamond
+      </div>
+      <div class="callout co-2">
+        <b>PLATINUM VINE</b>hand-formed, no mould
+      </div>
+      <div class="callout co-3">
+        <b>BESPOKE ONLY</b>begin with a consultation
+      </div>
+      <div class="co-edition">
+        AXIS<br>LINE<small>MERIDIAN SETTING</small>
+      </div>
     </div>
 
-    <!-- Stage C: closing line at scroll 80–100% -->
+    <!-- Stage C: scroll 80–100% -->
     <div class="stage-c" aria-hidden="true">
-      <p>The arrangement is the crown.</p>
+      <p>The branch is the design.<br>The diamond is where it decides.</p>
     </div>
 
-    <!-- Progress bar -->
     <div class="seq-bar" id="seq-bar" aria-hidden="true"></div>
   </div>
 </section>
 
-<!-- ─── SECTION 2: REVEAL (Projection Map) ─── -->
-<section id="reveal" aria-label="Projection map reveal">
+<!-- ══════════════════════════════════════════
+     SECTION 2 — REVEAL (grid scan → cb_v12)
+     ══════════════════════════════════════════ -->
+<section id="reveal" aria-label="Botanical cascade reveal">
   <div id="reveal-sticky">
 
-    <!-- Ring image — sits behind the overlay grid -->
     <img id="reveal-img"
-         src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg"
-         alt="Meridian Cluster — wireframe ring revealed by survey scan"
+         src="Jewelry/cb_v12.png"
+         alt="Meridian Cluster — lush diamond branch cascade necklace on bust"
          loading="eager">
 
-    <!-- Overlay grid: 48 cells cover the full viewport -->
     <div id="reveal-grid" aria-hidden="true">
-      <div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div>
-      <div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div>
-      <div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div>
-      <div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div>
-      <div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div>
-      <div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div>
+      <div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div>
+      <div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div>
+      <div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div>
+      <div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div>
+      <div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div>
+      <div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div>
+      <div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div>
+      <div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div>
+      <div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div>
+      <div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div>
+      <div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div>
+      <div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div><div class="rev-cell"></div>
     </div>
 
-    <!-- Scan line sweeps top → bottom -->
     <div id="scan-line" aria-hidden="true"></div>
-
-    <!-- Crosshair — over ring center, fades in mid-reveal -->
     <div id="reveal-crosshair" aria-hidden="true"></div>
 
-    <!-- Coordinate overlays — appear after 60% progress -->
     <div id="reveal-coords" aria-hidden="true">
-      <span class="rev-coord" style="top:22%;right:calc(50% - clamp(190px,22vw,290px))">41.88&deg;&nbsp;N</span>
-      <span class="rev-coord" style="top:50%;right:calc(50% - clamp(210px,24vw,310px))">87.63&deg;&nbsp;W</span>
-      <span class="rev-coord" style="top:68%;right:calc(50% - clamp(175px,20vw,270px))">CHICAGO</span>
+      <span class="rev-coord" style="top:20%;right:calc(50% - clamp(175px,20vw,280px))">BRANCH AXIS</span>
+      <span class="rev-coord" style="top:48%;right:calc(50% - clamp(195px,22vw,300px))">PLATINUM &#xB7; 950 Pt</span>
+      <span class="rev-coord" style="top:70%;right:calc(50% - clamp(168px,19vw,268px))">PEAR CUT</span>
     </div>
 
-    <!-- Section label -->
-    <span id="reveal-label" aria-hidden="true">MERIDIAN SURVEY &middot; PROJECTION MAP</span>
-
-    <!-- Scan counter -->
+    <span id="reveal-label" aria-hidden="true">MERIDIAN SURVEY &middot; BRANCH MAP</span>
     <span id="scan-counter" aria-hidden="true">CELL 00/48</span>
 
-    <!-- Caption — bottom center, appears near end -->
     <div id="reveal-caption" aria-hidden="true">
-      <h3>The ring was always there.</h3>
-      <span>OPEN WIREFRAME &middot; 18K WHITE GOLD</span>
+      <h3>Each branch decides its own direction.</h3>
+      <span>PLATINUM VINE &middot; PEAR-CUT DIAMOND</span>
     </div>
-
   </div>
 </section>
 
-<!-- ─── SECTION 3: PLOT ─── -->
-<section id="plot" aria-label="Twelve stones, mapped">
-  <div class="plot-grid">
-
-    <!-- Left: stacked images with offset -->
-    <div class="plot-visual" data-rx-reveal>
-      <div class="plot-img-primary">
-        <img src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg"
-             alt="Meridian Cluster worn — wireframe structure visible"
+<!-- ══════════════════════════════════════════
+     SECTION 3 — STORY
+     ══════════════════════════════════════════ -->
+<section id="story" aria-label="An axis, not a setting">
+  <div class="story-grid">
+    <div class="story-visual">
+      <figure>
+        <img src="Jewelry/cb_v5.png"
+             alt="Meridian Cluster — dense botanical branch necklace, pear-cut diamonds"
              loading="lazy">
-        <span class="coord c1">41.88&deg;&nbsp;N</span>
-        <span class="coord c2">87.63&deg;&nbsp;W</span>
-        <span class="coord c3">CHICAGO DATUM</span>
-      </div>
-      <div class="plot-img-secondary">
-        <img src="Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg"
-             alt="Meridian Cluster — pavé diamond detail"
-             loading="lazy">
-      </div>
+      </figure>
     </div>
-
-    <!-- Right: copy -->
-    <div class="plot-copy">
-      <span class="eyebrow reveal">THE ARRANGEMENT</span>
-      <h2 class="reveal">Drawn On<br>A Map</h2>
-      <div class="plot-rule reveal"></div>
-      <span class="setting-lbl reveal">Cluster Setting</span>
-      <p class="reveal">Twelve stones plotted like cities on a meridian &mdash; no two the same size, every position argued over at the drawing stage. The wireframe is the design; the stones are where it intersects.</p>
-      <span class="dim reveal">Twelve stones &middot; open wireframe &middot; 18k white gold</span>
+    <div class="story-copy">
+      <span class="story-eyebrow">THE AXIS</span>
+      <h2 class="story-h2">An Axis,<br>Not A Setting</h2>
+      <p class="story-body">The branch doesn't hold the diamond — it delivers it. Stems split, sub-branches form, and at each terminus a stone appears where the structure ran out of direction. The result is a necklace that reads like something designed by the material itself.</p>
+      <p class="story-body">Pear cuts chosen for their directionality: the pointed end follows the branch, the rounded belly catches light from below. No stone placed against the grain.</p>
+      <span class="story-dim">Platinum &middot; pear-cut &middot; vine-branch setting &middot; bespoke</span>
     </div>
-
   </div>
 </section>
 
-<!-- ─── SECTION 4: SPECS ─── -->
-<section id="specs" aria-label="Technical specification">
-  <div class="specs-inner">
-    <span class="specs-eyebrow reveal">TECHNICAL SPEC</span>
-    <div class="specs-row">
-      <div class="spec-item reveal">
+<!-- ══════════════════════════════════════════
+     SECTION 4 — GALLERY STRIP
+     ══════════════════════════════════════════ -->
+<section id="gallery" aria-label="Branch variations">
+  <div class="gallery-header">
+    <span class="eyebrow">VARIATIONS ON THE BRANCH</span>
+    <h2>Other Axes</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-cell">
+      <img src="Jewelry/cb_v3.png"
+           alt="Meridian Cluster — arc bar necklace with seven pear drops"
+           loading="lazy">
+      <span class="gallery-cap">Arc Drop</span>
+    </div>
+    <div class="gallery-cell">
+      <img src="Jewelry/cb_v4.png"
+           alt="Meridian Cluster — scattered branch necklace, diamond buds at tips"
+           loading="lazy">
+      <span class="gallery-cap">Scattered Branch</span>
+    </div>
+    <div class="gallery-cell">
+      <img src="Jewelry/cb_v1.png"
+           alt="Meridian Cluster — woven vine necklace with pear crystals on bust"
+           loading="lazy">
+      <span class="gallery-cap">Woven Vine</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 5 — DETAIL + SPECS
+     ══════════════════════════════════════════ -->
+<section id="detail" aria-label="Technical detail">
+  <div class="detail-grid">
+    <div class="detail-visual">
+      <figure>
+        <img src="Jewelry/cb_v14.png"
+             alt="Meridian Cluster — chandelier pendant, filigree with pear drops"
+             loading="lazy">
+      </figure>
+    </div>
+    <div class="detail-specs">
+      <span class="detail-eyebrow">TECHNICAL DETAIL</span>
+      <div class="spec-block">
         <span class="spec-lbl">Setting</span>
-        <span class="spec-val">CLUSTER</span>
-        <span class="spec-detail">Irregular placement</span>
+        <span class="spec-val">VINE BRANCH</span>
+        <span class="spec-sub">Hand-formed, prong-set pear-cut diamonds</span>
       </div>
-      <div class="spec-divider" aria-hidden="true"></div>
-      <div class="spec-item reveal">
+      <div class="spec-block">
         <span class="spec-lbl">Material</span>
-        <span class="spec-val">18K WHITE GOLD</span>
-        <span class="spec-detail">Hypoallergenic</span>
+        <span class="spec-val">PLATINUM</span>
+        <span class="spec-sub">950 Pt &middot; matte-finished branch structure</span>
       </div>
-      <div class="spec-divider" aria-hidden="true"></div>
-      <div class="spec-item reveal">
-        <span class="spec-lbl">Stones</span>
-        <span class="spec-val">TWELVE</span>
-        <span class="spec-detail">No two the same</span>
+      <div class="spec-block">
+        <span class="spec-lbl">Diamond</span>
+        <span class="spec-val">PEAR-CUT</span>
+        <span class="spec-sub">VS clarity &middot; D&ndash;F colour &middot; graduated scale</span>
+      </div>
+      <div class="spec-block">
+        <span class="spec-lbl">Pendant</span>
+        <span class="spec-val">CHANDELIER</span>
+        <span class="spec-sub">Filigree body &middot; five suspended pear drops</span>
+      </div>
+      <div class="spec-block">
+        <span class="spec-lbl">Commission</span>
+        <span class="spec-val">BESPOKE ONLY</span>
+        <span class="spec-sub">Every piece begins with a conversation</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── SECTION 5: FINALE ─── -->
-<section id="finale" aria-label="Every stone a coordinate">
+<!-- ══════════════════════════════════════════
+     SECTION 6 — FINALE
+     ══════════════════════════════════════════ -->
+<section id="finale" aria-label="Light at the end of every branch">
+  <div class="finale-bg" aria-hidden="true">
+    <img src="Jewelry/cb_v12.png" alt="">
+  </div>
   <div class="finale-stack">
-    <h2 class="chrome-type reveal">
-      <span class="off-l">Every Stone</span>
-      <span>A</span>
-      <span class="off-r">Coordinate</span>
+    <h2 class="reveal">
+      <span class="off-l">Light At</span>
+      <span class="off-r">Every</span>
+      <span>Branch</span>
     </h2>
+    <em class="finale-sub reveal">A necklace that follows its own logic to the end.</em>
     <div class="finale-cta reveal">
       <a href="index.html#section-09" data-rx-nav>Start with a conversation</a>
     </div>
   </div>
 </section>
 
-<!-- Next piece link -->
 <a class="next-piece" href="eclipse-halo.html" data-rx-nav>
   <span class="np-label">Next piece &middot; RX&#8211;06</span>
   <span class="np-name">Eclipse<br>Halo</span>
   <span class="np-arrow">&#8594;</span>
 </a>
 
-<!-- Marquee belt -->
 <div class="rx-marquee" aria-hidden="true">
   <div class="rx-marquee-track">
-    <div class="rx-marquee-item"><img src="Jewelry/f1.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f2.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f3.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f4.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f5.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f6.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f7.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f8.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f9.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f10.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f11.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f12.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f1.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f2.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f3.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f4.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f5.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f6.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/cb_v3.png"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/cb_v4.png"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/cb_v5.png"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/cb_v7.png"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/cb_v12.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/cb_v14.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/cb_v1.png"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/cb_v3.png"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/cb_v4.png"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/cb_v5.png"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/cb_v7.png"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/cb_v12.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/cb_v14.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/cb_v1.png"  alt="" loading="lazy"></div>
   </div>
 </div>
 
@@ -746,29 +695,32 @@
 
 <script src="atelier.js"></script>
 <script>
-(function(){
-  /* ── CANVAS FRAME SCRUB — REVERSED (frame 240→1 on scroll) ── */
-  (function(){
-    var TOTAL = 240, FW = 1280, FH = 720;
+(function () {
+
+  /* ── CANVAS FRAME SCRUB — 237 frames, reversed ── */
+  (function () {
+    var TOTAL = 237, FW = 1280, FH = 720;
     var canvas = document.getElementById('seq-canvas');
     if (!canvas) return;
     var ctx = canvas.getContext('2d');
-    var imgs = new Array(TOTAL), curIdx = TOTAL - 1, restLoaded = false;
+    var imgs = new Array(TOTAL);
+    var curIdx = TOTAL - 1;
+    var restLoaded = false;
     var bar = document.getElementById('seq-bar');
 
-    function pad(n){ return ('0000'+(n+1)).slice(-4); }
+    function pad(n) { return ('0000' + (n + 1)).slice(-4); }
 
-    function draw(idx){
+    function draw(idx) {
       var img = imgs[idx];
       if (!img || !img.complete || !img.naturalWidth) return;
       var cw = canvas.width, ch = canvas.height;
-      var r = Math.min(cw/FW, ch/FH);
-      var w = FW*r, h = FH*r;
+      var r = Math.min(cw / FW, ch / FH);
+      var w = FW * r, h = FH * r;
       ctx.clearRect(0, 0, cw, ch);
-      ctx.drawImage(img, (cw-w)*0.5, (ch-h)*0.5, w, h);
+      ctx.drawImage(img, (cw - w) * 0.5, (ch - h) * 0.5, w, h);
     }
 
-    function resizeCanvas(){
+    function resizeCanvas() {
       canvas.width  = canvas.clientWidth  || window.innerWidth;
       canvas.height = canvas.clientHeight || window.innerHeight;
       if (imgs[curIdx] && imgs[curIdx].complete) draw(curIdx);
@@ -778,49 +730,51 @@
     ro.observe(canvas);
     resizeCanvas();
 
-    function batch(start, end){
-      for (var i = start; i < end && i < TOTAL; i++)(function(n){
+    function batch(start, end) {
+      for (var i = start; i < end && i < TOTAL; i++) (function (n) {
         var img = new Image();
         img.src = 'frames_tiara/frame_' + pad(n) + '.jpg';
-        img.onload = function(){
+        img.onload = function () {
           imgs[n] = img;
-          /* First load: draw the LAST frame (reverse start) */
           if (n === TOTAL - 1) draw(TOTAL - 1);
         };
       })(i);
     }
 
-    /* Preload last 30 frames first — those are shown at scroll=0 (reversed) */
     batch(TOTAL - 30, TOTAL);
 
-    function loadRest(){ if (restLoaded) return; restLoaded = true; batch(0, TOTAL - 30); }
+    function loadRest() {
+      if (restLoaded) return;
+      restLoaded = true;
+      batch(0, TOTAL - 30);
+    }
 
-    var io = new IntersectionObserver(function(e){
-      if (e[0].isIntersecting){ loadRest(); io.disconnect(); }
+    var io = new IntersectionObserver(function (e) {
+      if (e[0].isIntersecting) { loadRest(); io.disconnect(); }
     }, { rootMargin: '200px' });
     var scrub = document.getElementById('scrub');
     if (scrub) io.observe(scrub); else setTimeout(loadRest, 800);
 
-    function stages(p){
+    function stages(p) {
       var stA = document.querySelector('.stage-a');
       var stB = document.querySelector('.stage-b');
       var stC = document.querySelector('.stage-c');
-      if (stA) stA.style.opacity = p < 0.25 ? 1 : p < 0.35 ? ((0.35-p)/0.10) : 0;
-      if (stB) stB.style.opacity = p < 0.38 ? 0 : p < 0.48 ? ((p-0.38)/0.10) : p < 0.72 ? 1 : p < 0.82 ? ((0.82-p)/0.10) : 0;
-      if (stC) stC.style.opacity = p < 0.80 ? 0 : p < 0.90 ? ((p-0.80)/0.10) : 1;
+      if (stA) stA.style.opacity = p < 0.25 ? 1 : p < 0.35 ? (0.35 - p) / 0.10 : 0;
+      if (stB) stB.style.opacity = p < 0.38 ? 0 : p < 0.48 ? (p - 0.38) / 0.10
+              : p < 0.72 ? 1 : p < 0.82 ? (0.82 - p) / 0.10 : 0;
+      if (stC) stC.style.opacity = p < 0.80 ? 0 : p < 0.90 ? (p - 0.80) / 0.10 : 1;
     }
 
-    if (window.gsap && window.ScrollTrigger && !(window.RX && window.RX.prefersReduced)){
+    if (window.gsap && window.ScrollTrigger) {
       gsap.registerPlugin(ScrollTrigger);
       ScrollTrigger.create({
         trigger: '#scrub',
         start: 'top top',
         end: 'bottom bottom',
         scrub: 0.9,
-        onUpdate: function(self){
-          /* REVERSE: progress 0 = frame TOTAL-1, progress 1 = frame 0 */
+        onUpdate: function (self) {
           var idx = (TOTAL - 1) - Math.min(Math.floor(self.progress * TOTAL), TOTAL - 1);
-          if (idx !== curIdx){ curIdx = idx; draw(curIdx); }
+          if (idx !== curIdx) { curIdx = idx; draw(curIdx); }
           if (bar) bar.style.width = (self.progress * 100) + '%';
           stages(self.progress);
         }
@@ -828,10 +782,10 @@
     }
   })();
 
-  /* ── GSAP: longitude grid drift ── */
-  if (!window.RX || !window.RX.prefersReduced && window.gsap && window.ScrollTrigger) {
+  /* ── GSAP longitude grid drift ── */
+  if (window.gsap && window.ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
-    gsap.utils.toArray('#grid-overlay i').forEach(function(line, i){
+    gsap.utils.toArray('#grid-overlay i').forEach(function (line, i) {
       gsap.fromTo(line, { y: 0 }, {
         y: (i % 2 ? -1 : 1) * (28 + i * 13),
         ease: 'none',
@@ -845,70 +799,99 @@
     });
   }
 
-  /* ── GSAP ScrollTrigger: Projection Map Reveal ── */
-  (function(){
+  /* ── PROJECTION MAP REVEAL ── */
+  (function () {
     if (!window.gsap || !window.ScrollTrigger) return;
-    if (window.RX && window.RX.prefersReduced) return;
-
     gsap.registerPlugin(ScrollTrigger);
 
-    var cells = document.querySelectorAll('.rev-cell');
-    var total = cells.length; // 48
-    var scanLine = document.getElementById('scan-line');
-    var counter = document.getElementById('scan-counter');
-    var crosshair = document.getElementById('reveal-crosshair');
-    var labelsEl = document.getElementById('reveal-coords');
-    var captionEl = document.getElementById('reveal-caption');
+    var cells      = document.querySelectorAll('.rev-cell');
+    var total      = cells.length;
+    var scanLine   = document.getElementById('scan-line');
+    var counter    = document.getElementById('scan-counter');
+    var crosshair  = document.getElementById('reveal-crosshair');
+    var labelsEl   = document.getElementById('reveal-coords');
+    var captionEl  = document.getElementById('reveal-caption');
 
     ScrollTrigger.create({
       trigger: '#reveal',
       start: 'top top',
       end: 'bottom bottom',
       scrub: 1.2,
-      onUpdate: function(self) {
-        var p = self.progress; // 0 → 1
+      onUpdate: function (self) {
+        var p = self.progress;
 
-        /* — Cell reveal: sweep row by row, left to right — */
-        cells.forEach(function(cell, i) {
+        cells.forEach(function (cell, i) {
           var threshold = (i / total) * 0.82;
-          var cellProgress = Math.max(0, Math.min(1, (p - threshold) / 0.06));
-          var pct = Math.round(cellProgress * 100);
-          cell.style.clipPath = 'inset(0 0 ' + pct + '% 0)';
+          var cp = Math.max(0, Math.min(1, (p - threshold) / 0.06));
+          cell.style.clipPath = 'inset(0 0 ' + Math.round(cp * 100) + '% 0)';
         });
 
-        /* — Scan line sweeps downward — */
         if (scanLine) {
-          var scanY = Math.min(p * 1.1, 1) * 100;
-          scanLine.style.top = scanY + 'vh';
+          scanLine.style.top = Math.min(p * 1.1, 1) * 100 + 'vh';
           scanLine.style.opacity = p < 0.9 ? 1 : Math.max(0, (1 - p) / 0.1);
         }
 
-        /* — Scan counter — */
         if (counter) {
-          var scannedCount = 0;
-          cells.forEach(function(cell, i) {
-            if ((i / total) * 0.82 < p) scannedCount++;
-          });
-          counter.textContent = 'CELL ' + String(scannedCount).padStart(2, '0') + '/48';
+          var cnt = 0;
+          cells.forEach(function (_, i) { if ((i / total) * 0.82 < p) cnt++; });
+          counter.textContent = 'CELL ' + String(cnt).padStart(2, '0') + '/48';
         }
 
-        /* — Crosshair fades in at 40% — */
-        if (crosshair) {
-          crosshair.style.opacity = Math.max(0, Math.min(1, (p - 0.40) / 0.15));
-        }
-
-        /* — Coordinate labels appear after 60% — */
-        if (labelsEl) {
-          labelsEl.style.opacity = Math.max(0, Math.min(1, (p - 0.60) / 0.20));
-        }
-
-        /* — Caption appears near end — */
-        if (captionEl) {
-          captionEl.style.opacity = Math.max(0, Math.min(1, (p - 0.78) / 0.15));
-        }
+        if (crosshair) crosshair.style.opacity = Math.max(0, Math.min(1, (p - 0.40) / 0.15));
+        if (labelsEl)  labelsEl.style.opacity  = Math.max(0, Math.min(1, (p - 0.60) / 0.20));
+        if (captionEl) captionEl.style.opacity = Math.max(0, Math.min(1, (p - 0.78) / 0.15));
       }
     });
   })();
+
+  /* ── IntersectionObserver REVEALS ── */
+  function makeIO(threshold) {
+    return new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          this.unobserve(e.target);
+        }
+      }.bind(this));
+    }, { threshold: threshold || 0.18 });
+  }
+
+  var io = makeIO(0.18);
+
+  var storyFig = document.querySelector('.story-visual figure');
+  if (storyFig) io.observe(storyFig);
+
+  document.querySelectorAll(
+    '.story-eyebrow, .story-h2, .story-body, .story-dim'
+  ).forEach(function (el) { io.observe(el); });
+
+  var galIO = makeIO(0.10);
+  document.querySelectorAll('.gallery-cell').forEach(function (c) { galIO.observe(c); });
+
+  var detFig = document.querySelector('.detail-visual figure');
+  if (detFig) io.observe(detFig);
+
+  var specIO = makeIO(0.20);
+  var detEy = document.querySelector('.detail-eyebrow');
+  if (detEy) specIO.observe(detEy);
+  document.querySelectorAll('.spec-block').forEach(function (b) { specIO.observe(b); });
+
+  /* ── STATEMENT parallax on reveal image ── */
+  if (window.gsap && window.ScrollTrigger) {
+    var revImg = document.getElementById('reveal-img');
+    if (revImg) {
+      ScrollTrigger.create({
+        trigger: '#reveal',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+        onUpdate: function (self) {
+          revImg.style.transform =
+            'translate(-50%, calc(-50% + ' + (self.progress * -6) + 'vh))';
+        }
+      });
+    }
+  }
 
 })();
 </script>
