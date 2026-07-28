@@ -263,34 +263,67 @@ ul,ol{list-style:none;}
 /* ============================================================
    SECTION 02 - ORIGIN LOG
    ============================================================ */
-#section-02{position:relative;height:560vh;}
+/* ═══ SECTION 02 — TIMELINE OVERHAUL ═══ */
+#section-02{position:relative;height:580vh;}
 .horiz-pin{position:sticky;top:0;height:100dvh;overflow:hidden;}
-.s02-section-label{position:absolute;top:clamp(24px,3vw,40px);left:clamp(24px,4vw,56px);z-index:20;display:flex;align-items:center;gap:14px;}
-.s02-label-num{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.20em;color:#c8909e;text-transform:uppercase;}
-.s02-label-div{width:32px;height:1px;background:#2a2a2a;flex-shrink:0;}
-.s02-label-title{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;color:#d0a0b0;text-transform:uppercase;}
-.origin-progress{position:absolute;bottom:clamp(24px,3vw,40px);left:50%;transform:translateX(-50%);z-index:20;display:flex;flex-direction:row;gap:12px;}
-.origin-progress__dot{width:4px;height:4px;border-radius:50%;background:#2a2a2a;transition:background .3s ease,transform .3s ease;}
-.origin-progress__dot.active{background:#c8c8c8;transform:scale(1.6);}
-.horiz-track{display:flex;height:100%;will-change:transform;}
-.origin-card{flex:0 0 60vw;height:100%;padding:clamp(80px,8vw,120px) clamp(40px,5vw,80px);display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid #5a1a2e;position:relative;overflow:hidden;}
-.origin-card:nth-child(odd){background:#330D1E;}
-.origin-card:nth-child(even){background:#3f1525;}
-.origin-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:#5a1a2e;}
-.card-top{display:flex;flex-direction:column;}
-.origin-fig{display:none;}
-.origin-year{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(80px,10vw,140px);line-height:1;color:#f5f5f5;letter-spacing:-0.02em;}
-.origin-title-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#888;margin-top:10px;}
-.card-body{flex:1;display:flex;align-items:flex-end;padding-bottom:24px;}
-.origin-body{font-family:'Outfit',sans-serif;font-size:18px;color:#aaaaaa;line-height:1.8;max-width:40ch;}
-.card-bottom{display:flex;flex-direction:column;gap:10px;}
-.origin-img{width:100%;height:clamp(240px,26vw,360px);object-fit:cover;filter:grayscale(60%) contrast(1.2) brightness(0.9);display:block;border-radius:0;opacity:0;transform:translateY(24px) scale(0.94);transition:opacity 0.9s cubic-bezier(0.22,1,0.36,1),transform 0.9s cubic-bezier(0.22,1,0.36,1);}
-.origin-card--accent .origin-year{color:#c8c8c8;}
-.origin-card--accent .origin-title-label{color:#c8c8c8;}
-.origin-card--accent .origin-body{color:#888;}
 
-@media(prefers-reduced-motion:reduce){.horiz-track{transform:none!important;}#section-02{height:auto;}.horiz-pin{position:relative;height:auto;overflow:auto;}.horiz-track{flex-direction:column;}.origin-card{flex:none;width:100%;height:auto;min-height:100dvh;}}
-@media(max-width:767px){#section-02{height:auto;}.horiz-pin{position:relative;height:auto;overflow-y:auto;}.horiz-track{flex-direction:column;height:auto;transform:none!important;}.origin-card{flex:none;width:100%;min-height:auto;height:auto;padding:72px 24px 56px;gap:28px;border-right:none;border-bottom:1px solid #5a1a2e;}.origin-img{width:100%;height:220px;opacity:1!important;transform:none!important;}.origin-progress{display:none;}}
+/* ── Progress bar (replaces dots) ── */
+.origin-timeline-bar{position:absolute;top:0;left:0;right:0;z-index:30;height:56px;padding:0 clamp(24px,5vw,72px);display:flex;flex-direction:column;justify-content:center;gap:9px;pointer-events:none;border-bottom:1px solid #1f0812;}
+.otb-track-wrap{position:relative;height:1px;}
+.otb-track-line{position:absolute;inset:0;background:#2a0d18;}
+.otb-fill{position:absolute;left:0;top:0;height:100%;width:0%;background:rgba(200,200,200,.55);will-change:width;}
+.otb-orb{position:absolute;top:50%;left:0%;width:5px;height:5px;border-radius:50%;background:#c8c8c8;transform:translate(-50%,-50%);will-change:left;box-shadow:0 0 10px rgba(200,200,200,.5);}
+.otb-labels{display:flex;justify-content:space-between;}
+.otb-label{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,160,180,.2);transition:color .35s ease;}
+.otb-label.active{color:rgba(200,200,200,.7);}
+
+/* ── Section label (top-right) ── */
+.s02-corner{position:absolute;top:clamp(20px,2.5vh,36px);right:clamp(24px,4vw,60px);z-index:30;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#4a1a2e;}
+
+/* ── Card grid ── */
+.horiz-track{display:flex;height:100%;will-change:transform;}
+.origin-card{flex:0 0 80vw;height:100%;display:grid;grid-template-columns:1fr 42%;position:relative;overflow:hidden;border-right:1px solid #5a1a2e;}
+.origin-card:nth-child(odd){background:#330D1E;}
+.origin-card:nth-child(even){background:#3b1122;}
+
+/* Year as dimensional watermark (absolute over both columns) */
+.origin-year{position:absolute;right:-0.04em;bottom:5vh;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(100px,17vw,240px);line-height:1;color:#5a1a2e;opacity:.9;z-index:0;pointer-events:none;user-select:none;letter-spacing:-0.025em;clip-path:inset(0 100% 0 0);transition:clip-path 1.15s cubic-bezier(.16,1,.3,1);}
+.origin-card.oc-entered .origin-year{clip-path:inset(0 0% 0 0);}
+.origin-card--accent .origin-year{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;font-size:clamp(72px,13vw,190px);color:#6a2038;opacity:.7;}
+
+/* Card counter (absolute top-left of card) */
+.oc-num{position:absolute;top:clamp(22px,3vh,40px);left:clamp(36px,4.5vw,68px);z-index:10;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#6a3048;}
+
+/* Left column: content */
+.oc-content{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(72px,8vh,110px) clamp(36px,4.5vw,68px) clamp(52px,7vh,88px);}
+.oc-era{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:#c8909e;margin-bottom:18px;opacity:0;transform:translateY(8px);transition:opacity .6s ease .1s,transform .6s cubic-bezier(.16,1,.3,1) .1s;}
+.origin-card.oc-entered .oc-era{opacity:1;transform:translateY(0);}
+.oc-rule{width:0;height:1px;background:#c8c8c8;margin-bottom:22px;transition:width .85s cubic-bezier(.16,1,.3,1) .18s;}
+.origin-card.oc-entered .oc-rule{width:48px;}
+.oc-title{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;font-size:clamp(26px,2.8vw,46px);line-height:1.15;color:#f5f5f5;margin-bottom:20px;opacity:0;transform:translateY(14px);transition:opacity .75s ease .26s,transform .75s cubic-bezier(.16,1,.3,1) .26s;}
+.origin-card.oc-entered .oc-title{opacity:1;transform:translateY(0);}
+.origin-body{font-family:'Outfit',sans-serif;font-size:14px;line-height:1.76;color:#b88ea0;max-width:36ch;opacity:0;transform:translateY(10px);transition:opacity .7s ease .36s,transform .7s cubic-bezier(.16,1,.3,1) .36s;}
+.origin-card.oc-entered .origin-body{opacity:1;transform:translateY(0);}
+
+/* Right column: full-height image */
+.oc-img{position:relative;overflow:hidden;clip-path:inset(100% 0 0 0);transition:clip-path 1.05s cubic-bezier(.16,1,.3,1) .06s;}
+.origin-card.oc-entered .oc-img{clip-path:inset(0% 0 0 0);}
+.oc-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.62) saturate(.76);transform:scale(1.06);transition:transform 1.5s cubic-bezier(.16,1,.3,1) .06s;}
+.origin-card.oc-entered .oc-img img{transform:scale(1);}
+.oc-img::before{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to right,#330D1E 0%,transparent 42%);}
+.origin-card:nth-child(even) .oc-img::before{background:linear-gradient(to right,#3b1122 0%,transparent 42%);}
+
+/* "Now" card — vivid, climax */
+.origin-card--accent .oc-img img{filter:brightness(.74) saturate(.9);}
+.origin-card--accent .oc-img::before{background:linear-gradient(to right,#330D1E 0%,transparent 38%);}
+.origin-card--accent .oc-title{color:#ede5d8;}
+.origin-card--accent .origin-body{color:#c8a0b0;}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){.horiz-track{transform:none!important;}#section-02{height:auto;}.horiz-pin{position:relative;height:auto;overflow:visible;}.horiz-track{flex-direction:column;}.origin-card{flex:none;width:100%;min-height:100dvh;grid-template-columns:1fr;}.origin-year{clip-path:none;}.oc-era,.oc-title,.origin-body{opacity:1;transform:none;}.oc-img{clip-path:none;}.oc-img img{transform:none;}.oc-rule{width:48px;}}
+
+/* Mobile: vertical stack */
+@media(max-width:767px){#section-02{height:auto;}.horiz-pin{position:relative;height:auto;overflow-y:auto;}.horiz-track{flex-direction:column;height:auto;transform:none!important;}.origin-card{flex:none;width:100%;min-height:auto;height:auto;grid-template-columns:1fr;border-right:none;border-bottom:1px solid #5a1a2e;}.oc-img{height:52vw;clip-path:none;}.oc-img::before{background:linear-gradient(to bottom,transparent 55%,#330D1E 100%)!important;}.origin-year{font-size:clamp(72px,20vw,120px);}.oc-content{padding:40px 24px 52px;}.origin-timeline-bar{display:none;}.oc-era,.oc-title,.origin-body{opacity:1;transform:none;}.oc-img img{transform:none;}.oc-rule{width:48px;}}
 
 /* ============================================================
    SECTION 03 - SUPPLY CHAIN
@@ -1033,81 +1066,129 @@ ul,ol{list-style:none;}
 </section>
 
 <!-- SECTION 02 - ORIGIN LOG -->
-<section id="section-02">
+<section id="section-02" aria-label="Diamond history timeline 1477 to present">
   <div class="horiz-pin">
-    <nav class="origin-progress" aria-label="Timeline progress">
-      <div class="origin-progress__dot active" data-dot="0"></div>
-      <div class="origin-progress__dot" data-dot="1"></div>
-      <div class="origin-progress__dot" data-dot="2"></div>
-      <div class="origin-progress__dot" data-dot="3"></div>
-      <div class="origin-progress__dot" data-dot="4"></div>
-      <div class="origin-progress__dot" data-dot="5"></div>
-      <div class="origin-progress__dot" data-dot="6"></div>
-    </nav>
+
+    <!-- ── Timeline progress bar ── -->
+    <div class="origin-timeline-bar" aria-hidden="true">
+      <div class="otb-track-wrap">
+        <div class="otb-track-line"></div>
+        <div class="otb-fill" id="otb-fill"></div>
+        <div class="otb-orb" id="otb-orb"></div>
+      </div>
+      <div class="otb-labels">
+        <span class="otb-label" data-dot="0">1477</span>
+        <span class="otb-label" data-dot="1">1867</span>
+        <span class="otb-label" data-dot="2">1888</span>
+        <span class="otb-label" data-dot="3">1948</span>
+        <span class="otb-label" data-dot="4">2003</span>
+        <span class="otb-label" data-dot="5">2015</span>
+        <span class="otb-label" data-dot="6">Now</span>
+      </div>
+    </div>
+
+    <div class="s02-corner" aria-hidden="true">RX &middot; ORIGIN</div>
+
     <div class="horiz-track" id="origin-track">
+
       <article class="origin-card" data-card="0">
-        <div class="card-top">
-          <span class="origin-fig">FIG.00  The First Gift</span>
-          <h2 class="origin-year">1477</h2>
-          <p class="origin-title-label">The First Ring</p>
+        <div class="oc-num" aria-hidden="true">01 / 07</div>
+        <h2 class="origin-year" aria-hidden="true">1477</h2>
+        <div class="oc-content">
+          <p class="oc-era">The First Ring</p>
+          <div class="oc-rule" aria-hidden="true"></div>
+          <p class="oc-title">The First Gift</p>
+          <p class="origin-body">Archduke Maximilian of Austria commissions a diamond ring for Mary of Burgundy — the first recorded diamond engagement ring. A single gesture creates a cultural convention that outlasts the empire that commissioned it.</p>
         </div>
-        <div class="card-body"><p class="origin-body">Archduke Maximilian of Austria commissions a diamond ring for Mary of Burgundy — the first recorded diamond engagement ring. A single gesture creates a cultural convention that outlasts the empire that commissioned it.</p></div>
-        <div class="card-bottom"><img src="Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg" alt="First diamond engagement ring" class="origin-img" loading="lazy" style="object-position:center 20%"></div>
+        <div class="oc-img" aria-hidden="true">
+          <img src="Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg" alt="" loading="lazy" style="object-position:center 20%">
+        </div>
       </article>
+
       <article class="origin-card" data-card="1">
-        <div class="card-top">
-          <span class="origin-fig">FIG.01  Rough Diamond</span>
-          <h2 class="origin-year">1867</h2>
-          <p class="origin-title-label">First Contact</p>
+        <div class="oc-num" aria-hidden="true">02 / 07</div>
+        <h2 class="origin-year" aria-hidden="true">1867</h2>
+        <div class="oc-content">
+          <p class="oc-era">First Contact</p>
+          <div class="oc-rule" aria-hidden="true"></div>
+          <p class="oc-title">The Kimberley Rush</p>
+          <p class="origin-body">Eureka Diamond discovered in South Africa. The Kimberley Rush begins. Extraction formalized under colonial infrastructure. A global supply chain is born from a single stone in the ground.</p>
         </div>
-        <div class="card-body"><p class="origin-body">Eureka Diamond discovered in South Africa. The Kimberley Rush begins. Extraction formalized under colonial infrastructure. A global supply chain is born from a single stone in the ground.</p></div>
-        <div class="card-bottom"><img src="Jewelry/Emerald_ring_beside_diamond_2K_202607111709.jpeg" alt="Raw diamond rough" class="origin-img" loading="lazy"></div>
+        <div class="oc-img" aria-hidden="true">
+          <img src="Jewelry/Emerald_ring_beside_diamond_2K_202607111709.jpeg" alt="" loading="lazy">
+        </div>
       </article>
+
       <article class="origin-card" data-card="2">
-        <div class="card-top">
-          <span class="origin-fig">FIG.02  Sorting Table</span>
-          <h2 class="origin-year">1888</h2>
-          <p class="origin-title-label">Consolidation</p>
+        <div class="oc-num" aria-hidden="true">03 / 07</div>
+        <h2 class="origin-year" aria-hidden="true">1888</h2>
+        <div class="oc-content">
+          <p class="oc-era">Consolidation</p>
+          <div class="oc-rule" aria-hidden="true"></div>
+          <p class="oc-title">Scarcity, Manufactured</p>
+          <p class="origin-body">De Beers Consolidated Mines founded. Supply control established. One entity begins pricing the world's diamonds. Scarcity, for the first time, is manufactured.</p>
         </div>
-        <div class="card-body"><p class="origin-body">De Beers Consolidated Mines founded. Supply control established. One entity begins pricing the world's diamonds. Scarcity, for the first time, is manufactured.</p></div>
-        <div class="card-bottom"><img src="Jewelry/IMG_4356.jpeg_2K_202606302135.jpg" alt="Vintage diamond halo ring in jewelry box" class="origin-img" loading="lazy"></div>
+        <div class="oc-img" aria-hidden="true">
+          <img src="Jewelry/IMG_4356.jpeg_2K_202606302135.jpg" alt="" loading="lazy">
+        </div>
       </article>
+
       <article class="origin-card" data-card="3">
-        <div class="card-top">
-          <span class="origin-fig">FIG.03  Forever</span>
-          <h2 class="origin-year">1948</h2>
-          <p class="origin-title-label">The Campaign</p>
+        <div class="oc-num" aria-hidden="true">04 / 07</div>
+        <h2 class="origin-year" aria-hidden="true">1948</h2>
+        <div class="oc-content">
+          <p class="oc-era">The Campaign</p>
+          <div class="oc-rule" aria-hidden="true"></div>
+          <p class="oc-title">Desire Engineered</p>
+          <p class="origin-body">A Diamond Is Forever campaign launches. Emotional value engineered at scale. Diamonds become the symbol of permanent commitment. Desire, not geology, sets the price from here.</p>
         </div>
-        <div class="card-body"><p class="origin-body">A Diamond Is Forever campaign launches. Emotional value engineered at scale. Diamonds become the symbol of permanent commitment. Desire, not geology, sets the price from here.</p></div>
-        <div class="card-bottom"><img src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg" alt="Diamond engagement era" class="origin-img" loading="lazy" style="object-position:center top"></div>
+        <div class="oc-img" aria-hidden="true">
+          <img src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg" alt="" loading="lazy" style="object-position:center top">
+        </div>
       </article>
+
       <article class="origin-card" data-card="4">
-        <div class="card-top">
-          <span class="origin-fig">FIG.04  Certificate</span>
-          <h2 class="origin-year">2003</h2>
-          <p class="origin-title-label">Certification</p>
+        <div class="oc-num" aria-hidden="true">05 / 07</div>
+        <h2 class="origin-year" aria-hidden="true">2003</h2>
+        <div class="oc-content">
+          <p class="oc-era">Certification</p>
+          <div class="oc-rule" aria-hidden="true"></div>
+          <p class="oc-title">The Chain of Custody</p>
+          <p class="origin-body">Kimberley Process established. Conflict-free certification introduced. Traceability becomes a selling point. The chain of custody enters the conversation for the first time.</p>
         </div>
-        <div class="card-body"><p class="origin-body">Kimberley Process established. Conflict-free certification introduced. Traceability becomes a selling point. The chain of custody enters the conversation for the first time.</p></div>
-        <div class="card-bottom"><img src="Jewelry/Gemini_Generated_Image_gubp43gubp43gubp.png" alt="Diamond certification" class="origin-img" loading="lazy"></div>
+        <div class="oc-img" aria-hidden="true">
+          <img src="Jewelry/Gemini_Generated_Image_gubp43gubp43gubp.png" alt="" loading="lazy">
+        </div>
       </article>
+
       <article class="origin-card" data-card="5">
-        <div class="card-top">
-          <span class="origin-fig">FIG.05  Lab Diamond</span>
-          <h2 class="origin-year">2015</h2>
-          <p class="origin-title-label">The Disruption</p>
+        <div class="oc-num" aria-hidden="true">06 / 07</div>
+        <h2 class="origin-year" aria-hidden="true">2015</h2>
+        <div class="oc-content">
+          <p class="oc-era">The Disruption</p>
+          <div class="oc-rule" aria-hidden="true"></div>
+          <p class="oc-title">The Stone Story Collapses</p>
+          <p class="origin-body">CVD and HPHT lab-grown diamonds reach commercial scale. Physically identical to mined stones, certified by the same labs. The stone story collapses as a differentiator. The market splits: commodity vs. point of view.</p>
         </div>
-        <div class="card-body"><p class="origin-body">CVD and HPHT lab-grown diamonds reach commercial scale. Physically identical to mined stones, certified by the same labs, indistinguishable without spectrography. The stone story collapses as a differentiator. The market splits: commodity vs. point of view.</p></div>
-        <div class="card-bottom"><img src="Jewelry/Gemini_Generated_Image_n2x6vdn2x6vdn2x6.png" alt="Lab diamond disruption" class="origin-img" loading="lazy"></div>
+        <div class="oc-img" aria-hidden="true">
+          <img src="Jewelry/Gemini_Generated_Image_n2x6vdn2x6vdn2x6.png" alt="" loading="lazy">
+        </div>
       </article>
+
       <article class="origin-card origin-card--accent" data-card="6">
-        <div class="card-top">
-          <span class="origin-fig">FIG.06  Design Sketch</span>
-          <h2 class="origin-year">Now</h2>
-          <p class="origin-title-label">The Designer Era</p>
+        <div class="oc-num" aria-hidden="true">07 / 07</div>
+        <h2 class="origin-year" aria-hidden="true">Now</h2>
+        <div class="oc-content">
+          <p class="oc-era">The Designer Era</p>
+          <div class="oc-rule" aria-hidden="true"></div>
+          <p class="oc-title">Point of View</p>
+          <p class="origin-body">The supply chain is visible. D2C ateliers source direct. The 4Cs are understood by the client. What remains as the genuine differentiator — the thing that cannot be priced by weight or grade — is the designer's point of view. RarityX was founded on this position.</p>
         </div>
-        <div class="card-body"><p class="origin-body">The supply chain is visible now. D2C ateliers source direct. The 4Cs are understood by the client. The stone story has been commoditized. What remains as the genuine differentiator — the thing that cannot be priced by weight or grade — is the designer's point of view. RarityX was founded on this position.</p></div>
-        <div class="card-bottom"><img src="Jewelry/Ethereal_Pavé_Crest_Platinum_2K_202606302140.jpeg" alt="Platinum designer ring" class="origin-img" loading="lazy" style="object-position:center 25%"></div>
+        <div class="oc-img" aria-hidden="true">
+          <img src="Jewelry/Ethereal_Pavé_Crest_Platinum_2K_202606302140.jpeg" alt="" loading="lazy" style="object-position:center 25%">
+        </div>
       </article>
+
     </div>
   </div>
 </section>
@@ -1949,11 +2030,13 @@ ul,ol{list-style:none;}
   if (track && !prefersReduced) {
     var mm02 = gsap.matchMedia();
     mm02.add('(min-width: 768px)', function() {
-    var dots02 = document.querySelectorAll('.origin-progress__dot');
-    var cards02 = document.querySelectorAll('.origin-card');
+    var cards02   = document.querySelectorAll('.origin-card');
+    var labels02  = document.querySelectorAll('.otb-label');
+    var otbFill   = document.getElementById('otb-fill');
+    var otbOrb    = document.getElementById('otb-orb');
     var getD = function() { return track.scrollWidth - window.innerWidth; };
+    var enteredCards = {};
 
-    var animatedOrigin = {};
     gsap.to(track, {
       x: function() { return -getD(); },
       ease: 'none',
@@ -1964,17 +2047,23 @@ ul,ol{list-style:none;}
         scrub: 1,
         invalidateOnRefresh: true,
         onUpdate: function(self) {
-          var idx = Math.min(cards02.length - 1, Math.floor(self.progress * cards02.length + 0.1));
-          dots02.forEach(function(dot, i) { dot.classList.toggle('active', i === idx); });
-          // Per-card image entrance animation
+          var pct = self.progress * 100;
+          // Progress bar fill + orb
+          if (otbFill) otbFill.style.width  = pct + '%';
+          if (otbOrb)  otbOrb.style.left    = pct + '%';
+
+          // Active label
+          var n   = cards02.length;
+          var idx = Math.min(n - 1, Math.floor(self.progress * n + 0.08));
+          labels02.forEach(function(lbl, i) { lbl.classList.toggle('active', i === idx); });
+
+          // Per-card stagger entrance — add .oc-entered when card scrolls into view
           cards02.forEach(function(card, i) {
-            var threshold = i / cards02.length - 0.15;
-            if (self.progress >= threshold && !animatedOrigin[i]) {
-              animatedOrigin[i] = true;
-              var img = card.querySelector('.origin-img');
-              if (img) {
-                gsap.to(img, { opacity: 1, y: 0, scale: 1, duration: 0.95, ease: 'power3.out', delay: 0.05 + i * 0.05 });
-              }
+            // Card i occupies progress band [i/n … (i+1)/n]; trigger at ~30% into band
+            var triggerAt = (i + 0.28) / n;
+            if (self.progress >= triggerAt && !enteredCards[i]) {
+              enteredCards[i] = true;
+              card.classList.add('oc-entered');
             }
           });
         }
