@@ -280,44 +280,42 @@ ul,ol{list-style:none;}
 /* ── Section label (top-right) ── */
 .s02-corner{position:absolute;top:clamp(20px,2.5vh,36px);right:clamp(24px,4vw,60px);z-index:30;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#4a1a2e;}
 
-/* ── Card grid ── */
+/* ── Card grid — FULL BLEED video backdrop ── */
 .horiz-track{display:flex;height:100%;will-change:transform;}
-.origin-card{flex:0 0 88vw;height:100%;display:grid;grid-template-columns:26% 74%;position:relative;overflow:hidden;border-right:1px solid #5a1a2e;}
-.origin-card:nth-child(odd){background:#330D1E;}
-.origin-card:nth-child(even){background:#3b1122;}
+.origin-card{flex:0 0 100vw;height:100%;position:relative;overflow:hidden;}
+.origin-card:nth-child(odd){background:#110408;}
+.origin-card:nth-child(even){background:#130509;}
 
-/* Year as dimensional watermark (absolute over both columns) */
-.origin-year{position:absolute;right:-0.04em;bottom:5vh;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(100px,17vw,240px);line-height:1;color:#5a1a2e;opacity:.9;z-index:0;pointer-events:none;user-select:none;letter-spacing:-0.025em;clip-path:inset(0 100% 0 0);transition:clip-path 1.15s cubic-bezier(.16,1,.3,1);}
-.origin-card.oc-entered .origin-year{clip-path:inset(0 0% 0 0);}
-.origin-card--accent .origin-year{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;font-size:clamp(72px,13vw,190px);color:#6a2038;opacity:.7;}
+/* Video fills the entire card as the visual layer */
+.oc-img{position:absolute;inset:0;z-index:0;overflow:hidden;}
+.oc-img video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.38) saturate(.72);opacity:0;transform:scale(1.06);transition:opacity 1.5s ease .05s,transform 2.4s cubic-bezier(.16,1,.3,1) .05s;}
+.origin-card.oc-entered .oc-img video{opacity:1;transform:scale(1);}
+/* Cinematic scrim: left-weighted dark for text + top/bottom vignette */
+.oc-img::after{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to right,rgba(8,1,5,.94) 0%,rgba(8,1,5,.78) 22%,rgba(8,1,5,.32) 48%,rgba(8,1,5,.08) 68%,transparent 82%),linear-gradient(to bottom,rgba(8,1,5,.28) 0%,transparent 16%,transparent 80%,rgba(8,1,5,.42) 100%);}
 
-/* Card counter (absolute top-left of card) */
-.oc-num{position:absolute;top:clamp(22px,3vh,40px);left:clamp(36px,4.5vw,68px);z-index:10;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#6a3048;}
+/* Year watermark */
+.origin-year{position:absolute;right:-0.02em;bottom:clamp(40px,5.5vh,72px);z-index:1;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(96px,16vw,220px);line-height:1;color:rgba(90,26,46,.6);pointer-events:none;user-select:none;letter-spacing:-0.025em;opacity:0;transform:translateX(20px);transition:opacity 1.2s ease .5s,transform 1.2s cubic-bezier(.16,1,.3,1) .5s;}
+.origin-card.oc-entered .origin-year{opacity:1;transform:translateX(0);}
+.origin-card--accent .origin-year{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;font-size:clamp(72px,12vw,180px);color:rgba(180,80,110,.35);}
 
-/* Left column: content */
-.oc-content{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(72px,8vh,110px) clamp(36px,4.5vw,68px) clamp(52px,7vh,88px);}
-.oc-era{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:#c8909e;margin-bottom:18px;opacity:0;transform:translateY(8px);transition:opacity .6s ease .1s,transform .6s cubic-bezier(.16,1,.3,1) .1s;}
+/* Card counter */
+.oc-num{position:absolute;top:clamp(22px,3vh,40px);left:clamp(48px,6vw,88px);z-index:10;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(200,144,158,.35);opacity:0;transition:opacity .8s ease .2s;}
+.origin-card.oc-entered .oc-num{opacity:1;}
+
+/* Text overlay — bottom-left over the video */
+.oc-content{position:absolute;z-index:3;bottom:clamp(52px,9vh,100px);left:clamp(48px,6vw,88px);width:min(42ch,44%);display:flex;flex-direction:column;}
+.oc-era{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:#c8909e;margin-bottom:18px;opacity:0;transform:translateY(10px);transition:opacity .65s ease .18s,transform .65s cubic-bezier(.16,1,.3,1) .18s;}
 .origin-card.oc-entered .oc-era{opacity:1;transform:translateY(0);}
-.oc-rule{width:0;height:1px;background:#c8c8c8;margin-bottom:22px;transition:width .85s cubic-bezier(.16,1,.3,1) .18s;}
+.oc-rule{width:0;height:1px;background:rgba(200,200,200,.7);margin-bottom:22px;transition:width .9s cubic-bezier(.16,1,.3,1) .28s;}
 .origin-card.oc-entered .oc-rule{width:48px;}
-.oc-title{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;font-size:clamp(26px,2.8vw,46px);line-height:1.15;color:#f5f5f5;margin-bottom:20px;opacity:0;transform:translateY(14px);transition:opacity .75s ease .26s,transform .75s cubic-bezier(.16,1,.3,1) .26s;}
+.oc-title{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;font-size:clamp(28px,3vw,50px);line-height:1.12;color:#f5f5f5;margin-bottom:18px;opacity:0;transform:translateY(16px);transition:opacity .8s ease .38s,transform .8s cubic-bezier(.16,1,.3,1) .38s;}
 .origin-card.oc-entered .oc-title{opacity:1;transform:translateY(0);}
-.origin-body{font-family:'Outfit',sans-serif;font-size:14px;line-height:1.76;color:#b88ea0;max-width:36ch;opacity:0;transform:translateY(10px);transition:opacity .7s ease .36s,transform .7s cubic-bezier(.16,1,.3,1) .36s;}
+.origin-body{font-family:'Outfit',sans-serif;font-size:14px;line-height:1.78;color:rgba(184,142,160,.85);max-width:38ch;opacity:0;transform:translateY(10px);transition:opacity .75s ease .5s,transform .75s cubic-bezier(.16,1,.3,1) .5s;}
 .origin-card.oc-entered .origin-body{opacity:1;transform:translateY(0);}
 
-/* Right column: full-height video */
-.oc-img{position:relative;overflow:hidden;clip-path:inset(100% 0 0 0);transition:clip-path 1.1s cubic-bezier(.16,1,.3,1) .06s;}
-.origin-card.oc-entered .oc-img{clip-path:inset(0% 0 0 0);}
-.oc-img video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:brightness(.56) saturate(.78);transform:scale(1.08);transition:transform 1.8s cubic-bezier(.16,1,.3,1) .06s;}
-.origin-card.oc-entered .oc-img video{transform:scale(1);}
-/* Left-edge blur gradient bleeding into content column */
-.oc-img::before{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to right,#330D1E 0%,rgba(51,13,30,.72) 18%,rgba(51,13,30,.2) 36%,transparent 52%);}
-.origin-card:nth-child(even) .oc-img::before{background:linear-gradient(to right,#3b1122 0%,rgba(59,17,34,.72) 18%,rgba(59,17,34,.2) 36%,transparent 52%);}
-/* "Now" card — full dark, year-only climax */
-.origin-card--accent .oc-img{background:radial-gradient(ellipse 80% 70% at 60% 50%,#1c0a14 0%,#0a0306 100%);}
-.origin-card--accent .oc-img video{filter:brightness(.65) saturate(.85);}
-.origin-card--accent .oc-img::before{background:linear-gradient(to right,#330D1E 0%,rgba(51,13,30,.55) 22%,transparent 46%);}
-.origin-card--accent .oc-title{color:#ede5d8;}
+/* "Now" card climax */
+.origin-card--accent .oc-img video{filter:brightness(.52) saturate(.78);}
+.origin-card--accent .oc-title{color:#ede5d8;font-size:clamp(32px,3.5vw,58px);}
 .origin-card--accent .origin-body{color:#c8a0b0;}
 
 /* Bottom position dots */
@@ -910,14 +908,14 @@ ul,ol{list-style:none;}
         <li class="nav-has-drop">
             <a href="#section-08" class="nav-link">VAULT</a>
             <div class="nav-drop" role="menu" aria-label="Portfolio pieces">
-              <a href="medallion.html" class="nav-drop-item" role="menuitem">RX&#8211;01&ensp;Crest Medallion</a>
-              <a href="sigil.html" class="nav-drop-item" role="menuitem">RX&#8211;02&ensp;Sigil Signet</a>
-              <a href="solstice-solitaire.html" class="nav-drop-item" role="menuitem">RX&#8211;03&ensp;Solstice Solitaire</a>
-              <a href="fragment-band.html" class="nav-drop-item" role="menuitem">RX&#8211;04&ensp;Fragment Band</a>
-              <a href="meridian-cluster.html" class="nav-drop-item" role="menuitem">RX&#8211;05&ensp;Meridian Cluster</a>
-              <a href="eclipse-halo.html" class="nav-drop-item" role="menuitem">RX&#8211;06&ensp;Eclipse Halo</a>
-              <a href="constellation-band.html" class="nav-drop-item" role="menuitem">RX&#8211;07&ensp;Constellation Band</a>
-              <a href="lp-v6.html" class="nav-drop-item" role="menuitem">RX&#8211;08&ensp;Pav&eacute; Arc</a>
+              <a href="medallion.html" class="nav-drop-item" role="menuitem">Crest Medallion</a>
+              <a href="sigil.html" class="nav-drop-item" role="menuitem">Sigil Signet</a>
+              <a href="solstice-solitaire.html" class="nav-drop-item" role="menuitem">Solstice Solitaire</a>
+              <a href="fragment-band.html" class="nav-drop-item" role="menuitem">Fragment Band</a>
+              <a href="meridian-cluster.html" class="nav-drop-item" role="menuitem">Meridian Cluster</a>
+              <a href="eclipse-halo.html" class="nav-drop-item" role="menuitem">Eclipse Halo</a>
+              <a href="constellation-band.html" class="nav-drop-item" role="menuitem">Constellation Band</a>
+              <a href="lp-v6.html" class="nav-drop-item" role="menuitem">Pav&eacute; Arc</a>
             </div>
           </li>
       </ul>
@@ -1191,6 +1189,8 @@ ul,ol{list-style:none;}
           <p class="origin-body">The supply chain is visible. D2C ateliers source direct. The 4Cs are understood by the client. What remains as the genuine differentiator — the thing that cannot be priced by weight or grade — is the designer's point of view. RarityX was founded on this position.</p>
         </div>
         <div class="oc-img" aria-hidden="true">
+          <video muted loop playsinline preload="metadata"><source src="Jewelry/Portfolio_pieces_vids/Big_radiant_fancy_ring.mp4" type="video/mp4"></video>
+        </div>
       </article>
 
     </div>
@@ -1728,14 +1728,14 @@ ul,ol{list-style:none;}
       <div style="margin-top:28px;">
         <div class="s09-syndicates-label">Selected Portfolio</div>
         <nav class="s09-piece-list" aria-label="Portfolio pieces">
-          <a href="medallion.html" class="s09-piece-item">RX&#8211;01 &middot; Crest Medallion</a>
-          <a href="sigil.html" class="s09-piece-item">RX&#8211;02 &middot; Sigil Signet</a>
-          <a href="solstice-solitaire.html" class="s09-piece-item">RX&#8211;03 &middot; Solstice Solitaire</a>
-          <a href="fragment-band.html" class="s09-piece-item">RX&#8211;04 &middot; Fragment Band</a>
-          <a href="meridian-cluster.html" class="s09-piece-item">RX&#8211;05 &middot; Meridian Cluster</a>
-          <a href="eclipse-halo.html" class="s09-piece-item">RX&#8211;06 &middot; Eclipse Halo</a>
-          <a href="constellation-band.html" class="s09-piece-item">RX&#8211;07 &middot; Constellation Band</a>
-          <a href="lp-v6.html" class="s09-piece-item">RX&#8211;08 &middot; Pav&eacute; Arc</a>
+          <a href="medallion.html" class="s09-piece-item">Crest Medallion</a>
+          <a href="sigil.html" class="s09-piece-item">Sigil Signet</a>
+          <a href="solstice-solitaire.html" class="s09-piece-item">Solstice Solitaire</a>
+          <a href="fragment-band.html" class="s09-piece-item">Fragment Band</a>
+          <a href="meridian-cluster.html" class="s09-piece-item">Meridian Cluster</a>
+          <a href="eclipse-halo.html" class="s09-piece-item">Eclipse Halo</a>
+          <a href="constellation-band.html" class="s09-piece-item">Constellation Band</a>
+          <a href="lp-v6.html" class="s09-piece-item">Pav&eacute; Arc</a>
         </nav>
       </div>
     </div>
@@ -2081,7 +2081,13 @@ ul,ol{list-style:none;}
         trigger: '#section-02',
         start: 'top top',
         end: function() { return '+=' + getD(); },
-        scrub: 1,
+        scrub: 1.4,
+        snap: {
+          snapTo: function(v) { var n = cards02.length; return Math.round(v * (n - 1)) / (n - 1); },
+          duration: { min: 0.25, max: 0.7 },
+          delay: 0,
+          ease: 'power2.inOut'
+        },
         invalidateOnRefresh: true,
         onUpdate: function(self) {
           var pct = self.progress * 100;
@@ -2089,12 +2095,12 @@ ul,ol{list-style:none;}
           if (otbOrb)  otbOrb.style.left   = pct + '%';
 
           var n   = cards02.length;
-          var idx = Math.min(n - 1, Math.floor(self.progress * n + 0.08));
+          var idx = Math.min(n - 1, Math.round(self.progress * (n - 1)));
           labels02.forEach(function(lbl, i) { lbl.classList.toggle('active', i === idx); });
           dots02.forEach(function(dot, i)   { dot.classList.toggle('active', i === idx); });
 
           cards02.forEach(function(card, i) {
-            var triggerAt = (i + 0.22) / n;
+            var triggerAt = Math.max(0, i / (n - 1) - 0.06);
             if (self.progress >= triggerAt && !enteredCards[i]) {
               enteredCards[i] = true;
               card.classList.add('oc-entered');
