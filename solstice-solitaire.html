@@ -229,6 +229,30 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  will-change: transform;
+  transform: scale(1.1);
+}
+
+/* ── delight: ambient light bloom (stone at solstice) ── */
+.stone-visual {
+  isolation: isolate;
+}
+.stone-glow {
+  position: absolute;
+  inset: -60px;
+  background: radial-gradient(
+    ellipse 80% 68% at 50% 52%,
+    rgba(210,195,165,.12) 0%,
+    rgba(195,178,148,.05) 42%,
+    transparent 68%
+  );
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  transition: opacity 2.4s cubic-bezier(.16,1,.3,1) .9s;
+}
+.stone-glow.bloomed {
+  opacity: 1;
 }
 .stone-caption {
   margin-top: 14px;
@@ -610,7 +634,7 @@
     <canvas id="arc-canvas" aria-hidden="true"></canvas>
     <video id="arc-ring-vid" autoplay muted loop playsinline
            aria-hidden="true">
-      <source src="Jewelry/Portfolio_pieces_vids/bridal_ring.mp4" type="video/mp4">
+      <source src="Jewelry/Portfolio_pieces_vids/diam_soli_ring.mp4" type="video/mp4">
     </video>
     <p id="arc-coord" aria-hidden="true">23&deg;26&prime; N &middot; SOLSTICE MERIDIAN</p>
     <span class="arc-section-label" aria-hidden="true">ARC OF TRANSIT</span>
@@ -624,12 +648,13 @@
   <div class="stone-grid">
 
     <div class="stone-visual">
+      <div class="stone-glow" aria-hidden="true"></div>
       <div class="stone-frame" id="stone-frame">
         <video id="stone-vid" muted loop playsinline>
-          <source src="Jewelry/Portfolio_pieces_vids/diam_hand_unbox_ad.mp4" type="video/mp4">
+          <source src="Jewelry/Portfolio_pieces_vids/ring_closeup_v2.mp4" type="video/mp4">
         </video>
       </div>
-      <p class="stone-caption">ROUND BRILLIANT &middot; ACQUISITION MOMENT</p>
+      <p class="stone-caption">ROUND BRILLIANT &middot; FOUR-PRONG BASKET</p>
     </div>
 
     <div class="stone-copy">
@@ -857,24 +882,38 @@
 })();
 </script>
 
-<!-- ── STONE IO — play video on scroll-in ── -->
+<!-- ── STONE reveal — GSAP ST (IO won't fire on clip-path:inset(0 0 100% 0)) ── -->
 <script>
 (function () {
+  if (!window.gsap || !window.ScrollTrigger) return;
   var frame    = document.getElementById('stone-frame');
   var stoneVid = document.getElementById('stone-vid');
+  var glow     = document.querySelector('.stone-glow');
   if (!frame || !stoneVid) return;
 
-  var stoneIO = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) {
-        frame.classList.add('in');
-        stoneVid.play();
-      } else {
-        stoneVid.pause();
-      }
-    });
-  }, { threshold: 0.20 });
-  stoneIO.observe(frame);
+  /* clip-path reveal: watch parent section, not the clipped frame */
+  ScrollTrigger.create({
+    trigger: '#stone',
+    start: 'top 72%',
+    once: true,
+    onEnter: function () {
+      frame.classList.add('in');
+      stoneVid.play();
+      if (glow) glow.classList.add('bloomed');
+    }
+  });
+
+  /* parallax depth (overdrive) — video shifts as section scrolls */
+  ScrollTrigger.create({
+    trigger: '#stone',
+    start: 'top bottom',
+    end: 'bottom top',
+    scrub: 1.4,
+    onUpdate: function (self) {
+      var shift = (self.progress - 0.5) * 38;
+      stoneVid.style.transform = 'scale(1.1) translateY(' + shift + 'px)';
+    }
+  });
 })();
 </script>
 
