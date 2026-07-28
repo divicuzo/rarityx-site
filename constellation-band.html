@@ -768,7 +768,47 @@
 <script>
 (function () {
 
-  /* ── IO REVEALS — no GSAP dependency ── */
+  /* ── REVEALS ── */
+  /* clip-path:inset(0 0 100% 0) zeroes IO visible intersection area —
+     use GSAP ScrollTrigger (scroll-position based) for clipped figures
+     and gallery cells; IO only for opacity/transform text reveals. */
+
+  if (window.gsap && window.ScrollTrigger) {
+    document.querySelectorAll('.story-visual figure').forEach(function (f) {
+      ScrollTrigger.create({
+        trigger: f, start: 'top 95%', once: true,
+        onEnter: function () { f.classList.add('in'); }
+      });
+    });
+    document.querySelectorAll('.gallery-cell').forEach(function (c) {
+      ScrollTrigger.create({
+        trigger: c, start: 'top 95%', once: true,
+        onEnter: function () { c.classList.add('in'); }
+      });
+    });
+    document.querySelectorAll('.detail-visual figure').forEach(function (f) {
+      ScrollTrigger.create({
+        trigger: f, start: 'top 95%', once: true,
+        onEnter: function () { f.classList.add('in'); }
+      });
+    });
+  } else {
+    var parentIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('figure, .gallery-cell').forEach(function (el, i) {
+            setTimeout(function () { el.classList.add('in'); }, i * 120);
+          });
+          this.unobserve(e.target);
+        }
+      }.bind(this));
+    }, { threshold: 0.05 });
+    ['#story .story-visual', '#gallery .gallery-grid', '#detail .detail-visual'].forEach(function (sel) {
+      var el = document.querySelector(sel);
+      if (el) parentIO.observe(el);
+    });
+  }
+
   function makeIO(threshold) {
     return new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
@@ -777,22 +817,15 @@
           this.unobserve(e.target);
         }
       }.bind(this));
-    }, { threshold: threshold || 0.08 });
+    }, { threshold: threshold != null ? threshold : 0.08 });
   }
 
-  var figIO  = makeIO(0.05);
   var io     = makeIO(0.12);
-  var galIO  = makeIO(0.08);
   var specIO = makeIO(0.15);
 
-  document.querySelectorAll('.story-visual figure').forEach(function(f) { figIO.observe(f); });
   document.querySelectorAll(
     '.story-copy .eyebrow, .story-copy h2, .story-copy p, .story-copy .dim'
   ).forEach(function (el) { io.observe(el); });
-
-  document.querySelectorAll('.gallery-cell').forEach(function (c) { galIO.observe(c); });
-
-  document.querySelectorAll('.detail-visual figure').forEach(function(f) { figIO.observe(f); });
 
   var detEy  = document.querySelector('.detail-eyebrow');
   if (detEy) specIO.observe(detEy);
