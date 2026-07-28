@@ -881,7 +881,50 @@
     });
   })();
 
-  /* ── IntersectionObserver REVEALS ── */
+  /* ── REVEALS ── */
+  /* Figures use clip-path which zeroes visible intersection area —
+     IO threshold-based detection won't fire. Use GSAP ScrollTrigger
+     (scroll-position based, not intersection geometry) for figures
+     and gallery cells. IO handles opacity/transform reveals safely. */
+
+  if (window.gsap && window.ScrollTrigger) {
+    document.querySelectorAll('.story-visual figure').forEach(function (f) {
+      ScrollTrigger.create({
+        trigger: f, start: 'top 95%', once: true,
+        onEnter: function () { f.classList.add('in'); }
+      });
+    });
+    document.querySelectorAll('.gallery-cell').forEach(function (c) {
+      ScrollTrigger.create({
+        trigger: c, start: 'top 95%', once: true,
+        onEnter: function () { c.classList.add('in'); }
+      });
+    });
+    document.querySelectorAll('.detail-visual figure').forEach(function (f) {
+      ScrollTrigger.create({
+        trigger: f, start: 'top 95%', once: true,
+        onEnter: function () { f.classList.add('in'); }
+      });
+    });
+  } else {
+    /* GSAP unavailable fallback: observe parent containers (not clipped) */
+    var parentIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('figure, .gallery-cell').forEach(function (el, i) {
+            setTimeout(function () { el.classList.add('in'); }, i * 120);
+          });
+          this.unobserve(e.target);
+        }
+      }.bind(this));
+    }, { threshold: 0.05 });
+    ['#story .story-visual', '#gallery .gallery-grid', '#detail .detail-visual'].forEach(function (sel) {
+      var el = document.querySelector(sel);
+      if (el) parentIO.observe(el);
+    });
+  }
+
+  /* Text + spec reveals: opacity/transform — IO works fine */
   function makeIO(threshold) {
     return new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
@@ -890,22 +933,13 @@
           this.unobserve(e.target);
         }
       }.bind(this));
-    }, { threshold: threshold || 0.08 });
+    }, { threshold: threshold });
   }
 
-  var figIO  = makeIO(0.05);
-  var io     = makeIO(0.12);
-
-  document.querySelectorAll('.story-visual figure').forEach(function(f) { figIO.observe(f); });
-
+  var io = makeIO(0.12);
   document.querySelectorAll(
     '.story-eyebrow, .story-h2, .story-body, .story-dim'
   ).forEach(function (el) { io.observe(el); });
-
-  var galIO = makeIO(0.08);
-  document.querySelectorAll('.gallery-cell').forEach(function (c) { galIO.observe(c); });
-
-  document.querySelectorAll('.detail-visual figure').forEach(function(f) { figIO.observe(f); });
 
   var specIO = makeIO(0.15);
   var detEy = document.querySelector('.detail-eyebrow');
