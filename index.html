@@ -327,7 +327,7 @@ ul,ol{list-style:none;}
 @media(prefers-reduced-motion:reduce){.horiz-track{transform:none!important;}#section-02{height:auto!important;}.horiz-pin{position:relative;height:auto;overflow:visible;}.horiz-track{flex-direction:column;}.origin-card{flex:none;width:100%;min-height:100dvh;grid-template-columns:1fr;}.origin-year{clip-path:none;}.oc-era,.oc-title,.origin-body{opacity:1;transform:none;}.oc-img{clip-path:none;}.oc-img video{transform:none;}.oc-rule{width:48px;}.oc-dots{display:none;}}
 
 /* Mobile: vertical stack */
-@media(max-width:767px){#section-02{height:auto!important;}.horiz-pin{position:relative;height:auto;overflow-y:auto;}.horiz-track{flex-direction:column;height:auto;transform:none!important;}.origin-card{flex:none;width:100%;min-height:auto;height:auto;grid-template-columns:1fr;border-right:none;border-bottom:1px solid #5a1a2e;}.oc-img{height:62vw;clip-path:none;}.oc-img::before{background:linear-gradient(to bottom,transparent 45%,#330D1E 100%)!important;}.origin-year{font-size:clamp(72px,20vw,120px);}.oc-content{padding:40px 24px 52px;}.origin-timeline-bar{display:none;}.oc-dots{display:none;}.oc-era,.oc-title,.origin-body{opacity:1;transform:none;}.oc-img video{transform:none;}.oc-rule{width:48px;}}
+@media(max-width:767px){#section-02{height:auto!important;}.horiz-pin{position:relative;height:auto;overflow-y:auto;}.horiz-track{flex-direction:column;height:auto;transform:none!important;}.origin-card{flex:none;width:100%;min-height:auto;height:auto;display:flex;flex-direction:column;position:relative;border-right:none;border-bottom:1px solid #5a1a2e;}.oc-img{position:relative!important;height:62vw;clip-path:none;width:100%;flex-shrink:0;inset:auto!important;}.oc-img::after{background:linear-gradient(to bottom,transparent 35%,rgba(8,1,5,0.80) 100%)!important;}.origin-year{font-size:clamp(64px,18vw,100px);position:absolute;top:6px;right:4px;bottom:auto;z-index:3;transform:none;opacity:1;transition:none;}.oc-content{position:relative!important;width:100%;padding:24px 24px 44px;inset:auto!important;}.origin-timeline-bar{display:none;}.oc-dots{display:none;}.oc-era,.oc-title,.origin-body{opacity:1!important;transform:none!important;transition:none;}.oc-img video{transform:none;opacity:1!important;transition:none;}.oc-rule{width:48px!important;transition:none;}}
 
 /* ============================================================
    SECTION 03 - SUPPLY CHAIN
@@ -883,6 +883,33 @@ ul,ol{list-style:none;}
 .work-card:hover .work-link-hint{opacity:1;transform:translateY(0)}
 @media(prefers-reduced-motion:reduce){.works-track{animation:none;flex-wrap:wrap}}
 @media(max-width:768px){.works-head{flex-direction:column;gap:8px}.works-track{animation-duration:40s}}
+
+/* ── MOBILE HAMBURGER BUTTON ── */
+.mob-menu-btn{display:none;flex-direction:column;justify-content:space-between;width:22px;height:15px;padding:0;background:none;border:none;cursor:pointer;z-index:310;flex-shrink:0;-webkit-tap-highlight-color:transparent;}
+.mob-menu-btn span{display:block;width:100%;height:1px;background:var(--text);transition:transform 0.3s cubic-bezier(.16,1,.3,1),opacity 0.2s ease,background 0.3s ease;}
+body.mob-open .mob-menu-btn span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+body.mob-open .mob-menu-btn span:nth-child(2){opacity:0;transform:scaleX(0);}
+body.mob-open .mob-menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:768px){.mob-menu-btn{display:flex;}}
+
+/* ── MOBILE NAV OVERLAY ── */
+.mob-nav-overlay{position:fixed;inset:0;z-index:200;background:rgba(51,13,30,0.98);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;flex-direction:column;opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity 0.28s ease,transform 0.28s cubic-bezier(.16,1,.3,1);}
+.mob-nav-overlay.is-open{opacity:1;pointer-events:auto;transform:translateY(0);}
+body.mob-open{overflow:hidden;touch-action:none;}
+.mob-nav-inner{display:flex;flex-direction:column;flex:1;padding:calc(env(safe-area-inset-top,0px) + 80px) 32px calc(env(safe-area-inset-bottom,0px) + 40px);overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.mob-nav-close{position:absolute;top:calc(env(safe-area-inset-top,0px) + 18px);right:20px;font-size:24px;line-height:1;color:var(--text-muted);background:none;border:none;cursor:pointer;padding:10px;z-index:210;-webkit-tap-highlight-color:transparent;}
+.mob-nav-links{display:flex;flex-direction:column;}
+.mob-nav-link{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;padding:20px 0;border-bottom:1px solid #2a0614;display:flex;justify-content:space-between;align-items:center;background:none;width:100%;text-align:left;cursor:pointer;transition:color 0.2s ease;-webkit-appearance:none;-webkit-tap-highlight-color:transparent;}
+.mob-nav-link:active{color:var(--text);}
+.mob-vault-arrow{font-size:12px;transition:transform 0.25s ease;display:inline-block;}
+.mob-nav-vault-toggle[aria-expanded="true"] .mob-vault-arrow{transform:rotate(180deg);}
+.mob-vault-list{display:none;flex-direction:column;padding:4px 0 8px 16px;}
+.mob-vault-list.is-open{display:flex;}
+.mob-vault-item{font-family:'Outfit',sans-serif;font-size:15px;color:#c8909e;text-decoration:none;padding:11px 0;border-bottom:1px solid rgba(42,6,20,0.5);transition:color 0.2s ease;-webkit-tap-highlight-color:transparent;}
+.mob-vault-item:last-child{border-bottom:none;}
+.mob-vault-item:active{color:#f5f5f5;}
+.mob-nav-cta{display:block;margin-top:36px;font-family:'Outfit',sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:16px 24px;text-align:center;transition:color 0.25s,background 0.25s;-webkit-tap-highlight-color:transparent;}
+.mob-nav-cta:active{color:var(--bg);background:var(--accent);}
 </style>
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 </head>
@@ -902,6 +929,7 @@ ul,ol{list-style:none;}
       <a href="#" class="wordmark"><img src="Jewelry/LOGO_transparent.webp" alt="RarityX" class="header-logo"></a>
     </div>
     <nav class="header-right">
+      <button class="mob-menu-btn" id="mob-menu-btn" aria-label="Open navigation" aria-expanded="false" aria-controls="mob-nav-overlay"><span></span><span></span><span></span></button>
       <ul class="nav-links">
         <li><a href="#section-02" class="nav-link">ORIGIN</a></li>
         <li><a href="#section-07" class="nav-link">PROCESS</a></li>
@@ -923,6 +951,29 @@ ul,ol{list-style:none;}
     </nav>
   </div>
 </header>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="mob-nav-overlay" id="mob-nav-overlay" aria-hidden="true" role="dialog" aria-label="Site navigation" aria-modal="true">
+  <button class="mob-nav-close" id="mob-nav-close" aria-label="Close navigation">&times;</button>
+  <div class="mob-nav-inner">
+    <nav class="mob-nav-links" aria-label="Mobile navigation">
+      <a href="#section-02" class="mob-nav-link" data-mob-close>Origin</a>
+      <a href="#section-07" class="mob-nav-link" data-mob-close>Process</a>
+      <button class="mob-nav-link mob-nav-vault-toggle" type="button" aria-expanded="false" aria-controls="mob-vault-list">Vault <span class="mob-vault-arrow">↓</span></button>
+      <div class="mob-vault-list" id="mob-vault-list" aria-hidden="true">
+        <a href="lp-v6.html" class="mob-vault-item">Pav&eacute; Arc</a>
+        <a href="constellation-band.html" class="mob-vault-item">Constellation Band</a>
+        <a href="solstice-solitaire.html" class="mob-vault-item">Solstice Solitaire</a>
+        <a href="fragment-band.html" class="mob-vault-item">Fragment Band</a>
+        <a href="meridian-cluster.html" class="mob-vault-item">Meridian Cluster</a>
+        <a href="eclipse-halo.html" class="mob-vault-item">Eclipse Halo</a>
+        <a href="medallion.html" class="mob-vault-item">Crest Medallion</a>
+        <a href="sigil.html" class="mob-vault-item">Sigil Signet</a>
+      </div>
+      <a href="#" onclick="if(typeof Calendly!=='undefined'){Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});}return false;" class="mob-nav-cta" data-mob-close>Start a Conversation</a>
+    </nav>
+  </div>
+</div>
 
 <!-- RIGHT-SIDE SECTION DOTS -->
 <nav class="section-nav" aria-label="Section navigation">
@@ -2661,6 +2712,73 @@ ul,ol{list-style:none;}
     }, { rootMargin: '200px 0px', threshold: 0 });
     document.querySelectorAll('video[autoplay]').forEach(function(v) {
       videoObs.observe(v);
+    });
+  })();
+
+  // ── MOBILE: SECTION-02 VIDEOS + oc-entered ──────────────────────────────
+  if (window.matchMedia('(max-width: 767px)').matches && !prefersReduced) {
+    var mob02Cards = document.querySelectorAll('.origin-card');
+    if (mob02Cards.length && 'IntersectionObserver' in window) {
+      var mob02IO = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          var vid02 = e.target.querySelector('.oc-img video');
+          if (e.isIntersecting) {
+            e.target.classList.add('oc-entered');
+            if (vid02) vid02.play().catch(function() {});
+          } else {
+            if (vid02) vid02.pause();
+          }
+        });
+      }, { threshold: 0.1 });
+      mob02Cards.forEach(function(c) { mob02IO.observe(c); });
+    }
+  }
+
+  // ── MOBILE NAV ────────────────────────────────────────────────────────────
+  (function() {
+    var mobBtn     = document.getElementById('mob-menu-btn');
+    var mobOverlay = document.getElementById('mob-nav-overlay');
+    var mobClose   = document.getElementById('mob-nav-close');
+    var vaultToggle = document.querySelector('.mob-nav-vault-toggle');
+    var vaultList   = document.getElementById('mob-vault-list');
+    if (!mobBtn || !mobOverlay) return;
+
+    function openMobNav() {
+      document.body.classList.add('mob-open');
+      mobOverlay.classList.add('is-open');
+      mobOverlay.removeAttribute('aria-hidden');
+      mobBtn.setAttribute('aria-expanded', 'true');
+      if (typeof lenis !== 'undefined' && lenis) lenis.stop();
+      var firstFocus = mobOverlay.querySelector('a,.mob-nav-vault-toggle');
+      if (firstFocus) setTimeout(function() { firstFocus.focus(); }, 300);
+    }
+    function closeMobNav() {
+      document.body.classList.remove('mob-open');
+      mobOverlay.classList.remove('is-open');
+      mobOverlay.setAttribute('aria-hidden', 'true');
+      mobBtn.setAttribute('aria-expanded', 'false');
+      if (typeof lenis !== 'undefined' && lenis) lenis.start();
+      mobBtn.focus();
+    }
+
+    mobBtn.addEventListener('click', function() {
+      mobOverlay.classList.contains('is-open') ? closeMobNav() : openMobNav();
+    });
+    if (mobClose) mobClose.addEventListener('click', closeMobNav);
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && mobOverlay.classList.contains('is-open')) closeMobNav();
+    });
+
+    if (vaultToggle && vaultList) {
+      vaultToggle.addEventListener('click', function() {
+        var open = vaultList.classList.toggle('is-open');
+        vaultToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        vaultList.setAttribute('aria-hidden', open ? 'false' : 'true');
+      });
+    }
+
+    document.querySelectorAll('[data-mob-close]').forEach(function(el) {
+      el.addEventListener('click', closeMobNav);
     });
   })();
 
