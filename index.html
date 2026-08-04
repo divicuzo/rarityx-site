@@ -803,6 +803,207 @@ ul,ol{list-style:none;}
 .s09-ambient-img.rx-visible{opacity:1;}
 @media(max-width:768px){.s09-ambient-band{grid-template-columns:repeat(3,1fr);}}
 
+/* ════════════════════════════════════
+   ASCENT LAUNCH TEASER
+   ════════════════════════════════════ */
+.ascent-tease{
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  background:#0a0806;
+  border-top:1px solid #1a0812;
+}
+.at-video-bg{
+  position:absolute;inset:0;z-index:0;
+}
+.at-video{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  opacity:0.45;
+  transform:scale(1.03);
+  transition:transform 3s ease;
+}
+.ascent-tease.in-view .at-video{transform:scale(1);}
+.at-vignette{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to right, rgba(8,3,6,0.96) 0%, rgba(8,3,6,0.7) 50%, rgba(8,3,6,0.2) 100%),
+    linear-gradient(to top, rgba(8,3,6,0.5) 0%, rgba(8,3,6,0) 40%);
+}
+.at-layout{
+  position:relative;z-index:1;
+  width:100%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
+  align-items:center;
+  padding:7rem 2.5rem;
+  max-width:1300px;
+  margin:0 auto;
+}
+/* Left text block */
+.at-eyebrow{
+  font-family:'Space Mono',monospace;
+  font-size:0.58rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:rgba(200,200,200,0.65);
+  margin-bottom:1.5rem;
+}
+.at-title{
+  font-family:'Bodoni Moda',serif;
+  font-style:italic;
+  font-weight:300;
+  font-size:clamp(4rem,10vw,10rem);
+  line-height:0.93;
+  letter-spacing:-0.02em;
+  color:#f5f5f5;
+  margin-bottom:1.5rem;
+}
+.at-body{
+  font-family:'Outfit',sans-serif;
+  font-size:clamp(1rem,1.8vw,1.25rem);
+  font-weight:300;
+  color:rgba(212,176,192,0.75);
+  line-height:1.7;
+  margin-bottom:2.8rem;
+}
+.at-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:0.85rem;
+  padding:0.95rem 2.2rem 0.95rem 1.8rem;
+  border:1px solid rgba(200,200,200,0.35);
+  color:#f5f5f5;
+  font-family:'Space Mono',monospace;
+  font-size:0.68rem;
+  font-weight:700;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  text-decoration:none;
+  border-radius:2px;
+  position:relative;
+  overflow:hidden;
+  transition:border-color 0.3s, background 0.3s, transform 0.2s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s;
+  width:fit-content;
+}
+.at-btn::before{
+  content:'';
+  position:absolute;inset:0;
+  background:rgba(200,200,200,0);
+  transition:background 0.35s;
+}
+.at-btn:hover{
+  border-color:rgba(200,200,200,0.75);
+  transform:translateY(-3px);
+  box-shadow:0 12px 40px rgba(0,0,0,0.4);
+}
+.at-btn:hover::before{background:rgba(200,200,200,0.07);}
+.at-btn:active{transform:translateY(0);}
+.at-btn-text{position:relative;z-index:1;}
+.at-btn-diamond{
+  width:8px;height:8px;
+  border:1px solid rgba(200,200,200,0.6);
+  transform:rotate(45deg);
+  flex-shrink:0;
+  position:relative;z-index:1;
+  transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), background 0.3s;
+}
+.at-btn:hover .at-btn-diamond{
+  transform:rotate(225deg);
+  background:rgba(200,200,200,0.4);
+}
+
+/* Prize grid */
+.at-prizes{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0.7rem;
+}
+.at-prize{
+  position:relative;
+  border-radius:3px;
+  overflow:hidden;
+  background:#1a0812;
+}
+.at-prize-img-wrap{
+  aspect-ratio:1;
+  overflow:hidden;
+  position:relative;
+}
+.at-prize-img-wrap img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  transition:transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.at-prize:hover .at-prize-img-wrap img{transform:scale(1.06);}
+.at-prize-label{
+  padding:0.8rem 1rem 0.9rem;
+  display:flex;flex-direction:column;gap:0.2rem;
+  border-top:1px solid rgba(90,26,46,0.5);
+}
+.at-prize-tier{
+  font-family:'Space Mono',monospace;
+  font-size:0.5rem;letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:rgba(200,200,200,0.5);
+}
+.at-prize-name{
+  font-family:'Outfit',sans-serif;
+  font-size:0.8rem;font-weight:400;
+  color:rgba(245,245,245,0.85);
+}
+/* Final tier — video bg card */
+.at-prize--final .at-prize-img-wrap--video{
+  aspect-ratio:1;
+  background:linear-gradient(135deg, #1a0812 0%, #330D1E 100%);
+  display:flex;align-items:center;justify-content:center;
+}
+.at-prize-final-label{
+  display:flex;flex-direction:column;
+  align-items:center;gap:0.3rem;text-align:center;
+  padding:1rem;
+}
+.at-prize-final-label .at-prize-tier{font-size:0.52rem;color:rgba(200,200,200,0.6);}
+.at-prize-final-label .at-prize-name{font-size:1rem;font-weight:500;color:#f5f5f5;}
+.at-prize-sub{
+  font-family:'Space Mono',monospace;
+  font-size:0.5rem;letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:rgba(212,176,192,0.5);
+  margin-top:0.2rem;
+}
+/* Hover shimmer on final prize */
+.at-prize--final::after{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at center, rgba(200,200,200,0.06) 0%, transparent 70%);
+  opacity:0;transition:opacity 0.5s;pointer-events:none;
+}
+.at-prize--final:hover::after{opacity:1;}
+
+/* Reveal system */
+.at-reveal{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity 0.85s cubic-bezier(0.16,1,0.3,1) var(--d,0s),
+             transform 0.85s cubic-bezier(0.16,1,0.3,1) var(--d,0s);
+}
+.at-reveal.revealed{opacity:1;transform:translateY(0);}
+
+@media(max-width:900px){
+  .at-layout{grid-template-columns:1fr;gap:3rem;padding:5rem 1.8rem;}
+  .at-title{font-size:clamp(3.5rem,12vw,6rem);}
+}
+@media(max-width:600px){
+  .at-prizes{grid-template-columns:1fr 1fr;}
+  .at-layout{padding:4rem 1.5rem;}
+}
+
 /* ── IMAGE MARQUEE STRIP ── */
 .img-marquee-section{overflow:hidden;background:#0a0a0a;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;cursor:default;}
 .img-marquee-track{display:flex;gap:10px;width:max-content;animation:imgMarquee 50s linear infinite;padding:8px 0;}
@@ -1062,6 +1263,69 @@ body.mob-open{overflow:hidden;touch-action:none;}
     <div class="seq-frag sr-f5" data-win="0.68,0.92" data-depth="145"><em>Nothing else precedes it.</em></div>
     <div class="imgseq-bar-wrap" aria-hidden="true"><div class="imgseq-bar-fill" id="vseq-bar"></div></div>
     <div class="imgseq-loader" id="vseq-loader" aria-hidden="true"><span class="imgseq-loader-ring"></span></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     ASCENT LAUNCH TEASER — Labor Day tier program preview
+     ════════════════════════════════════════════════════════ -->
+<section id="section-ascent" class="ascent-tease" aria-label="The Ascent — Labor Day Launch">
+  <div class="at-video-bg">
+    <video class="at-video" muted loop playsinline preload="metadata" aria-hidden="true">
+      <source src="Jewelry/launch_tier4.MP4" type="video/mp4">
+    </video>
+    <div class="at-vignette"></div>
+  </div>
+
+  <div class="at-layout">
+    <div class="at-left">
+      <div class="at-eyebrow at-reveal">Labor Day · Limited Enrollment · Sep 1 – Oct 31</div>
+      <h2 class="at-title at-reveal" style="--d:0.08s">The<br><em>Ascent.</em></h2>
+      <p class="at-body at-reveal" style="--d:0.18s">200 tiers. Four diamond prizes.<br>Your first move is free.</p>
+      <a class="at-btn at-reveal" style="--d:0.28s" href="launch.html">
+        <span class="at-btn-text">Enter the Program</span>
+        <span class="at-btn-diamond"></span>
+      </a>
+    </div>
+
+    <div class="at-prizes">
+      <div class="at-prize at-reveal" style="--d:0.1s">
+        <div class="at-prize-img-wrap">
+          <img src="Jewelry/launch_tier1_v1.jpg" alt="Diamond By The Yard Chain" loading="lazy">
+        </div>
+        <div class="at-prize-label">
+          <span class="at-prize-tier">Tier 50</span>
+          <span class="at-prize-name">Diamond Chain</span>
+        </div>
+      </div>
+      <div class="at-prize at-reveal" style="--d:0.2s">
+        <div class="at-prize-img-wrap">
+          <img src="Jewelry/launch_tier2_v1.webp" alt="Pear Diamond Studs" loading="lazy">
+        </div>
+        <div class="at-prize-label">
+          <span class="at-prize-tier">Tier 100</span>
+          <span class="at-prize-name">Pear Studs</span>
+        </div>
+      </div>
+      <div class="at-prize at-reveal" style="--d:0.3s">
+        <div class="at-prize-img-wrap">
+          <img src="Jewelry/launch_tier3_v1.png" alt="2ct Pear Diamond Pendant" loading="lazy">
+        </div>
+        <div class="at-prize-label">
+          <span class="at-prize-tier">Tier 150</span>
+          <span class="at-prize-name">Pear Pendant</span>
+        </div>
+      </div>
+      <div class="at-prize at-prize--final at-reveal" style="--d:0.4s">
+        <div class="at-prize-img-wrap at-prize-img-wrap--video">
+          <div class="at-prize-final-label">
+            <span class="at-prize-tier">Tier 200</span>
+            <span class="at-prize-name">Engagement Ring</span>
+            <span class="at-prize-sub">2ct · Flawless</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -2699,6 +2963,40 @@ body.mob-open{overflow:hidden;touch-action:none;}
   initFrags('section-vseq-hero', '.seq-frag', 'data-win', 'data-depth');
   initFrags('section-vseq',      '.seq-frag', 'data-win', 'data-depth');
   initFrags('section-vseq-v6',   '.v6-frag',  'data-v6win', 'data-v6depth');
+
+  // ── ASCENT TEASE section ──────────────────────────────────────
+  (function(){
+    var section = document.getElementById('section-ascent');
+    if (!section || !('IntersectionObserver' in window)) return;
+
+    /* Video play/scale on enter */
+    var video = section.querySelector('.at-video');
+    var vidObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          section.classList.add('in-view');
+          video && video.play().catch(function(){});
+        } else {
+          section.classList.remove('in-view');
+          video && video.pause();
+        }
+      });
+    }, { threshold: 0.15 });
+    vidObs.observe(section);
+
+    /* Element reveals */
+    var revealObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          e.target.classList.add('revealed');
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    section.querySelectorAll('.at-reveal').forEach(function(el){
+      revealObs.observe(el);
+    });
+  })();
 
   // ── ALL AUTOPLAY VIDEOS: pause when off-screen ──────────────
   (function() {

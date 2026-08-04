@@ -12,7 +12,6 @@
   <meta property="og:url" content="https://rarityx.co/launch.html">
   <meta property="og:title" content="The Ascent — RarityX Labor Day">
   <meta property="og:description" content="200 tiers. Four diamond prizes. Your first tier is free.">
-  <meta property="og:image" content="https://rarityx.co/Jewelry/launch_tier4_thumb.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -122,129 +121,107 @@ body{
   z-index:0;
 }
 .hero-video-wrap video{
-  width:100%;
-  height:100%;
+  width:100%;height:100%;
   object-fit:cover;
   object-position:center;
+  transform:scale(1.04);
+  transition:transform 1.8s cubic-bezier(0.16,1,0.3,1);
 }
+.hero-video-wrap.loaded video{transform:scale(1);}
 .hero-vignette{
-  position:absolute;
-  inset:0;
+  position:absolute;inset:0;
   background:
-    linear-gradient(to top, rgba(30,8,18,0.92) 0%, rgba(30,8,18,0.3) 40%, rgba(30,8,18,0) 70%),
-    linear-gradient(to bottom, rgba(51,13,30,0.6) 0%, rgba(51,13,30,0) 25%);
+    linear-gradient(to top, rgba(30,8,18,0.96) 0%, rgba(30,8,18,0.35) 40%, rgba(30,8,18,0) 70%),
+    linear-gradient(to bottom, rgba(51,13,30,0.7) 0%, rgba(51,13,30,0) 25%);
   z-index:1;
 }
 .hero-bg-num{
   position:absolute;
-  bottom:-0.05em;
-  right:-0.02em;
+  bottom:-0.05em;right:-0.02em;
   font-family:'Barlow Condensed',sans-serif;
   font-weight:900;
   font-size:clamp(14rem, 38vw, 44rem);
-  color:rgba(200,200,200,0.04);
+  color:rgba(200,200,200,0);
   line-height:0.85;
   letter-spacing:-0.04em;
-  user-select:none;
-  pointer-events:none;
+  user-select:none;pointer-events:none;
   z-index:2;
-  transform:translateY(0.08em);
+  transform:translateY(0.08em) translateX(2%);
 }
 .hero-content{
-  position:relative;
-  z-index:3;
+  position:relative;z-index:3;
   padding:0 2.5rem 4rem;
-  max-width:900px;
+  max-width:960px;
 }
 .hero-eyebrow{
   font-family:'Space Mono',monospace;
-  font-size:0.6rem;
-  letter-spacing:0.25em;
+  font-size:0.62rem;
+  letter-spacing:0.28em;
   text-transform:uppercase;
   color:var(--accent);
-  margin-bottom:1.2rem;
+  margin-bottom:1.4rem;
   opacity:0;
-  transform:translateY(12px);
+  transform:translateY(16px);
 }
 .hero-title{
   font-family:'Bodoni Moda',serif;
   font-style:italic;
   font-weight:300;
-  font-size:clamp(3.5rem, 11vw, 11rem);
-  line-height:0.95;
+  font-size:clamp(4rem, 12vw, 13rem);
+  line-height:0.93;
   letter-spacing:-0.02em;
   color:var(--text);
-  margin-bottom:1.5rem;
+  margin-bottom:1.6rem;
   opacity:0;
-  transform:translateY(20px);
+  transform:translateY(30px);
 }
 .hero-sub{
   font-family:'Outfit',sans-serif;
-  font-size:clamp(1rem, 2vw, 1.25rem);
+  font-size:clamp(1.1rem, 2.2vw, 1.4rem);
   font-weight:300;
   color:var(--text-muted);
-  margin-bottom:2.5rem;
+  margin-bottom:2.8rem;
   opacity:0;
-  transform:translateY(12px);
+  transform:translateY(16px);
 }
 .btn-primary{
   display:inline-flex;
   align-items:center;
-  gap:0.6rem;
-  padding:1rem 2.2rem;
+  gap:0.7rem;
+  padding:1.1rem 2.4rem;
   background:var(--text);
   color:#1a0810;
   font-family:'Space Mono',monospace;
-  font-size:0.7rem;
+  font-size:0.72rem;
   font-weight:700;
-  letter-spacing:0.12em;
+  letter-spacing:0.14em;
   text-transform:uppercase;
   text-decoration:none;
-  border:none;
-  cursor:pointer;
+  border:none;cursor:pointer;
   border-radius:2px;
   position:relative;
-  overflow:hidden;
   opacity:0;
-  transform:translateY(12px);
-  transition:background 0.25s, color 0.25s, transform 0.2s;
-}
-.btn-primary::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:rgba(51,13,30,0);
-  transition:background 0.3s;
+  transform:translateY(14px);
+  transition:background 0.25s, transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s;
 }
 .btn-primary:hover{
   background:#f0f0f0;
-  transform:translateY(-2px) !important;
+  transform:translateY(-3px) !important;
+  box-shadow:0 12px 36px rgba(0,0,0,0.25);
 }
 .btn-primary:active{transform:translateY(0) !important;}
 .btn-primary .diamond-icon{
-  width:8px;height:8px;
+  width:9px;height:9px;
   background:#330D1E;
   transform:rotate(45deg);
   flex-shrink:0;
-  transition:transform 0.3s;
+  transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);
 }
-.btn-primary:hover .diamond-icon{transform:rotate(135deg);}
-
-/* Diamond burst on hover */
-.btn-primary .burst{
-  position:absolute;
-  pointer-events:none;
-  width:6px;height:6px;
-  background:var(--bg);
-  transform:rotate(45deg) scale(0);
-  border-radius:0;
-  opacity:0;
-}
+.btn-primary:hover .diamond-icon{transform:rotate(225deg);}
 
 .hero-scroll-cue{
   position:absolute;
-  bottom:2rem;
-  right:2.5rem;
+  bottom:2rem;right:2.5rem;
   z-index:3;
   display:flex;
   flex-direction:column;
@@ -261,21 +238,20 @@ body{
   writing-mode:vertical-lr;
 }
 .scroll-line{
-  width:1px;
-  height:48px;
+  width:1px;height:52px;
   background:linear-gradient(to bottom, var(--accent), transparent);
-  animation:scroll-line-pulse 2s ease-in-out infinite;
+  animation:scroll-line-pulse 2.2s ease-in-out infinite;
 }
 @keyframes scroll-line-pulse{
-  0%,100%{transform:scaleY(1);opacity:0.6;}
-  50%{transform:scaleY(0.5);opacity:1;}
+  0%,100%{transform:scaleY(1);opacity:0.5;}
+  50%{transform:scaleY(0.4);opacity:1;}
 }
 
 /* ================================================================
    MECHANIC SECTION
    ================================================================ */
 .mechanic{
-  padding:8rem 2.5rem;
+  padding:9rem 2.5rem;
   background:var(--bg);
   border-top:1px solid var(--divider);
   position:relative;
@@ -284,36 +260,42 @@ body{
 .mechanic::before{
   content:'HOW';
   position:absolute;
-  top:-0.15em;left:-0.02em;
+  top:-0.1em;left:-0.02em;
   font-family:'Barlow Condensed',sans-serif;
   font-weight:900;
-  font-size:clamp(8rem, 22vw, 24rem);
-  color:rgba(200,200,200,0.025);
+  font-size:clamp(8rem, 22vw, 26rem);
+  color:rgba(200,200,200,0.022);
   line-height:1;
   letter-spacing:-0.04em;
-  pointer-events:none;
-  user-select:none;
+  pointer-events:none;user-select:none;
 }
 .mech-header{
-  max-width:700px;
-  margin-bottom:5rem;
+  max-width:800px;
+  margin-bottom:5.5rem;
+  overflow:hidden;
 }
 .mech-eyebrow{
   font-family:'Space Mono',monospace;
-  font-size:0.6rem;
-  letter-spacing:0.22em;
+  font-size:0.62rem;
+  letter-spacing:0.24em;
   text-transform:uppercase;
   color:var(--accent);
-  margin-bottom:1.2rem;
+  margin-bottom:1.4rem;
+  clip-path:inset(0 100% 0 0);
 }
 .mech-title{
   font-family:'Bodoni Moda',serif;
   font-style:italic;
   font-weight:300;
-  font-size:clamp(2.2rem, 5vw, 4.5rem);
-  line-height:1.05;
+  font-size:clamp(2.8rem, 6vw, 5.5rem);
+  line-height:1.04;
   letter-spacing:-0.015em;
   color:var(--text);
+  overflow:hidden;
+}
+.mech-title-line{
+  display:block;
+  transform:translateY(110%);
 }
 .mech-grid{
   display:grid;
@@ -324,24 +306,26 @@ body{
 }
 .mech-step{
   background:var(--bg);
-  padding:2.5rem 2rem 2.5rem;
+  padding:3rem 2.2rem 3rem;
   display:flex;
   flex-direction:column;
   gap:0;
+  opacity:0;
+  transform:translateY(40px);
 }
 .step-num{
   font-family:'Barlow Condensed',sans-serif;
   font-weight:900;
-  font-size:5rem;
+  font-size:6.5rem;
   line-height:1;
-  color:rgba(200,200,200,0.08);
-  margin-bottom:0.8rem;
+  color:rgba(200,200,200,0.07);
+  margin-bottom:1rem;
   letter-spacing:-0.03em;
 }
 .step-label{
   font-family:'Barlow Condensed',sans-serif;
   font-weight:800;
-  font-size:1.5rem;
+  font-size:1.8rem;
   letter-spacing:0.01em;
   text-transform:uppercase;
   color:var(--text);
@@ -349,24 +333,25 @@ body{
 }
 .step-desc{
   font-family:'Outfit',sans-serif;
-  font-size:0.88rem;
+  font-size:1rem;
   font-weight:300;
   color:var(--text-muted);
-  line-height:1.7;
-  margin-bottom:1.5rem;
+  line-height:1.75;
+  margin-bottom:1.8rem;
   flex:1;
 }
 .step-badge{
   font-family:'Space Mono',monospace;
-  font-size:0.58rem;
+  font-size:0.6rem;
   letter-spacing:0.18em;
   text-transform:uppercase;
   color:var(--accent);
   border:1px solid rgba(200,200,200,0.25);
-  padding:0.35rem 0.7rem;
+  padding:0.4rem 0.8rem;
   display:inline-block;
   border-radius:2px;
   align-self:flex-start;
+  clip-path:inset(0 100% 0 0);
 }
 
 /* ================================================================
@@ -380,9 +365,8 @@ body{
 /* Left rail */
 .progress-rail{
   position:sticky;
-  top:0;
-  left:0;
-  width:72px;
+  top:0;left:0;
+  width:80px;
   height:100vh;
   float:left;
   z-index:20;
@@ -392,54 +376,50 @@ body{
   pointer-events:none;
 }
 .rail-svg{
-  width:24px;
+  width:28px;
   height:calc(100vh - 80px);
   overflow:visible;
 }
-.rail-line-bg{
-  stroke:var(--rail-empty);
-  stroke-width:1;
-  fill:none;
-}
+.rail-line-bg{stroke:var(--rail-empty);stroke-width:1;fill:none;}
 .rail-line-fill{
   stroke:var(--rail-fill);
-  stroke-width:1.5;
+  stroke-width:2;
   fill:none;
   stroke-dasharray:1000;
   stroke-dashoffset:1000;
   stroke-linecap:round;
+  filter:drop-shadow(0 0 3px rgba(200,200,200,0.3));
 }
 .rail-node{
   fill:var(--node-idle);
-  stroke:var(--rail-empty);
+  stroke:rgba(200,200,200,0.3);
   stroke-width:1;
-  transition:fill 0.4s, stroke 0.4s, filter 0.4s;
+  transition:fill 0.5s, stroke 0.5s;
+  transform-box:fill-box;
+  transform-origin:center;
 }
 .rail-node.active{
   fill:var(--node-active);
   stroke:var(--node-active);
-  filter:drop-shadow(0 0 6px rgba(232,232,232,0.6));
 }
 .rail-node-label{
   font-family:'Space Mono',monospace;
   font-size:6px;
-  fill:var(--text-muted);
+  fill:rgba(212,176,192,0.5);
   letter-spacing:0.05em;
-  transition:fill 0.4s;
+  transition:fill 0.5s, font-size 0.3s;
 }
-.rail-node-label.active{fill:var(--accent);}
+.rail-node-label.active{fill:var(--accent);font-size:6.5px;}
 
 /* Tier sections container */
-.tier-sections{
-  margin-left:72px;
-}
+.tier-sections{margin-left:80px;}
 
 /* ================================================================
    TIER SECTION — SHARED
    ================================================================ */
 .tier-section{
   min-height:100vh;
-  padding:6rem 2.5rem 6rem 2rem;
+  padding:7rem 3rem 7rem 2.5rem;
   position:relative;
   overflow:hidden;
   display:flex;
@@ -454,11 +434,10 @@ body{
   position:absolute;
   font-family:'Barlow Condensed',sans-serif;
   font-weight:900;
-  color:rgba(200,200,200,0.04);
+  color:rgba(200,200,200,0);
   line-height:0.85;
   letter-spacing:-0.04em;
-  user-select:none;
-  pointer-events:none;
+  user-select:none;pointer-events:none;
   white-space:nowrap;
 }
 
@@ -467,15 +446,16 @@ body{
   align-items:center;
   gap:0.5rem;
   font-family:'Space Mono',monospace;
-  font-size:0.58rem;
+  font-size:0.6rem;
   letter-spacing:0.18em;
   text-transform:uppercase;
   color:var(--accent);
   border:1px solid rgba(200,200,200,0.2);
-  padding:0.35rem 0.75rem 0.35rem 0.5rem;
+  padding:0.4rem 0.85rem 0.4rem 0.6rem;
   border-radius:2px;
-  margin-bottom:1.8rem;
+  margin-bottom:2rem;
   width:fit-content;
+  clip-path:inset(0 100% 0 0);
 }
 .tier-badge-diamond{
   width:7px;height:7px;
@@ -486,57 +466,69 @@ body{
 
 .tier-inner{
   display:grid;
-  gap:3rem;
+  gap:3.5rem;
   position:relative;
   z-index:2;
 }
 
-.tier-meta{margin-bottom:0.5rem;}
 .tier-num-display{
   font-family:'Barlow Condensed',sans-serif;
   font-weight:900;
-  font-size:clamp(5rem, 12vw, 11rem);
-  line-height:0.9;
+  font-size:clamp(6rem, 14vw, 14rem);
+  line-height:0.88;
   letter-spacing:-0.03em;
-  color:rgba(200,200,200,0.12);
+  color:rgba(200,200,200,0.1);
   margin-bottom:-0.3em;
+  opacity:0;
+  transform:translateX(-20px);
 }
 .tier-title{
   font-family:'Bodoni Moda',serif;
   font-style:italic;
   font-weight:300;
-  font-size:clamp(2rem, 5vw, 4.5rem);
-  line-height:1.05;
+  font-size:clamp(2.8rem, 6.5vw, 6rem);
+  line-height:1.03;
   letter-spacing:-0.01em;
   color:var(--text);
-  margin-bottom:0.6rem;
+  margin-bottom:0.8rem;
+  overflow:hidden;
+}
+.tier-title-line{
+  display:block;
+  transform:translateY(110%);
 }
 .tier-spec{
   font-family:'Space Mono',monospace;
-  font-size:0.65rem;
+  font-size:0.72rem;
   letter-spacing:0.14em;
   text-transform:uppercase;
   color:var(--accent);
-  margin-bottom:1.2rem;
+  margin-bottom:1.4rem;
+  opacity:0;
+  transform:translateY(10px);
 }
 .tier-desc{
   font-family:'Outfit',sans-serif;
-  font-size:0.9rem;
+  font-size:1.05rem;
   font-weight:300;
   color:var(--text-muted);
-  line-height:1.75;
-  max-width:420px;
-  margin-bottom:2rem;
+  line-height:1.78;
+  max-width:460px;
+  margin-bottom:2.2rem;
+  opacity:0;
+  transform:translateY(16px);
 }
 .tier-entry{
   font-family:'Space Mono',monospace;
-  font-size:0.6rem;
+  font-size:0.62rem;
   letter-spacing:0.12em;
   text-transform:uppercase;
   color:var(--text-muted);
   border-left:1px solid var(--divider);
-  padding-left:1rem;
-  line-height:1.6;
+  padding-left:1.1rem;
+  line-height:1.65;
+  opacity:0;
+  transform:translateX(-8px);
 }
 .tier-entry strong{color:var(--text);}
 
@@ -545,12 +537,10 @@ body{
    ================================================================ */
 .product-mosaic{
   display:grid;
-  gap:0.75rem;
+  gap:0.8rem;
   align-items:start;
 }
 .product-mosaic.duo{grid-template-columns:1fr 1fr;}
-.product-mosaic.trio{grid-template-columns:1fr 1fr; grid-template-rows:auto auto;}
-.product-mosaic.trio .img-card:first-child{grid-column:1/-1;}
 
 .img-card{
   background:var(--surface-hi);
@@ -558,24 +548,37 @@ body{
   overflow:hidden;
   aspect-ratio:1;
   position:relative;
+  opacity:0;
+  transform:translateY(50px) scale(0.93);
+  will-change:transform;
 }
 .img-card.tall{aspect-ratio:3/4;}
 .img-card.wide{aspect-ratio:4/3;}
 .img-card img{
-  width:100%;
-  height:100%;
+  width:100%;height:100%;
   object-fit:cover;
   object-position:center;
   display:block;
-  transition:transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  transition:transform 0.9s cubic-bezier(0.16,1,0.3,1);
 }
-.img-card:hover img{transform:scale(1.04);}
+.img-card:hover img{transform:scale(1.05);}
+
+/* Subtle shimmer overlay on img-card hover */
+.img-card::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(135deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.04) 50%, rgba(255,255,255,0) 70%);
+  opacity:0;
+  transition:opacity 0.4s;
+  pointer-events:none;
+}
+.img-card:hover::after{opacity:1;}
 
 /* Tier-layout grids */
 .tier-layout-split{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:3rem;
+  gap:3.5rem;
   align-items:center;
 }
 .tier-layout-split.reverse{direction:rtl;}
@@ -585,143 +588,118 @@ body{
   display:grid;
   grid-template-columns:1fr 1fr;
   grid-template-rows:auto auto;
-  gap:3rem;
+  gap:3.5rem;
   align-items:center;
 }
 .tier-layout-trio-grid .tier-text-block{
-  grid-column:1;
-  grid-row:1/3;
+  grid-column:1;grid-row:1/3;
 }
 .tier-layout-trio-grid .trio-images{
-  grid-column:2;
-  grid-row:1/3;
-  display:flex;
-  flex-direction:column;
-  gap:0.75rem;
+  grid-column:2;grid-row:1/3;
+  display:flex;flex-direction:column;gap:0.8rem;
 }
 
 /* ================================================================
-   TIER 50
+   TIER GHOST NUMBERS — individual sizes
    ================================================================ */
 #tier-50 .tier-ghost-num{
-  font-size:clamp(14rem,40vw,46rem);
-  top:-0.1em;right:-0.03em;
+  font-size:clamp(16rem,44vw,52rem);
+  top:-0.1em;right:-0.02em;
 }
-
-/* ================================================================
-   TIER 100
-   ================================================================ */
 #tier-100 .tier-ghost-num{
-  font-size:clamp(12rem,35vw,40rem);
-  bottom:-0.12em;left:-0.03em;
+  font-size:clamp(13rem,37vw,44rem);
+  bottom:-0.1em;left:-0.02em;
 }
-
-/* ================================================================
-   TIER 150
-   ================================================================ */
 #tier-150 .tier-ghost-num{
-  font-size:clamp(10rem,28vw,34rem);
-  top:-0.1em;right:-0.03em;
+  font-size:clamp(11rem,30vw,38rem);
+  top:-0.1em;right:-0.02em;
 }
 
 /* ================================================================
    TIER 200 — FINAL BOSS
    ================================================================ */
 #tier-200{
-  padding:0;
-  min-height:100vh;
-  background:#050505;
-  position:relative;
+  padding:0;min-height:100vh;
+  background:#040404;position:relative;
 }
-.finalboss-video{
-  position:absolute;
-  inset:0;z-index:0;
-}
+.finalboss-video{position:absolute;inset:0;z-index:0;}
 .finalboss-video video{
   width:100%;height:100%;
-  object-fit:cover;
-  object-position:center;
+  object-fit:cover;object-position:center;
 }
 .finalboss-vignette{
   position:absolute;inset:0;
   background:linear-gradient(
-    to top, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.5) 40%, rgba(5,5,5,0.2) 70%
+    to top, rgba(4,4,4,0.97) 0%, rgba(4,4,4,0.55) 40%, rgba(4,4,4,0.15) 70%
   );
   z-index:1;
 }
 .finalboss-content{
   position:relative;z-index:2;
-  display:flex;
-  flex-direction:column;
+  display:flex;flex-direction:column;
   justify-content:flex-end;
   min-height:100vh;
-  padding:6rem 2.5rem 6rem 2rem;
+  padding:7rem 3rem 7rem 2.5rem;
 }
 .finalboss-badge{
-  display:inline-flex;
-  align-items:center;
-  gap:0.5rem;
+  display:inline-flex;align-items:center;gap:0.5rem;
   font-family:'Space Mono',monospace;
-  font-size:0.58rem;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:#e8e8e8;
+  font-size:0.6rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:#e8e8e8;
   border:1px solid rgba(232,232,232,0.35);
-  padding:0.35rem 0.75rem 0.35rem 0.5rem;
-  border-radius:2px;
-  margin-bottom:2rem;
+  padding:0.4rem 0.85rem 0.4rem 0.6rem;
+  border-radius:2px;margin-bottom:2rem;
   width:fit-content;
-  background:rgba(5,5,5,0.4);
-  backdrop-filter:blur(6px);
+  background:rgba(4,4,4,0.5);
+  backdrop-filter:blur(8px);
+  clip-path:inset(0 100% 0 0);
 }
 .finalboss-badge .tier-badge-diamond{background:#e8e8e8;}
 .finalboss-num{
   font-family:'Barlow Condensed',sans-serif;
   font-weight:900;
-  font-size:clamp(6rem, 18vw, 22rem);
-  line-height:0.85;
-  letter-spacing:-0.03em;
-  color:rgba(240,240,240,0.1);
+  font-size:clamp(7rem, 20vw, 26rem);
+  line-height:0.85;letter-spacing:-0.03em;
+  color:rgba(240,240,240,0.07);
   margin-bottom:-0.25em;
-  pointer-events:none;
-  user-select:none;
+  pointer-events:none;user-select:none;
+  opacity:0;transform:translateX(-30px);
 }
 .finalboss-title{
   font-family:'Bodoni Moda',serif;
-  font-style:italic;
-  font-weight:300;
-  font-size:clamp(3rem, 9vw, 9rem);
-  line-height:0.95;
-  letter-spacing:-0.02em;
-  color:#f5f5f5;
-  margin-bottom:1rem;
+  font-style:italic;font-weight:300;
+  font-size:clamp(3.5rem, 10vw, 10rem);
+  line-height:0.93;letter-spacing:-0.02em;
+  color:#f5f5f5;margin-bottom:1.2rem;
+  overflow:hidden;
+}
+.finalboss-title-line{
+  display:block;
+  transform:translateY(110%);
 }
 .finalboss-spec{
   font-family:'Space Mono',monospace;
-  font-size:0.65rem;
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  color:#c8c8c8;
-  margin-bottom:1rem;
+  font-size:0.72rem;letter-spacing:0.14em;
+  text-transform:uppercase;color:#c8c8c8;
+  margin-bottom:1.1rem;
+  opacity:0;transform:translateY(10px);
 }
 .finalboss-desc{
   font-family:'Outfit',sans-serif;
-  font-size:0.9rem;
-  font-weight:300;
-  color:rgba(212,176,192,0.8);
-  line-height:1.75;
-  max-width:480px;
-  margin-bottom:1.5rem;
+  font-size:1.05rem;font-weight:300;
+  color:rgba(212,176,192,0.85);
+  line-height:1.78;max-width:520px;
+  margin-bottom:1.6rem;
+  opacity:0;transform:translateY(16px);
 }
 .finalboss-entry{
   font-family:'Space Mono',monospace;
-  font-size:0.6rem;
-  letter-spacing:0.12em;
+  font-size:0.62rem;letter-spacing:0.12em;
   text-transform:uppercase;
-  color:rgba(212,176,192,0.6);
-  border-left:1px solid rgba(90,26,46,0.8);
-  padding-left:1rem;
-  line-height:1.6;
+  color:rgba(212,176,192,0.55);
+  border-left:1px solid rgba(90,26,46,0.7);
+  padding-left:1.1rem;line-height:1.65;
+  opacity:0;transform:translateX(-8px);
 }
 .finalboss-entry strong{color:#f5f5f5;}
 
@@ -729,117 +707,99 @@ body{
    ENTRY CTA SECTION
    ================================================================ */
 .entry-section{
-  padding:10rem 2.5rem 8rem;
+  padding:11rem 2.5rem 9rem;
   background:var(--bg);
   border-top:1px solid var(--divider);
-  position:relative;
-  overflow:hidden;
+  position:relative;overflow:hidden;
   text-align:center;
 }
 .entry-section::before{
   content:'FREE';
-  position:absolute;
-  top:50%;left:50%;
+  position:absolute;top:50%;left:50%;
   transform:translate(-50%,-50%);
   font-family:'Barlow Condensed',sans-serif;
   font-weight:900;
-  font-size:clamp(12rem, 35vw, 42rem);
-  color:rgba(200,200,200,0.025);
+  font-size:clamp(12rem, 36vw, 46rem);
+  color:rgba(200,200,200,0.02);
   letter-spacing:-0.04em;
-  pointer-events:none;
-  user-select:none;
+  pointer-events:none;user-select:none;
   white-space:nowrap;
 }
 .entry-eyebrow{
   font-family:'Space Mono',monospace;
-  font-size:0.6rem;
-  letter-spacing:0.22em;
-  text-transform:uppercase;
-  color:var(--accent);
-  margin-bottom:1.5rem;
+  font-size:0.62rem;letter-spacing:0.24em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:1.6rem;
+  opacity:0;clip-path:inset(0 100% 0 0);
 }
 .entry-title{
   font-family:'Bodoni Moda',serif;
-  font-style:italic;
-  font-weight:300;
-  font-size:clamp(2.5rem, 7vw, 7.5rem);
-  line-height:1.0;
-  letter-spacing:-0.02em;
-  color:var(--text);
-  margin-bottom:1.2rem;
+  font-style:italic;font-weight:300;
+  font-size:clamp(3rem, 8vw, 9rem);
+  line-height:0.97;letter-spacing:-0.02em;
+  color:var(--text);margin-bottom:1.4rem;
+  overflow:hidden;
+}
+.entry-title-line{
+  display:block;
+  transform:translateY(110%);
 }
 .entry-sub{
   font-family:'Outfit',sans-serif;
-  font-size:clamp(0.9rem, 1.8vw, 1.1rem);
-  font-weight:300;
-  color:var(--text-muted);
-  max-width:500px;
-  margin:0 auto 3.5rem;
-  line-height:1.75;
+  font-size:clamp(1rem, 1.9vw, 1.2rem);
+  font-weight:300;color:var(--text-muted);
+  max-width:520px;margin:0 auto 4rem;
+  line-height:1.78;
+  opacity:0;transform:translateY(18px);
 }
 .entry-cta-wrap{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:1.2rem;
-  position:relative;
-  z-index:1;
+  display:flex;flex-direction:column;
+  align-items:center;gap:1.3rem;
+  position:relative;z-index:1;
+  opacity:0;transform:translateY(20px);
 }
 .btn-primary-large{
-  display:inline-flex;
-  align-items:center;
-  gap:0.8rem;
-  padding:1.2rem 3rem;
-  background:var(--text);
-  color:#1a0810;
+  display:inline-flex;align-items:center;gap:0.9rem;
+  padding:1.3rem 3.2rem;
+  background:var(--text);color:#1a0810;
   font-family:'Space Mono',monospace;
-  font-size:0.75rem;
-  font-weight:700;
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  text-decoration:none;
-  border-radius:2px;
+  font-size:0.76rem;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;
+  text-decoration:none;border-radius:2px;
   position:relative;
-  overflow:hidden;
-  transition:background 0.25s, transform 0.2s, box-shadow 0.3s;
+  transition:background 0.25s, transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s;
 }
 .btn-primary-large:hover{
-  background:#eee;
-  transform:translateY(-3px);
-  box-shadow:0 16px 48px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.2);
+  background:#ebebeb;
+  transform:translateY(-4px);
+  box-shadow:0 20px 56px rgba(0,0,0,0.35), 0 6px 16px rgba(0,0,0,0.2);
 }
 .btn-primary-large:active{transform:translateY(0);}
 .btn-primary-large .diamond-icon{
-  width:9px;height:9px;
+  width:10px;height:10px;
   background:#330D1E;
   transform:rotate(45deg);
-  transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);
+  transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);
 }
 .btn-primary-large:hover .diamond-icon{transform:rotate(225deg);}
 
-/* Diamond burst particles */
 .burst-container{
-  position:absolute;
-  inset:-20px;
-  pointer-events:none;
-  overflow:visible;
+  position:absolute;inset:-24px;
+  pointer-events:none;overflow:visible;
 }
 .burst-particle{
   position:absolute;
   width:5px;height:5px;
   background:#1a0810;
-  transform:rotate(45deg) scale(0);
-  opacity:0;
+  transform:rotate(45deg) scale(0);opacity:0;
   will-change:transform,opacity;
 }
 
 .entry-note{
   font-family:'Space Mono',monospace;
-  font-size:0.55rem;
-  letter-spacing:0.14em;
+  font-size:0.56rem;letter-spacing:0.14em;
   text-transform:uppercase;
-  color:var(--text-muted);
-  opacity:0.6;
+  color:var(--text-muted);opacity:0.5;
 }
 
 /* ================================================================
@@ -849,69 +809,47 @@ body{
   background:var(--bg);
   border-top:1px solid var(--divider);
   padding:1.5rem 2.5rem;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:1rem;
+  display:flex;align-items:center;
+  justify-content:space-between;flex-wrap:wrap;gap:1rem;
 }
 .launch-footer a{
   font-family:'Space Mono',monospace;
-  font-size:0.55rem;
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  color:var(--text-muted);
-  text-decoration:none;
-  transition:color 0.2s;
+  font-size:0.56rem;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--text-muted);
+  text-decoration:none;transition:color 0.2s;
 }
 .launch-footer a:hover{color:var(--text);}
 .launch-footer p{
   font-family:'Space Mono',monospace;
-  font-size:0.52rem;
-  letter-spacing:0.1em;
-  text-transform:uppercase;
-  color:var(--text-muted);
-  opacity:0.4;
+  font-size:0.52rem;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--text-muted);opacity:0.35;
 }
-
-/* ================================================================
-   REVEAL STATES (IntersectionObserver)
-   ================================================================ */
-[data-reveal]{
-  opacity:0;
-  transform:translateY(28px);
-  transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
-}
-[data-reveal].revealed{opacity:1;transform:translateY(0);}
-[data-reveal][data-delay="1"]{transition-delay:0.1s;}
-[data-reveal][data-delay="2"]{transition-delay:0.2s;}
-[data-reveal][data-delay="3"]{transition-delay:0.35s;}
-[data-reveal][data-delay="4"]{transition-delay:0.5s;}
-[data-reveal][data-delay="5"]{transition-delay:0.65s;}
 
 /* ================================================================
    RESPONSIVE
    ================================================================ */
-@media(max-width:900px){
+@media(max-width:960px){
   .progress-rail{display:none;}
   .tier-sections{margin-left:0;}
-  .tier-layout-split{grid-template-columns:1fr;gap:2rem;}
+  .tier-layout-split{grid-template-columns:1fr;gap:2.5rem;}
   .tier-layout-split.reverse{direction:ltr;}
-  .tier-layout-trio-grid{grid-template-columns:1fr;gap:2rem;}
+  .tier-layout-trio-grid{grid-template-columns:1fr;gap:2.5rem;}
   .tier-layout-trio-grid .tier-text-block{grid-column:1;grid-row:auto;}
   .tier-layout-trio-grid .trio-images{grid-column:1;grid-row:auto;}
   .mech-grid{grid-template-columns:1fr;}
   .launch-nav .nav-badge{display:none;}
-  .finalboss-content{padding:4rem 1.5rem 4rem;}
-  .tier-section{padding:5rem 1.5rem;}
+  .finalboss-content{padding:5rem 1.8rem 5rem;}
+  .tier-section{padding:5.5rem 1.8rem;}
+  .tier-title{font-size:clamp(2.5rem,8vw,5rem);}
 }
 @media(max-width:600px){
   .launch-nav{padding:1rem 1.5rem;}
-  .hero-content{padding:0 1.5rem 3rem;}
+  .hero-content{padding:0 1.5rem 3.5rem;}
   .product-mosaic.duo{grid-template-columns:1fr;}
-  .finalboss-title{font-size:clamp(2.5rem,12vw,5rem);}
+  .finalboss-title{font-size:clamp(2.8rem,13vw,5.5rem);}
   .entry-section{padding:7rem 1.5rem 5rem;}
-  .mechanic{padding:5rem 1.5rem;}
+  .mechanic{padding:5.5rem 1.5rem;}
+  .hero-title{font-size:clamp(3.5rem,14vw,7rem);}
 }
 </style>
 </head>
@@ -929,7 +867,7 @@ body{
      HERO
      ============================================================ -->
 <section class="hero" id="hero">
-  <div class="hero-video-wrap">
+  <div class="hero-video-wrap" id="hero-video-wrap">
     <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
       <source src="Jewelry/launch_tier4.MP4" type="video/mp4">
     </video>
@@ -958,23 +896,26 @@ body{
      ============================================================ -->
 <section class="mechanic" id="mechanic">
   <div class="mech-header">
-    <div class="mech-eyebrow" data-reveal>The Program</div>
-    <h2 class="mech-title" data-reveal data-delay="1">A loyalty structure<br><em>built for collectors.</em></h2>
+    <div class="mech-eyebrow" id="mech-eyebrow">The Program</div>
+    <h2 class="mech-title" id="mech-title">
+      <span class="mech-title-line">A loyalty structure</span>
+      <span class="mech-title-line"><em>built for collectors.</em></span>
+    </h2>
   </div>
-  <div class="mech-grid">
-    <div class="mech-step" data-reveal data-delay="2">
+  <div class="mech-grid" id="mech-grid">
+    <div class="mech-step">
       <div class="step-num">01</div>
       <div class="step-label">Book a Consult</div>
       <p class="step-desc">Your first tier is free. Schedule a private consultation — no purchase required. You enter the program from that moment.</p>
       <div class="step-badge">Tier 1 · Free</div>
     </div>
-    <div class="mech-step" data-reveal data-delay="3">
+    <div class="mech-step">
       <div class="step-num">02</div>
       <div class="step-label">Spend to Ascend</div>
       <p class="step-desc">Every $500 spent in person on commissioned jewelry earns one additional tier. The program runs through October 31, 2026.</p>
       <div class="step-badge">+1 Tier per $500</div>
     </div>
-    <div class="mech-step" data-reveal data-delay="4">
+    <div class="mech-step">
       <div class="step-num">03</div>
       <div class="step-label">Collect the Prize</div>
       <p class="step-desc">At tiers 50, 100, 150, and 200 you unlock a gift piece — hand-selected by the designer. The final tier unlocks a flawless 2ct engagement ring.</p>
@@ -990,31 +931,21 @@ body{
 
   <!-- Left progress rail (desktop) -->
   <div class="progress-rail" id="progress-rail" aria-hidden="true">
-    <svg class="rail-svg" id="rail-svg" viewBox="0 0 24 500" preserveAspectRatio="none">
-      <!-- Background line -->
-      <line class="rail-line-bg" x1="12" y1="20" x2="12" y2="480"/>
-      <!-- Fill line -->
-      <line class="rail-line-fill" id="rail-fill-line" x1="12" y1="20" x2="12" y2="480"/>
-      <!-- Node 1 — Tier 50 — y=110 (~20%) -->
-      <polygon class="rail-node" id="node-0"
-        points="12,96 16.5,110 12,124 7.5,110"
-        style="transform-origin:12px 110px;"/>
-      <text class="rail-node-label" id="label-0" x="17" y="112" font-size="6">50</text>
-      <!-- Node 2 — Tier 100 — y=205 (~40%) -->
-      <polygon class="rail-node" id="node-1"
-        points="12,191 16.5,205 12,219 7.5,205"
-        style="transform-origin:12px 205px;"/>
-      <text class="rail-node-label" id="label-1" x="17" y="207" font-size="6">100</text>
-      <!-- Node 3 — Tier 150 — y=305 (~60%) -->
-      <polygon class="rail-node" id="node-2"
-        points="12,291 16.5,305 12,319 7.5,305"
-        style="transform-origin:12px 305px;"/>
-      <text class="rail-node-label" id="label-2" x="17" y="307" font-size="6">150</text>
-      <!-- Node 4 — Tier 200 — y=405 (~80%) -->
-      <polygon class="rail-node" id="node-3"
-        points="12,391 16.5,405 12,419 7.5,405"
-        style="transform-origin:12px 405px;"/>
-      <text class="rail-node-label" id="label-3" x="17" y="407" font-size="6">200</text>
+    <svg class="rail-svg" id="rail-svg" viewBox="0 0 28 500" preserveAspectRatio="none">
+      <line class="rail-line-bg" x1="14" y1="20" x2="14" y2="480"/>
+      <line class="rail-line-fill" id="rail-fill-line" x1="14" y1="20" x2="14" y2="480"/>
+      <!-- Node 0 — Tier 50 — y=110 -->
+      <polygon class="rail-node" id="node-0" points="14,96 19,110 14,124 9,110" style="transform-origin:14px 110px;"/>
+      <text class="rail-node-label" id="label-0" x="21" y="112" font-size="6">50</text>
+      <!-- Node 1 — Tier 100 — y=210 -->
+      <polygon class="rail-node" id="node-1" points="14,196 19,210 14,224 9,210" style="transform-origin:14px 210px;"/>
+      <text class="rail-node-label" id="label-1" x="21" y="212" font-size="6">100</text>
+      <!-- Node 2 — Tier 150 — y=310 -->
+      <polygon class="rail-node" id="node-2" points="14,296 19,310 14,324 9,310" style="transform-origin:14px 310px;"/>
+      <text class="rail-node-label" id="label-2" x="21" y="312" font-size="6">150</text>
+      <!-- Node 3 — Tier 200 — y=410 -->
+      <polygon class="rail-node" id="node-3" points="14,396 19,410 14,424 9,410" style="transform-origin:14px 410px;"/>
+      <text class="rail-node-label" id="label-3" x="21" y="412" font-size="6">200</text>
     </svg>
   </div>
 
@@ -1022,30 +953,28 @@ body{
   <div class="tier-sections">
 
     <!-- ── TIER 50 ────────────────────────────────────── -->
-    <section class="tier-section" id="tier-50" data-tier="0">
+    <section class="tier-section" id="tier-50" data-tier="0" data-tier-num="50">
       <span class="tier-ghost-num" aria-hidden="true">50</span>
-
       <div class="tier-inner tier-layout-split">
-        <!-- Text -->
         <div class="tier-text-block">
-          <div class="tier-badge" data-reveal>
+          <div class="tier-badge">
             <span class="tier-badge-diamond"></span>
             Tier 50 · First Reward
           </div>
-          <div class="tier-meta">
-            <div class="tier-num-display" data-reveal data-delay="1">50</div>
-          </div>
-          <h2 class="tier-title" data-reveal data-delay="2">Diamond by<br><em>the Yard.</em></h2>
-          <div class="tier-spec" data-reveal data-delay="3">0.50ct total weight · 18k gold</div>
-          <p class="tier-desc" data-reveal data-delay="3">A whisper of diamonds traced along a delicate chain. Ten hand-set kite bezels, each cradling a round brilliant. Worn alone or layered — it reads as effortless as it was designed to be.</p>
-          <div class="tier-entry" data-reveal data-delay="4">
+          <div class="tier-num-display">50</div>
+          <h2 class="tier-title">
+            <span class="tier-title-line">Diamond by</span>
+            <span class="tier-title-line"><em>the Yard.</em></span>
+          </h2>
+          <div class="tier-spec">0.50ct total weight · 18k gold</div>
+          <p class="tier-desc">A whisper of diamonds traced along a delicate chain. Ten hand-set kite bezels, each cradling a round brilliant. Worn alone or layered — it reads as effortless as it was designed to be.</p>
+          <div class="tier-entry">
             <strong>How to reach it</strong><br>
             Book a consultation (free) to enter the program.<br>
             Reach Tier 50 through $500 increments in any combination.
           </div>
         </div>
-        <!-- Images -->
-        <div class="product-mosaic duo" data-reveal data-delay="2">
+        <div class="product-mosaic duo">
           <div class="img-card wide">
             <img src="Jewelry/launch_tier1_v1.jpg" alt="Diamond By The Yard Chain — close view" loading="lazy">
           </div>
@@ -1057,12 +986,10 @@ body{
     </section>
 
     <!-- ── TIER 100 ───────────────────────────────────── -->
-    <section class="tier-section" id="tier-100" data-tier="1">
+    <section class="tier-section" id="tier-100" data-tier="1" data-tier-num="100">
       <span class="tier-ghost-num" aria-hidden="true">100</span>
-
       <div class="tier-inner tier-layout-split reverse">
-        <!-- Images (left on desktop via reverse) -->
-        <div class="product-mosaic duo" data-reveal data-delay="1">
+        <div class="product-mosaic duo">
           <div class="img-card tall">
             <img src="Jewelry/launch_tier2_v1.webp" alt="Pear Diamond Studs — side view" loading="lazy">
           </div>
@@ -1070,17 +997,19 @@ body{
             <img src="Jewelry/launch_tier2_v2.webp" alt="Pear Diamond Studs — face view" loading="lazy">
           </div>
         </div>
-        <!-- Text -->
         <div class="tier-text-block">
-          <div class="tier-badge" data-reveal>
+          <div class="tier-badge">
             <span class="tier-badge-diamond"></span>
             Tier 100 · Second Reward
           </div>
-          <div class="tier-num-display" data-reveal data-delay="1">100</div>
-          <h2 class="tier-title" data-reveal data-delay="2">Pear Diamond<br><em>Studs.</em></h2>
-          <div class="tier-spec" data-reveal data-delay="3">1.00ct each · 2.00ct total · 18k gold</div>
-          <p class="tier-desc" data-reveal data-delay="3">Two perfectly matched pear brilliants. Minimal prong work lets the stone take all the light. A 1ct pear in person stops the room. Two does not require explanation.</p>
-          <div class="tier-entry" data-reveal data-delay="4">
+          <div class="tier-num-display">100</div>
+          <h2 class="tier-title">
+            <span class="tier-title-line">Pear Diamond</span>
+            <span class="tier-title-line"><em>Studs.</em></span>
+          </h2>
+          <div class="tier-spec">1.00ct each · 2.00ct total · 18k gold</div>
+          <p class="tier-desc">Two perfectly matched pear brilliants. Minimal prong work lets the stone take all the light. A 1ct pear in person stops the room. Two does not require explanation.</p>
+          <div class="tier-entry">
             <strong>How to reach it</strong><br>
             Cumulative spend of approximately $24,500 in commissioned pieces.
           </div>
@@ -1089,27 +1018,27 @@ body{
     </section>
 
     <!-- ── TIER 150 ───────────────────────────────────── -->
-    <section class="tier-section" id="tier-150" data-tier="2">
+    <section class="tier-section" id="tier-150" data-tier="2" data-tier-num="150">
       <span class="tier-ghost-num" aria-hidden="true">150</span>
-
       <div class="tier-inner tier-layout-trio-grid">
-        <!-- Text -->
         <div class="tier-text-block">
-          <div class="tier-badge" data-reveal>
+          <div class="tier-badge">
             <span class="tier-badge-diamond"></span>
             Tier 150 · Third Reward
           </div>
-          <div class="tier-num-display" data-reveal data-delay="1">150</div>
-          <h2 class="tier-title" data-reveal data-delay="2">2ct Pear Diamond<br><em>Pendant.</em></h2>
-          <div class="tier-spec" data-reveal data-delay="3">2.00ct pear brilliant · 18k gold chain</div>
-          <p class="tier-desc" data-reveal data-delay="3">The fullest expression of the pear cut in a single stone. A 2ct pear pendant worn close to the collarbone becomes a daily fixture. The V-bail is architectural — designed to disappear so the stone can lead.</p>
-          <div class="tier-entry" data-reveal data-delay="4">
+          <div class="tier-num-display">150</div>
+          <h2 class="tier-title">
+            <span class="tier-title-line">2ct Pear Diamond</span>
+            <span class="tier-title-line"><em>Pendant.</em></span>
+          </h2>
+          <div class="tier-spec">2.00ct pear brilliant · 18k gold chain</div>
+          <p class="tier-desc">The fullest expression of the pear cut in a single stone. A 2ct pear pendant worn close to the collarbone becomes a daily fixture. The V-bail is architectural — designed to disappear so the stone can lead.</p>
+          <div class="tier-entry">
             <strong>How to reach it</strong><br>
             Cumulative spend of approximately $49,500 in commissioned pieces.
           </div>
         </div>
-        <!-- Three images stacked right -->
-        <div class="trio-images" data-reveal data-delay="2">
+        <div class="trio-images">
           <div class="img-card wide">
             <img src="Jewelry/launch_tier3_v1.png" alt="2ct Pear Diamond Pendant — product view" loading="lazy">
           </div>
@@ -1124,24 +1053,26 @@ body{
     </section>
 
     <!-- ── TIER 200 — THE FINAL BOSS ─────────────────── -->
-    <section class="tier-section" id="tier-200" data-tier="3">
+    <section class="tier-section" id="tier-200" data-tier="3" data-tier-num="200">
       <div class="finalboss-video">
         <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
           <source src="Jewelry/launch_tier4.MP4" type="video/mp4">
         </video>
       </div>
       <div class="finalboss-vignette"></div>
-
       <div class="finalboss-content">
-        <div class="finalboss-badge" data-reveal>
+        <div class="finalboss-badge" id="fb-badge">
           <span class="tier-badge-diamond"></span>
           Tier 200 · The Final Boss
         </div>
-        <div class="finalboss-num" data-reveal data-delay="1" aria-hidden="true">200</div>
-        <h2 class="finalboss-title" data-reveal data-delay="2">The Engagement<br><em>Ring.</em></h2>
-        <div class="finalboss-spec" data-reveal data-delay="3">2.00ct center stone · Flawless clarity · Pavé band · 18k gold</div>
-        <p class="finalboss-desc" data-reveal data-delay="3">Internally flawless. Diamond-studded pavé band. A 2ct center stone that carries everything RarityX was designed to prove: that when the designer leads, this is what emerges. It doesn't wait for an occasion. It becomes one.</p>
-        <div class="finalboss-entry" data-reveal data-delay="4">
+        <div class="finalboss-num" id="fb-num">200</div>
+        <h2 class="finalboss-title" id="fb-title">
+          <span class="finalboss-title-line">The Engagement</span>
+          <span class="finalboss-title-line"><em>Ring.</em></span>
+        </h2>
+        <div class="finalboss-spec" id="fb-spec">2.00ct center stone · Flawless clarity · Pavé band · 18k gold</div>
+        <p class="finalboss-desc" id="fb-desc">Internally flawless. Diamond-studded pavé band. A 2ct center stone that carries everything RarityX was designed to prove: that when the designer leads, this is what emerges. It doesn't wait for an occasion. It becomes one.</p>
+        <div class="finalboss-entry" id="fb-entry">
           <strong>How to reach it</strong><br>
           Cumulative spend of approximately $74,500 in commissioned pieces.
         </div>
@@ -1155,11 +1086,13 @@ body{
      ENTRY CTA
      ============================================================ -->
 <section class="entry-section" id="entry">
-  <div class="entry-eyebrow" data-reveal>Zero barrier</div>
-  <h2 class="entry-title" data-reveal data-delay="1">Your first move<br><em>is free.</em></h2>
-  <p class="entry-sub" data-reveal data-delay="2">Book a private consultation. No purchase required. You enter The Ascent from that moment — Tier One, yours.</p>
-
-  <div class="entry-cta-wrap" data-reveal data-delay="3">
+  <div class="entry-eyebrow" id="entry-eyebrow">Zero barrier</div>
+  <h2 class="entry-title" id="entry-title">
+    <span class="entry-title-line">Your first move</span>
+    <span class="entry-title-line"><em>is free.</em></span>
+  </h2>
+  <p class="entry-sub" id="entry-sub">Book a private consultation. No purchase required. You enter The Ascent from that moment — Tier One, yours.</p>
+  <div class="entry-cta-wrap" id="entry-cta-wrap">
     <a class="btn-primary-large" href="https://calendly.com/rarityxcollective" target="_blank" rel="noopener" id="main-cta">
       <span class="diamond-icon"></span>
       Book Your Consultation
@@ -1183,65 +1116,93 @@ body{
 (function(){
   'use strict';
 
-  /* ── Lenis smooth scroll ───────────────────────────── */
-  const lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ── Lenis ─────────────────────────────────────────── */
+  const lenis = new Lenis({ lerp: 0.085, smoothWheel: true });
   lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add((time) => lenis.raf(time * 1000));
+  gsap.ticker.add((t) => lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
 
-  /* ── Nav scroll state ──────────────────────────────── */
+  /* ── Nav ────────────────────────────────────────────── */
   const nav = document.getElementById('launch-nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   }, { passive: true });
 
-  /* ── Hero entrance animation ───────────────────────── */
-  const heroTl = gsap.timeline({ delay: 0.2 });
-  heroTl
-    .to('#hero-bg-num',  { opacity: 1, duration: 2.0, ease: 'power2.out' }, 0)
-    .to('#hero-eyebrow', { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, 0.3)
-    .to('#hero-title',   { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out' }, 0.5)
-    .to('#hero-sub',     { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, 0.75)
-    .to('#hero-cta',     { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.9)
-    .to('#hero-scroll-cue', { opacity: 1, duration: 0.8, ease: 'power2.out' }, 1.4);
+  /* ── Hero: load entrance ────────────────────────────── */
+  const heroVid = document.querySelector('.hero-video-wrap video');
+  if (heroVid) {
+    heroVid.addEventListener('loadeddata', () => {
+      document.getElementById('hero-video-wrap').classList.add('loaded');
+    });
+  }
 
-  /* ── Progress rail GSAP ScrollTrigger ─────────────── */
+  const heroTl = gsap.timeline({ delay: 0.15 });
+  heroTl
+    .to('#hero-bg-num',    { color:'rgba(200,200,200,0.045)', duration: 2.2, ease:'power2.out' }, 0)
+    .to('#hero-eyebrow',   { opacity:1, y:0, duration:0.85, ease:'power3.out' }, 0.25)
+    .to('#hero-title',     { opacity:1, y:0, duration:1.1, ease:'power3.out' }, 0.45)
+    .to('#hero-sub',       { opacity:1, y:0, duration:0.85, ease:'power3.out' }, 0.7)
+    .to('#hero-cta',       { opacity:1, y:0, duration:0.8, ease:'power3.out' }, 0.88)
+    .to('#hero-scroll-cue',{ opacity:1, duration:0.9, ease:'power2.out' }, 1.5);
+
+  /* Hero parallax on scroll */
+  gsap.to('#hero-bg-num', {
+    y: '-12%',
+    ease:'none',
+    scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:1.2 }
+  });
+
+  /* ── Mechanic: staggered entrance ───────────────────── */
+  const mechTl = gsap.timeline({
+    scrollTrigger:{ trigger:'#mechanic', start:'top 72%', toggleActions:'play none none reverse' }
+  });
+  mechTl
+    .to('#mech-eyebrow',  { clipPath:'inset(0 0% 0 0)', duration:0.7, ease:'power3.out' })
+    .to('.mech-title-line', { y:0, duration:0.85, stagger:0.1, ease:'power3.out' }, '-=0.4')
+    .to('.mech-step', { opacity:1, y:0, duration:0.75, stagger:0.12, ease:'power3.out' }, '-=0.5')
+    .to('.step-badge', { clipPath:'inset(0 0% 0 0)', duration:0.55, stagger:0.12, ease:'power3.out' }, '-=0.3');
+
+  /* ── Rail progress fill ─────────────────────────────── */
   const railFill = document.getElementById('rail-fill-line');
+  const RAIL_LEN = 460;
   const nodes    = [0,1,2,3].map(i => document.getElementById('node-' + i));
   const labels   = [0,1,2,3].map(i => document.getElementById('label-' + i));
-  const tierSections = document.querySelectorAll('[data-tier]');
 
   function setRailProgress(p) {
-    /* stroke-dashoffset: 460 = full track length */
-    const len = 460;
-    railFill.style.strokeDasharray = len;
-    railFill.style.strokeDashoffset = len * (1 - Math.min(1, Math.max(0, p)));
+    railFill.style.strokeDasharray  = RAIL_LEN;
+    railFill.style.strokeDashoffset = RAIL_LEN * (1 - Math.min(1, Math.max(0, p)));
   }
   setRailProgress(0);
 
-  /* Animate rail fill based on scroll progress through tier-track */
-  const trackEl = document.getElementById('tier-track');
   ScrollTrigger.create({
-    trigger: trackEl,
+    trigger: '#tier-track',
     start: 'top center',
     end: 'bottom center',
-    onUpdate(self) {
-      setRailProgress(self.progress);
-    }
+    onUpdate(self) { setRailProgress(self.progress); }
   });
 
-  /* Activate nodes when tier sections enter */
-  tierSections.forEach((section, i) => {
+  /* ── Tier section animations ────────────────────────── */
+  document.querySelectorAll('[data-tier]').forEach((section, i) => {
+    const isFinalboss = section.id === 'tier-200';
+
+    /* Node activation */
     ScrollTrigger.create({
       trigger: section,
-      start: 'top 60%',
+      start: 'top 58%',
       onEnter() {
         nodes[i].classList.add('active');
         labels[i].classList.add('active');
-        /* pulse animation */
+        /* Dramatic pulse: scale up then snap back */
+        gsap.timeline()
+          .to(nodes[i], { attr:{ transform:'scale(1.8)' }, duration:0, ease:'none' })
+          .to(nodes[i], { attr:{ transform:'scale(1)' }, duration:0.5, ease:'elastic.out(1.2,0.5)' });
+        /* Glow flare */
         gsap.fromTo(nodes[i],
-          { attr: { 'stroke-width': 1 } },
-          { attr: { 'stroke-width': 2 }, duration: 0.3, yoyo: true, repeat: 1 }
+          { filter:'drop-shadow(0 0 0px rgba(232,232,232,0))' },
+          { filter:'drop-shadow(0 0 10px rgba(232,232,232,0.9))', duration:0.3,
+            yoyo:true, repeat:1, ease:'power2.out' }
         );
       },
       onLeaveBack() {
@@ -1249,62 +1210,100 @@ body{
         labels[i].classList.remove('active');
       }
     });
+
+    if (isFinalboss) {
+      /* Final boss animations */
+      const fbTl = gsap.timeline({
+        scrollTrigger:{ trigger:section, start:'top 65%', toggleActions:'play none none reverse' }
+      });
+      fbTl
+        .to('#fb-badge',   { clipPath:'inset(0 0% 0 0)', duration:0.7, ease:'power3.out' })
+        .to('#fb-num',     { opacity:1, x:0, duration:0.75, ease:'power3.out' }, '-=0.35')
+        .to('.finalboss-title-line', { y:0, duration:0.9, stagger:0.1, ease:'power3.out' }, '-=0.45')
+        .to('#fb-spec',    { opacity:1, y:0, duration:0.7, ease:'power3.out' }, '-=0.4')
+        .to('#fb-desc',    { opacity:1, y:0, duration:0.75, ease:'power3.out' }, '-=0.45')
+        .to('#fb-entry',   { opacity:1, x:0, duration:0.7, ease:'power3.out' }, '-=0.35');
+      return;
+    }
+
+    /* Standard tier sections */
+    const badge    = section.querySelector('.tier-badge');
+    const numDisp  = section.querySelector('.tier-num-display');
+    const lines    = section.querySelectorAll('.tier-title-line');
+    const spec     = section.querySelector('.tier-spec');
+    const desc     = section.querySelector('.tier-desc');
+    const entry    = section.querySelector('.tier-entry');
+    const imgCards = section.querySelectorAll('.img-card');
+    const ghost    = section.querySelector('.tier-ghost-num');
+
+    const tl = gsap.timeline({
+      scrollTrigger:{ trigger:section, start:'top 68%', toggleActions:'play none none reverse' }
+    });
+
+    if (badge) tl.to(badge,  { clipPath:'inset(0 0% 0 0)', duration:0.65, ease:'power3.out' });
+    if (numDisp) tl.to(numDisp, { opacity:1, x:0, duration:0.65, ease:'power3.out' }, '-=0.3');
+    if (lines.length) tl.to(lines, { y:0, duration:0.85, stagger:0.09, ease:'power3.out' }, '-=0.4');
+    if (spec) tl.to(spec,   { opacity:1, y:0, duration:0.6, ease:'power3.out' }, '-=0.35');
+    if (desc) tl.to(desc,   { opacity:1, y:0, duration:0.7, ease:'power3.out' }, '-=0.45');
+    if (entry) tl.to(entry, { opacity:1, x:0, duration:0.65, ease:'power3.out' }, '-=0.35');
+
+    /* Images: staggered scale+fade, slight direction offset */
+    if (imgCards.length) {
+      const fromLeft = (i % 2 === 0);
+      gsap.to(imgCards, {
+        opacity:1, y:0, scale:1,
+        duration:0.9,
+        stagger:0.14,
+        ease:'power3.out',
+        scrollTrigger:{ trigger:section, start:'top 65%', toggleActions:'play none none reverse' }
+      });
+    }
+
+    /* Ghost number: parallax + fade in */
+    if (ghost) {
+      gsap.fromTo(ghost,
+        { color:'rgba(200,200,200,0)' },
+        { color:'rgba(200,200,200,0.04)', duration:0.8, ease:'power2.out',
+          scrollTrigger:{ trigger:section, start:'top 80%', toggleActions:'play none none reverse' }
+        }
+      );
+      gsap.to(ghost, {
+        y:'-9%', ease:'none',
+        scrollTrigger:{ trigger:section, start:'top bottom', end:'bottom top', scrub:1.2 }
+      });
+    }
   });
 
-  /* ── IntersectionObserver reveals ─────────────────── */
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
-
-  /* ── Tier ghost number parallax ────────────────────── */
-  document.querySelectorAll('.tier-ghost-num').forEach(el => {
-    const section = el.closest('.tier-section');
-    gsap.to(el, {
-      y: '-8%',
-      ease: 'none',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true
-      }
-    });
+  /* ── Entry CTA section ──────────────────────────────── */
+  const entryTl = gsap.timeline({
+    scrollTrigger:{ trigger:'#entry', start:'top 70%', toggleActions:'play none none reverse' }
   });
+  entryTl
+    .to('#entry-eyebrow',   { opacity:1, clipPath:'inset(0 0% 0 0)', duration:0.7, ease:'power3.out' })
+    .to('.entry-title-line', { y:0, duration:0.9, stagger:0.1, ease:'power3.out' }, '-=0.4')
+    .to('#entry-sub',       { opacity:1, y:0, duration:0.75, ease:'power3.out' }, '-=0.45')
+    .to('#entry-cta-wrap',  { opacity:1, y:0, duration:0.8, ease:'power3.out' }, '-=0.4');
 
-  /* ── Magnetic image card hover (desktop only) ──────── */
+  /* ── Magnetic image cards ───────────────────────────── */
   if (window.matchMedia('(hover:hover)').matches) {
     document.querySelectorAll('.img-card').forEach(card => {
       card.addEventListener('mousemove', e => {
-        const rect = card.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const dx = (e.clientX - cx) / rect.width;
-        const dy = (e.clientY - cy) / rect.height;
-        card.style.transform = `perspective(600px) rotateY(${dx * 5}deg) rotateX(${-dy * 4}deg) scale(1.02)`;
+        const r  = card.getBoundingClientRect();
+        const dx = (e.clientX - r.left - r.width  / 2) / r.width;
+        const dy = (e.clientY - r.top  - r.height / 2) / r.height;
+        card.style.transform = `perspective(700px) rotateY(${dx*5}deg) rotateX(${-dy*4}deg) scale(1.025)`;
       });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-      });
+      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
     });
   }
 
-  /* ── Diamond burst on main CTA hover ──────────────── */
+  /* ── Diamond burst on CTA ───────────────────────────── */
   const mainCta = document.getElementById('main-cta');
   const burstContainer = document.getElementById('burst-container');
-  const PARTICLE_COUNT = 10;
 
-  /* Build particles once */
-  const particles = Array.from({ length: PARTICLE_COUNT }, () => {
+  const particles = Array.from({ length: 12 }, () => {
     const p = document.createElement('div');
     p.className = 'burst-particle';
-    /* start all at center of button */
     p.style.cssText = 'left:50%;top:50%;';
     burstContainer.appendChild(p);
     return p;
@@ -1312,44 +1311,33 @@ body{
 
   mainCta.addEventListener('mouseenter', () => {
     particles.forEach((p, i) => {
-      const angle = (i / PARTICLE_COUNT) * 360 + (Math.random() * 36 - 18);
-      const dist  = 40 + Math.random() * 30;
+      const angle = (i / 12) * 360 + (Math.random() * 30 - 15);
+      const dist  = 45 + Math.random() * 35;
       const rad   = angle * Math.PI / 180;
       gsap.killTweensOf(p);
       gsap.fromTo(p,
-        { opacity: 0.7, scale: 1, x: 0, y: 0 },
-        {
-          opacity: 0,
-          scale: 0.3,
+        { opacity:0.8, scale:1, x:0, y:0 },
+        { opacity:0, scale:0.25,
           x: Math.cos(rad) * dist,
           y: Math.sin(rad) * dist,
-          duration: 0.55,
-          delay: i * 0.025,
-          ease: 'power2.out'
+          duration: 0.6, delay: i * 0.022,
+          ease:'power2.out'
         }
       );
     });
   });
 
-  /* ── Finalboss video IntersectionObserver ──────────── */
-  const fbVideo = document.querySelector('#tier-200 video');
-  if (fbVideo) {
-    const fbIo = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) fbVideo.play().catch(() => {});
-      else fbVideo.pause();
+  /* ── IO video pause/play ────────────────────────────── */
+  function ioVideo(selector, rootEl) {
+    const video = document.querySelector(selector);
+    if (!video) return;
+    const obs = new IntersectionObserver(([e]) => {
+      e.isIntersecting ? video.play().catch(()=>{}) : video.pause();
     }, { threshold: 0.1 });
-    fbIo.observe(document.getElementById('tier-200'));
+    obs.observe(rootEl || video.closest('section') || video.parentElement);
   }
-
-  /* ── Hero video IO ─────────────────────────────────── */
-  const heroVideo = document.querySelector('.hero-video-wrap video');
-  if (heroVideo) {
-    const hIo = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) heroVideo.pause();
-      else heroVideo.play().catch(() => {});
-    }, { threshold: 0.1 });
-    hIo.observe(document.querySelector('.hero'));
-  }
+  ioVideo('.hero-video-wrap video', document.querySelector('.hero'));
+  ioVideo('.finalboss-video video', document.getElementById('tier-200'));
 
 })();
 </script>
