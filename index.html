@@ -1104,6 +1104,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
 .mob-nav-link:active{color:var(--text);}
 .mob-vault-arrow{font-size:12px;transition:transform 0.25s ease;display:inline-block;}
 .mob-nav-vault-toggle[aria-expanded="true"] .mob-vault-arrow{transform:rotate(180deg);}
+.mob-nav-ascent-toggle[aria-expanded="true"] .mob-vault-arrow{transform:rotate(180deg);}
 .mob-vault-list{display:none;flex-direction:column;padding:4px 0 8px 16px;}
 .mob-vault-list.is-open{display:flex;}
 .mob-vault-item{font-family:'Outfit',sans-serif;font-size:15px;color:#c8909e;text-decoration:none;padding:11px 0;border-bottom:1px solid rgba(42,6,20,0.5);transition:color 0.2s ease;-webkit-tap-highlight-color:transparent;}
@@ -1147,6 +1148,12 @@ body.mob-open{overflow:hidden;touch-action:none;}
               <a href="sigil.html" class="nav-drop-item" role="menuitem">Sigil Signet</a>
             </div>
           </li>
+        <li class="nav-has-drop">
+            <a href="launch.html" class="nav-link">ASCENT</a>
+            <div class="nav-drop" role="menu" aria-label="The Ascent program">
+              <a href="https://calendly.com/rarityxcollective" class="nav-drop-item" role="menuitem" target="_blank" rel="noopener">Book Your Consult / Enter</a>
+            </div>
+          </li>
       </ul>
       <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="cta-btn">Start a Conversation</a>
     </nav>
@@ -1170,6 +1177,10 @@ body.mob-open{overflow:hidden;touch-action:none;}
         <a href="eclipse-halo.html" class="mob-vault-item">Eclipse Halo</a>
         <a href="medallion.html" class="mob-vault-item">Crest Medallion</a>
         <a href="sigil.html" class="mob-vault-item">Sigil Signet</a>
+      </div>
+      <button class="mob-nav-link mob-nav-ascent-toggle" type="button" aria-expanded="false" aria-controls="mob-ascent-list">Ascent <span class="mob-vault-arrow">↓</span></button>
+      <div class="mob-vault-list" id="mob-ascent-list" aria-hidden="true">
+        <a href="https://calendly.com/rarityxcollective" class="mob-vault-item" target="_blank" rel="noopener" data-mob-close>Book Your Consult / Enter</a>
       </div>
       <a href="#" onclick="if(typeof Calendly!=='undefined'){Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});}return false;" class="mob-nav-cta" data-mob-close>Start a Conversation</a>
     </nav>
@@ -3037,8 +3048,10 @@ body.mob-open{overflow:hidden;touch-action:none;}
     var mobBtn     = document.getElementById('mob-menu-btn');
     var mobOverlay = document.getElementById('mob-nav-overlay');
     var mobClose   = document.getElementById('mob-nav-close');
-    var vaultToggle = document.querySelector('.mob-nav-vault-toggle');
-    var vaultList   = document.getElementById('mob-vault-list');
+    var vaultToggle  = document.querySelector('.mob-nav-vault-toggle');
+    var vaultList    = document.getElementById('mob-vault-list');
+    var ascentToggle = document.querySelector('.mob-nav-ascent-toggle');
+    var ascentList   = document.getElementById('mob-ascent-list');
     if (!mobBtn || !mobOverlay) return;
 
     function openMobNav() {
@@ -3072,6 +3085,13 @@ body.mob-open{overflow:hidden;touch-action:none;}
         var open = vaultList.classList.toggle('is-open');
         vaultToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
         vaultList.setAttribute('aria-hidden', open ? 'false' : 'true');
+      });
+    }
+    if (ascentToggle && ascentList) {
+      ascentToggle.addEventListener('click', function() {
+        var open = ascentList.classList.toggle('is-open');
+        ascentToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        ascentList.setAttribute('aria-hidden', open ? 'false' : 'true');
       });
     }
 

@@ -72,14 +72,19 @@ body{
   border-bottom:1px solid var(--divider);
 }
 .nav-logo{
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:900;
-  font-size:1.35rem;
-  letter-spacing:0.12em;
-  color:var(--text);
+  display:flex;
+  align-items:center;
   text-decoration:none;
-  text-transform:uppercase;
+  flex-shrink:0;
 }
+.nav-logo-img{
+  height:26px;
+  width:auto;
+  display:block;
+  opacity:0.92;
+  transition:opacity 0.2s;
+}
+.nav-logo:hover .nav-logo-img{opacity:1;}
 .nav-badge{
   font-family:'Space Mono',monospace;
   font-size:0.6rem;
@@ -471,17 +476,6 @@ body{
   z-index:2;
 }
 
-.tier-num-display{
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:900;
-  font-size:clamp(6rem, 14vw, 14rem);
-  line-height:0.88;
-  letter-spacing:-0.03em;
-  color:rgba(200,200,200,0.1);
-  margin-bottom:-0.3em;
-  opacity:0;
-  transform:translateX(-20px);
-}
 .tier-title{
   font-family:'Bodoni Moda',serif;
   font-style:italic;
@@ -546,18 +540,18 @@ body{
   background:var(--surface-hi);
   border-radius:3px;
   overflow:hidden;
-  aspect-ratio:1;
+  aspect-ratio:4/5;
   position:relative;
   opacity:0;
   transform:translateY(50px) scale(0.93);
   will-change:transform;
 }
 .img-card.tall{aspect-ratio:3/4;}
-.img-card.wide{aspect-ratio:4/3;}
+.img-card.wide{aspect-ratio:4/5;}
 .img-card img{
   width:100%;height:100%;
   object-fit:cover;
-  object-position:center;
+  object-position:center 20%;
   display:block;
   transition:transform 0.9s cubic-bezier(0.16,1,0.3,1);
 }
@@ -596,7 +590,13 @@ body{
 }
 .tier-layout-trio-grid .trio-images{
   grid-column:2;grid-row:1/3;
-  display:flex;flex-direction:column;gap:0.8rem;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0.6rem;
+  align-content:start;
+}
+.tier-layout-trio-grid .trio-images .img-card:nth-child(3){
+  grid-column:1/3;
 }
 
 /* ================================================================
@@ -835,7 +835,8 @@ body{
   .tier-layout-split.reverse{direction:ltr;}
   .tier-layout-trio-grid{grid-template-columns:1fr;gap:2.5rem;}
   .tier-layout-trio-grid .tier-text-block{grid-column:1;grid-row:auto;}
-  .tier-layout-trio-grid .trio-images{grid-column:1;grid-row:auto;}
+  .tier-layout-trio-grid .trio-images{grid-column:1;grid-row:auto;grid-template-columns:1fr 1fr;}
+  .tier-layout-trio-grid .trio-images .img-card:nth-child(3){grid-column:1/3;}
   .mech-grid{grid-template-columns:1fr;}
   .launch-nav .nav-badge{display:none;}
   .finalboss-content{padding:5rem 1.8rem 5rem;}
@@ -846,6 +847,8 @@ body{
   .launch-nav{padding:1rem 1.5rem;}
   .hero-content{padding:0 1.5rem 3.5rem;}
   .product-mosaic.duo{grid-template-columns:1fr;}
+  .tier-layout-trio-grid .trio-images{grid-template-columns:1fr;}
+  .tier-layout-trio-grid .trio-images .img-card:nth-child(3){grid-column:auto;}
   .finalboss-title{font-size:clamp(2.8rem,13vw,5.5rem);}
   .entry-section{padding:7rem 1.5rem 5rem;}
   .mechanic{padding:5.5rem 1.5rem;}
@@ -858,7 +861,7 @@ body{
 
 <!-- NAV -->
 <nav class="launch-nav" id="launch-nav">
-  <a class="nav-logo" href="index.html">RarityX</a>
+  <a class="nav-logo" href="index.html"><img src="Jewelry/LOGO_transparent.webp" alt="RarityX" class="nav-logo-img"></a>
   <div class="nav-badge">Labor Day · Limited Enrollment</div>
   <a class="nav-cta-link" href="#entry">Claim Tier One →</a>
 </nav>
@@ -961,7 +964,6 @@ body{
             <span class="tier-badge-diamond"></span>
             Tier 50 · First Reward
           </div>
-          <div class="tier-num-display">50</div>
           <h2 class="tier-title">
             <span class="tier-title-line">Diamond by</span>
             <span class="tier-title-line"><em>the Yard.</em></span>
@@ -1002,7 +1004,6 @@ body{
             <span class="tier-badge-diamond"></span>
             Tier 100 · Second Reward
           </div>
-          <div class="tier-num-display">100</div>
           <h2 class="tier-title">
             <span class="tier-title-line">Pear Diamond</span>
             <span class="tier-title-line"><em>Studs.</em></span>
@@ -1026,7 +1027,6 @@ body{
             <span class="tier-badge-diamond"></span>
             Tier 150 · Third Reward
           </div>
-          <div class="tier-num-display">150</div>
           <h2 class="tier-title">
             <span class="tier-title-line">2ct Pear Diamond</span>
             <span class="tier-title-line"><em>Pendant.</em></span>
@@ -1228,7 +1228,6 @@ body{
 
     /* Standard tier sections */
     const badge    = section.querySelector('.tier-badge');
-    const numDisp  = section.querySelector('.tier-num-display');
     const lines    = section.querySelectorAll('.tier-title-line');
     const spec     = section.querySelector('.tier-spec');
     const desc     = section.querySelector('.tier-desc');
@@ -1241,7 +1240,6 @@ body{
     });
 
     if (badge) tl.to(badge,  { clipPath:'inset(0 0% 0 0)', duration:0.65, ease:'power3.out' });
-    if (numDisp) tl.to(numDisp, { opacity:1, x:0, duration:0.65, ease:'power3.out' }, '-=0.3');
     if (lines.length) tl.to(lines, { y:0, duration:0.85, stagger:0.09, ease:'power3.out' }, '-=0.4');
     if (spec) tl.to(spec,   { opacity:1, y:0, duration:0.6, ease:'power3.out' }, '-=0.35');
     if (desc) tl.to(desc,   { opacity:1, y:0, duration:0.7, ease:'power3.out' }, '-=0.45');
