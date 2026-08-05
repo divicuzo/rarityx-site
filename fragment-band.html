@@ -47,12 +47,142 @@
 .shard-caption .lbl{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
 
 /* ── STORY ── */
-#story{position:relative;background:#330D1E;padding:16vh 6vw 20vh;overflow:hidden}
-.story-inner{max-width:1400px;margin:0 auto}
-.story-inner h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(40px,5.5vw,84px);line-height:.92;color:var(--text);max-width:12ch}
-.story-inner .rule{width:44px;height:1px;background:var(--chrome);margin:34px 0 18px}
-.story-inner p{font-size:15px;line-height:1.65;color:var(--muted);max-width:38ch}
-.story-inner .dim{margin-top:26px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--muted)}
+#story{
+  position:relative;
+  background:#330D1E;
+  padding:clamp(100px,14vw,180px) clamp(24px,8vw,120px);
+  overflow:hidden;
+}
+.story-wrap{max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,6vw,80px)}
+
+/* top grid: left text col + right stack col */
+.story-grid{
+  display:grid;
+  grid-template-columns:55fr 45fr;
+  gap:clamp(48px,6vw,96px);
+  align-items:center;
+}
+
+/* ── left col ── */
+.story-left{}
+.story-left .sh2-wrap{overflow:hidden}
+.story-left .sh2-wrap + .sh2-wrap{margin-top:.06em}
+.story-left h2{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;
+  text-transform:uppercase;
+  font-size:clamp(52px,7vw,108px);
+  line-height:.9;
+  color:var(--text);
+  margin:0;
+  transform:translateY(100%);
+  transition:transform .75s cubic-bezier(.22,1,.36,1);
+}
+.story-left h2.line2{transition-delay:.08s}
+.story-grid.in-view .story-left h2{transform:translateY(0)}
+
+.story-rule{
+  width:80px;height:1px;
+  background:#c8c8c8;
+  margin:clamp(24px,3vw,40px) 0 clamp(18px,2.5vw,30px);
+  transform:scaleX(0);
+  transform-origin:left center;
+  transition:transform .9s cubic-bezier(.22,1,.36,1) .3s;
+}
+.story-grid.in-view .story-rule{transform:scaleX(1)}
+
+.story-body{
+  font-family:'Outfit',sans-serif;
+  font-size:16px;
+  line-height:1.7;
+  color:#d4b0c0;
+  max-width:38ch;
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .7s ease .5s, transform .7s ease .5s;
+}
+.story-grid.in-view .story-body{opacity:1;transform:translateY(0)}
+
+.story-meta{
+  margin-top:clamp(20px,2.5vw,30px);
+  font-family:'Space Mono',monospace;
+  font-size:11px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:#d4b0c0;
+  opacity:0;
+  transition:opacity .6s ease .65s;
+}
+.story-grid.in-view .story-meta{opacity:1}
+
+/* ── right col: stacked images ── */
+.story-stack{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+.story-stack-img{
+  width:clamp(160px,22vw,260px);
+  aspect-ratio:3/4;
+  object-fit:cover;
+  border:1px solid #5a1a2e;
+  display:block;
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1);
+}
+.story-stack-img:nth-child(1){transform-origin:top left;rotate:-2deg;transition-delay:.15s}
+.story-stack-img:nth-child(2){margin-top:calc(-1 * clamp(40px,6vw,80px));margin-left:clamp(16px,2vw,28px);rotate:0deg;transition-delay:.27s}
+.story-stack-img:nth-child(3){margin-top:calc(-1 * clamp(40px,6vw,80px));margin-left:clamp(30px,3.5vw,48px);rotate:2deg;transition-delay:.39s}
+.story-grid.in-view .story-stack-img{opacity:1;transform:translateY(0)}
+
+/* ── strip: 4 images below grid ── */
+.story-strip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+.story-strip-item{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  opacity:0;
+  transform:translateX(60px);
+  transition:opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1);
+}
+.story-strip-item:nth-child(1){transition-delay:.05s}
+.story-strip-item:nth-child(2){transition-delay:.13s}
+.story-strip-item:nth-child(3){transition-delay:.21s}
+.story-strip-item:nth-child(4){transition-delay:.29s}
+.story-strip.in-view .story-strip-item{opacity:1;transform:translateX(0)}
+
+.story-strip-img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  border:1px solid #5a1a2e;
+  display:block;
+}
+.story-strip-num{
+  font-family:'Space Mono',monospace;
+  font-size:10px;
+  letter-spacing:.22em;
+  color:#d4b0c0;
+  opacity:0;
+  transition:opacity .4s ease .15s;
+}
+.story-strip.in-view .story-strip-item .story-strip-num{opacity:1}
+
+/* ── mobile ── */
+@media(max-width:767px){
+  #story{padding:clamp(72px,12vw,100px) clamp(20px,5vw,32px)}
+  .story-grid{grid-template-columns:1fr;gap:48px}
+  .story-stack{flex-direction:row;align-items:flex-end;overflow-x:auto;gap:0;-webkit-overflow-scrolling:touch}
+  .story-stack-img{flex-shrink:0;width:clamp(120px,38vw,180px);margin-top:0!important;margin-left:0!important;rotate:0deg!important}
+  .story-stack-img:nth-child(2){margin-left:-20px!important}
+  .story-stack-img:nth-child(3){margin-left:-20px!important}
+  .story-strip{grid-template-columns:repeat(2,1fr);gap:10px}
+}
 
 
 /* ── CHROME FINALE ── */
@@ -138,14 +268,44 @@
 </section>
 
 <section id="story" aria-label="Built to be broken apart">
-  <div class="story-inner">
-    <h2 class="reveal">Built to Be<br>Broken Apart</h2>
-    <div class="rule reveal"></div>
-    <p class="reveal">The stack is the piece. Wear two on a Tuesday, all seven at a wedding &mdash; the design holds in every combination because each band was drawn against the others.</p>
-    <p class="dim reveal">Seven bands &middot; gold, ros&eacute;, platinum, black rhodium</p>
-    <video autoplay muted loop playsinline style="width:100%;max-width:560px;height:clamp(280px,28vw,420px);object-fit:cover;margin-top:6vh;filter:brightness(.88);display:block" aria-hidden="true">
-      <source src="Jewelry/Portfolio_pieces_vids/diam_eternity_ring_v1.mp4" type="video/mp4">
-    </video>
+  <div class="story-wrap">
+
+    <!-- top: text left / stacked images right -->
+    <div class="story-grid" id="story-grid">
+      <div class="story-left">
+        <div class="sh2-wrap"><h2>Built to Be</h2></div>
+        <div class="sh2-wrap"><h2 class="line2">Broken Apart</h2></div>
+        <div class="story-rule" id="story-rule"></div>
+        <p class="story-body">The stack is the piece. Wear two on a Tuesday, all seven at a wedding &mdash; the design holds in every combination because each band was drawn against the others.</p>
+        <p class="story-meta">Seven bands &middot; gold, ros&eacute;, platinum, black rhodium</p>
+      </div>
+      <div class="story-stack" id="story-stack">
+        <img class="story-stack-img" src="Jewelry/fb_v1.png" alt="" loading="lazy">
+        <img class="story-stack-img" src="Jewelry/fb_v2.png" alt="" loading="lazy">
+        <img class="story-stack-img" src="Jewelry/fb_v3.png" alt="" loading="lazy">
+      </div>
+    </div>
+
+    <!-- strip: 4 images numbered -->
+    <div class="story-strip" id="story-strip">
+      <div class="story-strip-item">
+        <img class="story-strip-img" src="Jewelry/fb_v4.png" alt="" loading="lazy">
+        <span class="story-strip-num">01</span>
+      </div>
+      <div class="story-strip-item">
+        <img class="story-strip-img" src="Jewelry/fb_v5.png" alt="" loading="lazy">
+        <span class="story-strip-num">02</span>
+      </div>
+      <div class="story-strip-item">
+        <img class="story-strip-img" src="Jewelry/fb_v6.png" alt="" loading="lazy">
+        <span class="story-strip-num">03</span>
+      </div>
+      <div class="story-strip-item">
+        <img class="story-strip-img" src="Jewelry/fb_v7.png" alt="" loading="lazy">
+        <span class="story-strip-num">04</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -208,6 +368,35 @@
       scrollTrigger: { trigger: '#shards', start: 'top bottom', end: 'bottom top', scrub: 0.8 }
     });
   });
+})();
+
+// #story section — IntersectionObserver animations
+(function(){
+  if (typeof IntersectionObserver === 'undefined') return;
+
+  var grid = document.getElementById('story-grid');
+  var strip = document.getElementById('story-strip');
+
+  var gridObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){
+        e.target.classList.add('in-view');
+        gridObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  var stripObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){
+        e.target.classList.add('in-view');
+        stripObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  if (grid) gridObs.observe(grid);
+  if (strip) stripObs.observe(strip);
 })();
 
 // lp_v7 scroll scrub — image sequence (192 frames, 1280×720)

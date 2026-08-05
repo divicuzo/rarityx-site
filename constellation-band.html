@@ -307,6 +307,82 @@
 .rx-marquee-item { background:#060608; }
 .rx-marquee-item img { object-fit:contain; background:#060608; }
 
+/* ── GALLERY OVERDRIVE ── */
+/* First cell spans 2 cols on desktop (already .wide in HTML) */
+/* Stagger reveal — data-reveal on each cell, IO-driven */
+.gallery-cell[data-reveal] {
+  opacity:0;
+  transform:translateY(32px);
+  clip-path:none; /* override clip-path with opacity+transform for hover compat */
+  transition:
+    opacity   0.7s cubic-bezier(.16,1,.3,1),
+    transform 0.7s cubic-bezier(.16,1,.3,1),
+    box-shadow 0.4s cubic-bezier(.16,1,.3,1);
+}
+.gallery-cell[data-reveal].in {
+  opacity:1;
+  transform:translateY(0);
+}
+/* Hover scale + shadow */
+.gallery-cell[data-reveal]:hover {
+  transform:scale(1.03);
+  box-shadow:0 24px 60px rgba(0,0,0,0.5);
+  z-index:2;
+}
+/* Caption slide-up on hover */
+.gallery-cell[data-reveal] .gallery-cap {
+  position:absolute;
+  bottom:0; left:0; right:0;
+  padding:22px 18px 16px;
+  background:linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);
+  font-size:9px;
+  letter-spacing:.22em;
+  color:rgba(245,245,245,.85);
+  transform:translateY(100%);
+  transition:transform 0.38s cubic-bezier(.16,1,.3,1);
+}
+.gallery-cell[data-reveal]:hover .gallery-cap { transform:translateY(0); }
+
+/* ── STORY ANIMATIONS — slide-up lines ── */
+.story-copy h2 {
+  overflow:hidden; /* contains the line wrappers */
+}
+.story-line-wrap {
+  display:block;
+  overflow:hidden;
+}
+.story-line-inner {
+  display:block;
+  transform:translateY(100%);
+  transition:transform 0.85s cubic-bezier(.16,1,.3,1);
+}
+.story-line-wrap:nth-child(2) .story-line-inner {
+  transition-delay:0.10s;
+}
+.story-copy h2.in .story-line-inner {
+  transform:translateY(0);
+}
+/* Story figure parallax offsets — applied via IO in JS */
+.story-visual figure.fig-primary.in img   { transform:translateY(0) !important; }
+.story-visual figure.fig-secondary.in img { transform:translateY(0) !important; }
+.story-visual figure img {
+  transition:transform 1.1s cubic-bezier(.16,1,.3,1), filter 0.9s ease;
+}
+
+/* ── DETAIL ANIMATIONS ── */
+/* Spec blocks: scale+opacity stagger (replaces translateX) */
+.spec-block {
+  transform:scale(0.96);
+  transition:opacity .65s ease, transform .65s cubic-bezier(.16,1,.3,1);
+}
+.spec-block.in { opacity:1; transform:scale(1); }
+/* Detail pair images: brightness reveal */
+.detail-pair figure img {
+  filter:brightness(0.7);
+  transition:filter 1.0s cubic-bezier(.16,1,.3,1);
+}
+.detail-pair figure.in img { filter:brightness(1); }
+
 /* ── REDUCED MOTION ── */
 @media (prefers-reduced-motion:reduce) {
   #atlas { height:auto; }
@@ -325,6 +401,10 @@
   .detail-eyebrow,
   .statement-text h2,
   .stat-rule { opacity:1 !important; transform:none !important; }
+  .gallery-cell[data-reveal] { opacity:1 !important; transform:none !important; }
+  .gallery-cell[data-reveal] .gallery-cap { transform:translateY(0) !important; }
+  .story-line-inner { transform:translateY(0) !important; }
+  .detail-pair figure img { filter:brightness(1) !important; }
 }
 
 /* ── RESPONSIVE ── */
@@ -338,6 +418,9 @@
   .gallery-cell.wide { grid-column:1/-1; }
   .gallery-cell:nth-child(3) { grid-column:auto; }
   .gallery-cell:nth-child(3) img { aspect-ratio:4/5; object-position:center 30%; }
+  /* Reduced transforms on tablet */
+  .gallery-cell[data-reveal] { transform:translateY(18px); }
+  .gallery-cell[data-reveal]:hover { transform:scale(1.02); }
 }
 @media (max-width:580px) {
   .gallery-grid { grid-template-columns:1fr; }
@@ -350,6 +433,10 @@
   #reveal-circle { r:280; }
   .story-grid { gap:32px; }
   .detail-grid { gap:32px; }
+  /* Mobile: no hover-lift, no caption transform — tap doesn't hover */
+  .gallery-cell[data-reveal] { transform:translateY(14px); }
+  .gallery-cell[data-reveal]:hover { transform:none; box-shadow:none; }
+  .gallery-cell[data-reveal] .gallery-cap { transform:translateY(0); background:linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%); }
 }
 </style>
 </head>
@@ -591,8 +678,8 @@
      ══════════════════════════════════════════ -->
 <section id="statement" aria-label="Branches set in platinum">
   <img class="statement-img"
-       src="Jewelry/cb_v1.png"
-       alt="Constellation Band — botanical diamond necklace, full drape"
+       src="Jewelry/cb_v9.png"
+       alt="Constellation Band — botanical diamond necklace, full bleed constellation drape"
        loading="lazy">
   <div class="statement-overlay"></div>
   <div class="statement-text">
@@ -607,20 +694,20 @@
 <section id="story" aria-label="Grown, not cast">
   <div class="story-grid">
     <div class="story-visual">
-      <figure>
+      <figure class="fig-primary">
         <img src="Jewelry/cb_v8.png"
              alt="Constellation Band — botanical vine necklace, leaf and pear diamond branches"
              loading="lazy">
       </figure>
       <figure class="fig-secondary">
-        <img src="Jewelry/cb_v11.png"
-             alt="Constellation Band — woven branch necklace with crystal clusters, close study"
+        <img src="Jewelry/cb_v10.jpg"
+             alt="Constellation Band — vine necklace, stone scatter study"
              loading="lazy">
       </figure>
     </div>
     <div class="story-copy">
       <span class="eyebrow">THE FORM</span>
-      <h2>Grown,<br>Not Cast</h2>
+      <h2><span class="story-line-wrap"><span class="story-line-inner">Grown,</span></span><span class="story-line-wrap"><span class="story-line-inner">Not Cast</span></span></h2>
       <p>The necklace follows the logic of a vine: branches split, stones appear where leaves would, the form resolves at a single pendant drop. Each diamond placed to read as something grown rather than manufactured.</p>
       <p>Pear and marquise cuts chosen for their directional energy — they point, they drape, they catch light the way something living does.</p>
       <span class="dim">Platinum &middot; pear-cut &middot; marquise &middot; vine-branch setting</span>
@@ -637,31 +724,31 @@
     <h2>Related Forms</h2>
   </div>
   <div class="gallery-grid">
-    <div class="gallery-cell wide">
+    <div class="gallery-cell wide" data-reveal>
       <img src="Jewelry/cb_v6.jpg"
            alt="Constellation Band — botanical atlas form, full vine necklace with branch constellation"
            loading="lazy">
       <span class="gallery-cap">Botanical Atlas</span>
     </div>
-    <div class="gallery-cell">
+    <div class="gallery-cell" data-reveal>
       <img src="Jewelry/cb_v3.png"
            alt="Constellation Band — platinum branch detail, diamond scatter"
            loading="lazy">
       <span class="gallery-cap">Branch Detail</span>
     </div>
-    <div class="gallery-cell">
+    <div class="gallery-cell" data-reveal>
       <img src="Jewelry/cb_v4.png"
            alt="Constellation Band — pendant drop, marquise and pear diamond cluster"
            loading="lazy">
       <span class="gallery-cap">Pendant Drop</span>
     </div>
-    <div class="gallery-cell">
+    <div class="gallery-cell" data-reveal>
       <img src="Jewelry/cb_v14.png"
            alt="Constellation Band — chandelier pendant, filigree with pear diamond drops"
            loading="lazy">
       <span class="gallery-cap">Chandelier Pendant</span>
     </div>
-    <div class="gallery-cell">
+    <div class="gallery-cell" data-reveal>
       <img src="Jewelry/cb_v5.png"
            alt="Constellation Band — vine setting study, stone placement across branch form"
            loading="lazy">
@@ -946,6 +1033,46 @@
   }, { threshold: 0.3 });
   var stText = document.querySelector('.statement-text');
   if (stText) stIO.observe(stText);
+
+  /* ── GALLERY: staggered data-reveal cells (IO, 80ms stagger) ── */
+  var galIO = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var cells = e.target.querySelectorAll('.gallery-cell[data-reveal]');
+      cells.forEach(function (cell, i) {
+        setTimeout(function () { cell.classList.add('in'); }, i * 80);
+      });
+      galIO.unobserve(e.target);
+    });
+  }, { threshold: 0.06 });
+  var galGrid = document.querySelector('.gallery-grid');
+  if (galGrid) galIO.observe(galGrid);
+
+  /* ── STORY: parallax offset on figures (pre-reveal state) ── */
+  var figPrimary   = document.querySelector('.story-visual .fig-primary');
+  var figSecondary = document.querySelector('.story-visual .fig-secondary');
+  if (figPrimary   && figPrimary.querySelector('img'))
+    figPrimary.querySelector('img').style.transform = 'translateY(20px)';
+  if (figSecondary && figSecondary.querySelector('img'))
+    figSecondary.querySelector('img').style.transform = 'translateY(-20px)';
+
+  /* When GSAP ScrollTrigger fires .in on the figures, CSS transition carries them to 0 */
+  /* For the non-GSAP fallback path the parentIO already fires .in, same effect */
+
+  /* ── DETAIL: spec-block scale reveal already wired via specIO above ── */
+  /* brightness reveal on detail-pair figures needs separate IO since */
+  /* clip-path is used for the outer .detail-visual figure, not the pair */
+  var detailPairIO = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.querySelectorAll('figure').forEach(function (f, i) {
+        setTimeout(function () { f.classList.add('in'); }, i * 150);
+      });
+      detailPairIO.unobserve(e.target);
+    });
+  }, { threshold: 0.1 });
+  var detPair = document.querySelector('.detail-pair');
+  if (detPair) detailPairIO.observe(detPair);
 
 })();
 </script>
