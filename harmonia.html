@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HARMONIA | RarityX</title>
+<meta name="description" content="Harmonia — three-stone oval engagement ring in 18k rose gold. Designed before the stones were chosen. By RarityX.">
+<link rel="canonical" href="https://rarityx.co/harmonia.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rarityx.co/harmonia.html">
+<meta property="og:title" content="HARMONIA | RarityX">
+<meta property="og:description" content="Three-stone oval engagement ring in 18k rose gold. Designed before the stones were chosen.">
+<meta property="og:image" content="https://rarityx.co/Jewelry/lp_Harmonia_v2.jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HARMONIA | RarityX">
+<meta name="twitter:description" content="Three-stone oval engagement ring in 18k rose gold. Designed before the stones were chosen.">
+<meta name="twitter:image" content="https://rarityx.co/Jewelry/lp_Harmonia_v2.jpeg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Harmonia","description":"Three-stone oval engagement ring in 18k rose gold. Designed before the stones were chosen. By RarityX.","brand":{"@type":"Brand","name":"RarityX"},"url":"https://rarityx.co/harmonia.html","image":"https://rarityx.co/Jewelry/lp_Harmonia_v2.jpeg","offers":{"@type":"Offer","availability":"https://schema.org/PreOrder","priceCurrency":"USD","seller":{"@type":"Organization","name":"RarityX"}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Bodoni+Moda:ital,opsz,wght@1,6..96,300;1,6..96,400&family=Outfit:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="atelier.css">
+<style>
+:root{--bg:#330D1E;--surface:#3f1525;--text:#f5f5f5;--muted:#d4b0c0;--accent:#c8c8c8;--divider:#5a1a2e;}
+
+/* ── HERO ── */
+#atlas{position:relative;height:280vh;background:#060608;}
+.atlas-sticky{position:sticky;top:0;height:100dvh;overflow:hidden;}
+.atlas-img-wrap{position:absolute;inset:0;clip-path:inset(100% 0 0 0);will-change:clip-path;}
+.atlas-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 22%;opacity:.8;}
+.atlas-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,8,.94) 0%,rgba(6,6,8,.3) 42%,transparent 68%),linear-gradient(to right,rgba(6,6,8,.28) 0%,transparent 45%);z-index:2;}
+
+.atlas-label{position:absolute;top:28px;left:5vw;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.22em;color:rgba(160,180,220,.3);text-transform:uppercase;z-index:5;}
+
+.atlas-type{position:absolute;bottom:9vh;left:5vw;z-index:5;}
+.atlas-idx{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(200,200,200,.5);display:block;margin-bottom:14px;}
+
+/* three-stone glyph */
+.atlas-tristone{display:flex;align-items:center;gap:7px;margin-bottom:20px;}
+.ats-oval{border:1px solid rgba(200,200,200,.3);border-radius:50%;}
+.ats-oval:nth-child(1),.ats-oval:nth-child(3){width:20px;height:13px;opacity:.6;}
+.ats-oval:nth-child(2){width:30px;height:18px;}
+
+.atlas-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(64px,11.5vw,182px);line-height:.86;text-transform:uppercase;color:var(--text);margin:0;}
+.atlas-title .char{display:inline-block;will-change:transform,opacity;}
+.atlas-title em{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;font-size:.38em;color:rgba(245,245,245,.44);display:block;text-transform:none;letter-spacing:.025em;margin-top:8px;}
+
+.atlas-footnote{position:absolute;bottom:9vh;right:5vw;z-index:5;text-align:right;opacity:0;will-change:opacity,transform;}
+.fn-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:rgba(200,200,200,.38);display:block;margin-bottom:8px;}
+.fn-words{font-family:'Bodoni Moda',serif;font-style:italic;font-size:clamp(14px,1.5vw,22px);color:rgba(245,245,245,.6);line-height:1.45;display:block;}
+
+.atlas-progress{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);width:72px;height:1px;background:rgba(245,245,245,.1);z-index:5;}
+.atlas-progress-fill{height:100%;width:0%;background:rgba(245,245,245,.48);}
+
+/* ── STATEMENT ── */
+#statement{position:relative;height:100vh;overflow:hidden;background:#000;}
+.statement-img{position:absolute;inset:0;width:100%;height:120%;object-fit:cover;object-position:center 32%;opacity:.74;will-change:transform;}
+.statement-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.05) 0%,rgba(0,0,0,.76) 100%);}
+.statement-text{position:absolute;bottom:10vh;left:5vw;right:5vw;z-index:3;max-width:22ch;}
+.stat-rule{display:block;width:32px;height:1px;background:rgba(200,200,200,.5);margin-bottom:18px;transform:scaleX(0);transform-origin:left;transition:transform .75s cubic-bezier(.16,1,.3,1);}
+.stat-rule.in{transform:scaleX(1);}
+.statement-text h2{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;font-size:clamp(28px,4.5vw,70px);line-height:1.08;color:rgba(245,245,245,.94);margin:0 0 14px;opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.16,1,.3,1) .18s,transform .9s cubic-bezier(.16,1,.3,1) .18s;}
+.statement-text h2.in{opacity:1;transform:translateY(0);}
+.statement-text .stat-sub{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:rgba(200,200,200,.46);opacity:0;transition:opacity .6s ease .46s;}
+.statement-text .stat-sub.in{opacity:1;}
+
+/* ── STORY ── */
+#story{background:var(--bg);padding:18vh 6vw;}
+.story-grid{max-width:1380px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:start;}
+.story-visual{position:sticky;top:12vh;}
+.story-visual figure{margin:0;overflow:hidden;clip-path:inset(0 0 100% 0);transition:clip-path 1.15s cubic-bezier(.16,1,.3,1);}
+.story-visual figure.in{clip-path:inset(0 0 0% 0);}
+.story-visual figure img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform 1.1s cubic-bezier(.16,1,.3,1);}
+.story-visual figure.fig-secondary{margin-top:8px;transition-delay:.18s;}
+.story-visual figure.fig-secondary img{aspect-ratio:3/2;}
+
+.story-copy{padding-top:6vh;}
+.story-copy .eyebrow{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:20px;opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s cubic-bezier(.16,1,.3,1);}
+.story-copy .eyebrow.in{opacity:1;transform:translateY(0);}
+.story-copy h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(38px,5.2vw,84px);line-height:.90;text-transform:uppercase;color:var(--text);margin:0 0 28px;opacity:0;transform:translateY(18px);transition:opacity .7s ease .08s,transform .7s cubic-bezier(.16,1,.3,1) .08s;}
+.story-copy h2.in{opacity:1;transform:translateY(0);}
+.story-copy p{font-family:'Outfit',sans-serif;font-weight:400;font-size:15px;line-height:1.7;color:var(--muted);max-width:46ch;margin:0 0 20px;opacity:0;transform:translateY(14px);transition:opacity .7s ease .16s,transform .7s cubic-bezier(.16,1,.3,1) .16s;}
+.story-copy p:nth-of-type(2){transition-delay:.24s,.24s;}
+.story-copy p:nth-of-type(3){transition-delay:.32s,.32s;}
+.story-copy p.in{opacity:1;transform:translateY(0);}
+.story-copy .dim{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;color:var(--muted);display:block;margin-top:8px;opacity:0;transition:opacity .6s ease .4s;}
+.story-copy .dim.in{opacity:1;}
+
+/* three-stone timeline */
+.tristone-tl{display:flex;align-items:stretch;gap:0;margin:36px 0 28px;opacity:0;transition:opacity .6s ease .22s;}
+.tristone-tl.in{opacity:1;}
+.tst-item{flex:1;padding:16px 0;border-top:1px solid var(--divider);}
+.tst-lbl{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px;}
+.tst-word{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(16px,1.8vw,26px);text-transform:uppercase;color:var(--text);display:block;}
+
+/* ── GALLERY ── */
+#gallery{background:var(--surface);padding:13vh 0 0;overflow:hidden;}
+.gallery-header{padding:0 6vw 52px;display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;}
+.gallery-header .eyebrow{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);flex-shrink:0;}
+.gallery-header h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(34px,4.2vw,66px);text-transform:uppercase;color:var(--text);margin:0;line-height:1;}
+
+.gallery-bento{display:grid;grid-template-columns:1.2fr 1fr 1fr;grid-template-rows:auto auto;gap:4px;}
+.gb-a{grid-column:1;grid-row:1/3;}
+.gb-b{grid-column:2;grid-row:1;}
+.gb-c{grid-column:3;grid-row:1;}
+.gb-d{grid-column:2/4;grid-row:2;}
+
+.gb-cell{overflow:hidden;position:relative;background:#060608;opacity:0;transform:translateY(28px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1);}
+.gb-cell.in{opacity:1;transform:translateY(0);}
+.gb-b{transition-delay:.08s,.08s;}
+.gb-c{transition-delay:.16s,.16s;}
+.gb-d{transition-delay:.24s,.24s;}
+
+.gb-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .85s cubic-bezier(.16,1,.3,1);}
+.gb-a img{aspect-ratio:2/3;object-position:center 20%;}
+.gb-b img{aspect-ratio:4/5;object-position:center 28%;}
+.gb-c img{aspect-ratio:4/5;object-position:center 22%;}
+.gb-d img{aspect-ratio:16/7;object-position:center 38%;}
+.gb-cell:hover img{transform:scale(1.04);}
+
+.gb-cap{position:absolute;bottom:0;left:0;right:0;padding:22px 18px 16px;background:linear-gradient(to top,rgba(0,0,0,.72) 0%,transparent 100%);font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,245,245,.8);transform:translateY(100%);transition:transform .38s cubic-bezier(.16,1,.3,1);pointer-events:none;}
+.gb-cell:hover .gb-cap{transform:translateY(0);}
+
+/* ── UGC REEL ── */
+#reel{background:#060608;position:relative;overflow:hidden;}
+.reel-inner{position:relative;max-width:520px;margin:0 auto;overflow:hidden;}
+.reel-video{width:100%;display:block;aspect-ratio:9/16;object-fit:cover;max-height:88vh;}
+.reel-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 48%,rgba(6,6,8,.88) 100%);pointer-events:none;}
+.reel-label{position:absolute;bottom:8vh;left:0;right:0;text-align:center;z-index:3;}
+.reel-eyebrow{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(200,200,200,.42);display:block;margin-bottom:10px;}
+.reel-text{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;font-size:clamp(22px,3.5vw,54px);color:rgba(245,245,245,.88);display:block;}
+
+/* ── DETAIL / SPECS ── */
+#detail{background:var(--bg);padding:18vh 6vw;}
+.detail-grid{max-width:1380px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center;}
+.detail-visual figure{margin:0;overflow:hidden;clip-path:inset(100% 0 0 0);transition:clip-path 1.1s cubic-bezier(.16,1,.3,1);}
+.detail-visual figure.in{clip-path:inset(0% 0 0 0);}
+.detail-visual figure img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 18%;display:block;}
+
+.detail-specs{display:flex;flex-direction:column;gap:0;}
+.detail-eyebrow{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:32px;opacity:0;transition:opacity .5s ease;}
+.detail-eyebrow.in{opacity:1;}
+
+.spec-block{padding:20px 0;border-top:1px solid var(--divider);opacity:0;transform:scale(0.96);transition:opacity .65s ease,transform .65s cubic-bezier(.16,1,.3,1);}
+.spec-block:nth-child(2){transition-delay:.06s,.06s;}
+.spec-block:nth-child(3){transition-delay:.13s,.13s;}
+.spec-block:nth-child(4){transition-delay:.20s,.20s;}
+.spec-block:nth-child(5){transition-delay:.27s,.27s;}
+.spec-block.in{opacity:1;transform:scale(1);}
+
+.spec-lbl{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;}
+.spec-val{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(22px,2.8vw,42px);text-transform:uppercase;color:var(--text);display:block;line-height:1.0;}
+.spec-sub{font-family:'Outfit',sans-serif;font-weight:300;font-size:12px;color:var(--muted);display:block;margin-top:3px;}
+
+/* ── FINALE ── */
+#finale{position:relative;background:var(--bg);min-height:88vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+.finale-bg{position:absolute;inset:0;z-index:0;}
+.finale-bg img{width:100%;height:100%;object-fit:cover;object-position:center 28%;opacity:.07;filter:blur(40px) saturate(.4);}
+.finale-stack{position:relative;z-index:2;padding:14vh 4vw;}
+.finale-triad{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:30px;}
+.fin-oval{border:1px solid rgba(200,200,200,.2);border-radius:50%;}
+.fin-oval:nth-child(1),.fin-oval:nth-child(3){width:26px;height:16px;opacity:.55;}
+.fin-oval:nth-child(2){width:38px;height:23px;}
+.finale-stack h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(52px,13vw,200px);line-height:.86;text-transform:uppercase;color:var(--text);margin:0;}
+.finale-stack h2 span{display:block;}
+.finale-stack h2 .off-l{transform:translateX(-4vw);}
+.finale-stack h2 .off-r{transform:translateX(4vw);}
+.finale-sub{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;font-size:clamp(15px,1.9vw,25px);color:rgba(245,245,245,.46);display:block;margin-top:22px;}
+.finale-cta{margin-top:7vh;}
+.finale-cta a{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--text);text-decoration:none;border:1px solid var(--divider);padding:17px 46px;transition:background .25s ease,color .25s ease;}
+.finale-cta a:hover{background:var(--accent);color:#330D1E;}
+
+/* marquee override */
+.rx-marquee{background:#060608;}
+.rx-marquee-item{background:#060608;}
+.rx-marquee-item img{object-fit:cover;background:#060608;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .story-grid{grid-template-columns:1fr;gap:40px;}
+  .story-visual{position:static;}
+  .story-visual figure.fig-secondary img{aspect-ratio:16/9;}
+  .detail-grid{grid-template-columns:1fr;gap:40px;}
+  .gallery-bento{grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto;}
+  .gb-a{grid-column:1/-1;grid-row:1;}
+  .gb-a img{aspect-ratio:16/9;}
+  .gb-b{grid-column:1;grid-row:2;}
+  .gb-c{grid-column:2;grid-row:2;}
+  .gb-d{grid-column:1/-1;grid-row:3;}
+  .gb-d img{aspect-ratio:16/7;}
+}
+@media(max-width:580px){
+  .gallery-bento{grid-template-columns:1fr;}
+  .gb-a,.gb-b,.gb-c,.gb-d{grid-column:1;grid-row:auto;}
+  .gb-a img,.gb-b img,.gb-c img{aspect-ratio:3/4;}
+  .gb-d img{aspect-ratio:4/3;}
+  .reel-inner{max-width:100%;}
+  .reel-video{max-height:78vh;}
+  .gb-cap{transform:translateY(0);background:linear-gradient(to top,rgba(0,0,0,.55) 0%,transparent 100%);}
+  #atlas{height:auto;}
+  .atlas-sticky{position:relative;height:100dvh;}
+}
+@media(prefers-reduced-motion:reduce){
+  #atlas{height:auto;}
+  .atlas-sticky{position:relative;}
+  .atlas-img-wrap{clip-path:inset(0)!important;}
+  .story-visual figure,.detail-visual figure{clip-path:inset(0)!important;}
+  .story-copy .eyebrow,.story-copy h2,.story-copy p,.story-copy .dim,.tristone-tl,.spec-block,.detail-eyebrow,.statement-text h2,.stat-rule,.gb-cell{opacity:1!important;transform:none!important;}
+  .gb-cap{transform:translateY(0)!important;}
+  .atlas-title .char{opacity:1!important;transform:none!important;}
+}
+</style>
+</head>
+<body>
+<div class="rx-veil"></div>
+
+<nav class="nav">
+  <a class="wordmark" href="index.html" data-rx-nav>
+    <img src="Jewelry/LOGO_transparent.webp" alt="RarityX" loading="eager">
+  </a>
+  <a class="mono" href="index.html#section-09" data-rx-nav>Start with a conversation</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="atlas" aria-label="Harmonia — three-stone oval ring in 18k rose gold">
+  <div class="atlas-sticky">
+    <div class="atlas-img-wrap">
+      <img src="Jewelry/lp_Harmonia_v4.jpeg" alt="Harmonia — three-stone oval ring, front view" loading="eager" fetchpriority="high">
+    </div>
+    <div class="atlas-overlay"></div>
+
+    <div class="atlas-label" aria-hidden="true">RX — HARMONIA / THREE-STONE OVAL / 18K ROSE GOLD</div>
+
+    <div class="atlas-type">
+      <span class="atlas-idx">Commission No. 06</span>
+      <div class="atlas-tristone" aria-hidden="true">
+        <div class="ats-oval"></div>
+        <div class="ats-oval"></div>
+        <div class="ats-oval"></div>
+      </div>
+      <h1 class="atlas-title" aria-label="Harmonia">
+        <span class="char">H</span><span class="char">A</span><span class="char">R</span><span class="char">M</span><span class="char">O</span><span class="char">N</span><span class="char">I</span><span class="char">A</span>
+        <em>eighteen karat rose gold</em>
+      </h1>
+    </div>
+
+    <div class="atlas-footnote" id="atlas-fn">
+      <span class="fn-label">A three-stone commission</span>
+      <span class="fn-words">Past &middot; Present<br>Future</span>
+    </div>
+
+    <div class="atlas-progress" aria-hidden="true">
+      <div class="atlas-progress-fill" id="atlas-bar"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATEMENT ══ -->
+<section id="statement" aria-label="The brief">
+  <img class="statement-img" src="Jewelry/lp_Harmonia_v1.jpeg" alt="Harmonia in pink velvet ring box" loading="lazy">
+  <div class="statement-overlay"></div>
+  <div class="statement-text">
+    <span class="stat-rule"></span>
+    <h2>The brief arrived<br>with <em>one sentence.</em></h2>
+    <span class="stat-sub">The ring answered it.</span>
+  </div>
+</section>
+
+<!-- ══ STORY ══ -->
+<section id="story" aria-label="Design process">
+  <div class="story-grid">
+    <div class="story-visual">
+      <figure class="fig-primary">
+        <img src="Jewelry/lp_Harmonia_v2.jpeg" alt="Harmonia on limestone surface, editorial" loading="lazy">
+      </figure>
+      <figure class="fig-secondary">
+        <img src="Jewelry/lp_Harmonia_v3.jpeg" alt="Harmonia with dried botanicals, warm light" loading="lazy">
+      </figure>
+    </div>
+    <div class="story-copy">
+      <span class="eyebrow">Design Process / Commission</span>
+      <h2>The Center Stone<br>Chosen Last</h2>
+      <div class="tristone-tl" aria-label="Three-stone meaning: past, present, future">
+        <div class="tst-item">
+          <span class="tst-lbl">Stone I</span>
+          <span class="tst-word">Past</span>
+        </div>
+        <div class="tst-item">
+          <span class="tst-lbl">Stone II</span>
+          <span class="tst-word">Present</span>
+        </div>
+        <div class="tst-item">
+          <span class="tst-lbl">Stone III</span>
+          <span class="tst-word">Future</span>
+        </div>
+      </div>
+      <p>The three-stone format is the oldest language in engagement jewelry. Past, present, future — three chapters worn as one piece. The design task was to make that language feel earned rather than inherited.</p>
+      <p>The oval was chosen for continuity. A shape with no hard corners, no point of termination. The flanking stones mirror the center proportionally — not identical supports, but two complementary replies in scale.</p>
+      <p>Rose gold because it doesn&rsquo;t compete. The metal recedes into the stones. Every prong was drawn as thin as fabrication allows — the intention being that you see diamonds, not setting.</p>
+      <span class="dim">18k Rose Gold &middot; Oval Cluster &middot; Minimal Cathedral Prong</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GALLERY ══ -->
+<section id="gallery" aria-label="Harmonia — the piece">
+  <div class="gallery-header">
+    <span class="eyebrow">Fig.02</span>
+    <h2>The Piece</h2>
+  </div>
+  <div class="gallery-bento">
+    <div class="gb-cell gb-a">
+      <img src="Jewelry/lp_Harmonia_v4.jpeg" alt="Harmonia — front view, on stone surface" loading="lazy">
+      <span class="gb-cap">Oval cluster — front</span>
+    </div>
+    <div class="gb-cell gb-b">
+      <img src="Jewelry/lp_Harmonia_v1.jpeg" alt="Harmonia in pink velvet ring box" loading="lazy" style="object-position:center 28%">
+      <span class="gb-cap">In the box</span>
+    </div>
+    <div class="gb-cell gb-c">
+      <img src="Jewelry/lp_Harmonia_v3.jpeg" alt="Harmonia with dried botanicals" loading="lazy">
+      <span class="gb-cap">Botanical context</span>
+    </div>
+    <div class="gb-cell gb-d">
+      <img src="Jewelry/lp_Harmonia_v2.jpeg" alt="Harmonia on limestone, clean editorial" loading="lazy" style="object-position:center 35%">
+      <span class="gb-cap">On stone — editorial</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ UGC REEL ══ -->
+<section id="reel" aria-label="On the hand">
+  <div class="reel-inner">
+    <video class="reel-video" autoplay muted loop playsinline preload="metadata" aria-label="Harmonia worn on hand — client video">
+      <source src="Jewelry/lp_Harmonia_ugc.mp4" type="video/mp4">
+    </video>
+    <div class="reel-overlay"></div>
+    <div class="reel-label">
+      <span class="reel-eyebrow">Client — worn</span>
+      <span class="reel-text">On the hand.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DETAIL / SPECS ══ -->
+<section id="detail" aria-label="Technical specification">
+  <div class="detail-grid">
+    <div class="detail-visual">
+      <figure>
+        <img src="Jewelry/lp_Harmonia_special.jpeg" alt="Harmonia — close detail on hand" loading="lazy">
+      </figure>
+    </div>
+    <div class="detail-specs">
+      <span class="detail-eyebrow">Technical Specification</span>
+      <div class="spec-block">
+        <span class="spec-lbl">Format</span>
+        <span class="spec-val">Three-Stone</span>
+        <span class="spec-sub">Oval cluster &middot; cathedral prong setting</span>
+      </div>
+      <div class="spec-block">
+        <span class="spec-lbl">Center Stone</span>
+        <span class="spec-val">Oval Cut</span>
+        <span class="spec-sub">GIA certified &middot; D&ndash;F colour &middot; IF&ndash;VS1 clarity</span>
+      </div>
+      <div class="spec-block">
+        <span class="spec-lbl">Side Stones</span>
+        <span class="spec-val">Matched Ovals</span>
+        <span class="spec-sub">Proportional to center &middot; 4-prong per stone</span>
+      </div>
+      <div class="spec-block">
+        <span class="spec-lbl">Metal</span>
+        <span class="spec-val">18k Rose Gold</span>
+        <span class="spec-sub">Minimal band &middot; maximum stone face</span>
+      </div>
+      <div class="spec-block">
+        <span class="spec-lbl">Commission</span>
+        <span class="spec-val">Pre-sold</span>
+        <span class="spec-sub">Designed before fabrication &middot; zero inventory</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MARQUEE ══ -->
+<div class="rx-marquee" aria-hidden="true">
+  <div class="rx-marquee-track">
+    <div class="rx-marquee-item"><img src="Jewelry/lp_Harmonia_v1.jpeg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/lp_Harmonia_v2.jpeg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/lp_Harmonia_v3.jpeg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/lp_Harmonia_v4.jpeg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/lp_Harmonia_special.jpeg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/lp_Harmonia_v1.jpeg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/lp_Harmonia_v2.jpeg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/lp_Harmonia_v3.jpeg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/lp_Harmonia_v4.jpeg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/lp_Harmonia_special.jpeg" alt="" loading="lazy"></div>
+  </div>
+</div>
+
+<!-- ══ FINALE ══ -->
+<section id="finale" aria-label="Begin your commission">
+  <div class="finale-bg">
+    <img src="Jewelry/lp_Harmonia_v2.jpeg" alt="" aria-hidden="true" loading="lazy">
+  </div>
+  <div class="finale-stack">
+    <div class="finale-triad" aria-hidden="true">
+      <div class="fin-oval"></div>
+      <div class="fin-oval"></div>
+      <div class="fin-oval"></div>
+    </div>
+    <h2 class="reveal">
+      <span class="off-l">HAR</span>
+      <span class="off-r">MONIA</span>
+    </h2>
+    <span class="finale-sub">Designed before the stones were chosen.</span>
+    <div class="finale-cta">
+      <a href="index.html#section-09" data-rx-nav>Start with a conversation</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NEXT PIECE ══ -->
+<a href="constellation-band.html" class="next-piece" data-rx-nav aria-label="Next piece: Constellation Band">
+  <span class="np-label">Next piece</span>
+  <span class="np-name">Constellation<br>Band</span>
+  <span class="np-arrow">&rarr;</span>
+</a>
+
+<footer class="rx-foot">
+  <span>&copy; 2025 RarityX</span>
+  <a href="index.html#section-09" data-rx-nav>Begin yours &rarr;</a>
+</footer>
+
+<script>
+(function(){
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* ── RX VEIL ── */
+  var veil = document.querySelector('.rx-veil');
+  if (veil) {
+    veil.classList.add('rx-veil--open');
+    document.querySelectorAll('[data-rx-nav]').forEach(function(el){
+      el.addEventListener('click', function(e){
+        var href = el.getAttribute('href') || el.href;
+        if (!href || href.startsWith('#') || href.startsWith('javascript')) return;
+        e.preventDefault();
+        veil.classList.remove('rx-veil--open');
+        setTimeout(function(){ window.location.href = href; }, 540);
+      });
+    });
+  }
+
+  /* ── HERO GSAP ── */
+  if (!prefersReduced && window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    var imgWrap = document.querySelector('.atlas-img-wrap');
+    var bar     = document.getElementById('atlas-bar');
+    var fn      = document.getElementById('atlas-fn');
+
+    // Clip-path reveal on scroll
+    gsap.set(imgWrap, { 'clip-path': 'inset(100% 0 0 0)' });
+    ScrollTrigger.create({
+      trigger: '#atlas',
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: true,
+      onUpdate: function(self) {
+        var p = self.progress;
+        // Image opens first third of scroll
+        var imgP = Math.min(p / 0.32, 1);
+        imgWrap.style.clipPath = 'inset(' + ((1 - imgP) * 100) + '% 0 0 0)';
+        if (bar) bar.style.width = (p * 100) + '%';
+        // Footnote fades in after 40% scroll
+        if (fn) {
+          var fnP = Math.max(0, Math.min((p - 0.38) / 0.22, 1));
+          fn.style.opacity = fnP;
+          fn.style.transform = 'translateY(' + (18 * (1 - fnP)) + 'px)';
+        }
+      }
+    });
+
+    // Title characters stagger in on load
+    gsap.fromTo(
+      document.querySelectorAll('.atlas-title .char'),
+      { opacity: 0, y: 44, rotateX: -18 },
+      { opacity: 1, y: 0, rotateX: 0, duration: 0.88, stagger: 0.055, ease: 'power3.out', delay: 0.25 }
+    );
+
+    // Statement image parallax
+    var stImg = document.querySelector('.statement-img');
+    if (stImg) {
+      gsap.fromTo(stImg, { y: '-8%' }, {
+        y: '8%', ease: 'none',
+        scrollTrigger: { trigger: '#statement', start: 'top bottom', end: 'bottom top', scrub: true }
+      });
+    }
+
+    // Finale letter drift (in + scrub from center to offset)
+    ScrollTrigger.create({
+      trigger: '#finale',
+      start: 'top 80%',
+      end: 'center center',
+      scrub: 0.8,
+      onUpdate: function(self) {
+        var p = self.progress;
+        var offL = document.querySelector('.finale-stack h2 .off-l');
+        var offR = document.querySelector('.finale-stack h2 .off-r');
+        if (offL) offL.style.transform = 'translateX(' + (-4 * p) + 'vw)';
+        if (offR) offR.style.transform = 'translateX(' + (4 * p) + 'vw)';
+      }
+    });
+
+  } else {
+    // Fallback — show immediately
+    var aw = document.querySelector('.atlas-img-wrap');
+    if (aw) aw.style.clipPath = 'inset(0)';
+    document.querySelectorAll('.atlas-title .char').forEach(function(c){
+      c.style.opacity = '1'; c.style.transform = 'none';
+    });
+  }
+
+  /* ── INTERSECTION OBSERVER ── */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.13 });
+
+  [
+    '.story-visual figure',
+    '.story-copy .eyebrow',
+    '.story-copy h2',
+    '.story-copy p',
+    '.story-copy .dim',
+    '.tristone-tl',
+    '.gb-cell',
+    '.detail-visual figure',
+    '.detail-eyebrow',
+    '.spec-block',
+    '.stat-rule',
+    '.statement-text h2',
+    '.statement-text .stat-sub',
+    '.finale-stack h2.reveal'
+  ].forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(el){ io.observe(el); });
+  });
+})();
+</script>
+</body>
+</html>
