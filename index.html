@@ -1056,16 +1056,17 @@ ul,ol{list-style:none;}
 @media(max-width:768px){.imgseq-section{height:400vh;}.imgseq-caption{max-width:80vw;}}
 @media(prefers-reduced-motion:reduce){.imgseq-section{height:auto;}.imgseq-sticky{position:relative;height:auto;}.imgseq-bar-wrap,.imgseq-loader{display:none;}.imgseq-canvas{position:static;width:100%;aspect-ratio:16/9;height:auto;}.imgseq-caption{position:static;opacity:1;transform:none;margin:24px;max-width:none;}}
 /* ── SHARED seq-frag: floating text on all three image sequences ── */
-.seq-frag,.v6-frag{position:absolute;z-index:4;pointer-events:none;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:rgba(15,8,12,0.88);opacity:0;white-space:nowrap;will-change:transform,opacity;text-shadow:0 1px 6px rgba(255,255,255,0.5);}
-.seq-frag em,.v6-frag em{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:400;font-size:26px;letter-spacing:.03em;text-transform:none;color:rgba(12,6,10,0.92);text-shadow:none;}
+.seq-frag,.v6-frag,.hm-frag{position:absolute;z-index:4;pointer-events:none;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:rgba(15,8,12,0.88);opacity:0;white-space:nowrap;will-change:transform,opacity;text-shadow:0 1px 6px rgba(255,255,255,0.5);}
+.seq-frag em,.v6-frag em,.hm-frag em{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:400;font-size:26px;letter-spacing:.03em;text-transform:none;color:rgba(12,6,10,0.92);text-shadow:none;}
 /* hero positions */ .sh-f1{left:7vw;top:18%}.sh-f2{right:9vw;top:30%}.sh-f3{left:12vw;top:54%}.sh-f4{right:10vw;top:68%}.sh-f5{left:40vw;top:82%}
 /* ring/lp positions */ .sr-f1{left:7vw;top:14%}.sr-f2{right:9vw;top:26%}.sr-f3{left:10vw;top:60%}.sr-f4{right:12vw;top:74%}.sr-f5{left:42vw;top:86%}
 /* v6 positions */ .v6-f1{left:7vw;top:16%}.v6-f2{right:9vw;top:30%}.v6-f3{left:11vw;top:56%}.v6-f4{right:11vw;top:70%}.v6-f5{left:44vw;top:84%}.v6-f6{right:10vw;top:12%}
+/* harmonia positions */ .hm-f1{left:7vw;top:15%}.hm-f2{right:9vw;top:28%}.hm-f3{left:10vw;top:58%}.hm-f4{right:11vw;top:72%}.hm-f5{left:43vw;top:85%}
 .v6-label{position:absolute;top:clamp(24px,3vw,40px);left:clamp(24px,4vw,56px);z-index:5;display:flex;align-items:center;gap:14px;pointer-events:none;}
 .v6-label-num{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.20em;color:#c8909e;text-transform:uppercase;}
 .v6-label-div{width:32px;height:1px;background:#5a1a2e;flex-shrink:0;}
 .v6-label-title{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;color:#d0a0b0;text-transform:uppercase;}
-@media(max-width:768px){.sh-f3,.sr-f3,.v6-f3,.v6-f6{display:none;}.seq-frag,.v6-frag{font-size:11px;}}
+@media(max-width:768px){.sh-f3,.sr-f3,.v6-f3,.v6-f6,.hm-f3{display:none;}.seq-frag,.v6-frag,.hm-frag{font-size:11px;}}
 /* ══ PORTFOLIO WORKS — CONVEYOR BELT ══ */
 #section-works{background:#050505;padding:16vh 0 0}
 .works-head{max-width:1400px;margin:0 auto;padding:0 6vw 5vh;display:flex;justify-content:space-between;align-items:baseline;gap:20px}
@@ -1553,6 +1554,25 @@ body.mob-open{overflow:hidden;touch-action:none;}
     <div class="v6-frag v6-f5" data-v6win="0.62,0.86" data-v6depth="130"><em>Design is the rarity.</em></div>
     <div class="v6-frag v6-f6" data-v6win="0.72,0.96" data-v6depth="165">Zero inventory. Maximum intention.</div>
     <div class="imgseq-bar-wrap" aria-hidden="true"><div class="imgseq-bar-fill" id="vseq-v6-bar"></div></div>
+  </div>
+</section>
+
+<!-- IMAGE SEQUENCE - HARMONIA (frames_harmonia — the chain designed first) -->
+<section id="section-vseq-harmonia" class="imgseq-section" aria-label="Harmonia — the chain designed first">
+  <div class="imgseq-sticky">
+    <canvas id="vseq-harmonia-canvas" class="imgseq-canvas" aria-hidden="true"></canvas>
+    <div class="imgseq-loader" id="vseq-harmonia-loader" aria-hidden="true"><span class="imgseq-loader-ring"></span></div>
+    <div class="v6-label" aria-hidden="true">
+      <span class="v6-label-num">Fig.06</span>
+      <span class="v6-label-div"></span>
+      <span class="v6-label-title">Harmonia</span>
+    </div>
+    <div class="hm-frag hm-f1" data-hmwin="0.06,0.34" data-hmdepth="110"><em>The chain begins with the sketch.</em></div>
+    <div class="hm-frag hm-f2" data-hmwin="0.16,0.46" data-hmdepth="205">Every link sourced &middot; nothing improvised</div>
+    <div class="hm-frag hm-f3" data-hmwin="0.30,0.58" data-hmdepth="155"><em>Worn before it was made.</em></div>
+    <div class="hm-frag hm-f4" data-hmwin="0.48,0.74" data-hmdepth="225">Structure first. Stone follows.</div>
+    <div class="hm-frag hm-f5" data-hmwin="0.64,0.88" data-hmdepth="135"><em>Design is the rarity.</em></div>
+    <div class="imgseq-bar-wrap" aria-hidden="true"><div class="imgseq-bar-fill" id="vseq-harmonia-bar"></div></div>
   </div>
 </section>
 
@@ -2943,6 +2963,8 @@ body.mob-open{overflow:hidden;touch-action:none;}
 
   initImgSeq({ sectionId: 'section-vseq-v6', canvasId: 'vseq-v6-canvas', barId: 'vseq-v6-bar', loaderId: 'vseq-v6-loader', captionId: null, total: 240, folder: 'frames_lp6', frameW: 1280, frameH: 720, reverse: false, bgFill: '#e5e5e5', shrink: { desktop: 1, mobile: 1 } });
 
+  initImgSeq({ sectionId: 'section-vseq-harmonia', canvasId: 'vseq-harmonia-canvas', barId: 'vseq-harmonia-bar', loaderId: 'vseq-harmonia-loader', captionId: null, total: 192, folder: 'frames_harmonia', frameW: 1280, frameH: 720, reverse: false, bgFill: '#d8d8d8', shrink: { desktop: 1, mobile: 1 } });
+
   // ── SHARED: floating spec fragments for all three image sequences ──
   function initFrags(sectionId, selector, winAttr, depthAttr) {
     if (prefersReduced || !window.ScrollTrigger) return;
@@ -2974,7 +2996,8 @@ body.mob-open{overflow:hidden;touch-action:none;}
   }
   initFrags('section-vseq-hero', '.seq-frag', 'data-win', 'data-depth');
   initFrags('section-vseq',      '.seq-frag', 'data-win', 'data-depth');
-  initFrags('section-vseq-v6',   '.v6-frag',  'data-v6win', 'data-v6depth');
+  initFrags('section-vseq-v6',      '.v6-frag',  'data-v6win',  'data-v6depth');
+  initFrags('section-vseq-harmonia', '.hm-frag',  'data-hmwin',  'data-hmdepth');
 
   // ── ASCENT TEASE section ──────────────────────────────────────
   (function(){
