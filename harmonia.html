@@ -31,7 +31,7 @@
 #atlas{position:relative;height:280vh;background:#060608;}
 .atlas-sticky{position:sticky;top:0;height:100dvh;overflow:hidden;}
 .atlas-img-wrap{position:absolute;inset:0;clip-path:inset(100% 0 0 0);will-change:clip-path;}
-.atlas-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 22%;opacity:.8;}
+.atlas-img-wrap img,.atlas-img-wrap video{width:100%;height:100%;object-fit:cover;object-position:center 22%;opacity:.88;display:block;}
 .atlas-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,8,.94) 0%,rgba(6,6,8,.3) 42%,transparent 68%),linear-gradient(to right,rgba(6,6,8,.28) 0%,transparent 45%);z-index:2;}
 
 /* atlas-label removed */
@@ -237,6 +237,28 @@
   100%{text-shadow:none;}
 }
 .atlas-title .char.chr-flash{animation:chr-flash .6s cubic-bezier(.16,1,.3,1) forwards;}
+
+/* ── Piece triptych ── */
+.piece-triptych{display:flex;height:74vh;overflow:hidden;cursor:pointer;}
+.pt-card{position:relative;flex:1;overflow:hidden;transition:flex .62s cubic-bezier(.16,1,.3,1);}
+.pt-card.active{flex:2.5;}
+.pt-card img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;transition:transform .62s cubic-bezier(.16,1,.3,1),filter .55s ease;filter:brightness(.46) saturate(.85);transform:scale(1.06);}
+.pt-card.active img{filter:brightness(.92) saturate(1.05);transform:scale(1);}
+.pt-card + .pt-card{border-left:1px solid rgba(90,26,46,.5);}
+.pt-info{position:absolute;bottom:0;left:0;right:0;padding:28px 22px 22px;background:linear-gradient(to top,rgba(3,3,5,.84) 0%,rgba(3,3,5,.28) 55%,transparent 100%);pointer-events:none;}
+.pt-num{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.28em;text-transform:uppercase;color:rgba(200,200,200,.35);display:block;margin-bottom:7px;transition:color .4s ease;}
+.pt-card.active .pt-num{color:rgba(200,200,200,.6);}
+.pt-cap{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;font-size:clamp(15px,1.5vw,22px);color:rgba(245,245,245,0);display:block;transition:color .45s ease .08s,transform .45s cubic-bezier(.16,1,.3,1) .08s;transform:translateY(8px);}
+.pt-card.active .pt-cap{color:rgba(245,245,245,.82);transform:translateY(0);}
+.pt-tick{position:absolute;top:22px;right:22px;width:7px;height:7px;border:1px solid rgba(200,200,200,.22);border-radius:50%;transition:background .35s ease,border-color .35s ease;}
+.pt-card.active .pt-tick{background:rgba(200,200,200,.65);border-color:rgba(200,200,200,.65);}
+@media(max-width:640px){
+  .piece-triptych{height:auto;flex-direction:column;}
+  .pt-card{flex:1!important;min-height:44vw;}
+  .pt-card img{transform:none!important;}
+  .pt-cap{color:rgba(245,245,245,.7)!important;transform:translateY(0)!important;}
+  .pt-card + .pt-card{border-left:none;border-top:1px solid rgba(90,26,46,.5);}
+}
 </style>
 </head>
 <body>
@@ -253,7 +275,9 @@
 <section id="atlas" aria-label="Harmonia — three-stone oval ring in 18k rose gold">
   <div class="atlas-sticky">
     <div class="atlas-img-wrap">
-      <img src="Jewelry/lp_Harmonia_v4.jpeg" alt="Harmonia — three-stone oval ring, front view" loading="eager" fetchpriority="high">
+      <video autoplay muted loop playsinline preload="auto" aria-hidden="true">
+        <source src="Jewelry/lp_harmonia_video.mp4" type="video/mp4">
+      </video>
     </div>
     <div class="atlas-overlay"></div>
 
@@ -335,22 +359,30 @@
     <span class="eyebrow">Fig.02</span>
     <h2>The Piece</h2>
   </div>
-  <div class="gallery-bento">
-    <div class="gb-cell gb-a">
-      <img src="Jewelry/lp_Harmonia_v4.jpeg" alt="Harmonia — front view, on stone surface" loading="lazy">
-      <span class="gb-cap">Oval cluster — front</span>
+  <div class="piece-triptych" id="piece-triptych" role="group" aria-label="Harmonia on the hand — three views">
+    <div class="pt-card active" role="button" tabindex="0" aria-label="View one — profile angle">
+      <img src="Jewelry/lp_Harmonia_special.jpeg" alt="Harmonia on hand — profile angle" loading="lazy">
+      <div class="pt-info">
+        <span class="pt-num">01</span>
+        <span class="pt-cap">Profile</span>
+      </div>
+      <div class="pt-tick" aria-hidden="true"></div>
     </div>
-    <div class="gb-cell gb-b">
-      <img src="Jewelry/lp_Harmonia_v1.jpeg" alt="Harmonia in pink velvet ring box" loading="lazy" style="object-position:center 28%">
-      <span class="gb-cap">In the box</span>
+    <div class="pt-card" role="button" tabindex="0" aria-label="View two — face on">
+      <img src="Jewelry/lp_Harmonia_special_v1.jpeg" alt="Harmonia on hand — face on, three stones visible" loading="lazy">
+      <div class="pt-info">
+        <span class="pt-num">02</span>
+        <span class="pt-cap">Face</span>
+      </div>
+      <div class="pt-tick" aria-hidden="true"></div>
     </div>
-    <div class="gb-cell gb-c">
-      <img src="Jewelry/lp_Harmonia_v3.jpeg" alt="Harmonia with dried botanicals" loading="lazy">
-      <span class="gb-cap">Botanical context</span>
-    </div>
-    <div class="gb-cell gb-d">
-      <img src="Jewelry/lp_Harmonia_v2.jpeg" alt="Harmonia on limestone, clean editorial" loading="lazy" style="object-position:center 35%">
-      <span class="gb-cap">On stone — editorial</span>
+    <div class="pt-card" role="button" tabindex="0" aria-label="View three — overhead">
+      <img src="Jewelry/lp_Harmonia_special_v2.jpeg" alt="Harmonia on hand — overhead view" loading="lazy">
+      <div class="pt-info">
+        <span class="pt-num">03</span>
+        <span class="pt-cap">Overhead</span>
+      </div>
+      <div class="pt-tick" aria-hidden="true"></div>
     </div>
   </div>
 </section>
@@ -581,13 +613,11 @@
   }, { threshold: 0.13 });
 
   [
-    '.story-visual figure',
     '.story-copy .eyebrow',
     '.story-copy h2',
     '.story-copy p',
     '.story-copy .dim',
     '.tristone-tl',
-    '.gb-cell',
     '.detail-visual figure',
     '.detail-eyebrow',
     '.spec-block',
@@ -597,6 +627,26 @@
     '.finale-stack h2.reveal'
   ].forEach(function(sel){
     document.querySelectorAll(sel).forEach(function(el){ io.observe(el); });
+  });
+
+  /* story figures need section-level IO — sticky positioning breaks per-element threshold */
+  var storyIO = new IntersectionObserver(function(entries) {
+    if (!entries[0].isIntersecting) return;
+    document.querySelectorAll('.story-visual figure').forEach(function(f){ f.classList.add('in'); });
+    storyIO.disconnect();
+  }, { threshold: 0.08 });
+  var storyEl = document.querySelector('#story');
+  if (storyEl) storyIO.observe(storyEl);
+
+  /* piece triptych */
+  var ptCards = document.querySelectorAll('.pt-card');
+  ptCards.forEach(function(card) {
+    function activate() {
+      ptCards.forEach(function(c){ c.classList.remove('active'); });
+      card.classList.add('active');
+    }
+    card.addEventListener('click', activate);
+    card.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') activate(); });
   });
 
   /* ── WebGL DIAMOND LIGHT ── */
