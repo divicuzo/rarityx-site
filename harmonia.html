@@ -215,7 +215,28 @@
   .story-copy .eyebrow,.story-copy h2,.story-copy p,.story-copy .dim,.tristone-tl,.spec-block,.detail-eyebrow,.statement-text h2,.stat-rule,.gb-cell{opacity:1!important;transform:none!important;}
   .gb-cap{transform:translateY(0)!important;}
   .atlas-title .char{opacity:1!important;transform:none!important;}
+  #onhand-gl{opacity:1!important;}
+  .spec-val{clip-path:inset(0 0% 0 0)!important;}
 }
+
+/* ── WebGL diamond light ── */
+#onhand-gl{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:1;opacity:0;transition:opacity 1.4s ease;cursor:crosshair;}
+#onhand-gl.gl-visible{opacity:1;}
+#onhand-fallback{position:absolute;inset:0;z-index:1;display:none;}
+.onhand-fb-layer{position:absolute;inset:-10%;will-change:transform;transition:transform .25s cubic-bezier(.16,1,.3,1);}
+.onhand-fb-layer img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.86) saturate(.9);}
+
+/* ── Spec value wipe reveal ── */
+.spec-val{clip-path:inset(0 100% 0 0);transition:clip-path .72s cubic-bezier(.16,1,.3,1) .18s;}
+.spec-block.in .spec-val{clip-path:inset(0 0% 0 0);}
+
+/* ── Chromatic title flash ── */
+@keyframes chr-flash{
+  0%{text-shadow:-5px 0 rgba(255,48,80,.62),5px 0 rgba(48,80,255,.62);}
+  55%{text-shadow:-1px 0 rgba(255,48,80,.18),1px 0 rgba(48,80,255,.18);}
+  100%{text-shadow:none;}
+}
+.atlas-title .char.chr-flash{animation:chr-flash .6s cubic-bezier(.16,1,.3,1) forwards;}
 </style>
 </head>
 <body>
@@ -243,7 +264,7 @@
         <div class="ats-oval"></div>
       </div>
       <h1 class="atlas-title" aria-label="Harmonia">
-        <span class="char">H</span><span class="char">A</span><span class="char">R</span><span class="char">M</span><span class="char">O</span><span class="char">N</span><span class="char">I</span><span class="char">A</span>
+        <span class="char" style="--ci:0">H</span><span class="char" style="--ci:1">A</span><span class="char" style="--ci:2">R</span><span class="char" style="--ci:3">M</span><span class="char" style="--ci:4">O</span><span class="char" style="--ci:5">N</span><span class="char" style="--ci:6">I</span><span class="char" style="--ci:7">A</span>
         <em>eighteen karat rose gold</em>
       </h1>
     </div>
@@ -337,8 +358,11 @@
 <!-- ══ ON HAND ══ -->
 <section id="onhand" aria-label="Harmonia — on the hand">
   <div class="onhand-scene" id="onhand-scene">
-    <div class="onhand-layer" id="onhand-layer">
-      <img src="Jewelry/lp_Harmonia_special.jpeg" alt="Harmonia worn on hand" loading="lazy">
+    <canvas id="onhand-gl" aria-hidden="true"></canvas>
+    <div id="onhand-fallback">
+      <div class="onhand-fb-layer" id="onhand-fb-layer">
+        <img src="Jewelry/lp_Harmonia_special.jpeg" alt="Harmonia worn on hand" loading="lazy">
+      </div>
     </div>
     <div class="onhand-scrim" aria-hidden="true"></div>
     <div class="onhand-text">
@@ -487,7 +511,6 @@
     var bar     = document.getElementById('atlas-bar');
     var fn      = document.getElementById('atlas-fn');
 
-    // Clip-path reveal on scroll
     gsap.set(imgWrap, { 'clip-path': 'inset(100% 0 0 0)' });
     ScrollTrigger.create({
       trigger: '#atlas',
@@ -496,11 +519,9 @@
       scrub: true,
       onUpdate: function(self) {
         var p = self.progress;
-        // Image opens first third of scroll
         var imgP = Math.min(p / 0.32, 1);
         imgWrap.style.clipPath = 'inset(' + ((1 - imgP) * 100) + '% 0 0 0)';
         if (bar) bar.style.width = (p * 100) + '%';
-        // Footnote fades in after 40% scroll
         if (fn) {
           var fnP = Math.max(0, Math.min((p - 0.38) / 0.22, 1));
           fn.style.opacity = fnP;
@@ -509,14 +530,19 @@
       }
     });
 
-    // Title characters stagger in on load
+    // Title chars with chromatic flash as each lands
     gsap.fromTo(
       document.querySelectorAll('.atlas-title .char'),
       { opacity: 0, y: 44, rotateX: -18 },
-      { opacity: 1, y: 0, rotateX: 0, duration: 0.88, stagger: 0.055, ease: 'power3.out', delay: 0.25 }
+      { opacity: 1, y: 0, rotateX: 0, duration: 0.88,
+        stagger: {
+          each: 0.055,
+          onComplete: function() { this.targets()[0].classList.add('chr-flash'); }
+        },
+        ease: 'power3.out', delay: 0.25
+      }
     );
 
-    // Statement image parallax
     var stImg = document.querySelector('.statement-img');
     if (stImg) {
       gsap.fromTo(stImg, { y: '-8%' }, {
@@ -525,7 +551,6 @@
       });
     }
 
-    // Finale letter drift (in + scrub from center to offset)
     ScrollTrigger.create({
       trigger: '#finale',
       start: 'top 80%',
@@ -541,7 +566,6 @@
     });
 
   } else {
-    // Fallback — show immediately
     var aw = document.querySelector('.atlas-img-wrap');
     if (aw) aw.style.clipPath = 'inset(0)';
     document.querySelectorAll('.atlas-title .char').forEach(function(c){
@@ -575,30 +599,206 @@
     document.querySelectorAll(sel).forEach(function(el){ io.observe(el); });
   });
 
-  /* ── ON HAND — cursor parallax + reveal ── */
-  var ohScene = document.getElementById('onhand-scene');
-  var ohLayer = document.getElementById('onhand-layer');
-  if (ohScene && ohLayer) {
-    ohScene.addEventListener('mousemove', function(e) {
-      var r = ohScene.getBoundingClientRect();
-      var nx = (e.clientX - r.left) / r.width - 0.5;
-      var ny = (e.clientY - r.top) / r.height - 0.5;
-      ohLayer.style.transform = 'translate(' + (nx * -22) + 'px, ' + (ny * -14) + 'px)';
-    });
-    ohScene.addEventListener('mouseleave', function() { ohLayer.style.transform = ''; });
-    var ohIO = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) {
-          var hl = document.getElementById('oh-hl');
-          var cap = document.getElementById('oh-cap');
-          if (hl) hl.classList.add('in');
-          if (cap) cap.classList.add('in');
-          ohIO.unobserve(e.target);
+  /* ── WebGL DIAMOND LIGHT ── */
+  (function() {
+    var canvas = document.getElementById('onhand-gl');
+    if (!canvas) return;
+
+    var gl = canvas.getContext('webgl2');
+    if (!gl) {
+      var fb = document.getElementById('onhand-fallback');
+      if (fb) fb.style.display = 'block';
+      canvas.style.display = 'none';
+      initFallback();
+      return;
+    }
+
+    var img = new Image();
+    img.onload = function() { boot(gl, img); };
+    img.src = 'Jewelry/lp_Harmonia_special.jpeg';
+
+    function mkShader(gl, type, src) {
+      var s = gl.createShader(type);
+      gl.shaderSource(s, src);
+      gl.compileShader(s);
+      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+        console.error('Shader compile:', gl.getShaderInfoLog(s));
+        return null;
+      }
+      return s;
+    }
+
+    function boot(gl, img) {
+      var VS = '#version 300 es\nin vec2 a_pos;\nout vec2 v_uv;\nvoid main(){v_uv=a_pos*.5+.5;gl_Position=vec4(a_pos,0.,1.);}';
+      var FS = [
+        '#version 300 es',
+        'precision highp float;',
+        'uniform sampler2D u_img;',
+        'uniform vec2 u_mouse;',
+        'uniform float u_imgAsp;',
+        'uniform float u_cvAsp;',
+        'in vec2 v_uv;',
+        'out vec4 o;',
+        /* object-fit:cover UV mapping */
+        'vec2 cover(vec2 uv){',
+        '  if(u_cvAsp>=u_imgAsp){',
+        '    float sc=u_cvAsp/u_imgAsp;',
+        '    float h=1./sc;',
+        '    float sy=clamp(.22-h*.5,0.,1.-h);',
+        '    return vec2(uv.x,uv.y*h+sy);',
+        '  }',
+        '  float sc=u_imgAsp/u_cvAsp;',
+        '  float w=1./sc;',
+        '  return vec2(uv.x*w+(1.-w)*.5,uv.y);',
+        '}',
+        'void main(){',
+        '  vec2 uv=v_uv;',
+        '  vec2 delta=u_mouse-uv;',
+        '  float d=length(delta);',
+        '  float c=1./(1.+d*d*11.);',  /* caustic falloff */
+        '  float c2=c*c;',
+        '  vec2 dir=d>.001?normalize(delta):vec2(0.,1.);',
+        '  float rs=c*.015;',           /* refraction strength */
+        '  float ch=c2*.008;',          /* chromatic split */
+        '  vec2 rUV=clamp(cover(uv+dir*(rs+ch)),vec2(.001),vec2(.999));',
+        '  vec2 gUV=clamp(cover(uv+dir*rs),vec2(.001),vec2(.999));',
+        '  vec2 bUV=clamp(cover(uv+dir*max(rs-ch,0.)),vec2(.001),vec2(.999));',
+        '  float r=texture(u_img,rUV).r;',
+        '  float g=texture(u_img,gUV).g;',
+        '  float b=texture(u_img,bUV).b;',
+        '  vec3 col=vec3(r,g,b);',
+        '  col+=c2*.36*vec3(1.,.87,.70);', /* warm caustic bloom */
+        '  float ring=smoothstep(.14,.07,d)*(1.-smoothstep(.06,.02,d));',
+        '  col+=ring*.07*vec3(.65,.78,1.);', /* cool spectral corona */
+        '  o=vec4(clamp(col,0.,1.),1.);',
+        '}'
+      ].join('\n');
+
+      var vs = mkShader(gl, gl.VERTEX_SHADER, VS);
+      var fs = mkShader(gl, gl.FRAGMENT_SHADER, FS);
+      if (!vs || !fs) return;
+
+      var prog = gl.createProgram();
+      gl.attachShader(prog, vs); gl.attachShader(prog, fs);
+      gl.linkProgram(prog);
+      if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+        console.error('GL link:', gl.getProgramInfoLog(prog)); return;
+      }
+
+      var vao = gl.createVertexArray();
+      gl.bindVertexArray(vao);
+      var vbo = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+      var posLoc = gl.getAttribLocation(prog, 'a_pos');
+      gl.enableVertexAttribArray(posLoc);
+      gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+
+      var tex = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, tex);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+
+      var uMouse  = gl.getUniformLocation(prog, 'u_mouse');
+      var uImg    = gl.getUniformLocation(prog, 'u_img');
+      var uImgAsp = gl.getUniformLocation(prog, 'u_imgAsp');
+      var uCvAsp  = gl.getUniformLocation(prog, 'u_cvAsp');
+
+      var mx=.5, my=.4, tmx=.5, tmy=.4, t=0;
+      var noHover = window.matchMedia('(hover:none)').matches;
+      var isVisible = false;
+
+      function resize() {
+        var dpr = Math.min(window.devicePixelRatio||1, 2);
+        canvas.width  = Math.round(canvas.offsetWidth  * dpr);
+        canvas.height = Math.round(canvas.offsetHeight * dpr);
+        gl.viewport(0, 0, canvas.width, canvas.height);
+      }
+      new ResizeObserver(resize).observe(canvas);
+      resize();
+
+      var scene = document.getElementById('onhand-scene');
+      if (scene && !noHover) {
+        scene.addEventListener('mousemove', function(e) {
+          var r = canvas.getBoundingClientRect();
+          tmx = (e.clientX - r.left) / r.width;
+          tmy = 1.0 - (e.clientY - r.top) / r.height;
+        });
+        scene.addEventListener('mouseleave', function() { tmx=.5; tmy=.4; });
+      }
+
+      /* reveal canvas + text on enter viewport */
+      new IntersectionObserver(function(entries) {
+        if (!entries[0].isIntersecting) return;
+        canvas.classList.add('gl-visible');
+        var hl  = document.getElementById('oh-hl');
+        var cap = document.getElementById('oh-cap');
+        if (hl)  hl.classList.add('in');
+        if (cap) cap.classList.add('in');
+      }, { threshold: 0.2 }).observe(canvas);
+
+      /* pause render when off-screen */
+      new IntersectionObserver(function(entries) {
+        isVisible = entries[0].isIntersecting;
+      }, { threshold: 0.05 }).observe(canvas);
+
+      /* prefers-reduced-motion: just show static + reveal text */
+      if (prefersReduced) {
+        canvas.classList.add('gl-visible');
+        var hl2  = document.getElementById('oh-hl');
+        var cap2 = document.getElementById('oh-cap');
+        if (hl2)  hl2.classList.add('in');
+        if (cap2) cap2.classList.add('in');
+      }
+
+      function draw(ts) {
+        requestAnimationFrame(draw);
+        if (!isVisible) return;
+        t = ts * .001;
+
+        /* auto-orbit on touch / mobile */
+        if (noHover || prefersReduced) {
+          tmx = .5 + Math.sin(t * .38) * .26;
+          tmy = .44 + Math.cos(t * .29) * .16;
         }
+
+        mx += (tmx - mx) * .06;
+        my += (tmy - my) * .06;
+
+        gl.useProgram(prog);
+        gl.bindVertexArray(vao);
+        gl.uniform2f(uMouse, mx, my);
+        gl.uniform1i(uImg, 0);
+        gl.uniform1f(uImgAsp, img.naturalWidth / img.naturalHeight);
+        gl.uniform1f(uCvAsp,  canvas.width / canvas.height);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      }
+      requestAnimationFrame(draw);
+    }
+
+    function initFallback() {
+      var scene = document.getElementById('onhand-scene');
+      var layer = document.getElementById('onhand-fb-layer');
+      if (!scene || !layer) return;
+      scene.addEventListener('mousemove', function(e) {
+        var r = scene.getBoundingClientRect();
+        var nx = (e.clientX - r.left) / r.width - .5;
+        var ny = (e.clientY - r.top)  / r.height - .5;
+        layer.style.transform = 'translate('+(-nx*22)+'px,'+(-ny*14)+'px)';
       });
-    }, { threshold: 0.3 });
-    ohIO.observe(ohScene);
-  }
+      scene.addEventListener('mouseleave', function() { layer.style.transform=''; });
+      new IntersectionObserver(function(entries) {
+        if (!entries[0].isIntersecting) return;
+        var hl  = document.getElementById('oh-hl');
+        var cap = document.getElementById('oh-cap');
+        if (hl)  hl.classList.add('in');
+        if (cap) cap.classList.add('in');
+      }, { threshold: 0.3 }).observe(scene);
+    }
+  })();
 })();
 </script>
 </body>
