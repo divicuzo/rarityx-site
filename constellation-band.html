@@ -40,6 +40,17 @@
 .atlas-sticky { position:sticky; top:0; height:100vh; overflow:hidden; }
 #atlas-svg { position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
 
+/* atlas background video */
+.atlas-media {
+  position:absolute; inset:0; z-index:0;
+  opacity:0; transition:opacity 1.6s cubic-bezier(.16,1,.3,1);
+}
+.atlas-media.visible { opacity:1; }
+.atlas-media video {
+  width:100%; height:100%; object-fit:cover;
+  filter:brightness(.28) saturate(.62);
+}
+
 .atlas-label {
   position:absolute; top:28px; left:4vw;
   font-family:'Space Mono',monospace; font-size:9px;
@@ -446,6 +457,11 @@
      ══════════════════════════════════════════ -->
 <section id="atlas" aria-label="Constellation atlas — botanical star map">
   <div class="atlas-sticky">
+    <div class="atlas-media" id="atlas-media">
+      <video autoplay muted loop playsinline preload="auto">
+        <source src="Jewelry/fcm_constalationband.mp4" type="video/mp4">
+      </video>
+    </div>
 
     <svg id="atlas-svg" viewBox="0 0 1000 600"
          preserveAspectRatio="xMidYMid slice" aria-hidden="true">
@@ -1063,6 +1079,22 @@
   }, { threshold: 0.1 });
   var detPair = document.querySelector('.detail-pair');
   if (detPair) detailPairIO.observe(detPair);
+
+  /* ── ATLAS MEDIA: fade in + pause off-screen ── */
+  var atlasMedia = document.getElementById('atlas-media');
+  if (atlasMedia) {
+    var atlasVid = atlasMedia.querySelector('video');
+    /* fade in when section enters viewport */
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        atlasMedia.classList.toggle('visible', e.isIntersecting);
+        if (atlasVid) {
+          if (e.isIntersecting) { atlasVid.play(); }
+          else { atlasVid.pause(); }
+        }
+      });
+    }, { threshold: 0.01 }).observe(document.getElementById('atlas') || atlasMedia);
+  }
 
 })();
 </script>
