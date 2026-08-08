@@ -249,10 +249,10 @@ ul,ol{list-style:none;}
 #section-01{background:#330D1E;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;padding:0 clamp(24px,8vw,120px);position:relative;overflow:hidden;}
 .section-num{position:absolute;top:88px;left:clamp(24px,8vw,120px);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#d0a0b0;text-transform:uppercase;}
 .s01-content{display:flex;flex-direction:column;max-width:900px;}
-.s01-headline{font-family:'Bodoni Moda', 'Didot',serif;font-style:italic;font-weight:300;font-size:clamp(52px,8vw,110px);line-height:1.05;color:#f5f5f5;padding-bottom:8px;opacity:0;transform:translateY(28px);transition:opacity 0.9s cubic-bezier(0.22,1,0.36,1),transform 0.9s cubic-bezier(0.22,1,0.36,1);}
+.s01-headline{font-family:'Bodoni Moda', 'Didot',serif;font-style:italic;font-weight:400;font-size:clamp(62px,9vw,128px);line-height:1.02;color:#f5f5f5;padding-bottom:8px;opacity:0;transform:translateY(28px);transition:opacity 0.9s cubic-bezier(0.22,1,0.36,1),transform 0.9s cubic-bezier(0.22,1,0.36,1);}
 .s01-headline.is-visible{opacity:1;transform:translateY(0);}
 .s01-sub{margin-top:32px;display:flex;flex-direction:column;gap:4px;}
-.s01-sub span{font-family:'Space Mono',monospace;font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:#d0a0b0;opacity:0;transform:translateY(10px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1);}
+.s01-sub span{font-family:'Space Mono',monospace;font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:#e0b8cc;opacity:0;transform:translateY(10px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1);}
 .s01-headline.is-visible ~ .s01-sub span:nth-child(1){opacity:1;transform:translateY(0);transition-delay:0.25s;}
 .s01-headline.is-visible ~ .s01-sub span:nth-child(2){opacity:1;transform:translateY(0);transition-delay:0.38s;}
 .s01-headline.is-visible ~ .s01-sub span:nth-child(3){opacity:1;transform:translateY(0);transition-delay:0.51s;}
@@ -308,9 +308,9 @@ ul,ol{list-style:none;}
 .origin-card.oc-entered .oc-era{opacity:1;transform:translateY(0);}
 .oc-rule{width:0;height:1px;background:rgba(200,200,200,.7);margin-bottom:22px;transition:width .9s cubic-bezier(.16,1,.3,1) .28s;}
 .origin-card.oc-entered .oc-rule{width:48px;}
-.oc-title{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;font-size:clamp(28px,3vw,50px);line-height:1.12;color:#f5f5f5;margin-bottom:18px;opacity:0;transform:translateY(16px);transition:opacity .8s ease .38s,transform .8s cubic-bezier(.16,1,.3,1) .38s;}
+.oc-title{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:400;font-size:clamp(34px,3.6vw,58px);line-height:1.1;color:#f5f5f5;margin-bottom:18px;opacity:0;transform:translateY(16px);transition:opacity .8s ease .38s,transform .8s cubic-bezier(.16,1,.3,1) .38s;}
 .origin-card.oc-entered .oc-title{opacity:1;transform:translateY(0);}
-.origin-body{font-family:'Outfit',sans-serif;font-size:14px;line-height:1.78;color:rgba(184,142,160,.85);max-width:38ch;opacity:0;transform:translateY(10px);transition:opacity .75s ease .5s,transform .75s cubic-bezier(.16,1,.3,1) .5s;}
+.origin-body{font-family:'Outfit',sans-serif;font-size:15px;line-height:1.75;color:rgba(212,176,192,.92);max-width:38ch;opacity:0;transform:translateY(10px);transition:opacity .75s ease .5s,transform .75s cubic-bezier(.16,1,.3,1) .5s;}
 .origin-card.oc-entered .origin-body{opacity:1;transform:translateY(0);}
 
 /* "Now" card climax */
@@ -336,7 +336,7 @@ ul,ol{list-style:none;}
 #section-03::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:#5a1a2e;}
 .s03-header{margin-bottom:clamp(60px,8vw,100px);position:relative;}
 .s03-eyebrow{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#c8909e;margin-bottom:20px;display:block;}
-.s03-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(56px,8vw,110px);text-transform:uppercase;color:#f5f5f5;letter-spacing:-0.02em;line-height:0.9;display:block;}
+.s03-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(66px,9vw,128px);text-transform:uppercase;color:#f5f5f5;letter-spacing:-0.02em;line-height:0.88;display:block;}
 .s03-sub{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#c8909e;margin-top:24px;display:block;}
 .s03-header-rule{position:absolute;top:0;right:0;width:1px;height:100%;background:#5a1a2e;display:none;}
 @media(min-width:1024px){.s03-header-rule{display:block;}}
@@ -351,8 +351,8 @@ ul,ol{list-style:none;}
 .phase-card::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0);transition:background .4s ease;pointer-events:none;}
 .phase-card:hover::after{background:rgba(255,255,255,.018);}
 .phase-num{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#c8909e;margin-bottom:24px;display:block;}
-.phase-name{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(28px,4vw,48px);text-transform:uppercase;color:#f5f5f5;line-height:1;margin-bottom:16px;letter-spacing:-0.01em;}
-.phase-body{font-family:'Outfit',sans-serif;font-size:18px;color:#aaaaaa;line-height:1.8;max-width:38ch;margin-bottom:24px;}
+.phase-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(34px,4.5vw,56px);text-transform:uppercase;color:#f5f5f5;line-height:1;margin-bottom:16px;letter-spacing:-0.01em;}
+.phase-body{font-family:'Outfit',sans-serif;font-size:18px;color:#c8c0cc;line-height:1.8;max-width:38ch;margin-bottom:24px;}
 .phase-fig{display:none;}
 .phase-img{width:100%;height:clamp(280px,28vw,420px);object-fit:cover;filter:grayscale(70%) contrast(1.2);display:block;transition:filter .5s ease;}
 .phase-card:hover .phase-img{filter:grayscale(40%) contrast(1.15);}
@@ -366,7 +366,7 @@ ul,ol{list-style:none;}
 #section-04{position:relative;background:#330D1E;font-family:'Outfit',sans-serif;}
 .s04-header{padding:clamp(80px,10vw,140px) clamp(24px,8vw,120px) clamp(60px,7vw,100px);background:#330D1E;border-bottom:1px solid #5a1a2e;overflow:hidden;}
 .s04-header-inner{display:flex;flex-direction:column;gap:20px;}
-.s04-eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#888;display:block;}
+.s04-eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#c8a8bc;display:block;}
 .s04-wordmark{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(72px,13vw,180px);line-height:0.9;text-transform:uppercase;color:#f5f5f5;letter-spacing:-0.02em;white-space:nowrap;}
 .s04-wordmark-of{font-family:'Bodoni Moda', 'Didot',serif;font-weight:300;font-style:italic;font-size:clamp(52px,9vw,128px);color:#c8c8c8;vertical-align:baseline;margin:0 0.04em;letter-spacing:0;}
 .stack-wrapper{position:relative;background:#330D1E;}
@@ -379,8 +379,8 @@ ul,ol{list-style:none;}
 .card-content{padding:clamp(48px,6vw,96px) clamp(24px,8vw,120px);display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;}
 .card-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(120px,16vw,200px);color:#141414;line-height:1;position:absolute;right:-0.15em;bottom:clamp(32px,5vw,60px);z-index:0;user-select:none;pointer-events:none;letter-spacing:-0.04em;opacity:1;}
 .card-sub{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#d0a0b0;margin-bottom:20px;position:relative;z-index:1;}
-.card-concept{font-family:'Bodoni Moda', 'Didot',serif;font-style:italic;font-weight:300;font-size:clamp(38px,5vw,64px);color:#f5f5f5;line-height:1.1;padding-bottom:8px;margin-bottom:24px;position:relative;z-index:1;letter-spacing:-0.01em;}
-.card-body{font-family:'Outfit',sans-serif;font-size:14px;color:#888;line-height:1.8;max-width:42ch;position:relative;z-index:1;margin-bottom:32px;}
+.card-concept{font-family:'Bodoni Moda', 'Didot',serif;font-style:italic;font-weight:400;font-size:clamp(42px,5.5vw,72px);color:#f5f5f5;line-height:1.08;padding-bottom:8px;margin-bottom:24px;position:relative;z-index:1;letter-spacing:-0.01em;}
+.card-body{font-family:'Outfit',sans-serif;font-size:15px;color:#b4b0bc;line-height:1.78;max-width:42ch;position:relative;z-index:1;margin-bottom:32px;}
 .card-label{display:flex;align-items:center;gap:14px;position:relative;z-index:1;}
 .card-label-line{display:block;width:32px;height:1px;background:#c8c8c8;flex-shrink:0;}
 .card-label-text{font-family:'Bodoni Moda', 'Didot',serif;font-weight:400;font-style:italic;font-size:15px;color:#c8c8c8;letter-spacing:0.06em;}
