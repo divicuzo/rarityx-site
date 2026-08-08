@@ -435,7 +435,7 @@
 .study-headline {
   font-family: 'Bodoni Moda', serif;
   font-style: italic;
-  font-weight: 300;
+  font-weight: 400;
   font-size: clamp(26px, 4vw, 62px);
   color: rgba(245,242,238,.82);
   margin: 0;
@@ -521,38 +521,10 @@
   border-color: var(--accent);
 }
 
-/* ─────────────────────────────────────────
-   TEXT MARQUEE (replaces image belt)
-───────────────────────────────────────── */
-.rx-spec-marquee {
-  background: var(--surface);
-  border-top: 1px solid var(--divider);
-  border-bottom: 1px solid var(--divider);
-  overflow: hidden;
-  padding: 15px 0;
-}
-.rx-spec-track {
-  display: flex;
-  white-space: nowrap;
-  font-family: 'Space Mono', monospace;
-  font-size: 9.5px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: rgba(212,176,192,.38);
-  animation: specScroll 32s linear infinite;
-  width: max-content;
-  gap: 0;
-}
-.rx-spec-track span { padding: 0 24px; }
-.rx-spec-track .sep { color: var(--divider); padding: 0 4px; }
-@keyframes specScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-.rx-spec-marquee:hover .rx-spec-track { animation-play-state: paused; }
-@media (prefers-reduced-motion:reduce) {
-  .rx-spec-track { animation: none; }
-}
+/* rx-marquee override for dark bg on this page */
+.rx-marquee { background:#060608; }
+.rx-marquee-item { background:#060608; }
+.rx-marquee-item img { object-fit:contain; background:#060608; }
 
 /* ─────────────────────────────────────────
    RESPONSIVE
@@ -712,7 +684,6 @@
   </video>
   <div class="study-scrim" aria-hidden="true"></div>
   <div class="study-text">
-    <span class="study-kicker">SURFACE STUDY</span>
     <p class="study-headline">Every facet, intentional.</p>
     <div class="study-rule"></div>
   </div>
@@ -742,27 +713,41 @@
   <span class="np-arrow">&#8594;</span>
 </a>
 
-<!-- ─── SPEC TEXT MARQUEE ────────────────────────────────── -->
-<div class="rx-spec-marquee" aria-hidden="true">
-  <div class="rx-spec-track">
-    <span>ROUND BRILLIANT</span><span class="sep">&middot;</span>
-    <span>950 PLATINUM</span><span class="sep">&middot;</span>
-    <span>FOUR-PRONG BASKET</span><span class="sep">&middot;</span>
-    <span>SOLSTICE MERIDIAN</span><span class="sep">&middot;</span>
-    <span>D&ndash;F COLOUR</span><span class="sep">&middot;</span>
-    <span>VS CLARITY</span><span class="sep">&middot;</span>
-    <span>GIA CERTIFIED</span><span class="sep">&middot;</span>
-    <span>BESPOKE ONLY</span><span class="sep">&middot;</span>
-    <span>SOLSTICE SOLITAIRE</span><span class="sep">&middot;</span>
-    <span>ROUND BRILLIANT</span><span class="sep">&middot;</span>
-    <span>950 PLATINUM</span><span class="sep">&middot;</span>
-    <span>FOUR-PRONG BASKET</span><span class="sep">&middot;</span>
-    <span>SOLSTICE MERIDIAN</span><span class="sep">&middot;</span>
-    <span>D&ndash;F COLOUR</span><span class="sep">&middot;</span>
-    <span>VS CLARITY</span><span class="sep">&middot;</span>
-    <span>GIA CERTIFIED</span><span class="sep">&middot;</span>
-    <span>BESPOKE ONLY</span><span class="sep">&middot;</span>
-    <span>SOLSTICE SOLITAIRE</span><span class="sep">&middot;</span>
+<!-- ─── IMAGE MARQUEE ────────────────────────────────── -->
+<div class="rx-marquee" aria-hidden="true">
+  <div class="rx-marquee-track">
+    <div class="rx-marquee-item"><img src="Jewelry/f1.jpg"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f2.png"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f3.jpg"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f4.png"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f5.jpg"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f6.png"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f7.jpg"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f8.png"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f9.jpg"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f10.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f11.jpg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f12.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f13.jpg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f14.jpg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f15.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f16.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f1.jpg"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f2.png"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f3.jpg"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f4.png"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f5.jpg"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f6.png"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f7.jpg"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f8.png"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f9.jpg"  alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f10.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f11.jpg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f12.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f13.jpg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f14.jpg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f15.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f16.png" alt="" loading="lazy"></div>
   </div>
 </div>
 

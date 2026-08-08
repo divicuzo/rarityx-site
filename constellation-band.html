@@ -161,7 +161,7 @@
 .story-copy .dim.in { opacity:1; }
 
 /* ── GALLERY ── */
-#gallery { background:var(--surface); padding:13vh 0 0; overflow:hidden; }
+#gallery { background:#060608; padding:13vh 0 0; overflow:hidden; }
 .gallery-header {
   padding:0 6vw 52px;
   display:flex; align-items:baseline; gap:20px; flex-wrap:wrap;
@@ -176,7 +176,7 @@
   font-size:clamp(34px,4.2vw,66px); text-transform:uppercase;
   color:var(--text); margin:0; line-height:1;
 }
-.gallery-grid { display:grid; grid-template-columns:1fr 1fr 1fr; }
+.gallery-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:2px; }
 .gallery-cell {
   overflow:hidden; position:relative;
   clip-path:inset(0 0 100% 0);
@@ -186,8 +186,6 @@
 .gallery-cell:nth-child(3) { transition-delay:.22s; }
 .gallery-cell:nth-child(4) { transition-delay:.33s; }
 .gallery-cell:nth-child(5) { transition-delay:.44s; }
-.gallery-cell.wide { grid-column:span 2; }
-.gallery-cell.wide img { aspect-ratio:16/9 !important; }
 /* story second image */
 .story-visual figure.fig-secondary { margin-top:8px; transition-delay:.18s; }
 .story-visual figure.fig-secondary img { aspect-ratio:3/2; }
@@ -196,14 +194,9 @@
 .detail-pair figure:nth-child(2) { transition-delay:.15s; }
 .gallery-cell.in { clip-path:inset(0 0 0% 0); }
 .gallery-cell img {
-  width:100%; display:block; object-fit:cover;
+  width:100%; display:block; object-fit:cover; aspect-ratio:3/4;
   transition:transform .85s cubic-bezier(.16,1,.3,1);
 }
-.gallery-cell:nth-child(1) img { aspect-ratio:2/3; }
-.gallery-cell:nth-child(2) img { aspect-ratio:3/4; }
-.gallery-cell:nth-child(3) img { aspect-ratio:4/5; }
-.gallery-cell:nth-child(4) img { aspect-ratio:3/4; }
-.gallery-cell:nth-child(5) img { aspect-ratio:2/3; }
 .gallery-cell:hover img { transform:scale(1.04); }
 .gallery-cap {
   position:absolute; bottom:18px; left:18px;
@@ -415,9 +408,6 @@
   .detail-grid { grid-template-columns:1fr; gap:40px; }
   .detail-pair { grid-template-columns:1fr 1fr; }
   .gallery-grid { grid-template-columns:1fr 1fr; }
-  .gallery-cell.wide { grid-column:1/-1; }
-  .gallery-cell:nth-child(3) { grid-column:auto; }
-  .gallery-cell:nth-child(3) img { aspect-ratio:4/5; object-position:center 30%; }
   /* Reduced transforms on tablet */
   .gallery-cell[data-reveal] { transform:translateY(18px); }
   .gallery-cell[data-reveal]:hover { transform:scale(1.02); }
@@ -724,7 +714,7 @@
     <h2>Related Forms</h2>
   </div>
   <div class="gallery-grid">
-    <div class="gallery-cell wide" data-reveal>
+    <div class="gallery-cell" data-reveal>
       <img src="Jewelry/cb_v6.jpg"
            alt="Constellation Band — botanical atlas form, full vine necklace with branch constellation"
            loading="lazy">

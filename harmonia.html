@@ -34,7 +34,7 @@
 .atlas-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 22%;opacity:.8;}
 .atlas-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,8,.94) 0%,rgba(6,6,8,.3) 42%,transparent 68%),linear-gradient(to right,rgba(6,6,8,.28) 0%,transparent 45%);z-index:2;}
 
-.atlas-label{position:absolute;top:28px;left:5vw;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.22em;color:rgba(160,180,220,.3);text-transform:uppercase;z-index:5;}
+/* atlas-label removed */
 
 .atlas-type{position:absolute;bottom:9vh;left:5vw;z-index:5;}
 .atlas-idx{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(200,200,200,.5);display:block;margin-bottom:14px;}
@@ -125,14 +125,18 @@
 .gb-cap{position:absolute;bottom:0;left:0;right:0;padding:22px 18px 16px;background:linear-gradient(to top,rgba(0,0,0,.72) 0%,transparent 100%);font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,245,245,.8);transform:translateY(100%);transition:transform .38s cubic-bezier(.16,1,.3,1);pointer-events:none;}
 .gb-cell:hover .gb-cap{transform:translateY(0);}
 
-/* ── UGC REEL ── */
-#reel{background:#060608;position:relative;overflow:hidden;}
-.reel-inner{position:relative;max-width:520px;margin:0 auto;overflow:hidden;}
-.reel-video{width:100%;display:block;aspect-ratio:9/16;object-fit:cover;max-height:88vh;}
-.reel-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 48%,rgba(6,6,8,.88) 100%);pointer-events:none;}
-.reel-label{position:absolute;bottom:8vh;left:0;right:0;text-align:center;z-index:3;}
-.reel-eyebrow{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(200,200,200,.42);display:block;margin-bottom:10px;}
-.reel-text{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;font-size:clamp(22px,3.5vw,54px);color:rgba(245,245,245,.88);display:block;}
+/* ── ON HAND — cursor parallax ── */
+#onhand{position:relative;overflow:hidden;background:#060608;min-height:82vh;}
+.onhand-scene{position:absolute;inset:0;cursor:crosshair;}
+.onhand-layer{position:absolute;inset:-10%;will-change:transform;transition:transform .25s cubic-bezier(.16,1,.3,1);}
+.onhand-layer img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.86) saturate(.9);}
+.onhand-scrim{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(6,6,8,.82) 100%),linear-gradient(to right,rgba(6,6,8,.28) 0%,transparent 40%);z-index:2;pointer-events:none;}
+.onhand-text{position:absolute;bottom:9vh;left:5vw;z-index:3;}
+.oh-eyebrow{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(200,200,200,.38);display:block;margin-bottom:10px;}
+.oh-headline{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;font-size:clamp(30px,4.8vw,78px);color:rgba(245,245,245,.9);opacity:0;transform:translateY(20px);transition:opacity .9s,transform .9s cubic-bezier(.16,1,.3,1);}
+.oh-headline.in{opacity:1;transform:translateY(0);}
+.oh-caption{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(200,200,200,.32);display:block;margin-top:12px;opacity:0;transition:opacity .7s ease .3s;}
+.oh-caption.in{opacity:1;}
 
 /* ── DETAIL / SPECS ── */
 #detail{background:var(--bg);padding:18vh 6vw;}
@@ -198,8 +202,7 @@
   .gb-a,.gb-b,.gb-c,.gb-d{grid-column:1;grid-row:auto;}
   .gb-a img,.gb-b img,.gb-c img{aspect-ratio:3/4;}
   .gb-d img{aspect-ratio:4/3;}
-  .reel-inner{max-width:100%;}
-  .reel-video{max-height:78vh;}
+  #onhand{min-height:60vh;}
   .gb-cap{transform:translateY(0);background:linear-gradient(to top,rgba(0,0,0,.55) 0%,transparent 100%);}
   #atlas{height:auto;}
   .atlas-sticky{position:relative;height:100dvh;}
@@ -233,10 +236,7 @@
     </div>
     <div class="atlas-overlay"></div>
 
-    <div class="atlas-label" aria-hidden="true">RX — HARMONIA / THREE-STONE OVAL / 18K ROSE GOLD</div>
-
     <div class="atlas-type">
-      <span class="atlas-idx">Commission No. 06</span>
       <div class="atlas-tristone" aria-hidden="true">
         <div class="ats-oval"></div>
         <div class="ats-oval"></div>
@@ -278,7 +278,9 @@
         <img src="Jewelry/lp_Harmonia_v2.jpeg" alt="Harmonia on limestone surface, editorial" loading="lazy">
       </figure>
       <figure class="fig-secondary">
-        <img src="Jewelry/lp_Harmonia_v3.jpeg" alt="Harmonia with dried botanicals, warm light" loading="lazy">
+        <video autoplay muted loop playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;display:block;" aria-label="Harmonia — client UGC">
+          <source src="Jewelry/lp_Harmonia_ugc.mp4" type="video/mp4">
+        </video>
       </figure>
     </div>
     <div class="story-copy">
@@ -332,16 +334,17 @@
   </div>
 </section>
 
-<!-- ══ UGC REEL ══ -->
-<section id="reel" aria-label="On the hand">
-  <div class="reel-inner">
-    <video class="reel-video" autoplay muted loop playsinline preload="metadata" aria-label="Harmonia worn on hand — client video">
-      <source src="Jewelry/lp_Harmonia_ugc.mp4" type="video/mp4">
-    </video>
-    <div class="reel-overlay"></div>
-    <div class="reel-label">
-      <span class="reel-eyebrow">Client — worn</span>
-      <span class="reel-text">On the hand.</span>
+<!-- ══ ON HAND ══ -->
+<section id="onhand" aria-label="Harmonia — on the hand">
+  <div class="onhand-scene" id="onhand-scene">
+    <div class="onhand-layer" id="onhand-layer">
+      <img src="Jewelry/lp_Harmonia_special.jpeg" alt="Harmonia worn on hand" loading="lazy">
+    </div>
+    <div class="onhand-scrim" aria-hidden="true"></div>
+    <div class="onhand-text">
+      <span class="oh-eyebrow">As worn</span>
+      <span class="oh-headline" id="oh-hl">On the hand.</span>
+      <span class="oh-caption" id="oh-cap">Rose gold &middot; three-stone oval &middot; client delivery</span>
     </div>
   </div>
 </section>
@@ -388,16 +391,38 @@
 <!-- ══ MARQUEE ══ -->
 <div class="rx-marquee" aria-hidden="true">
   <div class="rx-marquee-track">
-    <div class="rx-marquee-item"><img src="Jewelry/lp_Harmonia_v1.jpeg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/lp_Harmonia_v2.jpeg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/lp_Harmonia_v3.jpeg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/lp_Harmonia_v4.jpeg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/lp_Harmonia_special.jpeg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/lp_Harmonia_v1.jpeg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/lp_Harmonia_v2.jpeg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/lp_Harmonia_v3.jpeg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/lp_Harmonia_v4.jpeg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/lp_Harmonia_special.jpeg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f1.jpg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f2.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f3.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f4.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f5.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f6.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f7.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f8.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f9.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f10.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f11.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f12.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f13.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f14.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f15.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f16.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f1.jpg" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f2.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f3.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f4.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f5.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f6.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f7.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f8.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f9.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f10.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f11.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f12.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f13.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f14.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f15.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><img src="Jewelry/f16.png" alt="" loading="lazy"></div>
   </div>
 </div>
 
@@ -549,6 +574,31 @@
   ].forEach(function(sel){
     document.querySelectorAll(sel).forEach(function(el){ io.observe(el); });
   });
+
+  /* ── ON HAND — cursor parallax + reveal ── */
+  var ohScene = document.getElementById('onhand-scene');
+  var ohLayer = document.getElementById('onhand-layer');
+  if (ohScene && ohLayer) {
+    ohScene.addEventListener('mousemove', function(e) {
+      var r = ohScene.getBoundingClientRect();
+      var nx = (e.clientX - r.left) / r.width - 0.5;
+      var ny = (e.clientY - r.top) / r.height - 0.5;
+      ohLayer.style.transform = 'translate(' + (nx * -22) + 'px, ' + (ny * -14) + 'px)';
+    });
+    ohScene.addEventListener('mouseleave', function() { ohLayer.style.transform = ''; });
+    var ohIO = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          var hl = document.getElementById('oh-hl');
+          var cap = document.getElementById('oh-cap');
+          if (hl) hl.classList.add('in');
+          if (cap) cap.classList.add('in');
+          ohIO.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    ohIO.observe(ohScene);
+  }
 })();
 </script>
 </body>
