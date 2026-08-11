@@ -157,7 +157,7 @@
   opacity:0; transform:translateY(14px);
   transition:opacity .7s ease .16s, transform .7s cubic-bezier(.16,1,.3,1) .16s;
 }
-.story-copy p:nth-of-type(2) { transition-delay:.24s,.24s; }
+/* p:nth-of-type(2) delay removed — single paragraph now */
 .story-copy p.in { opacity:1; transform:translateY(0); }
 .story-copy .dim {
   font-family:'Space Mono',monospace; font-size:10px;
@@ -188,10 +188,7 @@
   clip-path:inset(0 0 100% 0);
   transition:clip-path 1.05s cubic-bezier(.16,1,.3,1);
 }
-.gallery-cell:nth-child(2) { transition-delay:.11s; }
-.gallery-cell:nth-child(3) { transition-delay:.22s; }
-.gallery-cell:nth-child(4) { transition-delay:.33s; }
-.gallery-cell:nth-child(5) { transition-delay:.44s; }
+.gallery-cell:nth-child(2) { transition-delay:.14s; }
 /* story second image */
 .story-visual figure.fig-secondary { margin-top:8px; transition-delay:.18s; }
 .story-visual figure.fig-secondary img { aspect-ratio:3/2; }
@@ -285,9 +282,10 @@
 .finale-stack h2 span { display:block; }
 /* .off-l / .off-r initial state set by GSAP — no static transform */
 .finale-sub {
-  font-family:'Bodoni Moda',serif; font-style:italic;
-  font-weight:300; font-size:clamp(18px,2.2vw,30px);
-  color:rgba(245,245,245,.84); display:block; margin-top:22px;
+  font-family:'Outfit',sans-serif; font-style:normal;
+  font-weight:300; font-size:clamp(16px,1.8vw,24px);
+  letter-spacing:.04em; color:rgba(245,245,245,.72);
+  display:block; margin-top:22px;
 }
 .finale-cta { margin-top:9vh; }
 .finale-cta a {
@@ -306,8 +304,7 @@
 .rx-marquee-item img { object-fit:contain; background:#060608; }
 
 /* ── GALLERY OVERDRIVE ── */
-/* First cell spans 2 cols on desktop (already .wide in HTML) */
-/* Stagger reveal — data-reveal on each cell, IO-driven */
+/* 2 cells: .wide spans cols 1-2, portrait in col 3. IO reveal stagger. */
 .gallery-cell[data-reveal] {
   opacity:0;
   transform:translateY(32px);
@@ -760,7 +757,7 @@
       <span class="gallery-cap">Branch Detail</span>
     </div>
   </div>
-  <a class="gallery-archive" href="#">+ 3 additional studies on request</a>
+  <a class="gallery-archive" href="index.html#section-09" data-rx-nav>+ 3 additional studies — begin a conversation</a>
 </section>
 
 <!-- ══════════════════════════════════════════
@@ -819,7 +816,7 @@
       <span class="off-r">Taken</span>
       <span class="off-c">Root</span>
     </h2>
-    <em class="finale-sub reveal">A necklace that looks like it grew.</em>
+    <span class="finale-sub reveal">A necklace that looks like it grew.</span>
     <div class="finale-cta reveal">
       <a href="index.html#section-09" data-rx-nav>Start with a conversation</a>
     </div>

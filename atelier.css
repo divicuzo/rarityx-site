@@ -10,7 +10,8 @@
   --muted:#c0bcc8;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#330D1E;color:var(--text);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden}
+html,body{overflow-x:clip}
+body{background:#330D1E;color:var(--text);font-family:'Outfit',sans-serif;font-weight:300}
 ::selection{background:#c8c8c8;color:#050505}
 
 .rx-veil{position:fixed;inset:0;z-index:200;background:#330D1E;pointer-events:none;transform:translateY(0);transition:transform .52s cubic-bezier(.77,0,.175,1)}
