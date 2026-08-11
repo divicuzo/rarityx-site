@@ -75,11 +75,7 @@
   font-size:clamp(62px,11vw,178px); line-height:.86;
   text-transform:uppercase; color:var(--text); margin:0;
 }
-.atlas-type h1 em {
-  font-family:'Bodoni Moda',serif; font-style:italic;
-  font-weight:300; font-size:.38em;
-  color:rgba(245,245,245,.80); display:block; text-transform:none;
-}
+/* em removed — subtitle now .atlas-subtitle */
 .atlas-type .scroll-hint {
   font-family:'Space Mono',monospace; font-size:10px;
   letter-spacing:.3em; color:rgba(200,200,200,.38);
@@ -111,7 +107,7 @@
   font-family:'Bodoni Moda',serif; font-style:italic;
   font-weight:300; font-size:clamp(30px,5vw,80px);
   line-height:1.1; color:rgba(245,245,245,.94);
-  margin:0; max-width:15ch;
+  margin:0; max-width:22ch;
   opacity:0; transform:translateY(22px);
   transition:opacity .9s cubic-bezier(.16,1,.3,1) .18s,
              transform .9s cubic-bezier(.16,1,.3,1) .18s;
@@ -175,12 +171,11 @@
 #gallery { background:#060608; padding:13vh 0 0; overflow:hidden; }
 .gallery-header {
   padding:0 6vw 52px;
-  display:flex; align-items:baseline; gap:20px; flex-wrap:wrap;
 }
 .gallery-header .eyebrow {
   font-family:'Space Mono',monospace; font-size:9px;
   letter-spacing:.28em; text-transform:uppercase;
-  color:var(--muted); flex-shrink:0;
+  color:var(--muted); display:block; margin-bottom:14px;
 }
 .gallery-header h2 {
   font-family:'Barlow Condensed',sans-serif; font-weight:800;
@@ -288,8 +283,7 @@
   text-transform:uppercase; color:var(--text); margin:0;
 }
 .finale-stack h2 span { display:block; }
-.finale-stack h2 .off-l { transform:translateX(-4vw); }
-.finale-stack h2 .off-r { transform:translateX(4vw); }
+/* .off-l / .off-r initial state set by GSAP — no static transform */
 .finale-sub {
   font-family:'Bodoni Moda',serif; font-style:italic;
   font-weight:300; font-size:clamp(18px,2.2vw,30px);
@@ -301,7 +295,7 @@
   font-family:'Space Mono',monospace; font-size:11px;
   letter-spacing:.24em; text-transform:uppercase;
   color:var(--text); text-decoration:none;
-  border:1px solid var(--divider); padding:17px 46px;
+  border:1px solid rgba(200,200,200,.42); padding:17px 46px;
   transition:background .25s ease, color .25s ease;
 }
 .finale-cta a:hover { background:var(--accent); color:#330D1E; }
@@ -387,6 +381,26 @@
 }
 .detail-pair figure.in img { filter:brightness(1); }
 
+/* ── ATLAS SUBTITLE ── */
+.atlas-subtitle {
+  font-family:'Outfit',sans-serif; font-weight:300;
+  font-size:clamp(12px,1.2vw,17px); color:rgba(245,245,245,.55);
+  display:block; margin-top:16px; letter-spacing:.06em;
+}
+
+/* ── GALLERY WIDE CELL + ARCHIVE LINK ── */
+.gallery-cell.wide { grid-column:span 2; }
+.gallery-cell.wide img { aspect-ratio:16/9; }
+.gallery-archive {
+  display:block; padding:18px 6vw;
+  font-family:'Space Mono',monospace; font-size:9px;
+  letter-spacing:.24em; text-transform:uppercase;
+  color:var(--muted); text-decoration:none;
+  border-top:1px solid var(--divider);
+  transition:color .22s ease;
+}
+.gallery-archive:hover { color:var(--text); }
+
 /* ── REDUCED MOTION ── */
 @media (prefers-reduced-motion:reduce) {
   #atlas { height:auto; }
@@ -409,10 +423,13 @@
   .gallery-cell[data-reveal] .gallery-cap { transform:translateY(0) !important; }
   .story-line-inner { transform:translateY(0) !important; }
   .detail-pair figure img { filter:brightness(1) !important; }
+  .finale-display span { opacity:1 !important; transform:none !important; }
 }
 
 /* ── RESPONSIVE ── */
 @media (max-width:900px) {
+  .gallery-cell.wide { grid-column:auto; }
+  .gallery-cell.wide img { aspect-ratio:4/5; }
   .story-grid { grid-template-columns:1fr; gap:40px; }
   .story-visual { position:static; }
   .story-visual figure.fig-secondary img { aspect-ratio:16/9; }
@@ -447,7 +464,7 @@
   <a class="wordmark" href="index.html" data-rx-nav>
     <img src="Jewelry/LOGO_transparent.webp" alt="RarityX" loading="eager">
   </a>
-  <a class="mono" href="index.html#section-09" data-rx-nav>Start with a conversation</a>
+  <a class="mono" href="index.html#section-09" data-rx-nav style="white-space:nowrap">Start with a conversation</a>
 </nav>
 
 <!-- ══════════════════════════════════════════
@@ -673,7 +690,8 @@
     </div>
     <div class="atlas-type">
 
-      <h1>CONSTELLATION<br>BAND<em>where every stone belongs</em></h1>
+      <h1>CONSTELLATION<br>BAND</h1>
+      <span class="atlas-subtitle">where every stone belongs</span>
       <span class="scroll-hint">Scroll ↓</span>
     </div>
   </div>
@@ -715,7 +733,6 @@
       <span class="eyebrow">THE FORM</span>
       <h2><span class="story-line-wrap"><span class="story-line-inner">Grown,</span></span><span class="story-line-wrap"><span class="story-line-inner">Not Cast</span></span></h2>
       <p>The necklace follows the logic of a vine: branches split, stones appear where leaves would, the form resolves at a single pendant drop. Each diamond placed to read as something grown rather than manufactured.</p>
-      <p>Pear and marquise cuts chosen for their directional energy — they point, they drape, they catch light the way something living does.</p>
       <span class="dim">Platinum &middot; pear-cut &middot; marquise &middot; vine-branch setting</span>
     </div>
   </div>
@@ -727,10 +744,10 @@
 <section id="gallery" aria-label="Related forms from the same study">
   <div class="gallery-header">
     <span class="eyebrow">FROM THE SAME STUDY</span>
-    <h2>Related Forms</h2>
+    <h2>Botanical Studies</h2>
   </div>
   <div class="gallery-grid">
-    <div class="gallery-cell" data-reveal>
+    <div class="gallery-cell wide" data-reveal>
       <img src="Jewelry/cb_v6.jpg"
            alt="Constellation Band — botanical atlas form, full vine necklace with branch constellation"
            loading="lazy">
@@ -742,25 +759,8 @@
            loading="lazy">
       <span class="gallery-cap">Branch Detail</span>
     </div>
-    <div class="gallery-cell" data-reveal>
-      <img src="Jewelry/cb_v4.png"
-           alt="Constellation Band — pendant drop, marquise and pear diamond cluster"
-           loading="lazy">
-      <span class="gallery-cap">Pendant Drop</span>
-    </div>
-    <div class="gallery-cell" data-reveal>
-      <img src="Jewelry/cb_v14.png"
-           alt="Constellation Band — chandelier pendant, filigree with pear diamond drops"
-           loading="lazy">
-      <span class="gallery-cap">Chandelier Pendant</span>
-    </div>
-    <div class="gallery-cell" data-reveal>
-      <img src="Jewelry/cb_v5.png"
-           alt="Constellation Band — vine setting study, stone placement across branch form"
-           loading="lazy">
-      <span class="gallery-cap">Stone Placement</span>
-    </div>
   </div>
+  <a class="gallery-archive" href="#">+ 3 additional studies on request</a>
 </section>
 
 <!-- ══════════════════════════════════════════
@@ -775,8 +775,8 @@
              loading="lazy">
       </figure>
       <figure>
-        <img src="Jewelry/cb_v13.png"
-             alt="Constellation Band — filigree cocktail ring, botanical diamond language applied to ring form"
+        <img src="Jewelry/cb_v4.png"
+             alt="Constellation Band — pendant drop, marquise and pear diamond cluster at the apex"
              loading="lazy">
       </figure>
     </div>
@@ -814,10 +814,10 @@
     <img src="Jewelry/cb_v6.jpg" alt="">
   </div>
   <div class="finale-stack">
-    <h2 class="reveal">
+    <h2 class="finale-display">
       <span class="off-l">Light</span>
       <span class="off-r">Taken</span>
-      <span>Root</span>
+      <span class="off-c">Root</span>
     </h2>
     <em class="finale-sub reveal">A necklace that looks like it grew.</em>
     <div class="finale-cta reveal">
@@ -1079,6 +1079,25 @@
   }, { threshold: 0.1 });
   var detPair = document.querySelector('.detail-pair');
   if (detPair) detailPairIO.observe(detPair);
+
+  /* ── FINALE: offset-span entry animation ── */
+  var finaleH2 = document.querySelector('#finale .finale-display');
+  if (finaleH2 && window.gsap && window.ScrollTrigger) {
+    var spOffL = finaleH2.querySelector('.off-l');
+    var spOffR = finaleH2.querySelector('.off-r');
+    var spOffC = finaleH2.querySelector('.off-c');
+    gsap.set(spOffL, { x: '-4vw', opacity: 0 });
+    gsap.set(spOffR, { x:  '4vw', opacity: 0 });
+    gsap.set(spOffC, { y:  '18px', opacity: 0 });
+    ScrollTrigger.create({
+      trigger: '#finale', start: 'top 72%', once: true,
+      onEnter: function () {
+        gsap.to(spOffL, { x: 0, opacity: 1, duration: 1.1, ease: 'power3.out' });
+        gsap.to(spOffR, { x: 0, opacity: 1, duration: 1.1, ease: 'power3.out', delay: 0.08 });
+        gsap.to(spOffC, { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out', delay: 0.22 });
+      }
+    });
+  }
 
   /* ── ATLAS MEDIA: fade in + pause off-screen ── */
   var atlasMedia = document.getElementById('atlas-media');
