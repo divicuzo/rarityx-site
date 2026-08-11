@@ -32,7 +32,7 @@
 .hero-type{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:0 4vw 8vh}
 .hero-type .idx{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#d9d9d5;margin-bottom:14px}
 .hero-type h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(58px,11vw,168px);line-height:.88;color:var(--text)}
-.hero-type h1 em{display:block;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;text-transform:none;font-size:.42em;line-height:1.15;color:#e8e6df;padding-bottom:.12em}
+.hero-type h1 em{display:block;font-family:'Bodoni Moda',serif;font-style:normal;font-weight:300;text-transform:none;font-size:.42em;line-height:1.15;color:#e8e6df;padding-bottom:.12em}
 .hero-type .scroll-hint{position:absolute;bottom:28px;right:4vw;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#b9b9b4}
 
 /* signature motion: fragment strips — the hero image sliced into 7 vertical
@@ -197,6 +197,44 @@
 .finale-cta a:hover{background:var(--chrome);color:var(--dark)}
 .finale-cta a:active{transform:scale(.98)}
 
+/* ── SPECS STRIP (Rivian DNA) ── */
+#specs{background:#0a0a0a;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a}
+.specs-inner{max-width:1400px;margin:0 auto;padding:clamp(40px,5vw,60px) clamp(24px,6vw,80px)}
+.specs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1a1a1a;margin:0;padding:0;list-style:none}
+.spec-item{background:#0a0a0a;padding:clamp(28px,4vw,48px) clamp(20px,3vw,36px);display:flex;flex-direction:column;gap:10px}
+.spec-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#555;font-weight:400}
+.spec-val{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(30px,4.5vw,54px);text-transform:uppercase;color:#f5f5f5;letter-spacing:-.01em;line-height:1}
+@media(max-width:600px){.specs-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ── ARCHITECTURE (Rivian DNA — light-break section) ── */
+#architecture{background:#ece9ee;color:#1a0a12}
+.arch-header{padding:clamp(72px,9vw,120px) clamp(24px,8vw,120px) clamp(36px,4.5vw,56px);border-bottom:1px solid #d4cfd8}
+.arch-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(52px,8vw,108px);text-transform:uppercase;letter-spacing:-.02em;line-height:.88;color:#1a0a12;margin-bottom:18px}
+.arch-sub{font-family:'Outfit',sans-serif;font-size:16px;color:#6a5060;max-width:44ch;line-height:1.7}
+.arch-rows{display:flex;flex-direction:column}
+.arch-row{display:grid;grid-template-columns:1fr 1fr;min-height:56vh;border-bottom:1px solid #d4cfd8}
+.arch-row--rev .arch-img-col{order:2}
+.arch-row--rev .arch-text-col{order:1}
+.arch-img-col{overflow:hidden}
+.arch-img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.04) brightness(.94)}
+.arch-text-col{padding:clamp(48px,6vw,80px) clamp(24px,6vw,72px);display:flex;flex-direction:column;justify-content:center;gap:14px}
+.arch-num{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#9a8090}
+.arch-h3{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(26px,3.5vw,44px);text-transform:uppercase;letter-spacing:-.01em;color:#1a0a12;line-height:1}
+.arch-body{font-family:'Outfit',sans-serif;font-size:15px;line-height:1.75;color:#6a5060;max-width:38ch}
+.arch-materials{padding:clamp(56px,7vw,88px) clamp(24px,8vw,120px);border-top:1px solid #d4cfd8}
+.mat-title{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#9a8090;margin-bottom:30px}
+.mat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#d4cfd8}
+.mat-item{background:#ece9ee;padding:clamp(22px,2.8vw,38px);display:flex;flex-direction:column;gap:8px}
+.mat-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(20px,2.8vw,30px);text-transform:uppercase;letter-spacing:-.01em;color:#1a0a12}
+.mat-desc{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;color:#9a8090}
+@media(max-width:767px){
+  .arch-row{grid-template-columns:1fr}
+  .arch-row--rev .arch-img-col{order:0}
+  .arch-row--rev .arch-text-col{order:0}
+  .arch-img-col{height:56vw}
+  .mat-grid{grid-template-columns:1fr}
+}
+
 /* ── LP-V7 SCROLL SCRUB ── */
 #scrub-v7{position:relative;height:500vh;background:#0a0a0a}
 .scrub-v7-sticky{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden}
@@ -206,7 +244,7 @@
 .v7-stage-a .v7-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#d9d9d5;margin-bottom:10px}
 .v7-stage-a h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(44px,7.5vw,110px);line-height:.9;color:var(--text)}
 .v7-stage-b{position:absolute;top:50%;right:6vw;transform:translateY(-50%);opacity:0;transition:opacity 120ms cubic-bezier(.23,1,.32,1);text-align:right}
-.v7-stage-b p{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:300;font-size:clamp(18px,2.2vw,28px);color:#d4d4d0;line-height:1.6;max-width:28ch}
+.v7-stage-b p{font-family:'Bodoni Moda',serif;font-style:normal;font-weight:300;font-size:clamp(18px,2.2vw,28px);color:#d4d4d0;line-height:1.6;max-width:28ch}
 .v7-bar{position:absolute;left:0;bottom:0;height:2px;background:#c8c8c8;width:0;z-index:3}
 @media(prefers-reduced-motion:reduce){#scrub-v7{height:auto}.scrub-v7-sticky{position:relative;height:auto}}
 @media (max-width:768px){
@@ -267,6 +305,30 @@
   </div>
 </section>
 
+<!-- ═══ SPECS STRIP ═══ -->
+<section id="specs" aria-label="Fragment Band — specifications">
+  <div class="specs-inner">
+    <dl class="specs-grid">
+      <div class="spec-item">
+        <dt class="spec-label">Bands</dt>
+        <dd class="spec-val">Seven</dd>
+      </div>
+      <div class="spec-item">
+        <dt class="spec-label">Cut</dt>
+        <dd class="spec-val">Marquise</dd>
+      </div>
+      <div class="spec-item">
+        <dt class="spec-label">Model</dt>
+        <dd class="spec-val">Commission</dd>
+      </div>
+      <div class="spec-item">
+        <dt class="spec-label">Lead time</dt>
+        <dd class="spec-val">8–12 wk</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
 <section id="story" aria-label="Built to be broken apart">
   <div class="story-wrap">
 
@@ -309,13 +371,60 @@
   </div>
 </section>
 
+<!-- ═══ ARCHITECTURE ═══ -->
+<section id="architecture" aria-label="The architecture of the Fragment Band">
+  <div class="arch-header">
+    <h2 class="arch-title">The Architecture</h2>
+    <p class="arch-sub">Each band is independent. Each cut is deliberate. The stack is the design.</p>
+  </div>
+  <div class="arch-rows">
+    <div class="arch-row">
+      <div class="arch-img-col">
+        <img class="arch-img" src="Jewelry/fb_v3.png" alt="Marquise anchor band" loading="lazy">
+      </div>
+      <div class="arch-text-col">
+        <span class="arch-num">01</span>
+        <h3 class="arch-h3">The Marquise Anchor</h3>
+        <p class="arch-body">The first band sets the axis. The pointed ends of the marquise define the piece's orientation — and the rhythm everything else follows.</p>
+      </div>
+    </div>
+    <div class="arch-row arch-row--rev">
+      <div class="arch-img-col">
+        <img class="arch-img" src="Jewelry/fb_v5.png" alt="Stack logic detail" loading="lazy">
+      </div>
+      <div class="arch-text-col">
+        <span class="arch-num">02</span>
+        <h3 class="arch-h3">The Stack Logic</h3>
+        <p class="arch-body">Six variations follow. Each band responds to the one before it — same cut language, different weight, different finish. The stack reads as one because it was designed as one.</p>
+      </div>
+    </div>
+  </div>
+  <div class="arch-materials">
+    <h3 class="mat-title">Available in</h3>
+    <div class="mat-grid">
+      <div class="mat-item">
+        <span class="mat-name">Platinum</span>
+        <span class="mat-desc">950 Pt — the coldest finish</span>
+      </div>
+      <div class="mat-item">
+        <span class="mat-name">White Gold</span>
+        <span class="mat-desc">18K WG — rhodium-plated</span>
+      </div>
+      <div class="mat-item">
+        <span class="mat-name">Mixed Metal</span>
+        <span class="mat-desc">Pt + WG alternating bands</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="finale" aria-label="One idea, in fragments">
   <div class="finale-stack">
     <h2 class="chrome-type reveal">
-      <span class="off-l">One Idea</span>
-      <span class="off-r">In</span>
-      <span>Fragments</span>
+      <span class="off-l">Commission</span>
+      <span class="off-r">Yours</span>
     </h2>
+    <p class="reveal" style="font-family:'Outfit',sans-serif;font-size:16px;color:#d4b0c0;max-width:36ch;margin:clamp(20px,3vw,32px) auto 0;line-height:1.7">The cut that refused to stay retired. Made to order — no inventory, no compromises.</p>
     <div class="finale-cta reveal">
       <a href="index.html#section-09" data-rx-nav>Start with a conversation</a>
     </div>
