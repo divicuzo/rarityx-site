@@ -960,13 +960,16 @@ ul,ol{list-style:none;}
 /* Final tier — video bg card */
 .at-prize--final .at-prize-img-wrap--video{
   aspect-ratio:1;
-  background:linear-gradient(135deg, #1a0812 0%, #330D1E 100%);
-  display:flex;align-items:center;justify-content:center;
+  background:#0a0205;
+  position:relative;overflow:hidden;
 }
 .at-prize-final-label{
+  position:absolute;bottom:0;left:0;right:0;
   display:flex;flex-direction:column;
   align-items:center;gap:0.3rem;text-align:center;
-  padding:1rem;
+  padding:28px 12px 14px;
+  background:linear-gradient(to top, rgba(8,1,5,.88) 0%, transparent 100%);
+  z-index:2;
 }
 .at-prize-final-label .at-prize-tier{font-size:0.52rem;color:rgba(200,200,200,0.6);}
 .at-prize-final-label .at-prize-name{font-size:1rem;font-weight:500;color:#f5f5f5;}
@@ -1317,7 +1320,9 @@ body.mob-open{overflow:hidden;touch-action:none;}
       </div>
       <div class="at-prize at-prize--final at-reveal" style="--d:0.4s">
         <div class="at-prize-img-wrap at-prize-img-wrap--video">
-          <img src="Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg" alt="Custom engagement ring — 2ct flawless diamond" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;">
+          <video autoplay muted loop playsinline aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.65);transform-origin:55% 40%;z-index:1">
+            <source src="Jewelry/launch_tier4.MP4" type="video/mp4">
+          </video>
           <div class="at-prize-final-label">
             <span class="at-prize-tier">Tier 200</span>
             <span class="at-prize-name">Engagement Ring</span>
