@@ -148,7 +148,7 @@ ul,ol{list-style:none;}
 .header-center{display:flex;justify-content:center;align-items:center;}
 .wordmark{text-decoration:none;line-height:1;user-select:none;display:flex;align-items:center;}
 .wordmark:hover{opacity:0.8;}
-.header-logo{height:76px;width:auto;display:block;filter:drop-shadow(0 0 2px rgba(200,168,122,0.5)) drop-shadow(0 0 8px rgba(200,168,122,0.18));transition:opacity 0.3s var(--ease-out);}
+.header-logo{height:96px;width:auto;display:block;filter:drop-shadow(0 0 2px rgba(200,168,122,0.5)) drop-shadow(0 0 8px rgba(200,168,122,0.18));transition:opacity 0.3s var(--ease-out);}
 .grid-wordmark-img{height:120px;width:auto;filter:none;opacity:1;}
 .header-right{display:flex;align-items:center;justify-content:flex-end;gap:28px;}
 .nav-links{display:flex;align-items:center;gap:24px;list-style:none;}
@@ -332,7 +332,7 @@ ul,ol{list-style:none;}
 /* ============================================================
    SECTION 03 - SUPPLY CHAIN
    ============================================================ */
-#section-03{background:#330D1E;padding:clamp(80px,10vw,140px) clamp(24px,8vw,120px) 0;min-height:100dvh;position:relative;overflow:hidden;}
+#section-03{background:#330D1E;padding:clamp(80px,10vw,140px) clamp(24px,8vw,120px) clamp(80px,10vw,120px);min-height:100dvh;position:relative;overflow:hidden;}
 #section-03::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:#5a1a2e;}
 .s03-header{margin-bottom:clamp(60px,8vw,100px);position:relative;}
 .s03-eyebrow{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#c8909e;margin-bottom:20px;display:block;}
@@ -792,8 +792,9 @@ ul,ol{list-style:none;}
 
 /* ── SECTION 03 AMBIENT ── */
 .s03-ambient-row{display:flex;gap:2px;margin:40px calc(-1 * clamp(24px,8vw,120px)) 0;height:200px;overflow:hidden;}
-.s03-ambient-img{flex:1;min-width:0;object-fit:cover;filter:grayscale(90%) brightness(0.35);opacity:0;transform:translateY(20px);transition:opacity 1.1s ease,transform 1.1s ease;}
+.s03-ambient-img{flex:1;min-width:0;object-fit:cover;filter:grayscale(90%) brightness(0.35);opacity:0;transform:translateY(20px);transition:opacity 1.1s ease,transform 1.1s ease,filter 0.45s cubic-bezier(0.23,1,0.32,1);}
 .s03-ambient-img.rx-visible{opacity:1;transform:translateY(0);}
+.s03-ambient-img:hover{filter:grayscale(20%) brightness(0.75);}
 
 /* ── SECTION 09 AMBIENT ── */
 .s09-ambient-band{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;margin:clamp(40px,6vw,80px) 0 0;height:clamp(180px,18vw,260px);overflow:hidden;opacity:0.7;}
@@ -1316,6 +1317,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
       </div>
       <div class="at-prize at-prize--final at-reveal" style="--d:0.4s">
         <div class="at-prize-img-wrap at-prize-img-wrap--video">
+          <img src="Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg" alt="Custom engagement ring — 2ct flawless diamond" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;">
           <div class="at-prize-final-label">
             <span class="at-prize-tier">Tier 200</span>
             <span class="at-prize-name">Engagement Ring</span>
@@ -1386,11 +1388,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
     </div>
   </div>
 
-    <!-- S01 floating accent photos -->
-    <div class="s01-float-photos" style="position:absolute;right:clamp(40px,6vw,100px);bottom:80px;display:flex;flex-direction:column;gap:8px;z-index:2;pointer-events:none;" aria-hidden="true">
-      <img data-rx-fade src="Jewelry/Whisk_107149851a - Copy.jpg" alt="" loading="lazy" style="width:120px;height:160px;object-fit:cover;filter:grayscale(70%) brightness(0.55);transition:opacity 1.4s ease 0.6s;transform:none;">
-      <img data-rx-fade src="Jewelry/Whisk_5d42587dcb.jpg" alt="" loading="lazy" style="width:80px;height:100px;object-fit:cover;filter:grayscale(70%) brightness(0.4);transition:opacity 1.4s ease 0.9s;transform:none;align-self:flex-end;">
-    </div>  <div class="s01-bottom">
+<div class="s01-bottom">
     <span>Chicago, IL / Jaipur, IND</span>
     <span id="s01-time">00:00:00 GMT-5</span>
   </div>
@@ -1568,8 +1566,8 @@ body.mob-open{overflow:hidden;touch-action:none;}
       <div class="card-inner">
         <div class="card-content">
           <div class="card-num" aria-hidden="true">01</div>
-          <p class="card-sub">Value / Durability / Portability</p>
-          <h3 class="card-concept">Portable value.<br>No maintenance required.</h3>
+          <p class="card-sub">Value / Durability / Sustainability</p>
+          <h3 class="card-concept">Sustainable value.<br>No maintenance required.</h3>
           <p class="card-body">A D/IF round brilliant in 2024 clears customs in a jacket pocket. A GIA certificate transfers ownership with a signature. No storage fees. No depreciation infrastructure. The asset wears itself.</p>
           <div class="card-label"><span class="card-label-line"></span><span class="card-label-text">Sustained Value</span></div>
         </div>
@@ -1590,7 +1588,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
           <div class="card-label"><span class="card-label-line"></span><span class="card-label-text">Social Currency</span></div>
         </div>
         <div class="card-image-wrap">
-          <img class="card-img" src="Jewelry/Mixed_metal_detail_202606012044.jpeg" alt="Mixed metal detail" width="800" height="1000" loading="lazy" style="object-position:center 30%">
+          <img class="card-img" src="Jewelry/Emerald_ring_beside_diamond_2K_202607111709.jpeg" alt="Emerald ring beside diamond" width="800" height="1000" loading="lazy" style="object-position:center 30%">
           <div class="card-img-overlay"></div>
         </div>
       </div>
@@ -1973,7 +1971,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
 
 <!-- SECTION CHICAGO - BOOK A VISIT -->
 <section id="section-chicago">
-  <video id="chicago-video-bg" autoplay muted loop playsinline aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.22;z-index:0;pointer-events:none;mix-blend-mode:screen;"><source src="Jewelry/Gold_and_diamond_202607111708.mp4" type="video/mp4"></video>
+  <video id="chicago-video-bg" autoplay muted loop playsinline aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.22;z-index:0;pointer-events:none;mix-blend-mode:screen;transform:scaleX(-1);"><source src="Jewelry/Gold_and_diamond_202607111708.mp4" type="video/mp4"></video>
   <canvas id="chicago-3d-bg" aria-hidden="true"></canvas>
   <div class="chicago-inner">
     <div class="chicago-eyebrow" data-rx-reveal>RX / CHICAGO, IL / 2026</div>
@@ -2043,7 +2041,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
     <div class="s09-right">
       <div class="s09-right-label" data-rx-reveal>The Designer</div>
       <blockquote class="s09-right-quote" data-rx-reveal style="transition-delay:0.12s">"Each piece begins with the designer. Nothing else precedes it."<br><br>"The rarity is not in the stone. It is in the eye that knows where the light should land."</blockquote>
-      <video autoplay muted loop playsinline data-rx-fade aria-label="Diamond pendant" style="width:100%;height:clamp(360px,30vw,500px);object-fit:cover;margin-top:36px;filter:grayscale(40%) brightness(0.85);display:block;transition-delay:0.2s">
+      <video autoplay muted loop playsinline data-rx-fade aria-label="Diamond pendant" style="width:100%;height:clamp(360px,30vw,500px);object-fit:cover;margin-top:36px;filter:grayscale(55%) brightness(0.45);display:block;transition-delay:0.2s">
         <source src="Jewelry/Diamond_earrings_in_darkness_202607111710.mp4" type="video/mp4">
       </video>
     </div>
