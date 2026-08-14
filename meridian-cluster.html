@@ -300,86 +300,73 @@
 }
 .gallery-header h2 span.in { opacity:1; transform:translateY(0); }
 
-/* editorial grid: hero left (60%), 2 stacked right (40%), 2 full-width below */
+/* editorial grid: hero left tall, 2 stacked right, 3 bottom equal */
 .gallery-grid {
   display:grid;
-  grid-template-columns:60fr 40fr;
-  grid-template-rows:auto auto;
+  grid-template-areas:
+    "hero s1 s1"
+    "hero s2 s3"
+    "w1   w1 w2";
+  grid-template-columns:52fr 24fr 24fr;
+  grid-template-rows:auto auto auto;
   gap:6px;
 }
 .gallery-cell {
   overflow:hidden; position:relative;
-  opacity:0; transform:translateY(48px) scale(0.97);
-  transition:opacity .8s ease, transform .8s cubic-bezier(.16,1,.3,1);
+  opacity:0; transform:translateY(44px) scale(0.97);
+  filter:blur(5px);
+  transition:opacity .9s ease, transform .9s cubic-bezier(.16,1,.3,1), filter .9s ease;
 }
 .gallery-cell.in {
-  opacity:1; transform:translateY(0) scale(1);
+  opacity:1; transform:translateY(0) scale(1); filter:blur(0);
 }
-/* hero spans full left column, 2 rows */
+.gallery-cell::after {
+  content:''; position:absolute; inset:0;
+  border:1px solid transparent;
+  transition:border-color .35s ease;
+  pointer-events:none; z-index:1;
+}
+.gallery-cell:hover::after { border-color:rgba(200,200,200,.14); }
+
 .gallery-cell:nth-child(1) {
-  grid-column:1; grid-row:1;
-  opacity:0; transform:translateY(0) scale(0.94);
-  transition:opacity 1.1s ease, transform 1.1s cubic-bezier(.16,1,.3,1);
+  grid-area:hero;
+  opacity:0; transform:scale(0.93); filter:blur(8px);
+  transition:opacity 1.3s ease, transform 1.3s cubic-bezier(.16,1,.3,1), filter 1.3s ease;
 }
-.gallery-cell:nth-child(1).in {
-  opacity:1; transform:translateY(0) scale(1);
-}
-/* items 2 and 3 stack in right column */
-.gallery-cell:nth-child(2) {
-  grid-column:2; grid-row:1;
-  transition-delay:.1s,.1s;
-}
-.gallery-cell:nth-child(3) {
-  grid-column:2; grid-row:1;
-  /* stacks below item 2 naturally via auto rows */
-  transition-delay:.2s,.2s;
-}
-/* items 4 and 5 span full width below */
-.gallery-cell:nth-child(4) {
-  grid-column:1 / -1; grid-row:2;
-  transition-delay:.3s,.3s;
-}
-/* restructure: use named areas for cleaner control */
-.gallery-grid {
-  grid-template-areas:
-    "hero s1"
-    "hero s2"
-    "w1   w2";
-  grid-template-columns:60fr 40fr;
-  grid-template-rows:auto auto auto;
-}
-.gallery-cell:nth-child(1) { grid-area:hero; }
-.gallery-cell:nth-child(2) { grid-area:s1; transition-delay:.1s,.1s; }
-.gallery-cell:nth-child(3) { grid-area:s2; transition-delay:.2s,.2s; }
-.gallery-cell:nth-child(4) { grid-area:w1; transition-delay:.3s,.3s; }
-.gallery-cell:nth-child(5) { grid-area:w2; transition-delay:.4s,.4s; }
+.gallery-cell:nth-child(1).in { opacity:1; transform:scale(1); filter:blur(0); }
+.gallery-cell:nth-child(2) { grid-area:s1; transition-delay:.09s,.09s,.09s; }
+.gallery-cell:nth-child(3) { grid-area:s2; transition-delay:.18s,.18s,.18s; }
+.gallery-cell:nth-child(4) { grid-area:s3; transition-delay:.27s,.27s,.27s; }
+.gallery-cell:nth-child(5) { grid-area:w1; transition-delay:.36s,.36s,.36s; }
+.gallery-cell:nth-child(6) { grid-area:w2; transition-delay:.45s,.45s,.45s; }
 
 .gallery-cell img {
   width:100%; height:100%; display:block; object-fit:cover;
   filter:brightness(1);
-  transition:transform .85s cubic-bezier(.16,1,.3,1), filter .35s ease;
+  transition:transform .9s cubic-bezier(.16,1,.3,1), filter .4s ease;
 }
 .gallery-cell:hover img {
-  transform:scale(1.04);
-  filter:brightness(0.85);
+  transform:scale(1.05);
+  filter:brightness(0.82) saturate(1.08);
 }
 /* aspect ratios per slot */
 .gallery-cell:nth-child(1) img { aspect-ratio:3/4; height:auto; }
-.gallery-cell:nth-child(2) img { aspect-ratio:4/3; }
-.gallery-cell:nth-child(3) img { aspect-ratio:4/3; }
-.gallery-cell:nth-child(4) img { aspect-ratio:16/7; }
-.gallery-cell:nth-child(5) img { aspect-ratio:16/7; }
+.gallery-cell:nth-child(2) img { aspect-ratio:5/4; }
+.gallery-cell:nth-child(3) img { aspect-ratio:5/4; }
+.gallery-cell:nth-child(4) img { aspect-ratio:5/4; }
+.gallery-cell:nth-child(5) img { aspect-ratio:3/2; }
+.gallery-cell:nth-child(6) img { aspect-ratio:3/2; }
 
 /* caption slides up on hover */
 .gallery-cap {
   position:absolute; bottom:0; left:0; right:0;
-  padding:32px 16px 16px;
-  background:linear-gradient(to top, rgba(0,0,0,.62) 0%, transparent 100%);
-  font-family:'Space Mono',monospace; font-size:9px;
-  letter-spacing:.22em; text-transform:uppercase;
-  color:rgba(245,245,245,.82); pointer-events:none;
+  padding:40px 18px 18px;
+  background:linear-gradient(to top, rgba(4,1,6,.78) 0%, transparent 100%);
+  font-family:'Space Mono',monospace; font-size:8.5px;
+  letter-spacing:.28em; text-transform:uppercase;
+  color:rgba(245,245,245,.9); pointer-events:none;
   transform:translateY(100%);
-  transition:transform .3s ease;
+  transition:transform .4s cubic-bezier(.16,1,.3,1);
 }
 .gallery-cell:hover .gallery-cap { transform:translateY(0); }
 
@@ -536,6 +523,7 @@
       "hero"
       "s1"
       "s2"
+      "s3"
       "w1"
       "w2";
     grid-template-columns:1fr;
@@ -545,7 +533,8 @@
   .gallery-cell:nth-child(2) img,
   .gallery-cell:nth-child(3) img,
   .gallery-cell:nth-child(4) img,
-  .gallery-cell:nth-child(5) img { aspect-ratio:4/5; height:auto; }
+  .gallery-cell:nth-child(5) img,
+  .gallery-cell:nth-child(6) img { aspect-ratio:4/5; height:auto; }
   .gallery-cap { transform:translateY(0); }
 }
 @media (max-width:580px) {
@@ -687,40 +676,47 @@
     <h2><span>Other Axes</span></h2>
   </div>
   <div class="gallery-grid">
-    <!-- cell 1: hero, grid-area:hero -->
+    <!-- cell 1: hero -->
     <div class="gallery-cell">
-      <img src="Jewelry/cb_v12.png"
-           alt="Meridian Cluster — lush diamond cascade necklace on mannequin bust"
+      <img src="Jewelry/cb_v14.png"
+           alt="Meridian Cluster — branch variation I"
            loading="lazy">
-      <span class="gallery-cap">Cascade Statement</span>
+      <span class="gallery-cap">Axis I</span>
     </div>
-    <!-- cell 2: grid-area:s1 -->
+    <!-- cell 2: s1 -->
     <div class="gallery-cell">
-      <img src="Jewelry/cb_v10.jpg"
-           alt="Meridian Cluster — linear bar pendant variation"
+      <img src="Jewelry/cb_v15.png"
+           alt="Meridian Cluster — branch variation II"
            loading="lazy">
-      <span class="gallery-cap">Bar Pendant</span>
+      <span class="gallery-cap">Axis II</span>
     </div>
-    <!-- cell 3: grid-area:s2 -->
+    <!-- cell 3: s2 -->
     <div class="gallery-cell">
-      <img src="Jewelry/cb_v3.png"
-           alt="Meridian Cluster — arc bar necklace with seven pear drops"
+      <img src="Jewelry/cb_v16.png"
+           alt="Meridian Cluster — branch variation III"
            loading="lazy">
-      <span class="gallery-cap">Arc Drop</span>
+      <span class="gallery-cap">Axis III</span>
     </div>
-    <!-- cell 4: grid-area:w1 -->
+    <!-- cell 4: s3 -->
     <div class="gallery-cell">
-      <img src="Jewelry/cb_v4.png"
-           alt="Meridian Cluster — scattered branch necklace, diamond buds at tips"
+      <img src="Jewelry/cb_v17.jpg"
+           alt="Meridian Cluster — branch variation IV"
            loading="lazy">
-      <span class="gallery-cap">Scattered Branch</span>
+      <span class="gallery-cap">Axis IV</span>
     </div>
-    <!-- cell 5: grid-area:w2 -->
+    <!-- cell 5: w1 -->
     <div class="gallery-cell">
-      <img src="Jewelry/cb_v9.png"
-           alt="Meridian Cluster — collar necklace variation, platinum setting"
+      <img src="Jewelry/cb_v18.png"
+           alt="Meridian Cluster — branch variation V"
            loading="lazy">
-      <span class="gallery-cap">Collar Variation</span>
+      <span class="gallery-cap">Axis V</span>
+    </div>
+    <!-- cell 6: w2 -->
+    <div class="gallery-cell">
+      <img src="Jewelry/cb_v19.png"
+           alt="Meridian Cluster — branch variation VI"
+           loading="lazy">
+      <span class="gallery-cap">Axis VI</span>
     </div>
   </div>
 </section>

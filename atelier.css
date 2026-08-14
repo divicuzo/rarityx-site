@@ -21,7 +21,7 @@ body{background:#330D1E;color:var(--text);font-family:'Outfit',sans-serif;font-w
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 34px}
 .nav a{color:#f5f5f5;text-decoration:none}
 .nav .wordmark{display:flex;align-items:center}
-.nav .wordmark img{height:48px;width:auto;display:block;filter:drop-shadow(0 0 8px rgba(200,168,120,.22));transition:opacity .25s ease}
+.nav .wordmark img{height:78px;width:auto;display:block;filter:drop-shadow(0 0 8px rgba(200,168,120,.22));transition:opacity .25s ease}
 .nav .wordmark img:hover{opacity:.8}
 .nav .mono{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#f5f5f5}
 /* image marquee — shared with portfolio pages */
