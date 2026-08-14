@@ -103,6 +103,9 @@
 .finale-cta-label{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(200,140,165,.38)}
 .finale-cta-link{display:inline-block;font-family:'Outfit',sans-serif;font-size:10.5px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--text);text-decoration:none;border:1px solid rgba(200,200,200,.22);padding:22px 58px;transition:background .28s ease,color .28s ease,border-color .28s ease}
 .finale-cta-link:hover{background:#f5f5f5;color:#330D1E;border-color:#f5f5f5}
+.rx-marquee-item video{height:100%;width:auto;object-fit:cover;display:block;filter:grayscale(20%) brightness(.8);transition:filter .5s cubic-bezier(.23,1,.32,1)}
+.rx-marquee:hover .rx-marquee-item video{filter:grayscale(0%) brightness(1)}
+.finale-ghost video{width:min(580px,85vw);opacity:.10;filter:grayscale(.3) brightness(1.8);mix-blend-mode:screen;mask-image:radial-gradient(circle at 50% 48%, #000 26%, transparent 56%);-webkit-mask-image:radial-gradient(circle at 50% 48%, #000 26%, transparent 56%);display:block}
 
 @media (max-width:768px){
   .letter-split{grid-template-columns:1fr}
@@ -183,9 +186,11 @@
       </div>
     </div>
     <div class="letter-media">
-      <img class="letter-media-img" src="Jewelry/Ethereal_Pav%C3%A9_Crest_Platinum_2K_202606302140.jpeg" alt="Sigil signet ring" loading="lazy">
+      <video class="letter-media-img" autoplay muted loop playsinline>
+        <source src="Jewelry/Portfolio_pieces_vids/diam_fancy.mp4" type="video/mp4">
+      </video>
       <video class="letter-media-vid" autoplay muted loop playsinline aria-hidden="true">
-        <source src="Jewelry/Portfolio_pieces_vids/openbox_ring.mp4" type="video/mp4">
+        <source src="Jewelry/Portfolio_pieces_vids/diam_cross_pendant.mp4" type="video/mp4">
       </video>
       <span class="letter-hover-hint">Hover to reveal</span>
     </div>
@@ -201,7 +206,7 @@
     </div>
   </div>
   <div class="finale-ghost" aria-hidden="true">
-    <img src="frames_lp/frame_0120.jpg" alt="" loading="lazy">
+    <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_womanhand_ad.mp4" type="video/mp4"></video>
   </div>
   <div class="finale-center">
     <span class="finale-eyebrow reveal">One Mark &middot; One Piece &middot; One Client</span>
@@ -226,24 +231,24 @@
 
 <div class="rx-marquee" aria-hidden="true">
   <div class="rx-marquee-track">
-    <div class="rx-marquee-item"><img src="Jewelry/f1.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f2.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f3.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f4.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f5.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f6.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f7.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f8.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f9.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f10.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f11.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f12.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f1.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f2.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f3.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f4.png" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f5.jpg" alt="" loading="lazy"></div>
-    <div class="rx-marquee-item"><img src="Jewelry/f6.png" alt="" loading="lazy"></div>
+    <div class="rx-marquee-item"><video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_fancy.mp4" type="video/mp4"></video></div>
+    <div class="rx-marquee-item"><video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_cross_pendant.mp4" type="video/mp4"></video></div>
+    <div class="rx-marquee-item"><video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_studs_earring_v1.mp4" type="video/mp4"></video></div>
+    <div class="rx-marquee-item"><video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_womanhand_ad.mp4" type="video/mp4"></video></div>
+    <div class="rx-marquee-item"><video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_fancy.mp4" type="video/mp4"></video></div>
+    <div class="rx-marquee-item"><video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_cross_pendant.mp4" type="video/mp4"></video></div>
+    <div class="rx-marquee-item"><video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_studs_earring_v1.mp4" type="video/mp4"></video></div>
+    <div class="rx-marquee-item"><video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_womanhand_ad.mp4" type="video/mp4"></video></div>
+    <div class="rx-marquee-item"><video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_fancy.mp4" type="video/mp4"></video></div>
+    <div class="rx-marquee-item"><video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_cross_pendant.mp4" type="video/mp4"></video></div>
+    <div class="rx-marquee-item"><video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_studs_earring_v1.mp4" type="video/mp4"></video></div>
+    <div class="rx-marquee-item"><video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_womanhand_ad.mp4" type="video/mp4"></video></div>
+    <div class="rx-marquee-item"><video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_fancy.mp4" type="video/mp4"></video></div>
+    <div class="rx-marquee-item"><video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_cross_pendant.mp4" type="video/mp4"></video></div>
+    <div class="rx-marquee-item"><video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_studs_earring_v1.mp4" type="video/mp4"></video></div>
+    <div class="rx-marquee-item"><video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_womanhand_ad.mp4" type="video/mp4"></video></div>
+    <div class="rx-marquee-item"><video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_fancy.mp4" type="video/mp4"></video></div>
+    <div class="rx-marquee-item"><video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_cross_pendant.mp4" type="video/mp4"></video></div>
   </div>
 </div>
 <footer class="rx-foot">
