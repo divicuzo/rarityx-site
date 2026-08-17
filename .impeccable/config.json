@@ -18,6 +18,15 @@
           "medallion.html"
         ],
         "createdAt": "2026-07-27T02:08:48.577Z"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "sigil.html"
+        ],
+        "createdAt": "2026-08-14T23:40:37.424Z",
+        "reason": "Finale ticker is intentional ambient background texture — RarityX brand pattern used sitewide"
       }
     ]
   }

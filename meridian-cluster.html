@@ -344,12 +344,15 @@
 
 .gallery-cell img {
   width:100%; height:100%; display:block; object-fit:cover;
+  filter:brightness(0.55);
+  transition:transform .9s cubic-bezier(.16,1,.3,1), filter 1.1s ease;
+}
+.gallery-cell.in img {
   filter:brightness(1);
-  transition:transform .9s cubic-bezier(.16,1,.3,1), filter .4s ease;
 }
 .gallery-cell:hover img {
-  transform:scale(1.05);
-  filter:brightness(0.82) saturate(1.08);
+  transform:scale(1.06);
+  filter:brightness(1.18) contrast(1.04) saturate(1.07);
 }
 /* aspect ratios per slot */
 .gallery-cell:nth-child(1) img { aspect-ratio:3/4; height:auto; }
@@ -654,7 +657,7 @@
   <div class="story-grid">
     <div class="story-visual">
       <figure>
-        <img src="Jewelry/cb_v5.png"
+        <img src="Jewelry/cb_v15.png"
              alt="Meridian Cluster — dense botanical branch necklace, pear-cut diamonds"
              loading="lazy">
       </figure>
@@ -680,7 +683,7 @@
   <div class="gallery-grid">
     <!-- cell 1: hero -->
     <div class="gallery-cell">
-      <img src="Jewelry/cb_v14.png"
+      <img src="Jewelry/cb_v18.png"
            alt="Meridian Cluster — branch variation I"
            loading="lazy">
       <span class="gallery-cap">Axis I</span>
@@ -708,14 +711,14 @@
     </div>
     <!-- cell 5: w1 -->
     <div class="gallery-cell">
-      <img src="Jewelry/cb_v18.png"
+      <img src="Jewelry/cb_v19.png"
            alt="Meridian Cluster — branch variation V"
            loading="lazy">
       <span class="gallery-cap">Axis V</span>
     </div>
     <!-- cell 6: w2 -->
     <div class="gallery-cell">
-      <img src="Jewelry/cb_v19.png"
+      <img src="Jewelry/cb_v14.png"
            alt="Meridian Cluster — branch variation VI"
            loading="lazy">
       <span class="gallery-cap">Axis VI</span>
