@@ -52,6 +52,12 @@ body{background:#330D1E;color:var(--text);font-family:'Outfit',sans-serif;font-w
 footer.rx-foot{background:#330D1E;border-top:1px solid #5a1a2e;padding:30px 34px;display:flex;justify-content:space-between;align-items:center;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 footer.rx-foot a{color:var(--text);text-decoration:none}
 
+/* accessibility */
+:focus-visible{outline:1px solid #c8c8c8;outline-offset:3px}
+:focus:not(:focus-visible){outline:none}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+h1,h2,h3{overflow-wrap:anywhere;min-width:0}
+
 /* finale heading: words drift from center to offset on scroll-in */
 .finale-stack h2.reveal .off-l{transform:translateX(0)!important;transition:transform 1.1s .18s cubic-bezier(.16,1,.3,1)}
 .finale-stack h2.reveal .off-r{transform:translateX(0)!important;transition:transform 1.1s .18s cubic-bezier(.16,1,.3,1)}

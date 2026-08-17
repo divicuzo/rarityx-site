@@ -12,6 +12,14 @@
   <meta property="og:url" content="https://rarityx.co/launch.html">
   <meta property="og:title" content="The Ascent — RarityX Labor Day">
   <meta property="og:description" content="200 tiers. Four diamond prizes. Your first tier is free.">
+  <meta property="og:image" content="https://rarityx.co/Jewelry/Ethereal_Pav%C3%A9_Crest_Platinum_2K_202606302140.jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="RarityX">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Ascent — RarityX Labor Day">
+  <meta name="twitter:description" content="200 tiers. Four diamond prizes. Your first tier is free.">
+  <meta name="twitter:image" content="https://rarityx.co/Jewelry/Ethereal_Pav%C3%A9_Crest_Platinum_2K_202606302140.jpeg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,7 +55,7 @@ body{
   color:var(--text);
   font-family:'Outfit',sans-serif;
   font-weight:400;
-  overflow-x:hidden;
+  overflow-x:clip;
   -webkit-font-smoothing:antialiased;
 }
 
@@ -170,7 +178,7 @@ body{
 }
 .hero-title{
   font-family:'Bodoni Moda',serif;
-  font-style:italic;
+  font-style:normal;
   font-weight:300;
   font-size:clamp(4rem, 12vw, 13rem);
   line-height:0.93;
@@ -880,7 +888,7 @@ body{
 
   <div class="hero-content">
     <div class="hero-eyebrow" id="hero-eyebrow">Labor Day · The Ascent</div>
-    <h1 class="hero-title" id="hero-title">Two hundred<br><em>tiers.</em></h1>
+    <h1 class="hero-title" id="hero-title">Two hundred<br><span>tiers.</span></h1>
     <p class="hero-sub" id="hero-sub">Four prizes. One free entry. Begins September 1.</p>
     <a class="btn-primary" id="hero-cta" href="#entry">
       <span class="diamond-icon"></span>
@@ -1126,9 +1134,9 @@ body{
 
   /* ── Nav ────────────────────────────────────────────── */
   const nav = document.getElementById('launch-nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
+  lenis.on('scroll', ({ scroll }) => {
+    nav.classList.toggle('scrolled', scroll > 60);
+  });
 
   /* ── Hero: load entrance ────────────────────────────── */
   const heroVid = document.querySelector('.hero-video-wrap video');
