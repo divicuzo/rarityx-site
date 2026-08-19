@@ -54,17 +54,18 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,300;0,6..96,400;1,6..96,300;1,6..96,400&family=Outfit:wght@300;400;500&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link rel="dns-prefetch" href="https://unpkg.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://assets.calendly.com">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,300;0,6..96,400;1,6..96,300;1,6..96,400&family=Outfit:wght@300;400;500&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" as="style" onload="this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,300;0,6..96,400;1,6..96,300;1,6..96,400&family=Outfit:wght@300;400;500&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"></noscript>
 
   <style>
 /* ============================================================
    FOUNDATION
    ============================================================ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+img,video{-webkit-user-drag:none;user-drag:none;user-select:none;}
 
 :root{
   --bg:#330D1E;
@@ -1320,7 +1321,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
       </div>
       <div class="at-prize at-prize--final at-reveal" style="--d:0.4s">
         <div class="at-prize-img-wrap at-prize-img-wrap--video">
-          <video autoplay muted loop playsinline aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.65);transform-origin:55% 40%;z-index:1">
+          <video muted loop playsinline preload="none" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.65);transform-origin:55% 40%;z-index:1">
             <source src="Jewelry/launch_tier4.MP4" type="video/mp4">
           </video>
           <div class="at-prize-final-label">
@@ -1577,7 +1578,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
           <div class="card-label"><span class="card-label-line"></span><span class="card-label-text">Sustained Value</span></div>
         </div>
         <div class="card-image-wrap">
-          <video class="card-img" aria-hidden="true" autoplay muted loop playsinline><source src="Jewelry/Jewelry_reveal_with_logo_202606302138.mp4" type="video/mp4"></video>
+          <video class="card-img" aria-hidden="true" muted loop playsinline preload="none"><source src="Jewelry/Jewelry_reveal_with_logo_202606302138.mp4" type="video/mp4"></video>
           <div class="card-img-overlay"></div>
         </div>
       </div>
@@ -1609,7 +1610,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
           <div class="card-label"><span class="card-label-line"></span><span class="card-label-text">Ritualized Desire</span></div>
         </div>
         <div class="card-image-wrap">
-          <video class="card-img" aria-hidden="true" autoplay muted loop playsinline><source src="Jewelry/Hand_with_engagement_ring_202607111710.mp4" type="video/mp4"></video>
+          <video class="card-img" aria-hidden="true" muted loop playsinline preload="none"><source src="Jewelry/Hand_with_engagement_ring_202607111710.mp4" type="video/mp4"></video>
           <div class="card-img-overlay"></div>
         </div>
       </div>
@@ -1672,93 +1673,93 @@ body.mob-open{overflow:hidden;touch-action:none;}
   <div class="works-strip">
     <div class="works-track">
       <a class="work-card" href="lp-v6.html" data-rx-nav>
-        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/fancy_pave_necklace.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/fancy_pave_necklace.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Pav&eacute;<br>Arc</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="harmonia.html" data-rx-nav>
-        <video autoplay muted loop playsinline><source src="Jewelry/lp_Harmonia_ugc.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none"><source src="Jewelry/lp_Harmonia_ugc.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Har&shy;<br>monia</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="constellation-band.html" data-rx-nav>
-        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_eternity_rotate_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/diam_eternity_rotate_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Constellation<br>Band</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="solstice-solitaire.html" data-rx-nav>
-        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/soli_round_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/soli_round_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Solstice<br>Solitaire</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="fragment-band.html" data-rx-nav>
-        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/vertical_stack_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/vertical_stack_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Fragment<br>Band</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="meridian-cluster.html" data-rx-nav>
-        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_mq_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/diam_mq_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Meridian<br>Cluster</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="eclipse-halo.html" data-rx-nav>
-        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/halo_2shankpave_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/halo_2shankpave_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Eclipse<br>Halo</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="medallion.html" data-rx-nav>
-        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/em_bigdiam_pendant.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/em_bigdiam_pendant.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Crest<br>Medallion</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="sigil.html" data-rx-nav>
-        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/openbox_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/openbox_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Sigil<br>Signet</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <!-- duplicate for seamless loop -->
       <a class="work-card" href="lp-v6.html" data-rx-nav aria-hidden="true">
-        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/fancy_pave_necklace.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/fancy_pave_necklace.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Pav&eacute;<br>Arc</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="harmonia.html" data-rx-nav aria-hidden="true">
-        <video autoplay muted loop playsinline><source src="Jewelry/lp_Harmonia_ugc.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none"><source src="Jewelry/lp_Harmonia_ugc.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Har&shy;<br>monia</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="constellation-band.html" data-rx-nav aria-hidden="true">
-        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_eternity_rotate_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/diam_eternity_rotate_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Constellation<br>Band</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="solstice-solitaire.html" data-rx-nav aria-hidden="true">
-        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/soli_round_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/soli_round_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Solstice<br>Solitaire</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="fragment-band.html" data-rx-nav aria-hidden="true">
-        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/vertical_stack_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/vertical_stack_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Fragment<br>Band</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="meridian-cluster.html" data-rx-nav aria-hidden="true">
-        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_mq_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/diam_mq_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Meridian<br>Cluster</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="eclipse-halo.html" data-rx-nav aria-hidden="true">
-        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/halo_2shankpave_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/halo_2shankpave_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Eclipse<br>Halo</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="medallion.html" data-rx-nav aria-hidden="true">
-        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/em_bigdiam_pendant.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/em_bigdiam_pendant.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Crest<br>Medallion</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="sigil.html" data-rx-nav aria-hidden="true">
-        <video autoplay muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/openbox_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/openbox_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Sigil<br>Signet</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
@@ -1778,28 +1779,28 @@ body.mob-open{overflow:hidden;touch-action:none;}
       <h3 class="phase-name">Extraction</h3>
       <p class="phase-body" data-rx-reveal>Kimberlite ore extracted from depths exceeding 1km. Ore sorted, crushed, and processed through dense medium separation.</p>
       <span class="phase-fig">Fig.0501  "Kimberlite Pipe"</span>
-      <video class="phase-img" aria-hidden="true" data-rx-scale autoplay muted loop playsinline style="filter:grayscale(65%) contrast(1.2);object-fit:cover;"><source src="Jewelry/soli_v2.mp4" type="video/mp4"></video>
+      <video class="phase-img" aria-hidden="true" data-rx-scale muted loop playsinline preload="none" style="filter:grayscale(65%) contrast(1.2);object-fit:cover;"><source src="Jewelry/soli_v2.mp4" type="video/mp4"></video>
     </article>
     <article class="phase-card" role="listitem">
       <span class="phase-num">Phase 02</span>
       <h3 class="phase-name">Cutting and Polishing</h3>
       <p class="phase-body" data-rx-reveal>Rough diamonds mapped with laser technology. Optimal facet plan computed. Sawing, bruting, and polishing create the finished stone.</p>
       <span class="phase-fig">Fig.0502  "Diamond Wheel"</span>
-      <video class="phase-img" aria-hidden="true" data-rx-scale autoplay muted loop playsinline style="filter:grayscale(65%) contrast(1.2);object-fit:cover;"><source src="Jewelry/White_shining_Diamond_202607111708.mp4" type="video/mp4"></video>
+      <video class="phase-img" aria-hidden="true" data-rx-scale muted loop playsinline preload="none" style="filter:grayscale(65%) contrast(1.2);object-fit:cover;"><source src="Jewelry/White_shining_Diamond_202607111708.mp4" type="video/mp4"></video>
     </article>
     <article class="phase-card" role="listitem">
       <span class="phase-num">Phase 03</span>
       <h3 class="phase-name">Grading</h3>
       <p class="phase-body" data-rx-reveal>GIA or equivalent laboratory certifies each stone. Cut, Color, Clarity, Carat recorded. The certificate becomes as valuable as the stone.</p>
       <span class="phase-fig">Fig.0503  "Grading Loupe"</span>
-      <video class="phase-img" aria-hidden="true" data-rx-scale autoplay muted loop playsinline style="filter:grayscale(65%) contrast(1.15);object-fit:cover;"><source src="Jewelry/soli_v1.mp4" type="video/mp4"></video>
+      <video class="phase-img" aria-hidden="true" data-rx-scale muted loop playsinline preload="none" style="filter:grayscale(65%) contrast(1.15);object-fit:cover;"><source src="Jewelry/soli_v1.mp4" type="video/mp4"></video>
     </article>
     <article class="phase-card" role="listitem">
       <span class="phase-num">Phase 04</span>
       <h3 class="phase-name">Design and Setting</h3>
       <p class="phase-body" data-rx-reveal>The designer intervenes. Metal selected, form drawn, setting fabricated. The diamond finds its final context.</p>
       <span class="phase-fig">Fig.0504  "Setting Bench"</span>
-      <video class="phase-img" aria-hidden="true" data-rx-scale autoplay muted loop playsinline style="filter:grayscale(65%) contrast(1.15);object-fit:cover;"><source src="Jewelry/Platinum_engagement_ring_202606302143.mp4" type="video/mp4"></video>
+      <video class="phase-img" aria-hidden="true" data-rx-scale muted loop playsinline preload="none" style="filter:grayscale(65%) contrast(1.15);object-fit:cover;"><source src="Jewelry/Platinum_engagement_ring_202606302143.mp4" type="video/mp4"></video>
     </article>
   </div>
 
@@ -1976,7 +1977,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
 
 <!-- SECTION CHICAGO - BOOK A VISIT -->
 <section id="section-chicago">
-  <video id="chicago-video-bg" autoplay muted loop playsinline aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.22;z-index:0;pointer-events:none;mix-blend-mode:screen;transform:scaleX(-1);"><source src="Jewelry/Gold_and_diamond_202607111708.mp4" type="video/mp4"></video>
+  <video id="chicago-video-bg" muted loop playsinline preload="none" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.22;z-index:0;pointer-events:none;mix-blend-mode:screen;transform:scaleX(-1);"><source src="Jewelry/Gold_and_diamond_202607111708.mp4" type="video/mp4"></video>
   <canvas id="chicago-3d-bg" aria-hidden="true"></canvas>
   <div class="chicago-inner">
     <div class="chicago-eyebrow" data-rx-reveal>RX / CHICAGO, IL / 2026</div>
@@ -2114,6 +2115,9 @@ body.mob-open{overflow:hidden;touch-action:none;}
   </div>
 </section>
 
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
 /* ── THREE.JS 3D RING BOX ── */
 (function() {
@@ -3131,5 +3135,28 @@ body.mob-open{overflow:hidden;touch-action:none;}
 })();
 </script>
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script>
+/* ── MEDIA PROTECTION ── */
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG'||e.target.tagName==='VIDEO')e.preventDefault();});
+})();
+
+/* ── LAZY VIDEO PLAY (IntersectionObserver) ── */
+(function(){
+  var lazyvids = document.querySelectorAll('video[preload="none"]');
+  if(!lazyvids.length) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.play().catch(function(){});
+      } else {
+        en.target.pause();
+      }
+    });
+  },{rootMargin:'160px 0px',threshold:0});
+  lazyvids.forEach(function(v){ io.observe(v); });
+})();
+</script>
 </body>
 </html>
