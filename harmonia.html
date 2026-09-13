@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>HARMONIA | RarityX</title>
 <meta name="description" content="Harmonia — three-stone oval engagement ring in 18k rose gold. Past, present, future. Designed before the stones were chosen. By RarityX.">
 <link rel="canonical" href="https://rarityx.co/harmonia.html">
@@ -568,6 +568,140 @@
   .hero-title .ch { opacity:1 !important; transform:none !important; }
   .hero-scroll { animation:none; }
 }
+
+/* ══════════════════════════════════════════════
+   iOS & MOBILE FIXES — Hallmark + Impeccable
+   ══════════════════════════════════════════════ */
+
+/* iOS text rendering baseline */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tap highlight + tap delay on all interactive elements */
+*, *::before, *::after {
+  -webkit-tap-highlight-color: transparent;
+}
+a, button, [role="button"], .fin-cta, .next-piece, .nav a {
+  touch-action: manipulation;
+}
+
+/* Safe-area insets (notch / home-bar) */
+#hero {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+footer.rx-foot {
+  padding-bottom: calc(30px + env(safe-area-inset-bottom));
+}
+.next-piece {
+  padding-bottom: calc(13vh + env(safe-area-inset-bottom));
+}
+
+/* Hover guard — touch devices must not fire worn filter change */
+#worn:hover .worn-img img { filter: brightness(.82) saturate(.9); } /* reset non-hover default */
+@media (hover: hover) {
+  #worn:hover .worn-img img { filter: brightness(.9) saturate(1); }
+}
+
+/* ── Nav: mobile tighten ── */
+@media (max-width: 480px) {
+  .nav { padding: 14px 20px; }
+  .nav .wordmark img { height: 54px; }
+  .nav .mono { font-size: 9px; letter-spacing: .12em; }
+}
+
+/* ── Sub-10px label floor — iOS renders these very poorly ── */
+@media (max-width: 680px) {
+  .hero-kicker        { font-size: 10px; letter-spacing: .22em; }
+  .stmt-note          { font-size: 10px; letter-spacing: .2em; }
+  .worn-header span   { font-size: 10px; letter-spacing: .22em; }
+  .detail-head        { font-size: 10px; letter-spacing: .22em; }
+  .fin-prelude        { font-size: 10px; letter-spacing: .22em; }
+  .comm-note          { font-size: 10px; letter-spacing: .16em; }
+  .spec-row dt        { font-size: 10px; letter-spacing: .18em; }
+}
+
+/* ── Statement quote — smaller min on narrow screens ── */
+@media (max-width: 480px) {
+  .stmt-quote p { font-size: clamp(22px, 6.5vw, 36px); }
+}
+
+/* ── Commission h2 — tighter on narrow ── */
+@media (max-width: 480px) {
+  .comm-h2 { font-size: clamp(32px, 8vw, 52px); line-height: .92; }
+}
+
+/* ── CTA button — full-width on mobile, prevent overflow ── */
+@media (max-width: 520px) {
+  .fin-cta {
+    width: 100%;
+    justify-content: center;
+    padding: 18px 20px;
+    letter-spacing: .12em;
+    text-align: center;
+    box-sizing: border-box;
+  }
+}
+
+/* ── Worn images — square on mobile (hand/ring shots crop better) ── */
+@media (max-width: 680px) {
+  .worn-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 2px; }
+  .worn-img img {
+    aspect-ratio: 1/1;
+    object-position: center 12%;
+  }
+  .worn-img:nth-child(2) img,
+  .worn-img:nth-child(3) img { object-position: center 10%; }
+}
+
+/* Single col on very small */
+@media (max-width: 380px) {
+  .worn-grid { grid-template-columns: 1fr; }
+  .worn-img img { aspect-ratio: 4/3; }
+}
+
+/* ── UGC video — constrain on mobile so it doesn't eat the screen ── */
+@media (max-width: 540px) {
+  .ugc-inner { padding: clamp(48px, 7vh, 72px) var(--ph); }
+  .ugc-inner video {
+    max-width: min(300px, 100%);
+    aspect-ratio: 9/16;
+  }
+  .ugc-caption { font-size: clamp(15px, 4.2vw, 22px); }
+}
+
+/* ── Hero text: ensure kicker/sub don't clip below viewport on short phones ── */
+@media (max-height: 600px) {
+  .hero-text { bottom: clamp(36px, 6vh, 56px); }
+  .hero-scroll { display: none; }
+  .hero-title { font-size: clamp(56px, 13vw, 196px); }
+}
+
+/* ── Spec row: tighter gap on mobile ── */
+@media (max-width: 480px) {
+  .spec-row { gap: 6px; padding: clamp(14px, 2vw, 20px) 0; }
+  .spec-v { font-size: clamp(15px, 3.8vw, 22px); }
+  .spec-s { font-size: 10.5px; }
+}
+
+/* ── Editorial images: better aspect on very small screens ── */
+@media (max-width: 380px) {
+  .ed-hero img { aspect-ratio: 4/3; }
+}
+
+/* ── Finale section: tighter vertical padding on mobile ── */
+@media (max-width: 520px) {
+  #finale {
+    padding-top: clamp(72px, 12vh, 120px);
+    padding-bottom: clamp(72px, 12vh, 120px);
+  }
+  .fin-title { font-size: clamp(24px, 6.5vw, 52px); }
+}
 </style>
 </head>
 <body>
@@ -585,10 +719,11 @@
   <div class="hero-media">
     <video
       id="hero-video"
-      autoplay muted loop playsinline
+      autoplay muted loop playsinline webkit-playsinline
       preload="metadata"
       poster="Jewelry/lp_Harmonia_v4.jpeg"
-      aria-hidden="true">
+      aria-hidden="true"
+      disableremoteplayback>
       <source src="Jewelry/lp_harmonia_video.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay" aria-hidden="true"></div>
@@ -878,12 +1013,13 @@
   /* Fire after GSAP loads (it's deferred) */
   window.addEventListener('load', animateHero, { once:true });
 
-  /* ── IO reveals (opacity+transform) ── */
+  /* ── IO reveals (opacity+transform) — looser rootMargin on mobile ── */
+  var isMobile = window.matchMedia('(max-width: 680px)').matches;
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if (e.isIntersecting){ e.target.classList.add('vis'); io.unobserve(e.target); }
     });
-  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0, rootMargin: isMobile ? '0px 0px 0px 0px' : '0px 0px -40px 0px' });
 
   document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
 
@@ -906,10 +1042,19 @@
 
   document.querySelectorAll('video[preload="none"]').forEach(function(v){ vidIO.observe(v); });
 
-  /* ── hero video force-play ── */
+  /* ── hero video force-play (iOS fallback: first touch triggers play) ── */
   var heroVid = document.getElementById('hero-video');
   if (heroVid) {
-    heroVid.play().catch(function(){});
+    heroVid.play().catch(function(){
+      /* iOS Safari blocks autoplay before gesture — play on first touch */
+      var unlock = function(){
+        heroVid.play().catch(function(){});
+        document.removeEventListener('touchstart', unlock);
+        document.removeEventListener('click', unlock);
+      };
+      document.addEventListener('touchstart', unlock, { passive: true, once: true });
+      document.addEventListener('click', unlock, { once: true });
+    });
   }
 
   /* ── media protection ── */
