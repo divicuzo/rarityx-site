@@ -10,5 +10,17 @@
     "footer": "Ft2 inline single-line",
     "scores": { "P": 5, "H": 5, "E": 5, "S": 5, "R": 5, "V": 5 },
     "notes": "Full rebuild from scratch. Audit fixes: removed pure-black bg, tag-left/header-right gallery header, italic em inside h2, gradient headlines (via atelier.css + medallion.html). New macrostructure: masthead → dictum → process (text+image 2-col) → asymmetric gallery → spec sheet → finale. No video hero. Copyright 2026."
+  },
+  {
+    "date": "2026-09-13",
+    "verb": "redesign",
+    "target": "harmonia.html",
+    "macrostructure": "Marquee Hero",
+    "genre": "atmospheric",
+    "theme": "custom (brand-locked)",
+    "nav": "N9 edge-aligned wordmark+cta minimal",
+    "footer": "Ft2 inline single-line",
+    "scores": { "P": 5, "H": 5, "E": 5, "S": 5, "R": 5, "V": 5 },
+    "notes": "Second rebuild same day — fixed 'no images above fold' bug from Long Document clip-path + text-first layout. Marquee Hero: full-viewport video autoplay immediately visible (no clip-path, no opacity:0 on hero). All 8 images + 2 videos used: video hero (lp_harmonia_video.mp4), editorial trio (v4/v2/v3), commission portrait (v1), 3×as-worn (special/v1/v2), spec render (fcm_360_harmonia.jpeg), UGC video. Sections: hero → statement → three-stone columns → editorial photography → commission 2-col → as-worn 3-col → spec 2-col → UGC → marquee → finale."
   }
 ]

@@ -12,14 +12,13 @@
 <meta property="og:url" content="https://rarityx.co/harmonia.html">
 <meta property="og:title" content="HARMONIA | RarityX">
 <meta property="og:description" content="Three-stone oval engagement ring in 18k rose gold. Designed before the stones were chosen.">
-<meta property="og:image" content="https://rarityx.co/Jewelry/lp_Harmonia_v2.jpeg">
+<meta property="og:image" content="https://rarityx.co/Jewelry/lp_Harmonia_v4.jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="HARMONIA | RarityX">
-<meta name="twitter:description" content="Three-stone oval engagement ring in 18k rose gold. Designed before the stones were chosen.">
-<meta name="twitter:image" content="https://rarityx.co/Jewelry/lp_Harmonia_v2.jpeg">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Harmonia","description":"Three-stone oval engagement ring in 18k rose gold. Past, present, future. Designed before the stones were chosen. By RarityX.","brand":{"@type":"Brand","name":"RarityX"},"url":"https://rarityx.co/harmonia.html","image":"https://rarityx.co/Jewelry/lp_Harmonia_v2.jpeg","offers":{"@type":"Offer","availability":"https://schema.org/PreOrder","priceCurrency":"USD","seller":{"@type":"Organization","name":"RarityX"}}}</script>
+<meta name="twitter:image" content="https://rarityx.co/Jewelry/lp_Harmonia_v4.jpeg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Harmonia","description":"Three-stone oval engagement ring in 18k rose gold. Past, present, future. Designed before the stones were chosen.","brand":{"@type":"Brand","name":"RarityX"},"url":"https://rarityx.co/harmonia.html","image":"https://rarityx.co/Jewelry/lp_Harmonia_v4.jpeg","offers":{"@type":"Offer","availability":"https://schema.org/PreOrder","priceCurrency":"USD","seller":{"@type":"Organization","name":"RarityX"}}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -27,545 +26,475 @@
 <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,300;1,6..96,300;1,6..96,400&family=Outfit:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="atelier.css">
 <style>
-/* Hallmark · macrostructure: Long Document · genre: atmospheric · theme: custom (brand-locked)
- * nav: N2 edge-aligned wordmark+cta · footer: Ft2 inline single-line
+/* Hallmark · macrostructure: Marquee Hero · genre: atmospheric · theme: custom (brand-locked)
+ * nav: N9 edge-aligned · footer: Ft2 inline single-line · enrichment: E2 full-bleed video hero
  * pre-emit critique: P5 H5 E5 S5 R5 V5
  */
 
 :root {
-  --bg:         #330D1E;
-  --surface:    #3f1525;
-  --text:       #f5f5f5;
-  --muted:      #d4b0c0;
-  --accent:     #c8c8c8;
-  --divider:    #5a1a2e;
-  --photo-dark: #060608;
+  --bg:       #330D1E;
+  --surface:  #3f1525;
+  --text:     #f5f5f5;
+  --muted:    #d4b0c0;
+  --accent:   #c8c8c8;
+  --divider:  #5a1a2e;
+  --dark:     #060608;
+  --dark-2:   #0d0407;
 
-  --ff-display: 'Barlow Condensed', sans-serif;
-  --ff-serif:   'Bodoni Moda', serif;
-  --ff-body:    'Outfit', sans-serif;
-  --ff-mono:    'Space Mono', monospace;
+  --ff-d:  'Barlow Condensed', sans-serif;
+  --ff-s:  'Bodoni Moda', serif;
+  --ff-b:  'Outfit', sans-serif;
+  --ff-m:  'Space Mono', monospace;
 
-  --ease-out:    cubic-bezier(.16,1,.3,1);
-  --ease-inout:  cubic-bezier(.37,0,.63,1);
+  --ease:    cubic-bezier(.16,1,.3,1);
+  --ease-io: cubic-bezier(.37,0,.63,1);
 
-  --sp-xs:  8px;
-  --sp-sm:  16px;
-  --sp-md:  32px;
-  --sp-lg:  64px;
-  --sp-xl:  clamp(80px,12vh,140px);
-  --sp-2xl: clamp(120px,18vh,200px);
-
-  --pad-h:  clamp(24px, 6vw, 96px);
+  --ph: clamp(24px, 6vw, 96px);
+  --pv: clamp(72px, 11vh, 140px);
 }
 
-/* ── OPENING MASTHEAD ── */
-#opening {
-  background: var(--bg);
-  padding-top: clamp(130px,17vh,210px);
-  padding-bottom: 0;
-  padding-left:  var(--pad-h);
-  padding-right: var(--pad-h);
+/* ── HERO ── */
+#hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 540px;
   overflow: hidden;
+  background: var(--dark);
 }
 
-.op-inner {
-  max-width: 1440px;
-  margin: 0 auto;
+.hero-media {
+  position: absolute;
+  inset: 0;
+}
+.hero-media video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(5,4,7,.88) 0%,
+    rgba(5,4,7,.55) 28%,
+    rgba(5,4,7,.18) 60%,
+    transparent 100%
+  );
 }
 
-.op-kicker {
-  font-family: var(--ff-mono);
+.hero-text {
+  position: absolute;
+  bottom: clamp(48px, 9vh, 100px);
+  left: var(--ph);
+  right: var(--ph);
+  z-index: 2;
+}
+
+.hero-kicker {
+  display: block;
+  font-family: var(--ff-m);
   font-size: 9px;
   letter-spacing: .34em;
   text-transform: uppercase;
-  color: var(--muted);
-  display: block;
-  margin-bottom: clamp(28px, 5vw, 56px);
+  color: rgba(212,176,192,.7);
+  margin-bottom: clamp(14px, 2.5vw, 28px);
   opacity: 0;
-  transform: translateY(12px);
-  transition: opacity .55s var(--ease-out), transform .55s var(--ease-out);
 }
-.op-kicker.in { opacity: 1; transform: none; }
 
-.op-title {
-  font-family: var(--ff-display);
+.hero-title {
+  font-family: var(--ff-d);
   font-weight: 900;
   font-style: normal;
-  font-size: clamp(76px, 13.5vw, 200px);
+  font-size: clamp(72px, 13vw, 196px);
   line-height: .87;
   text-transform: uppercase;
   letter-spacing: -.015em;
   color: var(--text);
-  margin: 0 0 var(--sp-md);
+  margin: 0 0 clamp(16px, 2vw, 28px);
+  overflow-wrap: anywhere;
+  min-width: 0;
 }
-.op-title .ch {
-  display: inline-block;
-  will-change: transform, opacity;
-}
+.hero-title .ch { display: inline-block; will-change: transform, opacity; }
 
-.op-rule {
+.hero-sub {
   display: block;
-  width: 100%;
-  height: 1px;
-  background: var(--divider);
-  margin-bottom: var(--sp-md);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 1s var(--ease-out) .15s;
-}
-.op-rule.in { transform: scaleX(1); }
-
-.op-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: var(--sp-sm);
-  margin-bottom: clamp(48px, 8vw, 96px);
-  opacity: 0;
-  transition: opacity .65s var(--ease-out) .28s;
-}
-.op-meta.in { opacity: 1; }
-
-.op-tagline {
-  font-family: var(--ff-serif);
+  font-family: var(--ff-s);
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(16px, 2.2vw, 26px);
-  color: var(--muted);
-  line-height: 1.3;
+  font-size: clamp(14px, 1.8vw, 22px);
+  color: rgba(212,176,192,.72);
+  opacity: 0;
 }
 
-.op-detail {
-  font-family: var(--ff-mono);
-  font-size: 9px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: rgba(212,176,192,.38);
-  text-align: right;
-  line-height: 1.8;
+.hero-scroll {
+  position: absolute;
+  bottom: clamp(20px, 3.5vh, 38px);
+  right: var(--ph);
+  font-family: var(--ff-m);
+  font-size: 11px;
+  letter-spacing: .18em;
+  color: rgba(212,176,192,.4);
+  z-index: 2;
+  animation: scrollBob 2.4s var(--ease-io) infinite;
+}
+@keyframes scrollBob {
+  0%,100% { transform: translateY(0); opacity: .4; }
+  50%      { transform: translateY(5px); opacity: .18; }
 }
 
-.op-image {
-  overflow: hidden;
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path 1.5s var(--ease-out) .08s;
+/* ── STATEMENT ── */
+#statement {
+  background: var(--dark);
+  padding: var(--pv) var(--ph);
 }
-.op-image.in { clip-path: inset(0 0 0% 0); }
-.op-image img {
-  width: 100%;
-  aspect-ratio: 16/7;
-  object-fit: cover;
-  object-position: center 28%;
-  display: block;
-  filter: brightness(.88) saturate(.9);
-}
-
-/* ── DICTUM ── */
-#dictum {
-  background: var(--photo-dark);
-  padding: var(--sp-xl) var(--pad-h);
-}
-
-.dict-inner {
-  max-width: 860px;
-  margin: 0 auto;
-}
-
-.dict-quote {
+.stmt-inner { max-width: 820px; margin: 0 auto; }
+.stmt-quote {
   border: none;
   padding: 0;
-  margin: 0 0 clamp(40px, 6vw, 72px);
+  margin: 0 0 clamp(36px, 5vw, 60px);
 }
-
-.dict-quote p {
-  font-family: var(--ff-serif);
+.stmt-quote p {
+  font-family: var(--ff-s);
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(28px, 4.8vw, 68px);
-  line-height: 1.05;
+  font-size: clamp(28px, 4.6vw, 66px);
+  line-height: 1.04;
   color: var(--text);
   margin: 0;
   overflow-wrap: anywhere;
   min-width: 0;
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity .95s var(--ease-out), transform .95s var(--ease-out);
 }
-.dict-quote p:nth-child(2) {
-  transition-delay: .13s, .13s;
-  color: rgba(245,245,245,.64);
-}
-.dict-quote p.in { opacity: 1; transform: none; }
-
-.dict-note {
-  font-family: var(--ff-mono);
+.stmt-quote p:last-child { color: rgba(245,245,245,.52); }
+.stmt-note {
+  display: block;
+  font-family: var(--ff-m);
   font-size: 9px;
   letter-spacing: .28em;
   text-transform: uppercase;
-  color: rgba(200,200,200,.26);
-  display: block;
+  color: rgba(200,200,200,.22);
 }
 
-/* ── PROCESS ── */
-#process {
+/* ── THREE STONES ── */
+#stones {
   background: var(--bg);
-  padding: var(--sp-xl) var(--pad-h);
+  padding: var(--pv) var(--ph);
+  border-top: 1px solid var(--divider);
 }
-
-.proc-grid {
+.stones-inner {
   max-width: 1440px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0,1fr) minmax(0,1.15fr);
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 2px;
+}
+.stone-col {
+  padding: clamp(32px, 4vw, 56px) clamp(24px, 3vw, 48px) clamp(32px, 4vw, 56px) 0;
+  border-right: 1px solid var(--divider);
+}
+.stone-col:last-child { border-right: none; }
+.stone-num {
+  display: block;
+  font-family: var(--ff-d);
+  font-weight: 900;
+  font-style: normal;
+  font-size: clamp(48px, 6vw, 80px);
+  line-height: 1;
+  color: rgba(90,26,46,.8);
+  margin-bottom: 4px;
+}
+.stone-era {
+  display: block;
+  font-family: var(--ff-d);
+  font-weight: 700;
+  font-style: normal;
+  font-size: clamp(20px, 2.4vw, 32px);
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: clamp(16px, 2vw, 24px);
+}
+.stone-copy {
+  font-family: var(--ff-b);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted);
+  margin: 0;
+  max-width: 30ch;
+}
+
+/* ── EDITORIAL PHOTOGRAPHY ── */
+#editorial {
+  background: var(--surface);
+  overflow: hidden;
+}
+.ed-hero {
+  width: 100%;
+  overflow: hidden;
+}
+.ed-hero img {
+  width: 100%;
+  aspect-ratio: 16/7;
+  object-fit: cover;
+  object-position: center 38%;
+  display: block;
+  filter: brightness(.86) saturate(.95);
+}
+.ed-duo {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  gap: 3px;
+  margin-top: 3px;
+}
+.ed-img { overflow: hidden; }
+.ed-img img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+  filter: brightness(.84) saturate(.9);
+}
+
+/* ── COMMISSION ── */
+#commission {
+  background: var(--bg);
+  padding: var(--pv) var(--ph);
+}
+.comm-grid {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1.2fr);
   gap: clamp(48px, 7vw, 112px);
   align-items: start;
 }
-
-.proc-visual { position: relative; }
-
-.proc-fig {
-  margin: 0;
-  overflow: hidden;
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path 1.3s var(--ease-out);
-}
-.proc-fig.in { clip-path: inset(0 0 0% 0); }
-
-.proc-fig img {
+.comm-visual { overflow: hidden; }
+.comm-visual img {
   width: 100%;
-  display: block;
+  aspect-ratio: 1/1;
   object-fit: cover;
-}
-.proc-fig-primary img {
-  aspect-ratio: 2/3;
-  object-position: center 18%;
-  filter: brightness(.9);
-}
-.proc-fig-secondary {
-  margin-top: 5px;
-  transition-delay: .18s;
-}
-.proc-fig-secondary video {
-  width: 100%;
-  aspect-ratio: 3/2;
-  object-fit: cover;
+  object-position: center 20%;
   display: block;
+  filter: brightness(.88);
 }
-
-.proc-h2 {
-  font-family: var(--ff-display);
+.comm-h2 {
+  font-family: var(--ff-d);
   font-weight: 900;
   font-style: normal;
-  font-size: clamp(38px, 5.4vw, 80px);
+  font-size: clamp(36px, 5vw, 72px);
   line-height: .9;
   text-transform: uppercase;
   color: var(--text);
-  margin: 0 0 var(--sp-lg);
+  margin: 0 0 clamp(28px, 3.5vw, 48px);
   overflow-wrap: anywhere;
   min-width: 0;
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity .75s var(--ease-out), transform .75s var(--ease-out);
 }
-.proc-h2.in { opacity: 1; transform: none; }
-
-.tristone {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  border-top: 1px solid var(--divider);
-  margin-bottom: var(--sp-lg);
-  opacity: 0;
-  transition: opacity .6s var(--ease-out) .1s;
-}
-.tristone.in { opacity: 1; }
-
-.ts-item {
-  padding: var(--sp-sm) 0;
-  border-right: 1px solid var(--divider);
-}
-.ts-item:last-child { border-right: none; }
-
-.ts-era {
-  font-family: var(--ff-mono);
-  font-size: 8px;
-  letter-spacing: .28em;
-  text-transform: uppercase;
-  color: var(--muted);
-  display: block;
-  margin-bottom: 5px;
-}
-.ts-name {
-  font-family: var(--ff-display);
-  font-weight: 700;
-  font-style: normal;
-  font-size: clamp(14px, 1.8vw, 24px);
-  text-transform: uppercase;
-  color: var(--text);
-  display: block;
-}
-
-.proc-copy {
-  font-family: var(--ff-body);
+.comm-text p {
+  font-family: var(--ff-b);
   font-weight: 400;
   font-size: 15px;
   line-height: 1.78;
   color: var(--muted);
+  margin: 0 0 var(--sp-md, 32px);
   max-width: 44ch;
-  margin: 0 0 var(--sp-md);
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity .68s var(--ease-out), transform .68s var(--ease-out);
 }
-.proc-copy:nth-of-type(2) { transition-delay: .08s, .08s; }
-.proc-copy:nth-of-type(3) { transition-delay: .16s, .16s; }
-.proc-copy.in { opacity: 1; transform: none; }
-
-.proc-dim {
-  font-family: var(--ff-mono);
+.comm-text p:last-of-type { margin-bottom: 0; }
+.comm-note {
+  display: block;
+  margin-top: clamp(28px, 3.5vw, 48px);
+  font-family: var(--ff-m);
   font-size: 9px;
-  letter-spacing: .2em;
+  letter-spacing: .22em;
   text-transform: uppercase;
-  color: rgba(212,176,192,.36);
-  display: block;
-  margin-top: var(--sp-xs);
-  opacity: 0;
-  transition: opacity .5s var(--ease-out) .3s;
+  color: rgba(212,176,192,.34);
 }
-.proc-dim.in { opacity: 1; }
 
-/* ── GALLERY ── */
-#gallery {
-  background: var(--surface);
+/* ── AS WORN ── */
+#worn {
+  background: var(--dark-2);
   overflow: hidden;
 }
-
-.gal-banner {
-  overflow: hidden;
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path 1.4s var(--ease-out);
+.worn-header {
+  padding: clamp(40px, 5vh, 60px) var(--ph) clamp(28px, 3.5vw, 44px);
+  border-bottom: 1px solid rgba(90,26,46,.5);
 }
-.gal-banner.in { clip-path: inset(0 0 0% 0); }
-.gal-banner img {
-  width: 100%;
-  aspect-ratio: 16/8;
-  object-fit: cover;
-  object-position: center 38%;
-  display: block;
-  filter: brightness(.86);
+.worn-header span {
+  font-family: var(--ff-m);
+  font-size: 9px;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  color: rgba(212,176,192,.4);
 }
-
-.gal-grid {
+.worn-grid {
   display: grid;
-  grid-template-columns: minmax(0,1.08fr) minmax(0,1fr);
-  grid-template-rows: auto auto;
-  gap: 4px;
-  margin-top: 4px;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 3px;
 }
-
-.ga-tall {
-  grid-column: 1;
-  grid-row: 1 / 3;
-  overflow: hidden;
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path 1.25s var(--ease-out) .06s;
-}
-.ga-top {
-  grid-column: 2;
-  grid-row: 1;
-  overflow: hidden;
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path 1.25s var(--ease-out) .15s;
-}
-.ga-bot {
-  grid-column: 2;
-  grid-row: 2;
-  overflow: hidden;
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path 1.25s var(--ease-out) .24s;
-}
-.ga-tall.in, .ga-top.in, .ga-bot.in { clip-path: inset(0 0 0% 0); }
-
-.ga-tall img {
+.worn-img { overflow: hidden; }
+.worn-img img {
   width: 100%;
   aspect-ratio: 3/4;
   object-fit: cover;
-  object-position: center 24%;
+  object-position: center 18%;
   display: block;
-  filter: brightness(.88);
+  filter: brightness(.82) saturate(.9);
+  transition: filter .6s var(--ease);
 }
-.ga-top img {
-  width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  object-position: center 30%;
-  display: block;
-  filter: brightness(.88);
-}
-.ga-bot video {
-  width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  display: block;
-}
+.worn-img:nth-child(2) img { object-position: center 12%; }
+.worn-img:nth-child(3) img { object-position: center 10%; }
+#worn:hover .worn-img img { filter: brightness(.9) saturate(1); }
 
-/* ── SPECIFICATION ── */
-#specs {
+/* ── DETAIL / SPECIFICATION ── */
+#detail {
   background: var(--bg);
-  padding: var(--sp-xl) var(--pad-h);
+  padding: var(--pv) var(--ph);
 }
-
-.specs-grid {
+.detail-grid {
   max-width: 1440px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0,1fr) minmax(0,1.45fr);
-  gap: clamp(48px, 7vw, 120px);
+  grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
+  gap: clamp(48px, 7vw, 112px);
   align-items: start;
 }
-
-.specs-visual figure {
-  margin: 0;
-  overflow: hidden;
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path 1.25s var(--ease-out);
-}
-.specs-visual figure.in { clip-path: inset(0 0 0% 0); }
-.specs-visual figure img {
-  width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  object-position: center 20%;
+.detail-head {
   display: block;
-  filter: brightness(.9) saturate(.92);
-}
-
-.specs-head {
-  font-family: var(--ff-mono);
+  font-family: var(--ff-m);
   font-size: 9px;
   letter-spacing: .32em;
   text-transform: uppercase;
   color: var(--muted);
-  display: block;
-  margin-bottom: var(--sp-lg);
-  padding-bottom: var(--sp-sm);
+  margin-bottom: clamp(28px, 3.5vw, 44px);
+  padding-bottom: 16px;
   border-bottom: 1px solid var(--divider);
-  opacity: 0;
-  transition: opacity .52s var(--ease-out);
 }
-.specs-head.in { opacity: 1; }
-
 .spec-row {
   display: grid;
   grid-template-columns: minmax(0,1fr) minmax(0,1.6fr);
-  gap: var(--sp-sm);
-  padding: var(--sp-md) 0;
+  gap: 16px;
+  padding: clamp(18px, 2.4vw, 28px) 0;
   border-bottom: 1px solid var(--divider);
   align-items: baseline;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity .62s var(--ease-out), transform .62s var(--ease-out);
 }
-.spec-row:nth-child(2) { transition-delay: .05s, .05s; }
-.spec-row:nth-child(3) { transition-delay: .10s, .10s; }
-.spec-row:nth-child(4) { transition-delay: .15s, .15s; }
-.spec-row:nth-child(5) { transition-delay: .20s, .20s; }
-.spec-row:nth-child(6) { transition-delay: .25s, .25s; }
-.spec-row.in { opacity: 1; transform: none; }
-
-.spec-label {
-  font-family: var(--ff-mono);
+.spec-row dt {
+  font-family: var(--ff-m);
   font-size: 8px;
   letter-spacing: .26em;
   text-transform: uppercase;
   color: var(--muted);
 }
-.spec-value {
-  font-family: var(--ff-display);
+.spec-v {
+  display: block;
+  font-family: var(--ff-d);
   font-weight: 700;
   font-style: normal;
-  font-size: clamp(17px, 2vw, 28px);
+  font-size: clamp(16px, 1.8vw, 26px);
   text-transform: uppercase;
   color: var(--text);
-  display: block;
   overflow-wrap: anywhere;
   min-width: 0;
 }
-.spec-sub {
-  font-family: var(--ff-body);
+.spec-s {
+  display: block;
+  font-family: var(--ff-b);
   font-weight: 300;
   font-size: 11px;
-  line-height: 1.55;
-  color: rgba(212,176,192,.55);
-  display: block;
+  line-height: 1.5;
+  color: rgba(212,176,192,.48);
   margin-top: 3px;
+}
+.detail-render {
+  display: flex;
+  align-items: flex-start;
+}
+.detail-render img {
+  width: 100%;
+  display: block;
+  border: 1px solid var(--divider);
+}
+
+/* ── UGC ── */
+#ugc {
+  background: var(--surface);
+  position: relative;
+  overflow: hidden;
+}
+.ugc-inner {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: clamp(60px, 8vh, 100px) var(--ph);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(24px, 3vw, 40px);
+}
+.ugc-inner video {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 9/16;
+  object-fit: cover;
+  display: block;
+  border: 1px solid var(--divider);
+}
+.ugc-caption {
+  font-family: var(--ff-s);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(18px, 2.2vw, 28px);
+  color: rgba(212,176,192,.7);
+  text-align: center;
 }
 
 /* ── FINALE ── */
 #finale {
-  background: var(--photo-dark);
-  padding: var(--sp-2xl) var(--pad-h);
-  position: relative;
-  overflow: hidden;
+  background: var(--dark);
+  padding: var(--pv) var(--ph);
+  padding-top: clamp(100px, 15vh, 180px);
+  padding-bottom: clamp(100px, 15vh, 180px);
 }
-
-.fin-inner {
-  max-width: 860px;
-  position: relative;
-  z-index: 1;
-}
-
+.fin-inner { max-width: 820px; }
 .fin-ovals {
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-bottom: var(--sp-lg);
-  opacity: 0;
-  transition: opacity .5s var(--ease-out);
+  margin-bottom: clamp(32px, 4vw, 52px);
 }
-.fin-ovals.in { opacity: 1; }
-
 .fin-oval {
-  border: 1px solid rgba(200,200,200,.18);
+  border: 1px solid rgba(200,200,200,.16);
   border-radius: 50%;
 }
-.fin-oval:nth-child(1),
-.fin-oval:nth-child(3) { width: 20px; height: 13px; opacity: .48; }
-.fin-oval:nth-child(2)  { width: 30px; height: 18px; }
-
+.fin-oval:nth-child(1),.fin-oval:nth-child(3) { width: 20px; height: 13px; opacity: .44; }
+.fin-oval:nth-child(2) { width: 30px; height: 18px; }
 .fin-prelude {
-  font-family: var(--ff-mono);
+  display: block;
+  font-family: var(--ff-m);
   font-size: 9px;
   letter-spacing: .34em;
   text-transform: uppercase;
-  color: rgba(200,200,200,.28);
-  display: block;
-  margin-bottom: var(--sp-lg);
-  opacity: 0;
-  transition: opacity .5s var(--ease-out) .08s;
+  color: rgba(200,200,200,.26);
+  margin-bottom: clamp(28px, 3.5vw, 44px);
 }
-.fin-prelude.in { opacity: 1; }
-
 .fin-title {
-  font-family: var(--ff-serif);
+  font-family: var(--ff-s);
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(30px, 5.2vw, 76px);
+  font-size: clamp(28px, 5vw, 74px);
   line-height: 1.04;
   color: var(--text);
-  margin: 0 0 clamp(48px, 8vh, 100px);
+  margin: 0 0 clamp(48px, 7vh, 88px);
   overflow-wrap: anywhere;
   min-width: 0;
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity .95s var(--ease-out) .12s, transform .95s var(--ease-out) .12s;
 }
-.fin-title.in { opacity: 1; transform: none; }
-
 .fin-cta {
-  display: inline-block;
-  font-family: var(--ff-mono);
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--ff-m);
   font-size: 11px;
   letter-spacing: .24em;
   text-transform: uppercase;
@@ -574,70 +503,70 @@
   border: 1px solid var(--divider);
   padding: 18px 48px;
   min-height: 44px;
-  white-space: nowrap;
-  opacity: 0;
-  transform: translateY(10px);
-  transition:
-    opacity    .52s var(--ease-out) .36s,
-    transform  .52s var(--ease-out) .36s,
-    background-color 240ms var(--ease-out),
-    border-color     240ms var(--ease-out);
+  transition: background-color 240ms var(--ease), border-color 240ms var(--ease);
 }
-.fin-cta.in { opacity: 1; transform: none; }
-.fin-cta:hover { background-color: rgba(200,200,200,.08); border-color: var(--accent); }
+.fin-cta:hover { background-color: rgba(200,200,200,.07); border-color: var(--accent); }
 .fin-cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+/* ── IO REVEAL CLASSES ── */
+.rv {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .75s var(--ease), transform .75s var(--ease);
+}
+.rv.vis { opacity: 1; transform: none; }
+.rv-d1 { transition-delay: .07s, .07s; }
+.rv-d2 { transition-delay: .14s, .14s; }
+.rv-d3 { transition-delay: .21s, .21s; }
+.rv-d4 { transition-delay: .28s, .28s; }
+.rv-d5 { transition-delay: .35s, .35s; }
+
+.rv-img {
+  overflow: hidden;
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1.3s var(--ease);
+}
+.rv-img.vis { clip-path: inset(0% 0 0 0); }
+.rv-img-d1 { transition-delay: .06s; }
+.rv-img-d2 { transition-delay: .14s; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  .proc-grid {
+  .comm-grid {
     grid-template-columns: 1fr;
-    gap: var(--sp-lg);
+    gap: clamp(32px, 5vw, 56px);
   }
-  .proc-visual { order: 1; }
-  .proc-text   { order: 2; }
-  .proc-fig-secondary video { aspect-ratio: 16/9; }
-
-  .specs-grid { grid-template-columns: 1fr; }
-  .specs-visual { display: none; }
+  .comm-visual img { aspect-ratio: 4/3; }
+  .detail-grid {
+    grid-template-columns: 1fr;
+    gap: clamp(32px, 5vw, 56px);
+  }
+  .detail-render { order: -1; }
 }
 
-@media (max-width: 720px) {
-  .gal-grid {
-    grid-template-columns: 1fr;
-    gap: 4px;
-  }
-  .ga-tall { grid-column: 1; grid-row: auto; }
-  .ga-tall img { aspect-ratio: 4/3; }
-  .ga-top  { grid-column: 1; grid-row: auto; }
-  .ga-bot  { grid-column: 1; grid-row: auto; }
+@media (max-width: 680px) {
+  .stones-inner { grid-template-columns: 1fr; }
+  .stone-col { border-right: none; border-bottom: 1px solid var(--divider); padding: clamp(28px,4vw,40px) 0; }
+  .stone-col:last-child { border-bottom: none; }
 
-  .gal-banner img { aspect-ratio: 4/3; }
-}
+  .worn-grid { grid-template-columns: 1fr; }
+  .worn-img img { aspect-ratio: 4/3; }
 
-@media (max-width: 540px) {
-  .tristone { grid-template-columns: 1fr; }
-  .ts-item { border-right: none; border-bottom: 1px solid var(--divider); }
-  .ts-item:last-child { border-bottom: none; }
+  .ed-duo { grid-template-columns: 1fr; }
 
   .spec-row { grid-template-columns: 1fr; gap: 4px; }
+}
 
-  .op-meta { flex-direction: column; gap: var(--sp-sm); }
-  .op-detail { text-align: left; }
+@media (max-width: 480px) {
+  .ed-hero img { aspect-ratio: 3/2; }
+  .ugc-inner video { aspect-ratio: 4/5; max-width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .op-kicker, .op-rule, .op-meta, .op-image,
-  .dict-quote p,
-  .proc-h2, .tristone, .proc-copy, .proc-dim,
-  .proc-fig, .specs-visual figure,
-  .gal-banner, .ga-tall, .ga-top, .ga-bot,
-  .specs-head, .spec-row,
-  .fin-ovals, .fin-prelude, .fin-title, .fin-cta {
-    opacity: 1 !important;
-    transform: none !important;
-    clip-path: inset(0) !important;
-    transition: none !important;
-  }
+  .rv, .rv-img { opacity:1 !important; transform:none !important; clip-path:none !important; transition:none !important; }
+  .hero-kicker, .hero-sub { opacity:1 !important; }
+  .hero-title .ch { opacity:1 !important; transform:none !important; }
+  .hero-scroll { animation:none; }
 }
 </style>
 </head>
@@ -651,173 +580,186 @@
   <a class="mono" href="index.html#section-09" data-rx-nav>Start with a conversation</a>
 </nav>
 
-<!-- ══ OPENING MASTHEAD ══ -->
-<section id="opening" aria-labelledby="harmonia-title">
-  <div class="op-inner">
-    <span class="op-kicker">A commission &middot; Three stones &middot; 18k Rose Gold</span>
-    <h1 class="op-title" id="harmonia-title" aria-label="Harmonia">
+<!-- ══ HERO — full viewport, visible immediately ══ -->
+<section id="hero" aria-labelledby="harmonia-title">
+  <div class="hero-media">
+    <video
+      id="hero-video"
+      autoplay muted loop playsinline
+      preload="metadata"
+      poster="Jewelry/lp_Harmonia_v4.jpeg"
+      aria-hidden="true">
+      <source src="Jewelry/lp_harmonia_video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay" aria-hidden="true"></div>
+  </div>
+
+  <div class="hero-text">
+    <span class="hero-kicker">A commission &middot; Three stones &middot; 18k Rose Gold</span>
+    <h1 class="hero-title" id="harmonia-title" aria-label="Harmonia">
       <span class="ch">H</span><span class="ch">A</span><span class="ch">R</span><span class="ch">M</span><span class="ch">O</span><span class="ch">N</span><span class="ch">I</span><span class="ch">A</span>
     </h1>
-    <hr class="op-rule" aria-hidden="true">
-    <div class="op-meta">
-      <span class="op-tagline">Designed before the stones were chosen</span>
-      <span class="op-detail">18K Rose Gold &middot; Oval Cluster<br>Minimal Cathedral Prong &middot; MMXXVI</span>
-    </div>
-    <div class="op-image">
-      <img src="Jewelry/lp_Harmonia_v2.jpeg"
-           alt="Harmonia three-stone oval ring on pale limestone — editorial"
-           fetchpriority="high" loading="eager">
-    </div>
+    <span class="hero-sub">Designed before the stones were chosen</span>
   </div>
+
+  <div class="hero-scroll" aria-hidden="true">&darr;</div>
 </section>
 
-<!-- ══ DICTUM ══ -->
-<section id="dictum" aria-label="The brief">
-  <div class="dict-inner">
-    <blockquote class="dict-quote" cite="">
-      <p>The brief arrived<br>with one sentence.</p>
-      <p>The ring answered it.</p>
+<!-- ══ STATEMENT ══ -->
+<section id="statement" aria-label="The brief">
+  <div class="stmt-inner">
+    <blockquote class="stmt-quote">
+      <p class="rv">The brief arrived with<br>one sentence.</p>
+      <p class="rv rv-d1">The ring answered it.</p>
     </blockquote>
-    <span class="dict-note">18k Rose Gold &middot; Oval Cluster &middot; Cathedral Setting &middot; Past · Present · Future</span>
+    <span class="stmt-note rv rv-d2">18k Rose Gold &middot; Oval Cluster &middot; Past &middot; Present &middot; Future</span>
   </div>
 </section>
 
-<!-- ══ PROCESS ══ -->
-<section id="process" aria-label="Design process">
-  <div class="proc-grid">
-
-    <div class="proc-visual">
-      <figure class="proc-fig proc-fig-primary">
-        <img src="Jewelry/lp_Harmonia_v1.jpeg"
-             alt="Harmonia in pale pink velvet ring box — three stones visible"
-             loading="lazy">
-      </figure>
-      <figure class="proc-fig proc-fig-secondary">
-        <video autoplay muted loop playsinline preload="none"
-               aria-label="Harmonia — client delivery moment">
-          <source src="Jewelry/lp_Harmonia_ugc.mp4" type="video/mp4">
-        </video>
-      </figure>
+<!-- ══ THREE STONES ══ -->
+<section id="stones" aria-label="Three-stone symbolism">
+  <div class="stones-inner">
+    <div class="stone-col rv">
+      <span class="stone-num" aria-hidden="true">I</span>
+      <span class="stone-era">Past</span>
+      <p class="stone-copy">The first stone carries what was. The years before the question was asked. Every version of the person you chose to love.</p>
     </div>
-
-    <div class="proc-text">
-      <h2 class="proc-h2">The Center Stone<br>Chosen Last</h2>
-
-      <div class="tristone" role="list" aria-label="Three-stone symbolism">
-        <div class="ts-item" role="listitem">
-          <span class="ts-era">Stone I</span>
-          <span class="ts-name">Past</span>
-        </div>
-        <div class="ts-item" role="listitem">
-          <span class="ts-era">Stone II</span>
-          <span class="ts-name">Present</span>
-        </div>
-        <div class="ts-item" role="listitem">
-          <span class="ts-era">Stone III</span>
-          <span class="ts-name">Future</span>
-        </div>
-      </div>
-
-      <p class="proc-copy">The three-stone format is the oldest language in engagement jewelry. Past, present, future &mdash; three chapters worn as one piece. The design task was to make that language feel earned rather than inherited.</p>
-
-      <p class="proc-copy">The oval was chosen for continuity. A shape with no hard corners, no point of termination. The flanking stones mirror the center proportionally &mdash; not identical supports, but two complementary replies in scale.</p>
-
-      <p class="proc-copy">Rose gold because it doesn&rsquo;t compete. The metal recedes into the stones. Every prong was drawn as thin as fabrication allows &mdash; the intention being that you see diamonds, not setting.</p>
-
-      <span class="proc-dim">18k Rose Gold &middot; Oval Cluster &middot; Minimal Cathedral Prong</span>
+    <div class="stone-col rv rv-d2">
+      <span class="stone-num" aria-hidden="true">II</span>
+      <span class="stone-era">Present</span>
+      <p class="stone-copy">The center stone — always the largest — marks now. The weight of the moment. The heft you can feel on the finger when you look down.</p>
     </div>
-
+    <div class="stone-col rv rv-d4">
+      <span class="stone-num" aria-hidden="true">III</span>
+      <span class="stone-era">Future</span>
+      <p class="stone-copy">The third stone looks forward. Open horizon. No design language can hold what that means — which is why it was left as a stone, not a word.</p>
+    </div>
   </div>
 </section>
 
-<!-- ══ GALLERY ══ -->
-<section id="gallery" aria-label="Harmonia — the piece on the hand">
-  <div class="gal-banner" role="img" aria-label="Harmonia on hand — profile, rose gold against skin">
-    <img src="Jewelry/lp_Harmonia_special.jpeg"
-         alt="Harmonia worn on hand, profile angle, three ovals catching light"
+<!-- ══ EDITORIAL PHOTOGRAPHY ══ -->
+<section id="editorial" aria-label="Harmonia — editorial photography">
+  <div class="rv-img ed-hero" role="img" aria-label="Harmonia on pale limestone — three stones catching light">
+    <img src="Jewelry/lp_Harmonia_v4.jpeg"
+         alt="Harmonia three-stone oval ring, three stones catching light on pale limestone"
          loading="lazy">
   </div>
+  <div class="ed-duo">
+    <div class="rv-img rv-img-d1 ed-img">
+      <img src="Jewelry/lp_Harmonia_v2.jpeg"
+           alt="Harmonia on pale limestone surface — clean editorial product shot"
+           loading="lazy">
+    </div>
+    <div class="rv-img rv-img-d2 ed-img">
+      <img src="Jewelry/lp_Harmonia_v3.jpeg"
+           alt="Harmonia on textured concrete with dried gypsophila — lifestyle editorial"
+           loading="lazy">
+    </div>
+  </div>
+</section>
 
-  <div class="gal-grid">
-    <div class="ga-tall">
+<!-- ══ COMMISSION ══ -->
+<section id="commission" aria-label="Design intent and commission model">
+  <div class="comm-grid">
+    <div class="rv-img comm-visual">
+      <img src="Jewelry/lp_Harmonia_v1.jpeg"
+           alt="Harmonia in pale pink velvet ring box — three oval diamonds, rose gold setting"
+           loading="lazy">
+    </div>
+    <div class="comm-text">
+      <h2 class="comm-h2 rv">The Center Stone<br>Chosen Last</h2>
+      <p class="rv rv-d1">Rose gold because it doesn&rsquo;t compete. The metal recedes into the stones. Every prong was drawn as thin as fabrication allows &mdash; the intention being that you see diamonds, not setting.</p>
+      <p class="rv rv-d2">This is a pre-sold commission. Harmonia exists because the design came first, before stones were sourced or sizes decided. That sequence changes how the piece is made &mdash; and what it means when it arrives.</p>
+      <span class="comm-note rv rv-d3">18k Rose Gold &middot; Oval Cluster &middot; Minimal Cathedral Prong &middot; Zero Inventory</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AS WORN ══ -->
+<section id="worn" aria-label="Harmonia as worn">
+  <div class="worn-header">
+    <span>As worn</span>
+  </div>
+  <div class="worn-grid">
+    <div class="rv-img worn-img">
+      <img src="Jewelry/lp_Harmonia_special.jpeg"
+           alt="Harmonia worn on hand — profile angle, rose gold architecture visible"
+           loading="lazy">
+    </div>
+    <div class="rv-img rv-img-d1 worn-img">
       <img src="Jewelry/lp_Harmonia_special_v1.jpeg"
-           alt="Harmonia on hand — face-on, three stones clearly visible"
+           alt="Harmonia worn on hand — face-on, three oval diamonds visible"
            loading="lazy">
     </div>
-    <div class="ga-top">
+    <div class="rv-img rv-img-d2 worn-img">
       <img src="Jewelry/lp_Harmonia_special_v2.jpeg"
-           alt="Harmonia on hand — overhead view, oval geometry"
+           alt="Harmonia worn on hand — overhead view, stone arrangement"
            loading="lazy">
-    </div>
-    <div class="ga-bot">
-      <video autoplay muted loop playsinline preload="none"
-             aria-label="Harmonia — ring in motion">
-        <source src="Jewelry/lp_harmonia_video.mp4" type="video/mp4">
-      </video>
     </div>
   </div>
 </section>
 
 <!-- ══ SPECIFICATION ══ -->
-<section id="specs" aria-label="Technical specification">
-  <div class="specs-grid">
-
-    <div class="specs-visual">
-      <figure>
-        <img src="Jewelry/fcm_360_harmonia.jpeg"
-             alt="Harmonia — close material detail, rose gold prong and oval stone"
-             loading="lazy">
-      </figure>
-    </div>
-
-    <div class="specs-data">
-      <span class="specs-head">Technical Specification</span>
+<section id="detail" aria-label="Technical specification">
+  <div class="detail-grid">
+    <div class="detail-specs">
+      <span class="detail-head rv">Technical Specification</span>
       <dl>
-        <div class="spec-row">
-          <dt class="spec-label">Format</dt>
+        <div class="spec-row rv rv-d1">
+          <dt class="spec-row-label">Format</dt>
           <dd>
-            <span class="spec-value">Three-Stone</span>
-            <span class="spec-sub">Oval cluster &middot; minimal cathedral prong setting</span>
+            <span class="spec-v">Three-Stone</span>
+            <span class="spec-s">Oval cluster &middot; minimal cathedral prong</span>
           </dd>
         </div>
-        <div class="spec-row">
-          <dt class="spec-label">Center Stone</dt>
+        <div class="spec-row rv rv-d2">
+          <dt class="spec-row-label">Center Stone</dt>
           <dd>
-            <span class="spec-value">Oval Cut</span>
-            <span class="spec-sub">GIA certified &middot; D&ndash;F colour &middot; IF&ndash;VS1 clarity</span>
+            <span class="spec-v">Oval Cut</span>
+            <span class="spec-s">GIA certified &middot; D&ndash;F colour &middot; IF&ndash;VS1 clarity</span>
           </dd>
         </div>
-        <div class="spec-row">
-          <dt class="spec-label">Side Stones</dt>
+        <div class="spec-row rv rv-d3">
+          <dt class="spec-row-label">Side Stones</dt>
           <dd>
-            <span class="spec-value">Matched Ovals</span>
-            <span class="spec-sub">Proportional to center &middot; 4-prong per stone</span>
+            <span class="spec-v">Matched Ovals</span>
+            <span class="spec-s">Proportional to center &middot; 4-prong per stone</span>
           </dd>
         </div>
-        <div class="spec-row">
-          <dt class="spec-label">Metal</dt>
+        <div class="spec-row rv rv-d4">
+          <dt class="spec-row-label">Metal</dt>
           <dd>
-            <span class="spec-value">18k Rose Gold</span>
-            <span class="spec-sub">Minimal band width &middot; maximum stone face</span>
+            <span class="spec-v">18k Rose Gold</span>
+            <span class="spec-s">Minimal band &middot; maximum stone face</span>
           </dd>
         </div>
-        <div class="spec-row">
-          <dt class="spec-label">Symbolism</dt>
+        <div class="spec-row rv rv-d5">
+          <dt class="spec-row-label">Commission</dt>
           <dd>
-            <span class="spec-value">Past &middot; Present &middot; Future</span>
-            <span class="spec-sub">Three chapters &middot; one continuous band</span>
-          </dd>
-        </div>
-        <div class="spec-row">
-          <dt class="spec-label">Commission</dt>
-          <dd>
-            <span class="spec-value">Pre-Sold</span>
-            <span class="spec-sub">Designed before fabrication &middot; zero inventory model</span>
+            <span class="spec-v">Pre-Sold</span>
+            <span class="spec-s">Design precedes fabrication &middot; zero inventory</span>
           </dd>
         </div>
       </dl>
     </div>
 
+    <div class="rv detail-render">
+      <img src="Jewelry/fcm_360_harmonia.jpeg"
+           alt="Harmonia — six-view 3D render turnaround, front, side, top angles"
+           loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ══ UGC ══ -->
+<section id="ugc" aria-label="Harmonia — client delivery">
+  <div class="ugc-inner">
+    <video autoplay muted loop playsinline preload="none"
+           class="rv"
+           aria-label="Harmonia worn by client — delivery moment">
+      <source src="Jewelry/lp_Harmonia_ugc.mp4" type="video/mp4">
+    </video>
+    <span class="ugc-caption rv rv-d2">The moment it lands.</span>
   </div>
 </section>
 
@@ -862,14 +804,14 @@
 <!-- ══ FINALE ══ -->
 <section id="finale" aria-label="Begin your commission">
   <div class="fin-inner">
-    <div class="fin-ovals" aria-hidden="true">
+    <div class="fin-ovals rv" aria-hidden="true">
       <div class="fin-oval"></div>
       <div class="fin-oval"></div>
       <div class="fin-oval"></div>
     </div>
-    <span class="fin-prelude">Eighteen karat rose gold</span>
-    <h2 class="fin-title">Designed before<br>the stones were chosen.</h2>
-    <a href="index.html#section-09" class="fin-cta" data-rx-nav>
+    <span class="fin-prelude rv rv-d1">Eighteen karat rose gold</span>
+    <h2 class="fin-title rv rv-d2">Designed before<br>the stones were chosen.</h2>
+    <a href="index.html#section-09" class="fin-cta rv rv-d3" data-rx-nav>
       Start with a conversation
     </a>
   </div>
@@ -890,7 +832,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script>
 (function(){
-  /* ── veil open ── */
+  /* ── veil ── */
   var veil = document.querySelector('.rx-veil');
   if (veil) {
     veil.classList.add('rx-veil--open');
@@ -905,48 +847,54 @@
     });
   }
 
-  /* ── title char animation (GSAP) ── */
+  /* ── hero title: GSAP chars ── */
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var chars = document.querySelectorAll('.op-title .ch');
+  var chars   = document.querySelectorAll('.hero-title .ch');
+  var kicker  = document.querySelector('.hero-kicker');
+  var heroSub = document.querySelector('.hero-sub');
 
-  function animateTitle() {
-    if (!reduced && window.gsap) {
-      gsap.fromTo(chars,
-        { opacity: 0, y: 40, rotateX: -12 },
-        { opacity: 1, y: 0, rotateX: 0,
-          duration: .82, stagger: .05,
-          ease: 'power3.out', delay: .24 }
-      );
-    } else {
+  function animateHero() {
+    if (reduced) {
       chars.forEach(function(c){ c.style.opacity='1'; c.style.transform='none'; });
+      if (kicker)  kicker.style.opacity  = '1';
+      if (heroSub) heroSub.style.opacity = '1';
+      return;
+    }
+    if (window.gsap) {
+      gsap.fromTo(chars,
+        { opacity:0, y:36, rotateX:-10 },
+        { opacity:1, y:0, rotateX:0, duration:.78, stagger:.048, ease:'power3.out', delay:.22 }
+      );
+      gsap.to(kicker,  { opacity:1, duration:.6, ease:'power2.out', delay:.14 });
+      gsap.to(heroSub, { opacity:1, duration:.6, ease:'power2.out', delay:.84 });
+    } else {
+      /* GSAP not loaded yet — will retry on load */
+      chars.forEach(function(c){ c.style.opacity='1'; c.style.transform='none'; });
+      if (kicker)  kicker.style.opacity  = '1';
+      if (heroSub) heroSub.style.opacity = '1';
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', animateTitle);
-  } else {
-    animateTitle();
-  }
+  /* Fire after GSAP loads (it's deferred) */
+  window.addEventListener('load', animateHero, { once:true });
 
-  /* ── IO reveals ── */
-  var revealTargets = [
-    '.op-kicker','.op-rule','.op-meta','.op-image',
-    '.dict-quote p',
-    '.proc-h2','.tristone','.proc-copy','.proc-dim',
-    '.proc-fig',
-    '.specs-visual figure',
-    '.gal-banner','.ga-tall','.ga-top','.ga-bot',
-    '.specs-head','.spec-row',
-    '.fin-ovals','.fin-prelude','.fin-title','.fin-cta'
-  ].join(',');
-
+  /* ── IO reveals (opacity+transform) ── */
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      if (e.isIntersecting){ e.target.classList.add('vis'); io.unobserve(e.target); }
     });
-  }, { threshold: 0.08 });
+  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll(revealTargets).forEach(function(el){ io.observe(el); });
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+  /* ── IO reveals (clip-path wipe) — fires eagerly ── */
+  var ioImg = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add('vis'); ioImg.unobserve(e.target); }
+    });
+  }, { threshold: 0, rootMargin: '80px 0px 0px 0px' });
+
+  document.querySelectorAll('.rv-img').forEach(function(el){ ioImg.observe(el); });
 
   /* ── IO video lazy-play ── */
   var vidIO = new IntersectionObserver(function(entries){
@@ -954,16 +902,22 @@
       if (e.isIntersecting){ e.target.play().catch(function(){}); }
       else { e.target.pause(); }
     });
-  }, { rootMargin: '200px 0px' });
+  }, { rootMargin: '240px 0px' });
 
   document.querySelectorAll('video[preload="none"]').forEach(function(v){ vidIO.observe(v); });
 
+  /* ── hero video force-play ── */
+  var heroVid = document.getElementById('hero-video');
+  if (heroVid) {
+    heroVid.play().catch(function(){});
+  }
+
   /* ── media protection ── */
   document.addEventListener('contextmenu', function(e){
-    if (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO') e.preventDefault();
+    if (e.target.tagName==='IMG'||e.target.tagName==='VIDEO') e.preventDefault();
   });
   document.addEventListener('dragstart', function(e){
-    if (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO') e.preventDefault();
+    if (e.target.tagName==='IMG'||e.target.tagName==='VIDEO') e.preventDefault();
   });
 })();
 </script>
