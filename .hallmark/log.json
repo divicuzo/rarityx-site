@@ -1,0 +1,14 @@
+[
+  {
+    "date": "2026-09-13",
+    "verb": "redesign",
+    "target": "harmonia.html",
+    "macrostructure": "Long Document",
+    "genre": "atmospheric",
+    "theme": "custom (brand-locked)",
+    "nav": "N2 edge-aligned wordmark+cta",
+    "footer": "Ft2 inline single-line",
+    "scores": { "P": 5, "H": 5, "E": 5, "S": 5, "R": 5, "V": 5 },
+    "notes": "Full rebuild from scratch. Audit fixes: removed pure-black bg, tag-left/header-right gallery header, italic em inside h2, gradient headlines (via atelier.css + medallion.html). New macrostructure: masthead → dictum → process (text+image 2-col) → asymmetric gallery → spec sheet → finale. No video hero. Copyright 2026."
+  }
+]

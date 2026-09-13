@@ -39,7 +39,7 @@ body{background:#330D1E;color:var(--text);font-family:'Outfit',sans-serif;font-w
 @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none}}
 
 /* chrome display type */
-.chrome-type{font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;line-height:.9;letter-spacing:.005em;background:linear-gradient(180deg,#fdfdfd 0%,#b9bcc6 38%,#5d6068 52%,#e8eaf0 66%,#8f929b 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.chrome-type{font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;line-height:.9;letter-spacing:.005em;color:#f5f5f5;}
 
 /* next-piece banner — the seam between pages */
 .next-piece{display:block;position:relative;background:#330D1E;border-top:1px solid #5a1a2e;padding:12vh 6vw 13vh;text-decoration:none;overflow:hidden}
