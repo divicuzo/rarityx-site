@@ -13,6 +13,7 @@
   requestAnimationFrame(function () {
     requestAnimationFrame(function () { veil.classList.add('rx-veil--open'); });
   });
+  setTimeout(function () { veil.classList.add('rx-veil--open'); }, 120);
 
   // leaving: internal links marked data-rx-nav sweep the veil back in first
   document.addEventListener('click', function (e) {

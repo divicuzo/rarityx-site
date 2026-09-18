@@ -533,28 +533,28 @@
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .comm-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0,1fr);
     gap: clamp(32px, 5vw, 56px);
   }
   .comm-visual img { aspect-ratio: 4/3; }
   .detail-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0,1fr);
     gap: clamp(32px, 5vw, 56px);
   }
   .detail-render { order: -1; }
 }
 
 @media (max-width: 680px) {
-  .stones-inner { grid-template-columns: 1fr; }
+  .stones-inner { grid-template-columns: minmax(0,1fr); }
   .stone-col { border-right: none; border-bottom: 1px solid var(--divider); padding: clamp(28px,4vw,40px) 0; }
   .stone-col:last-child { border-bottom: none; }
 
-  .worn-grid { grid-template-columns: 1fr; }
+  .worn-grid { grid-template-columns: minmax(0,1fr); }
   .worn-img img { aspect-ratio: 4/3; }
 
-  .ed-duo { grid-template-columns: 1fr; }
+  .ed-duo { grid-template-columns: minmax(0,1fr); }
 
-  .spec-row { grid-template-columns: 1fr; gap: 4px; }
+  .spec-row { grid-template-columns: minmax(0,1fr); gap: 4px; }
 }
 
 @media (max-width: 480px) {
@@ -661,7 +661,7 @@ footer.rx-foot {
 
 /* Single col on very small */
 @media (max-width: 380px) {
-  .worn-grid { grid-template-columns: 1fr; }
+  .worn-grid { grid-template-columns: minmax(0,1fr); }
   .worn-img img { aspect-ratio: 4/3; }
 }
 

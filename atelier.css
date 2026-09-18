@@ -63,3 +63,8 @@ h1,h2,h3{overflow-wrap:anywhere;min-width:0}
 .finale-stack h2.reveal .off-r{transform:translateX(0)!important;transition:transform 1.1s .18s cubic-bezier(.16,1,.3,1)}
 .finale-stack h2.in .off-l{transform:translateX(-4vw)!important}
 .finale-stack h2.in .off-r{transform:translateX(4vw)!important}
+
+/* audit pass 2026-09-17: touch targets + focus */
+a[data-rx-nav],footer.rx-foot a,a.mono{position:relative}
+a[data-rx-nav]::after,footer.rx-foot a::after,a.mono::after{content:"";position:absolute;inset:-14px -8px}
+a:focus-visible,button:focus-visible{outline:2px solid #c8c8c8;outline-offset:4px}

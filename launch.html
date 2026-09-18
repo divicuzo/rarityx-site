@@ -312,7 +312,7 @@ body{
 }
 .mech-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(3,minmax(0,1fr));
   gap:1px;
   background:var(--divider);
   border:1px solid var(--divider);
@@ -542,7 +542,7 @@ body{
   gap:0.8rem;
   align-items:start;
 }
-.product-mosaic.duo{grid-template-columns:1fr 1fr;}
+.product-mosaic.duo{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
 
 .img-card{
   background:var(--surface-hi);
@@ -579,7 +579,7 @@ body{
 /* Tier-layout grids */
 .tier-layout-split{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
   gap:3.5rem;
   align-items:center;
 }
@@ -588,7 +588,7 @@ body{
 
 .tier-layout-trio-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
   grid-template-rows:auto auto;
   gap:3.5rem;
   align-items:center;
@@ -599,7 +599,7 @@ body{
 .tier-layout-trio-grid .trio-images{
   grid-column:2;grid-row:1/3;
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
   gap:0.6rem;
   align-content:start;
 }
@@ -839,13 +839,13 @@ body{
 @media(max-width:960px){
   .progress-rail{display:none;}
   .tier-sections{margin-left:0;}
-  .tier-layout-split{grid-template-columns:1fr;gap:2.5rem;}
+  .tier-layout-split{grid-template-columns:minmax(0,1fr);gap:2.5rem;}
   .tier-layout-split.reverse{direction:ltr;}
-  .tier-layout-trio-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .tier-layout-trio-grid{grid-template-columns:minmax(0,1fr);gap:2.5rem;}
   .tier-layout-trio-grid .tier-text-block{grid-column:1;grid-row:auto;}
-  .tier-layout-trio-grid .trio-images{grid-column:1;grid-row:auto;grid-template-columns:1fr 1fr;}
+  .tier-layout-trio-grid .trio-images{grid-column:1;grid-row:auto;grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
   .tier-layout-trio-grid .trio-images .img-card:nth-child(3){grid-column:1/3;}
-  .mech-grid{grid-template-columns:1fr;}
+  .mech-grid{grid-template-columns:minmax(0,1fr);}
   .launch-nav .nav-badge{display:none;}
   .finalboss-content{padding:5rem 1.8rem 5rem;}
   .tier-section{padding:5.5rem 1.8rem;}
@@ -854,13 +854,24 @@ body{
 @media(max-width:600px){
   .launch-nav{padding:1rem 1.5rem;}
   .hero-content{padding:0 1.5rem 3.5rem;}
-  .product-mosaic.duo{grid-template-columns:1fr;}
-  .tier-layout-trio-grid .trio-images{grid-template-columns:1fr;}
+  .product-mosaic.duo{grid-template-columns:minmax(0,1fr);}
+  .tier-layout-trio-grid .trio-images{grid-template-columns:minmax(0,1fr);}
   .tier-layout-trio-grid .trio-images .img-card:nth-child(3){grid-column:auto;}
   .finalboss-title{font-size:clamp(2.8rem,13vw,5.5rem);}
   .entry-section{padding:7rem 1.5rem 5rem;}
   .mechanic{padding:5.5rem 1.5rem;}
   .hero-title{font-size:clamp(3.5rem,14vw,7rem);}
+}
+
+/* ── audit pass 2026-09-17: a11y + touch + reduced motion ── */
+.nav-cta-link,.launch-footer a,.nav-logo{position:relative;}
+.nav-cta-link::after,.launch-footer a::after,.nav-logo::after{content:"";position:absolute;inset:-13px -8px;}
+a:focus-visible,button:focus-visible{outline:2px solid #c8c8c8;outline-offset:4px;}
+.btn-primary,.btn-primary-large,.nav-cta-link{white-space:nowrap;}
+@media(max-width:600px){.btn-primary{padding:1rem 1.6rem;}}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}
+  #hero-eyebrow,#hero-title,#hero-sub,#hero-cta,#hero-scroll-cue,[data-anim],.img-card,.tier-section *{opacity:1!important;transform:none!important;clip-path:none!important;}
 }
 </style>
 </head>
@@ -889,10 +900,10 @@ body{
   <div class="hero-content">
     <div class="hero-eyebrow" id="hero-eyebrow">Labor Day · The Ascent</div>
     <h1 class="hero-title" id="hero-title">Two hundred<br><span>tiers.</span></h1>
-    <p class="hero-sub" id="hero-sub">Four prizes. One free entry. Begins September 1.</p>
+    <p class="hero-sub" id="hero-sub">Four prizes. One free entry. Open through October 31.</p>
     <a class="btn-primary" id="hero-cta" href="#entry">
       <span class="diamond-icon"></span>
-      Start Free — Book a Consult
+      Book a Consult — Free
     </a>
   </div>
 
@@ -1125,9 +1136,11 @@ body{
   'use strict';
 
   gsap.registerPlugin(ScrollTrigger);
+  const RX_REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (RX_REDUCED) { gsap.defaults({ duration: 0.001, delay: 0 }); }
 
   /* ── Lenis ─────────────────────────────────────────── */
-  const lenis = new Lenis({ lerp: 0.085, smoothWheel: true });
+  const lenis = new Lenis({ lerp: RX_REDUCED ? 1 : 0.085, smoothWheel: !RX_REDUCED });
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((t) => lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);

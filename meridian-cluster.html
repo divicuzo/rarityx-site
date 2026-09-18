@@ -155,7 +155,7 @@
 #reveal-grid {
   position:absolute; inset:0;
   display:grid;
-  grid-template-columns:repeat(8,1fr);
+  grid-template-columns:repeat(8,minmax(0,1fr));
   grid-template-rows:repeat(6,1fr);
   pointer-events:none; z-index:2;
 }
@@ -228,7 +228,7 @@
 #story { background:var(--bg); padding:18vh 6vw; }
 .story-grid {
   max-width:1400px; margin:0 auto;
-  display:grid; grid-template-columns:1fr 1fr;
+  display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr);
   gap:88px; align-items:start;
 }
 .story-visual { position:sticky; top:12vh; }
@@ -379,14 +379,14 @@
 .story-visual figure.fig-secondary { margin-top:8px; }
 .story-visual figure.fig-secondary img { aspect-ratio:3/2; }
 /* detail image pair */
-.detail-pair { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.detail-pair { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:8px; }
 .detail-pair figure:nth-child(2) { transition-delay:.15s; }
 
 /* ── DETAIL + SPECS ── */
 #detail { background:var(--bg); padding:18vh 6vw; }
 .detail-grid {
   max-width:1400px; margin:0 auto;
-  display:grid; grid-template-columns:1.1fr 1fr;
+  display:grid; grid-template-columns:1.minmax(0,1fr) minmax(0,1fr);
   gap:80px; align-items:center;
 }
 .detail-visual figure {
@@ -495,18 +495,18 @@
 
 /* ── RESPONSIVE ── */
 @media (max-width:900px) {
-  .story-grid { grid-template-columns:1fr; gap:40px; }
+  .story-grid { grid-template-columns:minmax(0,1fr); gap:40px; }
   .story-visual { position:static; }
   .story-visual figure.fig-secondary img { aspect-ratio:16/9; }
-  .detail-grid { grid-template-columns:1fr; gap:40px; }
-  .detail-pair { grid-template-columns:1fr 1fr; }
+  .detail-grid { grid-template-columns:minmax(0,1fr); gap:40px; }
+  .detail-pair { grid-template-columns:minmax(0,1fr) minmax(0,1fr); }
   /* gallery: hero + stacked pair on tablet */
   .gallery-grid {
     grid-template-areas:
       "hero hero"
       "s1   s2"
       "w1   w2";
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
     grid-template-rows:auto auto auto;
   }
   .gallery-cell:nth-child(1) img { aspect-ratio:16/9; height:auto; }
@@ -516,7 +516,7 @@
   .gallery-cell:nth-child(5) img { aspect-ratio:4/5; }
   #grid-overlay i:nth-child(n+5) { display:none; }
   #reveal-grid {
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(4,minmax(0,1fr));
     grid-template-rows:repeat(8,1fr);
   }
   #reveal-caption { white-space:normal; width:90vw; }
@@ -531,7 +531,7 @@
       "s3"
       "w1"
       "w2";
-    grid-template-columns:1fr;
+    grid-template-columns:minmax(0,1fr);
     grid-template-rows:auto;
   }
   .gallery-cell:nth-child(1) img,

@@ -53,7 +53,7 @@
 
 /* ── STORY ── */
 #story{position:relative;background:#330D1E;padding:20vh 6vw;overflow:hidden}
-.story-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,80px);align-items:center}
+.story-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,5vw,80px);align-items:center}
 .story-copy h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(48px,6.2vw,96px);line-height:.90;color:var(--text)}
 .story-copy .rule{width:44px;height:1px;background:var(--chrome);margin:34px 0 18px}
 .story-copy .lbl{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:block}
@@ -64,7 +64,7 @@
 
 /* ── SPECS ── */
 #specs{background:#3f1525;padding:14vh 6vw;border-top:1px solid #5a1a2e;border-bottom:1px solid #5a1a2e}
-.specs-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#5a1a2e}
+.specs-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:#5a1a2e}
 .spec-item{background:#3f1525;padding:6vh 4vw}
 .spec-item .s-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:14px}
 .spec-item .s-val{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(28px,3.5vw,52px);text-transform:uppercase;color:var(--text);line-height:.95}
@@ -105,8 +105,8 @@
 .finale-cta a:focus-visible{outline:2px solid var(--chrome);outline-offset:4px}
 
 @media(max-width:768px){
-  .story-grid{grid-template-columns:1fr;gap:48px}
-  .specs-inner{grid-template-columns:1fr}
+  .story-grid{grid-template-columns:minmax(0,1fr);gap:48px}
+  .specs-inner{grid-template-columns:minmax(0,1fr)}
   .coll-head{flex-direction:column;gap:12px}
   .coll-head .coll-note{text-align:left;max-width:none}
   .coll-strip{height:42vh}
