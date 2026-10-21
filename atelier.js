@@ -42,5 +42,40 @@
     ro.observe(el);
   });
 
+  if (prefersReduced) {
+    if (window.gsap) {
+      try { gsap.defaults({ duration: 0, delay: 0 }); } catch (err) {}
+    }
+    document.querySelectorAll('video').forEach(function (v) {
+      v.removeAttribute('autoplay');
+      try { v.pause(); } catch (err) {}
+    });
+    HTMLMediaElement.prototype.play = function () {
+      try { this.pause(); } catch (err) {}
+      return Promise.resolve();
+    };
+    setTimeout(function () {
+      if (window.ScrollTrigger && ScrollTrigger.getAll) {
+        ScrollTrigger.getAll().forEach(function (t) { t.kill(); });
+      }
+    }, 0);
+  } else if ('IntersectionObserver' in window) {
+    var vio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var v = en.target;
+        if (v.id === 'tot-vid') return;
+        if (en.isIntersecting) {
+          var playPromise = v.play();
+          if (playPromise && playPromise.catch) playPromise.catch(function () {});
+        } else {
+          v.pause();
+        }
+      });
+    }, { rootMargin: '200px 0px', threshold: 0.01 });
+    document.querySelectorAll('video').forEach(function (v) {
+      if (v.id !== 'tot-vid') vio.observe(v);
+    });
+  }
+
   window.RX = { prefersReduced: prefersReduced, veil: veil };
 })();

@@ -868,15 +868,20 @@ body{
 .nav-cta-link::after,.launch-footer a::after,.nav-logo::after{content:"";position:absolute;inset:-13px -8px;}
 a:focus-visible,button:focus-visible{outline:2px solid #c8c8c8;outline-offset:4px;}
 .btn-primary,.btn-primary-large,.nav-cta-link{white-space:nowrap;}
-@media(max-width:600px){.btn-primary{padding:1rem 1.6rem;}}
+@media(max-width:600px){.btn-primary,.btn-primary-large,.nav-cta-link{padding:1rem 1.2rem;white-space:normal;text-align:center;max-width:calc(100vw - 32px);min-height:44px;line-height:1.35}}
+html,body{overflow-x:clip}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}
   #hero-eyebrow,#hero-title,#hero-sub,#hero-cta,#hero-scroll-cue,[data-anim],.img-card,.tier-section *{opacity:1!important;transform:none!important;clip-path:none!important;}
 }
+.skip-link{position:absolute;left:16px;top:-120px;z-index:500;background:#330D1E;color:#f5f5f5;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:12px 18px;min-height:44px;display:inline-flex;align-items:center;border:1px solid #c8c8c8}.skip-link:focus{top:12px;outline:1px solid #c8c8c8;outline-offset:3px}
+picture.rx-pic{display:contents}
 </style>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 </head>
 
 <body>
+<a href="#hero" class="skip-link">Skip to content</a>
 
 <!-- NAV -->
 <nav class="launch-nav" id="launch-nav">
@@ -890,7 +895,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #c8c8c8;outline-offset:4p
      ============================================================ -->
 <section class="hero" id="hero">
   <div class="hero-video-wrap" id="hero-video-wrap">
-    <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="metadata" aria-hidden="true" poster="Jewelry/launch_tier4.poster.jpg">
       <source src="Jewelry/launch_tier4.MP4" type="video/mp4">
     </video>
   </div>
@@ -997,10 +1002,10 @@ a:focus-visible,button:focus-visible{outline:2px solid #c8c8c8;outline-offset:4p
         </div>
         <div class="product-mosaic duo">
           <div class="img-card wide">
-            <img src="Jewelry/launch_tier1_v1.jpg" alt="Diamond By The Yard Chain — close view" loading="lazy">
+            <img src="Jewelry/launch_tier1_v1.jpg" alt="Diamond By The Yard Chain — close view" loading="lazy" decoding="async">
           </div>
           <div class="img-card wide">
-            <img src="Jewelry/launch_tier1_v2.webp" alt="Diamond By The Yard Chain — full length" loading="lazy">
+            <img src="Jewelry/launch_tier1_v2.webp" alt="Diamond By The Yard Chain — full length" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -1012,10 +1017,10 @@ a:focus-visible,button:focus-visible{outline:2px solid #c8c8c8;outline-offset:4p
       <div class="tier-inner tier-layout-split reverse">
         <div class="product-mosaic duo">
           <div class="img-card tall">
-            <img src="Jewelry/launch_tier2_v1.webp" alt="Pear Diamond Studs — side view" loading="lazy">
+            <img src="Jewelry/launch_tier2_v1.webp" alt="Pear Diamond Studs — side view" loading="lazy" decoding="async">
           </div>
           <div class="img-card tall">
-            <img src="Jewelry/launch_tier2_v2.webp" alt="Pear Diamond Studs — face view" loading="lazy">
+            <img src="Jewelry/launch_tier2_v2.webp" alt="Pear Diamond Studs — face view" loading="lazy" decoding="async">
           </div>
         </div>
         <div class="tier-text-block">
@@ -1059,13 +1064,13 @@ a:focus-visible,button:focus-visible{outline:2px solid #c8c8c8;outline-offset:4p
         </div>
         <div class="trio-images">
           <div class="img-card wide">
-            <img src="Jewelry/launch_tier3_v1.png" alt="2ct Pear Diamond Pendant — product view" loading="lazy">
+            <img src="Jewelry/launch_tier3_v1.png" alt="2ct Pear Diamond Pendant — product view" loading="lazy" decoding="async">
           </div>
           <div class="img-card wide">
-            <img src="Jewelry/launch_tier3_v2.png" alt="2ct Pear Diamond Pendant — angled view" loading="lazy">
+            <img src="Jewelry/launch_tier3_v2.png" alt="2ct Pear Diamond Pendant — angled view" loading="lazy" decoding="async">
           </div>
           <div class="img-card wide">
-            <img src="Jewelry/launch_tier3_v3.png" alt="2ct Pear Diamond Pendant — worn" loading="lazy">
+            <picture class="rx-pic"><source type="image/avif" srcset="Jewelry/launch_tier3_v3.avif 342w" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"><source type="image/webp" srcset="Jewelry/launch_tier3_v3.webp 342w" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"><img src="Jewelry/launch_tier3_v3.jpg" alt="2ct Pear Diamond Pendant — worn" loading="lazy" decoding="async" width="342" height="470" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"></picture>
           </div>
         </div>
       </div>
@@ -1074,7 +1079,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #c8c8c8;outline-offset:4p
     <!-- ── TIER 200 — THE FINAL BOSS ─────────────────── -->
     <section class="tier-section" id="tier-200" data-tier="3" data-tier-num="200">
       <div class="finalboss-video">
-        <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+        <video muted loop playsinline preload="none" aria-hidden="true" poster="Jewelry/launch_tier4.poster.jpg">
           <source src="Jewelry/launch_tier4.MP4" type="video/mp4">
         </video>
       </div>
@@ -1112,7 +1117,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #c8c8c8;outline-offset:4p
   </h2>
   <p class="entry-sub" id="entry-sub">Book a private consultation. No purchase required. You enter The Ascent from that moment — Tier One, yours.</p>
   <div class="entry-cta-wrap" id="entry-cta-wrap">
-    <a class="btn-primary-large" href="https://calendly.com/rarityxcollective" target="_blank" rel="noopener" id="main-cta">
+    <a class="btn-primary-large" href="https://calendly.com/rarityxcollective/new-meeting" target="_blank" rel="noopener" id="main-cta" onclick="if(window.Calendly){event.preventDefault();Calendly.initPopupWidget({url:this.href});}">
       <span class="diamond-icon"></span>
       Book Your Consultation
       <div class="burst-container" id="burst-container" aria-hidden="true"></div>
@@ -1360,5 +1365,27 @@ a:focus-visible,button:focus-visible{outline:2px solid #c8c8c8;outline-offset:4p
 
 })();
 </script>
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var vids = document.querySelectorAll('video');
+  if (reduced) {
+    vids.forEach(function(v){ v.removeAttribute('autoplay'); try { v.pause(); } catch (e) {} });
+    return;
+  }
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      var v = en.target;
+      if (v.id === 'tot-vid') return;
+      if (en.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+      else { v.pause(); }
+    });
+  }, { rootMargin: '240px 0px', threshold: 0.01 });
+  vids.forEach(function(v){ if (v.id !== 'tot-vid') io.observe(v); });
+})();
+</script>
+
 </body>
 </html>
