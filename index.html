@@ -110,6 +110,10 @@ ul,ol{list-style:none;}
 
 .skip-link{position:absolute;top:-100%;left:16px;z-index:200;padding:10px 20px;background:var(--bg);color:var(--text);font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--divider);transition:top 0.15s var(--ease-out);}
 .skip-link:focus{top:16px;outline:1px solid var(--accent);}
+.cta-btn,.vault-cta,.s09-btn,.chicago-cta,.mob-nav-cta{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.mob-menu-btn{min-width:44px;min-height:44px}
+@media(max-width:768px){.finale-cta a,.imgseq-caption-link{min-height:44px;white-space:normal}}
+picture.rx-pic{display:contents}
 :focus-visible{outline:1px solid var(--accent);outline-offset:3px;}
 :focus:not(:focus-visible){outline:none;}
 
@@ -1158,11 +1162,11 @@ body.mob-open{overflow:hidden;touch-action:none;}
         <li class="nav-has-drop">
             <a href="launch.html" class="nav-link">ASCENT</a>
             <div class="nav-drop" role="menu" aria-label="The Ascent program">
-              <a href="https://calendly.com/rarityxcollective" class="nav-drop-item" role="menuitem" target="_blank" rel="noopener">Book Your Consult / Enter</a>
+              <a href="https://calendly.com/rarityxcollective/new-meeting" class="nav-drop-item" role="menuitem" target="_blank" rel="noopener" onclick="if(window.Calendly){event.preventDefault();Calendly.initPopupWidget({url:this.href});}">Book Your Consult / Enter</a>
             </div>
           </li>
       </ul>
-      <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="cta-btn">Start a Conversation</a>
+      <a href="https://calendly.com/rarityxcollective/new-meeting" class="cta-btn" target="_blank" rel="noopener" onclick="if(window.Calendly){event.preventDefault();Calendly.initPopupWidget({url:this.href});}">Start a Conversation</a>
     </nav>
   </div>
 </header>
@@ -1188,9 +1192,9 @@ body.mob-open{overflow:hidden;touch-action:none;}
       </div>
       <button class="mob-nav-link mob-nav-ascent-toggle" type="button" aria-expanded="false" aria-controls="mob-ascent-list">Ascent <span class="mob-vault-arrow">↓</span></button>
       <div class="mob-vault-list" id="mob-ascent-list" aria-hidden="true">
-        <a href="https://calendly.com/rarityxcollective" class="mob-vault-item" target="_blank" rel="noopener" data-mob-close>Book Your Consult / Enter</a>
+        <a href="https://calendly.com/rarityxcollective/new-meeting" class="mob-vault-item" target="_blank" rel="noopener" data-mob-close onclick="if(window.Calendly){event.preventDefault();Calendly.initPopupWidget({url:this.href});}">Book Your Consult / Enter</a>
       </div>
-      <a href="#" onclick="if(typeof Calendly!=='undefined'){Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});}return false;" class="mob-nav-cta" data-mob-close>Start a Conversation</a>
+      <a href="https://calendly.com/rarityxcollective/new-meeting" class="mob-nav-cta" data-mob-close target="_blank" rel="noopener" onclick="if(window.Calendly){event.preventDefault();Calendly.initPopupWidget({url:this.href});}">Start a Conversation</a>
     </nav>
   </div>
 </div>
@@ -1218,7 +1222,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
     <div class="imgseq-caption" id="vseq-hero-caption">
       <span class="imgseq-caption-eyebrow">Fig.00 — The Ring</span>
       <p class="imgseq-caption-title">Every curve considered, from sketch to setting.</p>
-      <a class="imgseq-caption-link" href="javascript:void(0)" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;">Start with a conversation</a>
+      <a class="imgseq-caption-link" href="https://calendly.com/rarityxcollective/new-meeting" target="_blank" rel="noopener" onclick="if(window.Calendly){event.preventDefault();Calendly.initPopupWidget({url:this.href});}">Start with a conversation</a>
     </div>
     <div class="seq-frag sh-f1" data-win="0.06,0.34" data-depth="120"><em>Every curve considered.</em></div>
     <div class="seq-frag sh-f2" data-win="0.16,0.46" data-depth="200">Sourced to specification</div>
@@ -1252,21 +1256,21 @@ body.mob-open{overflow:hidden;touch-action:none;}
     <span class="gnav-dot" title="The Atelier"></span>
   </nav>
   <div class="grid-container" id="js-grid">
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(01)</span><img class="grid-img" src="Jewelry/f24.png" alt="Textured gold cushion signet" loading="eager" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(02)</span><img class="grid-img" src="Jewelry/f26.png" alt="Organic gold oval solitaire" loading="eager" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(03)</span><img class="grid-img" src="Jewelry/f27.png" alt="Twig band pear diamond" loading="eager" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(01)</span><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f24.avif 800w" sizes="(max-width: 700px) 46vw, 280px"><source type="image/webp" srcset="Jewelry/f24.webp 800w" sizes="(max-width: 700px) 46vw, 280px"><img class="grid-img" src="Jewelry/f24.jpg" alt="Textured gold cushion signet" loading="eager" width="800" height="800" sizes="(max-width: 700px) 46vw, 280px"></picture></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(02)</span><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f26.avif 800w" sizes="(max-width: 700px) 46vw, 280px"><source type="image/webp" srcset="Jewelry/f26.webp 800w" sizes="(max-width: 700px) 46vw, 280px"><img class="grid-img" src="Jewelry/f26.jpg" alt="Organic gold oval solitaire" loading="eager" width="800" height="800" sizes="(max-width: 700px) 46vw, 280px"></picture></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(03)</span><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f27.avif 800w" sizes="(max-width: 700px) 46vw, 280px"><source type="image/webp" srcset="Jewelry/f27.webp 800w" sizes="(max-width: 700px) 46vw, 280px"><img class="grid-img" src="Jewelry/f27.jpg" alt="Twig band pear diamond" loading="eager" width="800" height="800" sizes="(max-width: 700px) 46vw, 280px"></picture></div>
     <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(04)</span><img class="grid-img" src="Jewelry/f28.jpg" alt="Mixed metal wave solitaire" loading="eager" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(05)</span><img class="grid-img" src="Jewelry/f29.png" alt="Leaf vine round brilliant" loading="eager" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(06)</span><img class="grid-img" src="Jewelry/Gemini_Generated_Image_9tb6ci9tb6ci9tb6.png" alt="Platinum oval solitaire" loading="lazy" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(07)</span><img class="grid-img" src="Jewelry/Whisk_363a924410.jpg" alt="Round halo diamond ring" loading="lazy" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(08)</span><img class="grid-img" src="Jewelry/Whisk_4297d08ccf.jpg" alt="Emerald cut halo ring" loading="lazy" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(09)</span><img class="grid-img" src="Jewelry/f10.png" alt="Sweeping bypass round brilliant" loading="lazy" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(10)</span><img class="grid-img" src="Jewelry/f16.png" alt="Geometric signet princess cut" loading="lazy" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(11)</span><img class="grid-img" src="Jewelry/f17.png" alt="Two-tone bezel emerald bypass" loading="lazy" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(12)</span><img class="grid-img" src="Jewelry/f18.png" alt="Twisted band emerald bezel" loading="lazy" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(13)</span><img class="grid-img" src="Jewelry/f20.png" alt="Crossover two-tone solitaire" loading="lazy" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(14)</span><img class="grid-img" src="Jewelry/f21.png" alt="Art deco stepped bezel emerald cut" loading="lazy" width="280" height="280"></div>
-    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(15)</span><img class="grid-img" src="Jewelry/f23.png" alt="Constellation diamond ring" loading="lazy" width="280" height="280"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(05)</span><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f29.avif 800w" sizes="(max-width: 700px) 46vw, 280px"><source type="image/webp" srcset="Jewelry/f29.webp 800w" sizes="(max-width: 700px) 46vw, 280px"><img class="grid-img" src="Jewelry/f29.jpg" alt="Leaf vine round brilliant" loading="eager" width="800" height="800" sizes="(max-width: 700px) 46vw, 280px"></picture></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(06)</span><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Gemini_Generated_Image_9tb6ci9tb6ci9tb6.avif 1016w" sizes="(max-width: 700px) 46vw, 280px"><source type="image/webp" srcset="Jewelry/Gemini_Generated_Image_9tb6ci9tb6ci9tb6.webp 1016w" sizes="(max-width: 700px) 46vw, 280px"><img class="grid-img" src="Jewelry/Gemini_Generated_Image_9tb6ci9tb6ci9tb6.png" alt="Platinum oval solitaire" loading="lazy" width="1016" height="940" decoding="async" sizes="(max-width: 700px) 46vw, 280px"></picture></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(07)</span><img class="grid-img" src="Jewelry/Whisk_363a924410.jpg" alt="Round halo diamond ring" loading="lazy" width="280" height="280" decoding="async"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(08)</span><img class="grid-img" src="Jewelry/Whisk_4297d08ccf.jpg" alt="Emerald cut halo ring" loading="lazy" width="280" height="280" decoding="async"></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(09)</span><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f10.avif 800w" sizes="(max-width: 700px) 46vw, 280px"><source type="image/webp" srcset="Jewelry/f10.webp 800w" sizes="(max-width: 700px) 46vw, 280px"><img class="grid-img" src="Jewelry/f10.jpg" alt="Sweeping bypass round brilliant" loading="lazy" width="800" height="800" decoding="async" sizes="(max-width: 700px) 46vw, 280px"></picture></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(10)</span><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f16.avif 800w" sizes="(max-width: 700px) 46vw, 280px"><source type="image/webp" srcset="Jewelry/f16.webp 800w" sizes="(max-width: 700px) 46vw, 280px"><img class="grid-img" src="Jewelry/f16.jpg" alt="Geometric signet princess cut" loading="lazy" width="800" height="800" decoding="async" sizes="(max-width: 700px) 46vw, 280px"></picture></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(11)</span><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f17.avif 800w" sizes="(max-width: 700px) 46vw, 280px"><source type="image/webp" srcset="Jewelry/f17.webp 800w" sizes="(max-width: 700px) 46vw, 280px"><img class="grid-img" src="Jewelry/f17.jpg" alt="Two-tone bezel emerald bypass" loading="lazy" width="800" height="800" decoding="async" sizes="(max-width: 700px) 46vw, 280px"></picture></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(12)</span><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f18.avif 800w" sizes="(max-width: 700px) 46vw, 280px"><source type="image/webp" srcset="Jewelry/f18.webp 800w" sizes="(max-width: 700px) 46vw, 280px"><img class="grid-img" src="Jewelry/f18.jpg" alt="Twisted band emerald bezel" loading="lazy" width="800" height="800" decoding="async" sizes="(max-width: 700px) 46vw, 280px"></picture></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(13)</span><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f20.avif 800w" sizes="(max-width: 700px) 46vw, 280px"><source type="image/webp" srcset="Jewelry/f20.webp 800w" sizes="(max-width: 700px) 46vw, 280px"><img class="grid-img" src="Jewelry/f20.jpg" alt="Crossover two-tone solitaire" loading="lazy" width="800" height="800" decoding="async" sizes="(max-width: 700px) 46vw, 280px"></picture></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(14)</span><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f21.avif 800w" sizes="(max-width: 700px) 46vw, 280px"><source type="image/webp" srcset="Jewelry/f21.webp 800w" sizes="(max-width: 700px) 46vw, 280px"><img class="grid-img" src="Jewelry/f21.jpg" alt="Art deco stepped bezel emerald cut" loading="lazy" width="800" height="800" decoding="async" sizes="(max-width: 700px) 46vw, 280px"></picture></div>
+    <div class="grid-cell"><span class="cross cross-tl"></span><span class="cross cross-tr"></span><span class="cross cross-bl"></span><span class="cross cross-br"></span><span class="grid-num">(15)</span><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f23.avif 800w" sizes="(max-width: 700px) 46vw, 280px"><source type="image/webp" srcset="Jewelry/f23.webp 800w" sizes="(max-width: 700px) 46vw, 280px"><img class="grid-img" src="Jewelry/f23.jpg" alt="Constellation diamond ring" loading="lazy" width="800" height="800" decoding="async" sizes="(max-width: 700px) 46vw, 280px"></picture></div>
   </div>
   <div class="grid-wordmark-block" id="js-wordmark">
     <img src="Jewelry/LOGO_transparent.webp" alt="RarityX" class="grid-wordmark-img">
@@ -1278,7 +1282,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
      ════════════════════════════════════════════════════════ -->
 <section id="section-ascent" class="ascent-tease" aria-label="The Ascent — Labor Day Launch">
   <div class="at-video-bg">
-    <video class="at-video" muted loop playsinline preload="metadata" aria-hidden="true">
+    <video class="at-video" muted loop playsinline preload="none" aria-hidden="true" poster="Jewelry/launch_tier4.poster.jpg">
       <source src="Jewelry/launch_tier4.MP4" type="video/mp4">
     </video>
     <div class="at-vignette"></div>
@@ -1298,7 +1302,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
     <div class="at-prizes">
       <div class="at-prize at-reveal" style="--d:0.1s">
         <div class="at-prize-img-wrap">
-          <img src="Jewelry/launch_tier1_v1.jpg" alt="Diamond By The Yard Chain" loading="lazy">
+          <img src="Jewelry/launch_tier1_v1.jpg" alt="Diamond By The Yard Chain" loading="lazy" decoding="async">
         </div>
         <div class="at-prize-label">
           <span class="at-prize-tier">Tier 50</span>
@@ -1307,7 +1311,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
       </div>
       <div class="at-prize at-reveal" style="--d:0.2s">
         <div class="at-prize-img-wrap">
-          <img src="Jewelry/launch_tier2_v1.webp" alt="Pear Diamond Studs" loading="lazy">
+          <img src="Jewelry/launch_tier2_v1.webp" alt="Pear Diamond Studs" loading="lazy" decoding="async">
         </div>
         <div class="at-prize-label">
           <span class="at-prize-tier">Tier 100</span>
@@ -1316,7 +1320,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
       </div>
       <div class="at-prize at-reveal" style="--d:0.3s">
         <div class="at-prize-img-wrap">
-          <img src="Jewelry/launch_tier3_v1.png" alt="2ct Pear Diamond Pendant" loading="lazy">
+          <img src="Jewelry/launch_tier3_v1.png" alt="2ct Pear Diamond Pendant" loading="lazy" decoding="async">
         </div>
         <div class="at-prize-label">
           <span class="at-prize-tier">Tier 150</span>
@@ -1325,7 +1329,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
       </div>
       <div class="at-prize at-prize--final at-reveal" style="--d:0.4s">
         <div class="at-prize-img-wrap at-prize-img-wrap--video">
-          <video muted loop playsinline preload="none" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.65);transform-origin:55% 40%;z-index:1">
+          <video muted loop playsinline preload="none" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.65);transform-origin:55% 40%;z-index:1" poster="Jewelry/launch_tier4.poster.jpg">
             <source src="Jewelry/launch_tier4.MP4" type="video/mp4">
           </video>
           <div class="at-prize-final-label">
@@ -1356,39 +1360,39 @@ body.mob-open{overflow:hidden;touch-action:none;}
 <!-- IMAGE MARQUEE — RINGS BELT -->
 <div class="img-marquee-section img-marquee-section--rings" aria-hidden="true">
   <div class="img-marquee-track">
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_0190205ab0.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_2e91a5d43e.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_30bec667b0.webp" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_34488083f7.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_363a924410.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_4297d08ccf.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_47a743863d.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_5d42587dcb.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_5f0fd0e4b2.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_92fd25b4a5.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_ab5c9d5cf9.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_ca4da0a7b3.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_cbabd445f5.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Whisk_0190205ab0.avif 1408w" sizes="180px"><source type="image/webp" srcset="Jewelry/Whisk_0190205ab0.webp 1408w" sizes="180px"><img src="Jewelry/Whisk_0190205ab0.jpg" alt="" loading="lazy" decoding="async" width="1408" height="768" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Whisk_2e91a5d43e.avif 1408w" sizes="180px"><source type="image/webp" srcset="Jewelry/Whisk_2e91a5d43e.webp 1408w" sizes="180px"><img src="Jewelry/Whisk_2e91a5d43e.jpg" alt="" loading="lazy" decoding="async" width="1408" height="768" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_30bec667b0.webp" alt="" loading="lazy" decoding="async"></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Whisk_34488083f7.avif 1408w" sizes="180px"><source type="image/webp" srcset="Jewelry/Whisk_34488083f7.webp 1408w" sizes="180px"><img src="Jewelry/Whisk_34488083f7.jpg" alt="" loading="lazy" decoding="async" width="1408" height="768" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_363a924410.jpg" alt="" loading="lazy" decoding="async"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_4297d08ccf.jpg" alt="" loading="lazy" decoding="async"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_47a743863d.jpg" alt="" loading="lazy" decoding="async"></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Whisk_5d42587dcb-960.avif 960w, Jewelry/Whisk_5d42587dcb.avif 1408w" sizes="180px"><source type="image/webp" srcset="Jewelry/Whisk_5d42587dcb-960.webp 960w, Jewelry/Whisk_5d42587dcb.webp 1408w" sizes="180px"><img src="Jewelry/Whisk_5d42587dcb.jpg" alt="" loading="lazy" decoding="async" width="1408" height="768" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Whisk_5f0fd0e4b2-960.avif 960w, Jewelry/Whisk_5f0fd0e4b2.avif 1408w" sizes="180px"><source type="image/webp" srcset="Jewelry/Whisk_5f0fd0e4b2-960.webp 960w, Jewelry/Whisk_5f0fd0e4b2.webp 1408w" sizes="180px"><img src="Jewelry/Whisk_5f0fd0e4b2.jpg" alt="" loading="lazy" decoding="async" width="1408" height="768" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_92fd25b4a5.jpg" alt="" loading="lazy" decoding="async"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_ab5c9d5cf9.jpg" alt="" loading="lazy" decoding="async"></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Whisk_ca4da0a7b3-960.avif 960w, Jewelry/Whisk_ca4da0a7b3.avif 1408w" sizes="180px"><source type="image/webp" srcset="Jewelry/Whisk_ca4da0a7b3-960.webp 960w, Jewelry/Whisk_ca4da0a7b3.webp 1408w" sizes="180px"><img src="Jewelry/Whisk_ca4da0a7b3.jpg" alt="" loading="lazy" decoding="async" width="1408" height="768" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_cbabd445f5.jpg" alt="" loading="lazy" decoding="async"></div>
     <!-- duplicated for seamless loop -->
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_0190205ab0.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_2e91a5d43e.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_30bec667b0.webp" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_34488083f7.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_363a924410.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_4297d08ccf.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_47a743863d.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_5d42587dcb.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_5f0fd0e4b2.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_92fd25b4a5.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_ab5c9d5cf9.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_ca4da0a7b3.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/Whisk_cbabd445f5.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Whisk_0190205ab0.avif 1408w" sizes="180px"><source type="image/webp" srcset="Jewelry/Whisk_0190205ab0.webp 1408w" sizes="180px"><img src="Jewelry/Whisk_0190205ab0.jpg" alt="" loading="lazy" decoding="async" width="1408" height="768" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Whisk_2e91a5d43e.avif 1408w" sizes="180px"><source type="image/webp" srcset="Jewelry/Whisk_2e91a5d43e.webp 1408w" sizes="180px"><img src="Jewelry/Whisk_2e91a5d43e.jpg" alt="" loading="lazy" decoding="async" width="1408" height="768" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_30bec667b0.webp" alt="" loading="lazy" decoding="async"></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Whisk_34488083f7.avif 1408w" sizes="180px"><source type="image/webp" srcset="Jewelry/Whisk_34488083f7.webp 1408w" sizes="180px"><img src="Jewelry/Whisk_34488083f7.jpg" alt="" loading="lazy" decoding="async" width="1408" height="768" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_363a924410.jpg" alt="" loading="lazy" decoding="async"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_4297d08ccf.jpg" alt="" loading="lazy" decoding="async"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_47a743863d.jpg" alt="" loading="lazy" decoding="async"></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Whisk_5d42587dcb-960.avif 960w, Jewelry/Whisk_5d42587dcb.avif 1408w" sizes="180px"><source type="image/webp" srcset="Jewelry/Whisk_5d42587dcb-960.webp 960w, Jewelry/Whisk_5d42587dcb.webp 1408w" sizes="180px"><img src="Jewelry/Whisk_5d42587dcb.jpg" alt="" loading="lazy" decoding="async" width="1408" height="768" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Whisk_5f0fd0e4b2-960.avif 960w, Jewelry/Whisk_5f0fd0e4b2.avif 1408w" sizes="180px"><source type="image/webp" srcset="Jewelry/Whisk_5f0fd0e4b2-960.webp 960w, Jewelry/Whisk_5f0fd0e4b2.webp 1408w" sizes="180px"><img src="Jewelry/Whisk_5f0fd0e4b2.jpg" alt="" loading="lazy" decoding="async" width="1408" height="768" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_92fd25b4a5.jpg" alt="" loading="lazy" decoding="async"></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_ab5c9d5cf9.jpg" alt="" loading="lazy" decoding="async"></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Whisk_ca4da0a7b3-960.avif 960w, Jewelry/Whisk_ca4da0a7b3.avif 1408w" sizes="180px"><source type="image/webp" srcset="Jewelry/Whisk_ca4da0a7b3-960.webp 960w, Jewelry/Whisk_ca4da0a7b3.webp 1408w" sizes="180px"><img src="Jewelry/Whisk_ca4da0a7b3.jpg" alt="" loading="lazy" decoding="async" width="1408" height="768" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><img src="Jewelry/Whisk_cbabd445f5.jpg" alt="" loading="lazy" decoding="async"></div>
   </div>
 </div>
 
 <!-- SECTION 01 -->
 <section id="section-01">
-  <video id="diamond-3d-bg" autoplay muted loop playsinline aria-hidden="true"><source src="Jewelry/Diamond_ring_rotating_in_light_202606302137.mp4" type="video/mp4"></video>
+  <video id="diamond-3d-bg" muted loop playsinline aria-hidden="true" poster="Jewelry/Diamond_ring_rotating_in_light_202606302137.poster.jpg" preload="none"><source src="Jewelry/Diamond_ring_rotating_in_light_202606302137.mp4" type="video/mp4"></video>
   <div class="s01-content">
     <h1 class="s01-headline reveal">Each piece begins<br>with the designer.</h1>
     <div class="s01-sub">
@@ -1440,7 +1444,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
           <p class="origin-body">Archduke Maximilian of Austria commissions a diamond ring for Mary of Burgundy — the first recorded diamond engagement ring. A single gesture creates a cultural convention that outlasts the empire that commissioned it.</p>
         </div>
         <div class="oc-img" aria-hidden="true">
-          <video muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_huggie_earring.mp4" type="video/mp4"></video>
+          <video muted loop playsinline poster="Jewelry/Portfolio_pieces_vids/diam_huggie_earring.poster.jpg" preload="none"><source src="Jewelry/Portfolio_pieces_vids/diam_huggie_earring.mp4" type="video/mp4"></video>
         </div>
       </article>
 
@@ -1454,7 +1458,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
           <p class="origin-body">Eureka Diamond discovered in South Africa. The Kimberley Rush begins. Extraction formalized under colonial infrastructure. A global supply chain is born from a single stone in the ground.</p>
         </div>
         <div class="oc-img" aria-hidden="true">
-          <video muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/3stone_ring.mp4" type="video/mp4"></video>
+          <video muted loop playsinline poster="Jewelry/Portfolio_pieces_vids/3stone_ring.poster.jpg" preload="none"><source src="Jewelry/Portfolio_pieces_vids/3stone_ring.mp4" type="video/mp4"></video>
         </div>
       </article>
 
@@ -1468,7 +1472,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
           <p class="origin-body">De Beers Consolidated Mines founded. Supply control established. One entity begins pricing the world's diamonds. Scarcity, for the first time, is manufactured.</p>
         </div>
         <div class="oc-img" aria-hidden="true">
-          <video muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/3stone_earring.mp4" type="video/mp4"></video>
+          <video muted loop playsinline poster="Jewelry/Portfolio_pieces_vids/3stone_earring.poster.jpg" preload="none"><source src="Jewelry/Portfolio_pieces_vids/3stone_earring.mp4" type="video/mp4"></video>
         </div>
       </article>
 
@@ -1482,7 +1486,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
           <p class="origin-body">A Diamond Is Forever campaign launches. Emotional value engineered at scale. Diamonds become the symbol of permanent commitment. Desire, not geology, sets the price from here.</p>
         </div>
         <div class="oc-img" aria-hidden="true">
-          <video muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/sapphire_earring.mp4" type="video/mp4"></video>
+          <video muted loop playsinline poster="Jewelry/Portfolio_pieces_vids/sapphire_earring.poster.jpg" preload="none"><source src="Jewelry/Portfolio_pieces_vids/sapphire_earring.mp4" type="video/mp4"></video>
         </div>
       </article>
 
@@ -1496,7 +1500,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
           <p class="origin-body">Kimberley Process established. Conflict-free certification introduced. Traceability becomes a selling point. The chain of custody enters the conversation for the first time.</p>
         </div>
         <div class="oc-img" aria-hidden="true">
-          <video muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/emerald_big_necklace.mp4" type="video/mp4"></video>
+          <video muted loop playsinline poster="Jewelry/Portfolio_pieces_vids/emerald_big_necklace.poster.jpg" preload="none"><source src="Jewelry/Portfolio_pieces_vids/emerald_big_necklace.mp4" type="video/mp4"></video>
         </div>
       </article>
 
@@ -1510,7 +1514,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
           <p class="origin-body">CVD and HPHT lab-grown diamonds reach commercial scale. Physically identical to mined stones, certified by the same labs. The stone story collapses as a differentiator. The market splits: commodity vs. point of view.</p>
         </div>
         <div class="oc-img" aria-hidden="true">
-          <video muted loop playsinline><source src="Jewelry/Portfolio_pieces_vids/diam_pendant.mp4" type="video/mp4"></video>
+          <video muted loop playsinline poster="Jewelry/Portfolio_pieces_vids/diam_pendant.poster.jpg" preload="none"><source src="Jewelry/Portfolio_pieces_vids/diam_pendant.mp4" type="video/mp4"></video>
         </div>
       </article>
 
@@ -1524,7 +1528,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
           <p class="origin-body">The supply chain is visible. D2C ateliers source direct. The 4Cs are understood by the client. What remains as the genuine differentiator — the thing that cannot be priced by weight or grade — is the designer's point of view. RarityX was founded on this position.</p>
         </div>
         <div class="oc-img" aria-hidden="true">
-          <video muted loop playsinline preload="metadata"><source src="Jewelry/Portfolio_pieces_vids/Big_radiant_fancy_ring.mp4" type="video/mp4"></video>
+          <video muted loop playsinline preload="none" poster="Jewelry/Portfolio_pieces_vids/Big_radiant_fancy_ring.poster.jpg"><source src="Jewelry/Portfolio_pieces_vids/Big_radiant_fancy_ring.mp4" type="video/mp4"></video>
         </div>
       </article>
 
@@ -1582,7 +1586,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
           <div class="card-label"><span class="card-label-line"></span><span class="card-label-text">Sustained Value</span></div>
         </div>
         <div class="card-image-wrap">
-          <video class="card-img" aria-hidden="true" muted loop playsinline preload="none"><source src="Jewelry/Jewelry_reveal_with_logo_202606302138.mp4" type="video/mp4"></video>
+          <video class="card-img" aria-hidden="true" muted loop playsinline preload="none" poster="Jewelry/Jewelry_reveal_with_logo_202606302138.poster.jpg"><source src="Jewelry/Jewelry_reveal_with_logo_202606302138.mp4" type="video/mp4"></video>
           <div class="card-img-overlay"></div>
         </div>
       </div>
@@ -1598,7 +1602,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
           <div class="card-label"><span class="card-label-line"></span><span class="card-label-text">Social Currency</span></div>
         </div>
         <div class="card-image-wrap">
-          <img class="card-img" src="Jewelry/Mixed_metal_detail_202606012044.jpeg" alt="Diamond earring collections on dark velvet" width="800" height="1000" loading="lazy" style="object-position:center 30%">
+          <picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Mixed_metal_detail_202606012044-960.avif 960w, Jewelry/Mixed_metal_detail_202606012044.avif 1920w" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"><source type="image/webp" srcset="Jewelry/Mixed_metal_detail_202606012044-960.webp 960w, Jewelry/Mixed_metal_detail_202606012044.webp 1920w" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"><img class="card-img" src="Jewelry/Mixed_metal_detail_202606012044.jpeg" alt="Diamond earring collections on dark velvet" width="1920" height="1434" loading="lazy" style="object-position:center 30%" decoding="async" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"></picture>
           <div class="card-img-overlay"></div>
         </div>
       </div>
@@ -1614,7 +1618,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
           <div class="card-label"><span class="card-label-line"></span><span class="card-label-text">Ritualized Desire</span></div>
         </div>
         <div class="card-image-wrap">
-          <video class="card-img" aria-hidden="true" muted loop playsinline preload="none"><source src="Jewelry/Hand_with_engagement_ring_202607111710.mp4" type="video/mp4"></video>
+          <video class="card-img" aria-hidden="true" muted loop playsinline preload="none" poster="Jewelry/Hand_with_engagement_ring_202607111710.poster.jpg"><source src="Jewelry/Hand_with_engagement_ring_202607111710.mp4" type="video/mp4"></video>
           <div class="card-img-overlay"></div>
         </div>
       </div>
@@ -1630,7 +1634,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
           <div class="card-label"><span class="card-label-line"></span><span class="card-label-text">The Design Object</span></div>
         </div>
         <div class="card-image-wrap">
-          <img class="card-img" src="Jewelry/Gemini_Generated_Image_ps4myeps4myeps4m.jpeg" alt="Ring held with jeweler's tweezers" width="800" height="1000" loading="lazy" style="object-position:center 40%">
+          <picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Gemini_Generated_Image_ps4myeps4myeps4m-960.avif 536w, Jewelry/Gemini_Generated_Image_ps4myeps4myeps4m.avif 1072w" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"><source type="image/webp" srcset="Jewelry/Gemini_Generated_Image_ps4myeps4myeps4m-960.webp 536w, Jewelry/Gemini_Generated_Image_ps4myeps4myeps4m.webp 1072w" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"><img class="card-img" src="Jewelry/Gemini_Generated_Image_ps4myeps4myeps4m.jpeg" alt="Ring held with jeweler's tweezers" width="1072" height="1920" loading="lazy" style="object-position:center 40%" decoding="async" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"></picture>
           <div class="card-img-overlay"></div>
         </div>
       </div>
@@ -1648,7 +1652,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
       <p class="s05-serif" data-s05-reveal>The rarity is not in the stone. It is in the eye that knows where the light should land.</p>
     </div>
     <div class="s05-img-col">
-      <img class="s05-img" src="Jewelry/Emerald_ring_beside_diamond_2K_202607111709.jpeg" alt="Emerald ring beside diamond" loading="lazy" decoding="async">
+      <picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Emerald_ring_beside_diamond_2K_202607111709-960.avif 960w, Jewelry/Emerald_ring_beside_diamond_2K_202607111709.avif 1920w" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"><source type="image/webp" srcset="Jewelry/Emerald_ring_beside_diamond_2K_202607111709-960.webp 960w, Jewelry/Emerald_ring_beside_diamond_2K_202607111709.webp 1920w" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"><img class="s05-img" src="Jewelry/Emerald_ring_beside_diamond_2K_202607111709.jpeg" alt="Emerald ring beside diamond" loading="lazy" decoding="async" width="1920" height="1920" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"></picture>
       <div class="s05-4c-overlay" data-s05-reveal>
         <div class="s05-4c-title">THE 4Cs</div>
         <div class="s05-4c-list">
@@ -1677,93 +1681,93 @@ body.mob-open{overflow:hidden;touch-action:none;}
   <div class="works-strip">
     <div class="works-track">
       <a class="work-card" href="lp-v6.html" data-rx-nav>
-        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/fancy_pave_necklace.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none" poster="Jewelry/Portfolio_pieces_vids/fancy_pave_necklace.poster.jpg"><source src="Jewelry/Portfolio_pieces_vids/fancy_pave_necklace.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Pav&eacute;<br>Arc</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="harmonia.html" data-rx-nav>
-        <video muted loop playsinline preload="none"><source src="Jewelry/lp_Harmonia_ugc.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none" poster="Jewelry/lp_Harmonia_ugc.poster.jpg"><source src="Jewelry/lp_Harmonia_ugc.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Har&shy;<br>monia</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="constellation-band.html" data-rx-nav>
-        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/diam_eternity_rotate_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none" poster="Jewelry/Portfolio_pieces_vids/diam_eternity_rotate_ring.poster.jpg"><source src="Jewelry/Portfolio_pieces_vids/diam_eternity_rotate_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Constellation<br>Band</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="solstice-solitaire.html" data-rx-nav>
-        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/soli_round_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none" poster="Jewelry/Portfolio_pieces_vids/soli_round_ring.poster.jpg"><source src="Jewelry/Portfolio_pieces_vids/soli_round_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Solstice<br>Solitaire</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="fragment-band.html" data-rx-nav>
-        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/vertical_stack_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none" poster="Jewelry/Portfolio_pieces_vids/vertical_stack_ring.poster.jpg"><source src="Jewelry/Portfolio_pieces_vids/vertical_stack_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Fragment<br>Band</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="meridian-cluster.html" data-rx-nav>
-        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/diam_mq_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none" poster="Jewelry/Portfolio_pieces_vids/diam_mq_ring.poster.jpg"><source src="Jewelry/Portfolio_pieces_vids/diam_mq_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Meridian<br>Cluster</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="eclipse-halo.html" data-rx-nav>
-        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/halo_2shankpave_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none" poster="Jewelry/Portfolio_pieces_vids/halo_2shankpave_ring.poster.jpg"><source src="Jewelry/Portfolio_pieces_vids/halo_2shankpave_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Eclipse<br>Halo</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="medallion.html" data-rx-nav>
-        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/em_bigdiam_pendant.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none" poster="Jewelry/Portfolio_pieces_vids/em_bigdiam_pendant.poster.jpg"><source src="Jewelry/Portfolio_pieces_vids/em_bigdiam_pendant.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Crest<br>Medallion</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="sigil.html" data-rx-nav>
-        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/openbox_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none" poster="Jewelry/Portfolio_pieces_vids/openbox_ring.poster.jpg"><source src="Jewelry/Portfolio_pieces_vids/openbox_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Sigil<br>Signet</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <!-- duplicate for seamless loop -->
       <a class="work-card" href="lp-v6.html" data-rx-nav aria-hidden="true">
-        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/fancy_pave_necklace.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none" poster="Jewelry/Portfolio_pieces_vids/fancy_pave_necklace.poster.jpg"><source src="Jewelry/Portfolio_pieces_vids/fancy_pave_necklace.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Pav&eacute;<br>Arc</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="harmonia.html" data-rx-nav aria-hidden="true">
-        <video muted loop playsinline preload="none"><source src="Jewelry/lp_Harmonia_ugc.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none" poster="Jewelry/lp_Harmonia_ugc.poster.jpg"><source src="Jewelry/lp_Harmonia_ugc.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Har&shy;<br>monia</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="constellation-band.html" data-rx-nav aria-hidden="true">
-        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/diam_eternity_rotate_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none" poster="Jewelry/Portfolio_pieces_vids/diam_eternity_rotate_ring.poster.jpg"><source src="Jewelry/Portfolio_pieces_vids/diam_eternity_rotate_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Constellation<br>Band</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="solstice-solitaire.html" data-rx-nav aria-hidden="true">
-        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/soli_round_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none" poster="Jewelry/Portfolio_pieces_vids/soli_round_ring.poster.jpg"><source src="Jewelry/Portfolio_pieces_vids/soli_round_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Solstice<br>Solitaire</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="fragment-band.html" data-rx-nav aria-hidden="true">
-        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/vertical_stack_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none" poster="Jewelry/Portfolio_pieces_vids/vertical_stack_ring.poster.jpg"><source src="Jewelry/Portfolio_pieces_vids/vertical_stack_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Fragment<br>Band</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="meridian-cluster.html" data-rx-nav aria-hidden="true">
-        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/diam_mq_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none" poster="Jewelry/Portfolio_pieces_vids/diam_mq_ring.poster.jpg"><source src="Jewelry/Portfolio_pieces_vids/diam_mq_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Meridian<br>Cluster</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="eclipse-halo.html" data-rx-nav aria-hidden="true">
-        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/halo_2shankpave_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none" poster="Jewelry/Portfolio_pieces_vids/halo_2shankpave_ring.poster.jpg"><source src="Jewelry/Portfolio_pieces_vids/halo_2shankpave_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Eclipse<br>Halo</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="medallion.html" data-rx-nav aria-hidden="true">
-        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/em_bigdiam_pendant.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none" poster="Jewelry/Portfolio_pieces_vids/em_bigdiam_pendant.poster.jpg"><source src="Jewelry/Portfolio_pieces_vids/em_bigdiam_pendant.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Crest<br>Medallion</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
       <a class="work-card" href="sigil.html" data-rx-nav aria-hidden="true">
-        <video muted loop playsinline preload="none"><source src="Jewelry/Portfolio_pieces_vids/openbox_ring.mp4" type="video/mp4"></video>
+        <video muted loop playsinline preload="none" poster="Jewelry/Portfolio_pieces_vids/openbox_ring.poster.jpg"><source src="Jewelry/Portfolio_pieces_vids/openbox_ring.mp4" type="video/mp4"></video>
         <div class="work-card-grad"></div>
         <div class="work-card-info"><span class="work-name">Sigil<br>Signet</span><span class="work-link-hint">View piece &rarr;</span></div>
       </a>
@@ -1783,39 +1787,39 @@ body.mob-open{overflow:hidden;touch-action:none;}
       <h3 class="phase-name">Extraction</h3>
       <p class="phase-body" data-rx-reveal>Kimberlite ore extracted from depths exceeding 1km. Ore sorted, crushed, and processed through dense medium separation.</p>
       <span class="phase-fig">Fig.0501  "Kimberlite Pipe"</span>
-      <video class="phase-img" aria-hidden="true" data-rx-scale muted loop playsinline preload="none" style="filter:grayscale(65%) contrast(1.2);object-fit:cover;"><source src="Jewelry/soli_v2.mp4" type="video/mp4"></video>
+      <video class="phase-img" aria-hidden="true" data-rx-scale muted loop playsinline preload="none" style="filter:grayscale(65%) contrast(1.2);object-fit:cover;" poster="Jewelry/soli_v2.poster.jpg"><source src="Jewelry/soli_v2.mp4" type="video/mp4"></video>
     </article>
     <article class="phase-card" role="listitem">
       <span class="phase-num">Phase 02</span>
       <h3 class="phase-name">Cutting and Polishing</h3>
       <p class="phase-body" data-rx-reveal>Rough diamonds mapped with laser technology. Optimal facet plan computed. Sawing, bruting, and polishing create the finished stone.</p>
       <span class="phase-fig">Fig.0502  "Diamond Wheel"</span>
-      <video class="phase-img" aria-hidden="true" data-rx-scale muted loop playsinline preload="none" style="filter:grayscale(65%) contrast(1.2);object-fit:cover;"><source src="Jewelry/White_shining_Diamond_202607111708.mp4" type="video/mp4"></video>
+      <video class="phase-img" aria-hidden="true" data-rx-scale muted loop playsinline preload="none" style="filter:grayscale(65%) contrast(1.2);object-fit:cover;" poster="Jewelry/White_shining_Diamond_202607111708.poster.jpg"><source src="Jewelry/White_shining_Diamond_202607111708.mp4" type="video/mp4"></video>
     </article>
     <article class="phase-card" role="listitem">
       <span class="phase-num">Phase 03</span>
       <h3 class="phase-name">Grading</h3>
       <p class="phase-body" data-rx-reveal>GIA or equivalent laboratory certifies each stone. Cut, Color, Clarity, Carat recorded. The certificate becomes as valuable as the stone.</p>
       <span class="phase-fig">Fig.0503  "Grading Loupe"</span>
-      <video class="phase-img" aria-hidden="true" data-rx-scale muted loop playsinline preload="none" style="filter:grayscale(65%) contrast(1.15);object-fit:cover;"><source src="Jewelry/soli_v1.mp4" type="video/mp4"></video>
+      <video class="phase-img" aria-hidden="true" data-rx-scale muted loop playsinline preload="none" style="filter:grayscale(65%) contrast(1.15);object-fit:cover;" poster="Jewelry/soli_v1.poster.jpg"><source src="Jewelry/soli_v1.mp4" type="video/mp4"></video>
     </article>
     <article class="phase-card" role="listitem">
       <span class="phase-num">Phase 04</span>
       <h3 class="phase-name">Design and Setting</h3>
       <p class="phase-body" data-rx-reveal>The designer intervenes. Metal selected, form drawn, setting fabricated. The diamond finds its final context.</p>
       <span class="phase-fig">Fig.0504  "Setting Bench"</span>
-      <video class="phase-img" aria-hidden="true" data-rx-scale muted loop playsinline preload="none" style="filter:grayscale(65%) contrast(1.15);object-fit:cover;"><source src="Jewelry/Platinum_engagement_ring_202606302143.mp4" type="video/mp4"></video>
+      <video class="phase-img" aria-hidden="true" data-rx-scale muted loop playsinline preload="none" style="filter:grayscale(65%) contrast(1.15);object-fit:cover;" poster="Jewelry/Platinum_engagement_ring_202606302143.poster.jpg"><source src="Jewelry/Platinum_engagement_ring_202606302143.mp4" type="video/mp4"></video>
     </article>
   </div>
 
   <!-- S03 ambient photo strip -->
   <div class="s03-ambient-row" aria-hidden="true">
-    <img class="s03-ambient-img" data-rx-fade src="Jewelry/Ethereal_Pavé_Crest_Platinum_2K_202606302140.jpeg" alt="" loading="lazy">
-    <img class="s03-ambient-img" data-rx-fade src="Jewelry/Whisk_30bec667b0.webp" alt="" loading="lazy" style="transition-delay:0.1s">
-    <img class="s03-ambient-img" data-rx-fade src="Jewelry/Whisk_47a743863d.jpg" alt="" loading="lazy" style="transition-delay:0.2s">
-    <img class="s03-ambient-img" data-rx-fade src="Jewelry/Whisk_4297d08ccf.jpg" alt="" loading="lazy" style="transition-delay:0.3s">
-    <img class="s03-ambient-img" data-rx-fade src="Jewelry/Gemini_Generated_Image_n2x6vdn2x6vdn2x6.png" alt="" loading="lazy" style="transition-delay:0.4s">
-    <img class="s03-ambient-img" data-rx-fade src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg" alt="" loading="lazy" style="transition-delay:0.5s">
+    <picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Ethereal_Pavé_Crest_Platinum_2K_202606302140-960.avif 960w, Jewelry/Ethereal_Pavé_Crest_Platinum_2K_202606302140.avif 1920w" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"><source type="image/webp" srcset="Jewelry/Ethereal_Pavé_Crest_Platinum_2K_202606302140-960.webp 960w, Jewelry/Ethereal_Pavé_Crest_Platinum_2K_202606302140.webp 1920w" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"><img class="s03-ambient-img" data-rx-fade src="Jewelry/Ethereal_Pavé_Crest_Platinum_2K_202606302140.jpeg" alt="" loading="lazy" decoding="async" width="1920" height="1434" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"></picture>
+    <img class="s03-ambient-img" data-rx-fade src="Jewelry/Whisk_30bec667b0.webp" alt="" loading="lazy" style="transition-delay:0.1s" decoding="async">
+    <img class="s03-ambient-img" data-rx-fade src="Jewelry/Whisk_47a743863d.jpg" alt="" loading="lazy" style="transition-delay:0.2s" decoding="async">
+    <img class="s03-ambient-img" data-rx-fade src="Jewelry/Whisk_4297d08ccf.jpg" alt="" loading="lazy" style="transition-delay:0.3s" decoding="async">
+    <picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Gemini_Generated_Image_n2x6vdn2x6vdn2x6.avif 1024w" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"><source type="image/webp" srcset="Jewelry/Gemini_Generated_Image_n2x6vdn2x6vdn2x6.webp 1024w" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"><img class="s03-ambient-img" data-rx-fade src="Jewelry/Gemini_Generated_Image_n2x6vdn2x6vdn2x6.png" alt="" loading="lazy" style="transition-delay:0.4s" decoding="async" width="1024" height="852" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"></picture>
+    <picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141-960.avif 960w, Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.avif 1920w" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"><source type="image/webp" srcset="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141-960.webp 960w, Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.webp 1920w" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"><img class="s03-ambient-img" data-rx-fade src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg" alt="" loading="lazy" style="transition-delay:0.5s" decoding="async" width="1920" height="1072" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"></picture>
   </div>
   <footer class="s03-footer">
     <p class="s03-footer-copy">Every stone can be sourced. Every metal can be matched. What cannot be copied is point of view. The designer is the last hand in the chain, and the only one that defines the outcome.</p>
@@ -1878,51 +1882,51 @@ body.mob-open{overflow:hidden;touch-action:none;}
   </header>
   <article class="step-row reveal" data-step="01">
     <div class="step-content"><p class="step-num">Step 01</p><h2 class="step-name">Design Resolution</h2><p class="step-desc">The brief closes. CAD begins. Every prong placement is argued before material cost is considered. Dimension changes stop here. The render is the last version of the piece in which everything is still possible.</p></div>
-    <div class="step-img-wrap"><img class="step-img" data-rx-scale src="Jewelry/ICZ-HFC-WG20_2-C3648_600x.webp" alt="CAD design" loading="lazy" width="600" height="400" style="object-position:center 30%"></div>
+    <div class="step-img-wrap"><img class="step-img" data-rx-scale src="Jewelry/ICZ-HFC-WG20_2-C3648_600x.webp" alt="CAD design" loading="lazy" width="600" height="400" style="object-position:center 30%" decoding="async"></div>
   </article>
   <article class="step-row reverse reveal" data-step="02">
     <div class="step-content"><p class="step-num">Step 02</p><h2 class="step-name">Wax Model and Casting</h2><p class="step-desc">The wax carries every decision made in the brief. Investment casting translates CAD geometry into metal. The shrinkage rate is known. The outcome is not a surprise — it is a confirmation.</p></div>
-    <div class="step-img-wrap"><img class="step-img" data-rx-scale src="Jewelry/Whisk_ab5c9d5cf9.jpg" alt="Wax casting" loading="lazy" width="600" height="400"></div>
+    <div class="step-img-wrap"><img class="step-img" data-rx-scale src="Jewelry/Whisk_ab5c9d5cf9.jpg" alt="Wax casting" loading="lazy" width="600" height="400" decoding="async"></div>
   </article>
   <article class="step-row reveal" data-step="03">
     <div class="step-content"><p class="step-num">Step 03</p><h2 class="step-name">Stone Selection</h2><p class="step-desc">Three to five candidates reviewed under differing light conditions. GIA grade verified. Face-up diameter confirmed against setting tolerance to 0.1mm. The stone chosen is not the best stone available. It is the correct stone for this design.</p></div>
-    <div class="step-img-wrap"><img class="step-img" data-rx-scale src="Jewelry/10MM-SSOSMLC2_600x.webp" alt="Stone selection" loading="lazy" width="600" height="400"></div>
+    <div class="step-img-wrap"><img class="step-img" data-rx-scale src="Jewelry/10MM-SSOSMLC2_600x.webp" alt="Stone selection" loading="lazy" width="600" height="400" decoding="async"></div>
   </article>
   <article class="step-row reverse reveal" data-step="04">
     <div class="step-content"><p class="step-num">Step 04</p><h2 class="step-name">Metal Preparation</h2><p class="step-desc">Setting seat cut to the exact girdle profile of the selected stone. Not the CAD profile. The actual stone. Prongs filed, contact points dressed. Preparation takes longer than setting.</p></div>
-    <div class="step-img-wrap"><img class="step-img" data-rx-scale src="Jewelry/14MM-GICC-GR_A_600x.webp" alt="Metal preparation" loading="lazy" width="600" height="400"></div>
+    <div class="step-img-wrap"><img class="step-img" data-rx-scale src="Jewelry/14MM-GICC-GR_A_600x.webp" alt="Metal preparation" loading="lazy" width="600" height="400" decoding="async"></div>
   </article>
   <article class="step-row reveal" data-step="05">
     <div class="step-content"><p class="step-num">Step 05</p><h2 class="step-name">Setting</h2><p class="step-desc">Stone seated. Prongs secured in opposing pairs, not in sequence. Tension distributed evenly. The stone does not move. No light leaks beneath the girdle. The setting is only complete when the loupe confirms both of these things simultaneously.</p></div>
-    <div class="step-img-wrap"><img class="step-img" data-rx-scale src="Jewelry/15MM-ICZBIC-WG20_600x.webp" alt="Diamond setting" loading="lazy" width="600" height="400" style="object-position:center 30%"></div>
+    <div class="step-img-wrap"><img class="step-img" data-rx-scale src="Jewelry/15MM-ICZBIC-WG20_600x.webp" alt="Diamond setting" loading="lazy" width="600" height="400" style="object-position:center 30%" decoding="async"></div>
   </article>
   <article class="step-row reverse reveal" data-step="06">
     <div class="step-content"><p class="step-num">Step 06</p><h2 class="step-name">Final Inspection and Delivery</h2><p class="step-desc">10x loupe, certificate comparison, surface polish, photography. The piece is documented before it leaves. The client receives the piece, the GIA certificate, and a record of the design brief. That is the full delivery.</p></div>
-    <div class="step-img-wrap"><img class="step-img" data-rx-scale src="Jewelry/ICZMPSC-18_106_600x.webp" alt="Final inspection" loading="lazy" width="600" height="400" style="object-position:center 25%"></div>
+    <div class="step-img-wrap"><img class="step-img" data-rx-scale src="Jewelry/ICZMPSC-18_106_600x.webp" alt="Final inspection" loading="lazy" width="600" height="400" style="object-position:center 25%" decoding="async"></div>
   </article>
 </section>
 
 <!-- IMAGE MARQUEE — MID PAGE -->
 <div class="img-marquee-section" aria-hidden="true">
   <div class="img-marquee-track">
-    <div class="img-marquee-item"><img src="Jewelry/f1.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f2.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f3.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f4.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f5.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f6.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f7.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f8.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f9.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f1.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f2.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f3.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f4.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f5.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f6.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f7.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f8.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f9.jpg" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f1.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f1.webp 800w" sizes="180px"><img src="Jewelry/f1.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f2.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f2.webp 800w" sizes="180px"><img src="Jewelry/f2.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f3.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f3.webp 800w" sizes="180px"><img src="Jewelry/f3.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f4.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f4.webp 800w" sizes="180px"><img src="Jewelry/f4.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f5.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f5.webp 800w" sizes="180px"><img src="Jewelry/f5.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f6.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f6.webp 800w" sizes="180px"><img src="Jewelry/f6.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><img src="Jewelry/f7.jpg" alt="" loading="lazy" decoding="async"></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f8.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f8.webp 800w" sizes="180px"><img src="Jewelry/f8.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f9.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f9.webp 800w" sizes="180px"><img src="Jewelry/f9.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f1.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f1.webp 800w" sizes="180px"><img src="Jewelry/f1.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f2.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f2.webp 800w" sizes="180px"><img src="Jewelry/f2.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f3.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f3.webp 800w" sizes="180px"><img src="Jewelry/f3.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f4.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f4.webp 800w" sizes="180px"><img src="Jewelry/f4.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f5.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f5.webp 800w" sizes="180px"><img src="Jewelry/f5.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f6.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f6.webp 800w" sizes="180px"><img src="Jewelry/f6.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><img src="Jewelry/f7.jpg" alt="" loading="lazy" decoding="async"></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f8.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f8.webp 800w" sizes="180px"><img src="Jewelry/f8.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f9.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f9.webp 800w" sizes="180px"><img src="Jewelry/f9.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
   </div>
 </div>
 
@@ -1934,30 +1938,30 @@ body.mob-open{overflow:hidden;touch-action:none;}
   </div>
   <div class="vault-grid">
     <div class="vault-card" data-rx-scale>
-      <div class="vault-card-img-wrap"><img class="vault-card-img" src="Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg" alt="Solstice Solitaire — round brilliant diamond engagement ring, platinum four-prong" loading="lazy" style="object-position:center 35%"></div>
+      <div class="vault-card-img-wrap"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Engagement_ring_with_pave_diamonds_202606302138-960.avif 960w, Jewelry/Engagement_ring_with_pave_diamonds_202606302138.avif 1920w" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"><source type="image/webp" srcset="Jewelry/Engagement_ring_with_pave_diamonds_202606302138-960.webp 960w, Jewelry/Engagement_ring_with_pave_diamonds_202606302138.webp 1920w" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"><img class="vault-card-img" src="Jewelry/Engagement_ring_with_pave_diamonds_202606302138.jpeg" alt="Solstice Solitaire — round brilliant diamond engagement ring, platinum four-prong" loading="lazy" style="object-position:center 35%" decoding="async" width="1920" height="1434" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"></picture></div>
       <div class="vault-card-info">
         <div class="vault-status">By Consultation Only</div>
         <a href="solstice-solitaire.html" style="text-decoration:none"><div class="vault-name">Solstice Solitaire</div></a>
         <div class="vault-detail">950 platinum · four-prong solitaire<br>2.0ct–2.5ct round brilliant<br>D–F color · IF–VS1 clarity<br><br>Solitaire engagement ring designed around peak light performance. The prong geometry was drawn first — the stone sourced to fill it.</div>
-        <button type="button" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="vault-cta">Enquire</button>
+        <button type="button" class="vault-cta" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});}else{window.location.href='https://calendly.com/rarityxcollective/new-meeting';}">Enquire</button>
       </div>
     </div>
     <div class="vault-card" data-rx-scale>
-      <div class="vault-card-img-wrap"><img class="vault-card-img" src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg" alt="Meridian Cluster — multi-stone diamond cluster ring, open wireframe setting" loading="lazy" style="object-position:center top"></div>
+      <div class="vault-card-img-wrap"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141-960.avif 960w, Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.avif 1920w" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"><source type="image/webp" srcset="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141-960.webp 960w, Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.webp 1920w" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"><img class="vault-card-img" src="Jewelry/Hand_wearing_wireframe_ring_2K_202606302141.jpeg" alt="Meridian Cluster — multi-stone diamond cluster ring, open wireframe setting" loading="lazy" style="object-position:center top" decoding="async" width="1920" height="1072" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"></picture></div>
       <div class="vault-card-info">
         <div class="vault-status">Portfolio Piece</div>
         <a href="meridian-cluster.html" style="text-decoration:none"><div class="vault-name">Meridian Cluster</div></a>
         <div class="vault-detail">18k white gold · open wireframe mount<br>Multi-shape cluster: round, pear, marquise<br>Twelve stones · micro-pavé bridge<br><br>Custom cluster ring where the structural wireframe is the visible design element. Each stone position was plotted before any metal was drawn.</div>
-        <button type="button" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="vault-cta">Enquire</button>
+        <button type="button" class="vault-cta" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});}else{window.location.href='https://calendly.com/rarityxcollective/new-meeting';}">Enquire</button>
       </div>
     </div>
     <div class="vault-card" data-rx-scale>
-      <div class="vault-card-img-wrap"><img class="vault-card-img" src="Jewelry/Mixed_Metal_Trace_Flow_2K_202606302140.jpeg" alt="Fragment Band — mixed metal stacking ring set, seven bands" loading="lazy" style="object-position:center 40%"></div>
+      <div class="vault-card-img-wrap"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/Mixed_Metal_Trace_Flow_2K_202606302140-960.avif 960w, Jewelry/Mixed_Metal_Trace_Flow_2K_202606302140.avif 1920w" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"><source type="image/webp" srcset="Jewelry/Mixed_Metal_Trace_Flow_2K_202606302140-960.webp 960w, Jewelry/Mixed_Metal_Trace_Flow_2K_202606302140.webp 1920w" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"><img class="vault-card-img" src="Jewelry/Mixed_Metal_Trace_Flow_2K_202606302140.jpeg" alt="Fragment Band — mixed metal stacking ring set, seven bands" loading="lazy" style="object-position:center 40%" decoding="async" width="1920" height="1434" sizes="(max-width: 768px) 100vw, min(92vw, 1100px)"></picture></div>
       <div class="vault-card-info">
         <div class="vault-status">Portfolio Piece</div>
         <a href="fragment-band.html" style="text-decoration:none"><div class="vault-name">Fragment Band</div></a>
         <div class="vault-detail">Mixed metals — yellow gold, rose gold, platinum, black rhodium<br>Seven-band stacking set · seven diamond cuts<br>Round · princess · bezel · emerald · marquise · pavé · pavé noir<br><br>Stacking ring set designed to work individually or as a system. The logic holds in every combination.</div>
-        <button type="button" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="vault-cta">Enquire</button>
+        <button type="button" class="vault-cta" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});}else{window.location.href='https://calendly.com/rarityxcollective/new-meeting';}">Enquire</button>
       </div>
     </div>
   </div>
@@ -1971,7 +1975,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
     <h2 class="reel-title" data-rx-reveal>The work,<br><em>in motion.</em></h2>
   </div>
   <div class="reel-frame" data-rx-scale>
-    <video id="reel-video" autoplay muted loop playsinline preload="metadata" poster="Jewelry/Diamond_bracelet_on_sculpture_2K_202607111710.jpeg">
+    <video id="reel-video" muted loop playsinline preload="none" poster="Jewelry/Diamond_bracelet_on_sculpture_2K_202607111710.jpeg">
       <source src="Jewelry/RarityXSlideshow_web.mp4" type="video/mp4">
     </video>
   </div>
@@ -1981,7 +1985,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
 
 <!-- SECTION CHICAGO - BOOK A VISIT -->
 <section id="section-chicago">
-  <video id="chicago-video-bg" muted loop playsinline preload="none" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.22;z-index:0;pointer-events:none;mix-blend-mode:screen;transform:scaleX(-1);"><source src="Jewelry/Gold_and_diamond_202607111708.mp4" type="video/mp4"></video>
+  <video id="chicago-video-bg" muted loop playsinline preload="none" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.22;z-index:0;pointer-events:none;mix-blend-mode:screen;transform:scaleX(-1);" poster="Jewelry/Gold_and_diamond_202607111708.poster.jpg"><source src="Jewelry/Gold_and_diamond_202607111708.mp4" type="video/mp4"></video>
   <canvas id="chicago-3d-bg" aria-hidden="true"></canvas>
   <div class="chicago-inner">
     <div class="chicago-eyebrow" data-rx-reveal>RX / CHICAGO, IL / 2026</div>
@@ -2005,7 +2009,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
       </div>
     </div>
     <div class="chicago-cta-row" data-rx-reveal>
-      <button type="button" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="chicago-cta">Request a Visit Date</button>
+      <button type="button" class="chicago-cta" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});}else{window.location.href='https://calendly.com/rarityxcollective/new-meeting';}">Request a Visit Date</button>
       <div class="chicago-avail">Today. We have availability.</div>
     </div>
   </div>
@@ -2018,26 +2022,26 @@ body.mob-open{overflow:hidden;touch-action:none;}
 <!-- IMAGE MARQUEE — FOOTER -->
 <div class="img-marquee-section img-marquee-section--alt" aria-hidden="true">
   <div class="img-marquee-track" style="animation-direction:reverse;">
-    <div class="img-marquee-item"><img src="Jewelry/f10.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f11.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f12.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f13.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f14.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f15.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f16.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f17.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f18.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f19.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f10.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f11.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f12.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f13.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f14.jpg" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f15.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f16.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f17.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f18.png" alt="" loading="lazy"></div>
-    <div class="img-marquee-item"><img src="Jewelry/f19.png" alt="" loading="lazy"></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f10.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f10.webp 800w" sizes="180px"><img src="Jewelry/f10.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f11.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f11.webp 800w" sizes="180px"><img src="Jewelry/f11.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f12.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f12.webp 800w" sizes="180px"><img src="Jewelry/f12.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f13.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f13.webp 800w" sizes="180px"><img src="Jewelry/f13.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f14.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f14.webp 800w" sizes="180px"><img src="Jewelry/f14.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f15.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f15.webp 800w" sizes="180px"><img src="Jewelry/f15.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f16.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f16.webp 800w" sizes="180px"><img src="Jewelry/f16.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f17.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f17.webp 800w" sizes="180px"><img src="Jewelry/f17.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f18.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f18.webp 800w" sizes="180px"><img src="Jewelry/f18.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f19.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f19.webp 800w" sizes="180px"><img src="Jewelry/f19.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f10.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f10.webp 800w" sizes="180px"><img src="Jewelry/f10.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f11.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f11.webp 800w" sizes="180px"><img src="Jewelry/f11.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f12.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f12.webp 800w" sizes="180px"><img src="Jewelry/f12.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f13.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f13.webp 800w" sizes="180px"><img src="Jewelry/f13.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f14.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f14.webp 800w" sizes="180px"><img src="Jewelry/f14.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f15.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f15.webp 800w" sizes="180px"><img src="Jewelry/f15.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f16.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f16.webp 800w" sizes="180px"><img src="Jewelry/f16.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f17.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f17.webp 800w" sizes="180px"><img src="Jewelry/f17.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f18.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f18.webp 800w" sizes="180px"><img src="Jewelry/f18.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+    <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f19.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f19.webp 800w" sizes="180px"><img src="Jewelry/f19.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
   </div>
 </div>
 
@@ -2051,7 +2055,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
     <div class="s09-right">
       <div class="s09-right-label" data-rx-reveal>The Designer</div>
       <blockquote class="s09-right-quote" data-rx-reveal style="transition-delay:0.12s">"Each piece begins with the designer. Nothing else precedes it."<br><br>"The rarity is not in the stone. It is in the eye that knows where the light should land."</blockquote>
-      <video autoplay muted loop playsinline data-rx-fade aria-label="Diamond pendant" style="width:100%;height:clamp(360px,30vw,500px);object-fit:cover;margin-top:36px;filter:grayscale(55%) brightness(0.45);display:block;transition-delay:0.2s">
+      <video muted loop playsinline data-rx-fade aria-label="Diamond pendant" style="width:100%;height:clamp(360px,30vw,500px);object-fit:cover;margin-top:36px;filter:grayscale(55%) brightness(0.45);display:block;transition-delay:0.2s" poster="Jewelry/Diamond_earrings_in_darkness_202607111710.poster.jpg" preload="none">
         <source src="Jewelry/Diamond_earrings_in_darkness_202607111710.mp4" type="video/mp4">
       </video>
     </div>
@@ -2062,7 +2066,7 @@ body.mob-open{overflow:hidden;touch-action:none;}
       <p style="font-family:Outfit,sans-serif;font-size:15px;color:#888;line-height:1.7;margin-bottom:14px;max-width:320px;">A design consultation is a free 45-minute conversation about your brief — no fee, no obligation. We work with one new commission at a time.</p>
       <p style="font-family:Outfit,sans-serif;font-size:14px;color:#a8a8a8;line-height:1.7;margin-bottom:20px;max-width:320px;">Send us anything that shows us your direction — a link, a saved image, a magazine cutout. That's often where the best briefs start.</p>
       <a href="mailto:rarityxcollective@gmail.com" class="s09-email">rarityxcollective@gmail.com</a>
-      <button type="button" onclick="Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});return false;" class="s09-btn">Book a Design Consult &rarr;</button>
+      <button type="button" class="s09-btn" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/rarityxcollective/new-meeting'});}else{window.location.href='https://calendly.com/rarityxcollective/new-meeting';}">Book a Design Consult &rarr;</button>
     </div>
     <div class="s09-syndicates-col">
       <div class="s09-syndicates-label">Portfolio</div>
@@ -2090,26 +2094,26 @@ body.mob-open{overflow:hidden;touch-action:none;}
     <!-- S09 portfolio belt -->
     <div class="img-marquee-section img-marquee-section--atelier" aria-hidden="true" style="margin-top:clamp(40px,6vw,80px);">
       <div class="img-marquee-track">
-        <div class="img-marquee-item"><img src="Jewelry/f20.png" alt="" loading="lazy"></div>
-        <div class="img-marquee-item"><img src="Jewelry/f21.png" alt="" loading="lazy"></div>
-        <div class="img-marquee-item"><img src="Jewelry/f22.png" alt="" loading="lazy"></div>
-        <div class="img-marquee-item"><img src="Jewelry/f23.png" alt="" loading="lazy"></div>
-        <div class="img-marquee-item"><img src="Jewelry/f24.png" alt="" loading="lazy"></div>
-        <div class="img-marquee-item"><img src="Jewelry/f25.png" alt="" loading="lazy"></div>
-        <div class="img-marquee-item"><img src="Jewelry/f26.png" alt="" loading="lazy"></div>
-        <div class="img-marquee-item"><img src="Jewelry/f27.png" alt="" loading="lazy"></div>
-        <div class="img-marquee-item"><img src="Jewelry/f28.jpg" alt="" loading="lazy"></div>
-        <div class="img-marquee-item"><img src="Jewelry/f29.png" alt="" loading="lazy"></div>
-        <div class="img-marquee-item"><img src="Jewelry/f20.png" alt="" loading="lazy"></div>
-        <div class="img-marquee-item"><img src="Jewelry/f21.png" alt="" loading="lazy"></div>
-        <div class="img-marquee-item"><img src="Jewelry/f22.png" alt="" loading="lazy"></div>
-        <div class="img-marquee-item"><img src="Jewelry/f23.png" alt="" loading="lazy"></div>
-        <div class="img-marquee-item"><img src="Jewelry/f24.png" alt="" loading="lazy"></div>
-        <div class="img-marquee-item"><img src="Jewelry/f25.png" alt="" loading="lazy"></div>
-        <div class="img-marquee-item"><img src="Jewelry/f26.png" alt="" loading="lazy"></div>
-        <div class="img-marquee-item"><img src="Jewelry/f27.png" alt="" loading="lazy"></div>
-        <div class="img-marquee-item"><img src="Jewelry/f28.jpg" alt="" loading="lazy"></div>
-        <div class="img-marquee-item"><img src="Jewelry/f29.png" alt="" loading="lazy"></div>
+        <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f20.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f20.webp 800w" sizes="180px"><img src="Jewelry/f20.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+        <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f21.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f21.webp 800w" sizes="180px"><img src="Jewelry/f21.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+        <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f22.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f22.webp 800w" sizes="180px"><img src="Jewelry/f22.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+        <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f23.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f23.webp 800w" sizes="180px"><img src="Jewelry/f23.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+        <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f24.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f24.webp 800w" sizes="180px"><img src="Jewelry/f24.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+        <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f25.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f25.webp 800w" sizes="180px"><img src="Jewelry/f25.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+        <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f26.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f26.webp 800w" sizes="180px"><img src="Jewelry/f26.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+        <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f27.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f27.webp 800w" sizes="180px"><img src="Jewelry/f27.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+        <div class="img-marquee-item"><img src="Jewelry/f28.jpg" alt="" loading="lazy" decoding="async"></div>
+        <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f29.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f29.webp 800w" sizes="180px"><img src="Jewelry/f29.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+        <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f20.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f20.webp 800w" sizes="180px"><img src="Jewelry/f20.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+        <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f21.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f21.webp 800w" sizes="180px"><img src="Jewelry/f21.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+        <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f22.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f22.webp 800w" sizes="180px"><img src="Jewelry/f22.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+        <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f23.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f23.webp 800w" sizes="180px"><img src="Jewelry/f23.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+        <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f24.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f24.webp 800w" sizes="180px"><img src="Jewelry/f24.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+        <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f25.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f25.webp 800w" sizes="180px"><img src="Jewelry/f25.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+        <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f26.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f26.webp 800w" sizes="180px"><img src="Jewelry/f26.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+        <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f27.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f27.webp 800w" sizes="180px"><img src="Jewelry/f27.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
+        <div class="img-marquee-item"><img src="Jewelry/f28.jpg" alt="" loading="lazy" decoding="async"></div>
+        <div class="img-marquee-item"><picture class="rx-pic"><source type="image/avif" srcset="Jewelry/f29.avif 800w" sizes="180px"><source type="image/webp" srcset="Jewelry/f29.webp 800w" sizes="180px"><img src="Jewelry/f29.jpg" alt="" loading="lazy" decoding="async" width="800" height="800" sizes="180px"></picture></div>
       </div>
     </div>
   <div class="s09-footer">
@@ -3035,6 +3039,10 @@ body.mob-open{overflow:hidden;touch-action:none;}
   // ── ALL AUTOPLAY VIDEOS: pause when off-screen ──────────────
   (function() {
     if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('video').forEach(function(v){ v.removeAttribute('autoplay'); try { v.pause(); } catch (e) {} });
+      return;
+    }
     var videoObs = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
         var v = e.target;
@@ -3148,6 +3156,10 @@ body.mob-open{overflow:hidden;touch-action:none;}
 
 /* ── LAZY VIDEO PLAY (IntersectionObserver) ── */
 (function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('video').forEach(function(v){ v.removeAttribute('autoplay'); try { v.pause(); } catch (e) {} });
+    return;
+  }
   var lazyvids = document.querySelectorAll('video[preload="none"]');
   if(!lazyvids.length) return;
   var io = new IntersectionObserver(function(entries){
