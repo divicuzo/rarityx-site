@@ -23,6 +23,7 @@
   <style>
 /* Hallmark · macrostructure: Marquee Hero · tone: luxury/atmospheric · anchor hue: cold-burgundy
  * theme: custom brand "Cold Burgundy" (brand-locked, overrides catalog)
+ * hero: full-bleed footage backdrop (diam_womanhand_ad.mp4) + on-brand scrim + ken-burns parallax
  * nav: N9 edge-aligned · footer: Ft5 statement + concierge gate
  * BRAND OVERRIDE of gate 38a: italic Bodoni headlines kept per locked RarityX brand
  * pre-emit critique: P5 H5 E5 S4 R5 V4
@@ -30,7 +31,6 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
 :root{
-  /* brand tokens — Cold Burgundy */
   --color-bg:#330D1E;
   --color-surface:#3f1525;
   --color-deep:#260914;
@@ -53,13 +53,12 @@
   --dur-fast:160ms;
   --dur-mid:260ms;
 
-  /* 4pt spacing */
   --space-xs:8px; --space-sm:16px; --space-md:24px; --space-lg:48px; --space-xl:96px; --space-2xl:160px;
   --gutter:clamp(20px,5vw,56px);
   --rule:1px solid var(--color-divider);
 }
 
-html{font-size:18px;-webkit-text-size-adjust:100%;text-size-adjust:100%;color-scheme:dark;}
+html{font-size:18px;-webkit-text-size-adjust:100%;text-size-adjust:100%;color-scheme:dark;overflow-x:clip;}
 body{
   min-height:100vh;background-color:var(--color-bg);color:var(--color-text);
   font-family:var(--font-body);font-weight:400;line-height:1.6;
@@ -67,7 +66,6 @@ body{
   overflow-x:clip;
   background-image:radial-gradient(135% 95% at 50% 14%, #44182a 0%, #330D1E 44%, #210711 100%);
 }
-html{overflow-x:clip;}
 
 /* atmospheric grain */
 body::before{
@@ -87,26 +85,22 @@ button{border:none;background:none;cursor:pointer;font:inherit;color:inherit;}
 
 /* ── NAV · N9 edge-aligned ── */
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:20px var(--gutter);}
+  display:flex;align-items:center;justify-content:space-between;padding:20px var(--gutter);}
 .nav::after{content:"";position:absolute;left:var(--gutter);right:var(--gutter);bottom:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--color-divider) 18%,var(--color-divider) 82%,transparent);}
+  background:linear-gradient(90deg,transparent,rgba(245,245,245,.22) 18%,rgba(245,245,245,.22) 82%,transparent);}
 .nav-logo img{height:28px;width:auto;}
-.nav-meta{font-family:var(--font-mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--color-muted);}
+.nav-meta{font-family:var(--font-mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#f5f5f5;}
 
-/* ── HERO · sticky gem stage ── */
+/* ── HERO · sticky footage stage ── */
 .hero-wrap{position:relative;height:200vh;}
-.stage{position:sticky;top:0;height:100dvh;overflow:hidden;}
-.caustic{position:absolute;z-index:0;left:50%;top:40%;width:min(120vh,900px);aspect-ratio:1;transform:translate(-50%,-50%);
-  background:radial-gradient(closest-side, rgba(245,230,236,.16), rgba(200,160,180,.06) 42%, transparent 70%);
-  filter:blur(2px);pointer-events:none;}
-#gem{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:1;
-  opacity:0;transition:opacity 1.2s var(--ease-out);}
-#gem.ready{opacity:1;}
-.gem-fallback{position:absolute;inset:0;z-index:1;background:
-  radial-gradient(42% 42% at 50% 40%, rgba(245,245,245,.22), rgba(245,245,245,0) 70%);
-  opacity:0;transition:opacity .6s ease;}
-.gem-fallback.show{opacity:1;}
+.stage{position:sticky;top:0;height:100dvh;overflow:hidden;
+  background:var(--color-deep) url("Jewelry/Portfolio_pieces_vids/diam_womanhand_ad.poster.jpg") center/cover no-repeat;}
+.hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;will-change:transform;}
+.hero-vid.hide{display:none;}
+.stage-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(to top, rgba(38,9,20,.92) 0%, rgba(38,9,20,.42) 34%, rgba(38,9,20,.10) 58%, rgba(38,9,20,.38) 100%),
+    radial-gradient(130% 85% at 50% 32%, transparent 42%, rgba(38,9,20,.5) 100%);}
 
 .hero-inner{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:flex-end;
   padding:0 var(--gutter) clamp(44px,8vh,80px);pointer-events:none;}
@@ -120,29 +114,28 @@ button{border:none;background:none;cursor:pointer;font:inherit;color:inherit;}
 .loaded .rise.d3{transition-delay:.21s}
 .loaded .rise.d4{transition-delay:.31s}
 
-.eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--color-muted);margin-bottom:var(--space-md);}
+.eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--color-muted);margin-bottom:var(--space-md);text-shadow:0 1px 12px rgba(0,0,0,.5);}
 .hero-h1{font-family:var(--font-serif);font-style:italic;font-weight:300;
   font-size:clamp(2.7rem,8.5vw,6.6rem);line-height:1.02;letter-spacing:-.015em;
   max-width:15ch;margin-bottom:var(--space-md);padding-bottom:.08em;
-  overflow-wrap:anywhere;min-width:0;}
+  overflow-wrap:anywhere;min-width:0;text-shadow:0 2px 30px rgba(0,0,0,.45);}
 .hero-h1 em{font-style:italic;color:var(--color-accent);}
-.hero-sub{font-size:clamp(.98rem,1.4vw,1.12rem);color:var(--color-muted);max-width:44ch;margin-bottom:var(--space-lg);font-weight:300;}
+.hero-sub{font-size:clamp(.98rem,1.4vw,1.12rem);color:var(--color-text);opacity:.86;max-width:44ch;margin-bottom:var(--space-lg);font-weight:300;text-shadow:0 1px 16px rgba(0,0,0,.5);}
 
-/* right-edge editorial marker */
 .edge-mark{position:absolute;right:calc(var(--gutter) - 4px);top:50%;z-index:3;
   transform:translateY(-50%) rotate(90deg);transform-origin:right center;
-  font-family:var(--font-mono);font-size:9px;letter-spacing:.42em;text-transform:uppercase;color:var(--color-faint);}
+  font-family:var(--font-mono);font-size:9px;letter-spacing:.42em;text-transform:uppercase;color:rgba(245,245,245,.55);}
 @media(max-width:860px){.edge-mark{display:none;}}
 
 /* ── SIGNUP FORM ── */
 .signup{display:flex;gap:10px;max-width:470px;flex-wrap:wrap;}
 .signup .field{flex:1 1 220px;min-width:0;}
 .signup input[type=email]{width:100%;height:54px;padding:0 18px;
-  background:rgba(245,245,245,.04);border:var(--rule);border-radius:0;
-  color:var(--color-text);font-family:var(--font-body);font-size:.98rem;
+  background:rgba(14,4,8,.42);border:1px solid rgba(245,245,245,.28);border-radius:0;
+  color:var(--color-text);font-family:var(--font-body);font-size:.98rem;backdrop-filter:blur(3px);
   transition:border-color var(--dur-mid) var(--ease-out),background var(--dur-mid) var(--ease-out);}
-.signup input[type=email]::placeholder{color:var(--color-faint);}
-.signup input[type=email]:focus{outline:none;border-color:var(--color-accent);background:rgba(245,245,245,.07);}
+.signup input[type=email]::placeholder{color:rgba(245,245,245,.6);}
+.signup input[type=email]:focus{outline:none;border-color:var(--color-accent);background:rgba(14,4,8,.58);}
 .btn{height:54px;padding:0 28px;background:var(--color-text);color:var(--color-bg);
   font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;
   white-space:nowrap;transition:transform var(--dur-fast) var(--ease-out),background var(--dur-mid) var(--ease-out),opacity var(--dur-mid);}
@@ -151,15 +144,15 @@ button{border:none;background:none;cursor:pointer;font:inherit;color:inherit;}
 .btn[disabled]{opacity:.55;cursor:default;}
 .btn[disabled]:active{transform:none;}
 .form-note{margin-top:12px;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;min-height:1em;
-  color:var(--color-muted);transition:color var(--dur-mid) ease;}
+  color:var(--color-muted);transition:color var(--dur-mid) ease;text-shadow:0 1px 10px rgba(0,0,0,.5);}
 .form-note.ok{color:var(--color-ok);}
 .form-note.err{color:var(--color-err);}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}
 
 .scrollcue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:4;
-  font-family:var(--font-mono);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--color-faint);
+  font-family:var(--font-mono);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(245,245,245,.65);
   display:flex;flex-direction:column;align-items:center;gap:8px;}
-.scrollcue span{width:1px;height:34px;background:linear-gradient(var(--color-muted),transparent);animation:cue 2.4s var(--ease-in-out) infinite;}
+.scrollcue span{width:1px;height:34px;background:linear-gradient(rgba(245,245,245,.8),transparent);animation:cue 2.4s var(--ease-in-out) infinite;}
 @keyframes cue{0%,100%{transform:scaleY(.35);opacity:.3;transform-origin:top}50%{transform:scaleY(1);opacity:1;transform-origin:top}}
 
 /* ── SECTIONS ── */
@@ -168,18 +161,15 @@ button{border:none;background:none;cursor:pointer;font:inherit;color:inherit;}
 .reveal.in{opacity:1;transform:none;}
 @media(prefers-reduced-motion:reduce){
   .reveal,.rise{opacity:1 !important;transform:none !important;transition:none !important;}
-  #gem{opacity:1;transition:none;}
   .scrollcue span{animation:none;}
 }
 
-/* manifesto — full-bleed statement */
 .manifesto{border-top:var(--rule);}
 .manifesto h2{font-family:var(--font-serif);font-style:italic;font-weight:300;
   font-size:clamp(2.1rem,6.5vw,5rem);line-height:1.06;max-width:16ch;padding-bottom:.08em;overflow-wrap:anywhere;}
 .manifesto h2 em{font-style:italic;color:var(--color-accent);}
 .manifesto p{margin-top:var(--space-lg);color:var(--color-muted);max-width:52ch;font-weight:300;font-size:1.06rem;}
 
-/* principles — editorial numbered rows */
 .lines{border-top:var(--rule);max-width:780px;margin:0 auto;}
 .lines .ln{padding:var(--space-md) 0;border-bottom:var(--rule);
   display:grid;grid-template-columns:52px minmax(0,1fr);gap:var(--space-md);align-items:baseline;}
@@ -187,7 +177,6 @@ button{border:none;background:none;cursor:pointer;font:inherit;color:inherit;}
 .lines .ln .txt{font-size:1.18rem;font-weight:300;color:var(--color-text);min-width:0;}
 .lines .ln .txt small{display:block;margin-top:6px;color:var(--color-muted);font-size:.92rem;}
 
-/* capture — left-aligned editorial */
 .capture{border-top:var(--rule);}
 .capture-head{font-family:var(--font-serif);font-style:italic;font-weight:300;
   font-size:clamp(1.9rem,5vw,3.6rem);margin-bottom:var(--space-lg);max-width:18ch;padding-bottom:.08em;overflow-wrap:anywhere;}
@@ -225,12 +214,14 @@ button{border:none;background:none;cursor:pointer;font:inherit;color:inherit;}
     <span class="nav-meta">Coming soon · MMXXVI</span>
   </nav>
 
-  <!-- ── HERO: sticky 3D diamond stage ── -->
+  <!-- ── HERO: sticky footage stage ── -->
   <div class="hero-wrap">
     <div class="stage">
-      <div class="caustic" aria-hidden="true"></div>
-      <canvas id="gem"></canvas>
-      <div class="gem-fallback" id="gemFallback" aria-hidden="true"></div>
+      <video id="bgv" class="hero-vid" autoplay muted loop playsinline preload="metadata"
+             poster="Jewelry/Portfolio_pieces_vids/diam_womanhand_ad.poster.jpg" aria-hidden="true">
+        <source src="Jewelry/Portfolio_pieces_vids/diam_womanhand_ad.mp4" type="video/mp4">
+      </video>
+      <div class="stage-scrim" aria-hidden="true"></div>
 
       <span class="edge-mark" aria-hidden="true">Fine Jewelry · Est. soon</span>
 
@@ -300,13 +291,31 @@ button{border:none;background:none;cursor:pointer;font:inherit;color:inherit;}
 
   <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
-  requestAnimationFrame(()=>document.body.classList.add('loaded'));   // trigger hero entrance
+  requestAnimationFrame(()=>document.body.classList.add('loaded'));
+
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── hero footage: autoplay / pause offscreen / ken-burns parallax ── */
+  (function(){
+    const v = document.getElementById('bgv');
+    const wrap = document.querySelector('.hero-wrap');
+    if(!v) return;
+    if(reduce){ v.classList.add('hide'); if(v.pause) v.pause(); return; }   // poster (stage bg) stands in
+    const play = ()=>{ const p=v.play(); if(p&&p.catch) p.catch(()=>{}); };
+    play(); v.addEventListener('canplay', play, {once:true});
+    document.addEventListener('visibilitychange', ()=>{ document.hidden ? v.pause() : play(); });
+    (function loop(){
+      const r = wrap.getBoundingClientRect();
+      const p = Math.min(1, Math.max(0, -r.top / ((r.height - window.innerHeight) || 1)));
+      v.style.transform = `translate3d(0,${p*-5}%,0) scale(${1.06 + p*0.06})`;   // transform only
+      requestAnimationFrame(loop);
+    })();
+  })();
 
   /* =========================================================
      EMAIL SIGNUP  →  FormSubmit.co (no backend)
      First submission triggers a one-time confirmation email
      to the address below — click it once to activate delivery.
-     Change SIGNUP_EMAIL to route signups elsewhere.
      ========================================================= */
   const SIGNUP_EMAIL = 'rarityxcollective@gmail.com';
   const ENDPOINT = 'https://formsubmit.co/ajax/' + SIGNUP_EMAIL;
@@ -319,7 +328,7 @@ button{border:none;background:none;cursor:pointer;font:inherit;color:inherit;}
     const honey = form.querySelector('input[name=_honey]');
     form.addEventListener('submit', async (e)=>{
       e.preventDefault();
-      if(honey && honey.value) return;               // bot trap
+      if(honey && honey.value) return;
       const email = (input.value||'').trim();
       if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
         note.textContent = 'Enter a valid email.'; note.className='form-note err'; input.focus(); return;
@@ -331,12 +340,7 @@ button{border:none;background:none;cursor:pointer;font:inherit;color:inherit;}
         const res = await fetch(ENDPOINT, {
           method:'POST',
           headers:{'Content-Type':'application/json','Accept':'application/json'},
-          body: JSON.stringify({
-            email,
-            _subject:'RarityX — new coming-soon signup',
-            _template:'table',
-            _captcha:'false'
-          })
+          body: JSON.stringify({ email, _subject:'RarityX — new coming-soon signup', _template:'table', _captcha:'false' })
         });
         if(!res.ok) throw new Error('bad status');
         note.textContent = "You're on the list."; note.className='form-note ok';
@@ -354,8 +358,6 @@ button{border:none;background:none;cursor:pointer;font:inherit;color:inherit;}
 
   /* =========================================================
      ATELIER GATE  —  soft client-side lock (code 1911)
-     Not security; just keeps the live site out of sight
-     while the domain is sorted.
      ========================================================= */
   const CODE = '1911';
   const gate = document.getElementById('gate');
@@ -381,130 +383,6 @@ button{border:none;background:none;cursor:pointer;font:inherit;color:inherit;}
     ents.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
   },{threshold:.2});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  </script>
-
-  <!-- ── THREE.JS DIAMOND ── -->
-  <script type="importmap">
-  { "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-  }}
-  </script>
-  <script type="module">
-  import * as THREE from 'three';
-  import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const canvas = document.getElementById('gem');
-  const fallback = document.getElementById('gemFallback');
-
-  let renderer;
-  try{
-    renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true, powerPreference:'high-performance'});
-  }catch(e){ fallback.classList.add('show'); }
-
-  if(renderer){
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
-    camera.position.set(0, 0, 6.2);
-
-    const pmrem = new THREE.PMREMGenerator(renderer);
-    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-
-    // ── brilliant-cut profile, revolved into a faceted gem ──
-    const profile = [
-      new THREE.Vector2(0.00, 0.62),
-      new THREE.Vector2(0.30, 0.62),
-      new THREE.Vector2(0.54, 0.30),
-      new THREE.Vector2(0.56, 0.18),
-      new THREE.Vector2(0.56, 0.10),
-      new THREE.Vector2(0.00,-0.74)
-    ];
-    const geo = new THREE.LatheGeometry(profile, 16);
-    geo.computeVertexNormals();
-
-    const mat = new THREE.MeshPhysicalMaterial({
-      color:0xffffff, metalness:0, roughness:0.02,
-      transmission:1, thickness:1.1, ior:2.42,
-      specularIntensity:1, clearcoat:1, clearcoatRoughness:0.02,
-      envMapIntensity:2.6, flatShading:true,
-      attenuationColor:new THREE.Color(0xf0dfe6), attenuationDistance:3.0
-    });
-
-    const BASE = 1.9;
-    const gem = new THREE.Mesh(geo, mat);
-    gem.scale.setScalar(BASE);
-
-    const core = new THREE.Mesh(geo.clone(), new THREE.MeshBasicMaterial({color:0xffffff, transparent:true, opacity:0.05}));
-    core.scale.setScalar(BASE*0.92);
-
-    const group = new THREE.Group();
-    group.add(gem); group.add(core);
-    group.rotation.x = 0.22;
-    scene.add(group);
-
-    // sparkle lights — warm key + rose rim, drifting for living caustics
-    const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(3,4,5); scene.add(key);
-    const rim = new THREE.DirectionalLight(0xffd9e4, 1.2); rim.position.set(-4,-2,-3); scene.add(rim);
-
-    function resize(){
-      const stage = canvas.parentElement;
-      const w = stage.clientWidth, h = stage.clientHeight;
-      const dpr = Math.min(window.devicePixelRatio||1, 2);
-      renderer.setPixelRatio(dpr);
-      renderer.setSize(w, h, false);
-      camera.aspect = w/h; camera.updateProjectionMatrix();
-      group.position.y = w < 680 ? 0.95 : 0.4;
-      camera.position.z = w < 680 ? 7.4 : 6.2;
-    }
-    window.addEventListener('resize', resize, {passive:true});
-    resize();
-
-    // pointer parallax (spring lerp)
-    let tgtX=0, tgtY=0, curX=0, curY=0;
-    if(!reduce){
-      window.addEventListener('pointermove', (e)=>{
-        tgtX = (e.clientX/window.innerWidth - .5);
-        tgtY = (e.clientY/window.innerHeight - .5);
-      }, {passive:true});
-    }
-
-    const heroWrap = document.querySelector('.hero-wrap');
-    let spin=0, t=0, intro=0, running=true;
-    document.addEventListener('visibilitychange', ()=>{ running = !document.hidden; if(running) loop(); });
-
-    function loop(){
-      if(!running) return;
-      t += 0.016;
-      intro = Math.min(1, intro + 0.018);                 // 0→1 entrance tween
-      const ease = 1 - Math.pow(1-intro, 3);              // easeOutCubic
-
-      const rect = heroWrap.getBoundingClientRect();
-      const p = Math.min(1, Math.max(0, -rect.top / (rect.height - window.innerHeight || 1)));
-
-      curX += (tgtX - curX) * 0.06;
-      curY += (tgtY - curY) * 0.06;
-
-      if(!reduce) spin += 0.0032;
-      group.rotation.y = spin;
-      group.rotation.z = curX * 0.18;
-      group.rotation.x = 0.22 + curY * 0.18 + p * 0.5;
-
-      const s = BASE * (0.9 + 0.1*ease) * (1 + p * 0.12);  // grow in, then scroll-scale
-      gem.scale.setScalar(s); core.scale.setScalar(s*0.92);
-
-      // drifting key light for caustic shimmer
-      if(!reduce){ key.position.x = 3 + Math.sin(t*0.6)*0.8; key.position.y = 4 + Math.cos(t*0.5)*0.5; }
-
-      renderer.render(scene, camera);
-      requestAnimationFrame(loop);
-    }
-    // reveal canvas once the first frame is painted
-    requestAnimationFrame(()=>{ canvas.classList.add('ready'); });
-    loop();
-
-    canvas.addEventListener('webglcontextlost', ()=>{ fallback.classList.add('show'); });
-  }
   </script>
 </body>
 </html>
